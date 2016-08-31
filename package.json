@@ -1,0 +1,16 @@
+{
+  "name": "reason-js",
+  "version": "0.0.1",
+  "description": "Reason + BuckleScript bindings to DOM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "bsc -bin-annot -g -pp ./node_modules/reason/_build/bin/refmt -bs-package-name reason-js -bs-package-output commonjs:_build -o _build/index -c -impl src/index.re"
+  },
+  "author": "chenglou",
+  "license": "MIT",
+  "devDependencies": {
+    "bs-platform": "^0.9.7",
+    "reason": "github:facebook/reason"
+  }
+}
