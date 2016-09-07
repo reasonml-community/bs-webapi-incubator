@@ -19,7 +19,7 @@ let module LocalStorage = {
   external removeItem : string => unit = "localStorage.removeItem" [@@bs.val];
   external clear : unit => unit = "localStorage.clear" [@@bs.val];
   external key : int => 'a = "localStorage.key" [@@bs.val];
-  let getLength () => [%bs.raw {| localStorage.length |}];
+  let length () :int => [%bs.raw {|localStorage.length|}];
 };
 
 let module SessionStorage = {
@@ -28,5 +28,5 @@ let module SessionStorage = {
   external removeItem : string => unit = "sessionStorage.removeItem" [@@bs.val];
   external clear : unit => unit = "sessionStorage.clear" [@@bs.val];
   external key : int => 'a = "sessionStorage.key" [@@bs.val];
-  let getLength () => [%bs.raw {| sessionStorage.length |}];
+  let length () :int => [%bs.raw {|sessionStorage.length|}];
 };
