@@ -1,4 +1,3 @@
-
 /*
  * vim: set ft=rust:
  * vim: set ft=reason:
@@ -13,6 +12,8 @@ let module Window = {
   type requestId;
   type intervalId;
   type timeoutId;
+  external alert : string => unit = "window.alert" [@@bs.val];
+  external confirm : string => bool = "window.confirm" [@@bs.val];
   external requestAnimationFrame: (unit => unit) => requestId = "window.requestAnimationFrame" [@@bs.val];
   external cancelAnimationFrame: requestId => unit = "window.cancelAnimationFrame" [@@bs.val];
   external setInterval : (unit => unit) => int => intervalId = "window.setInterval" [@@bs.val];
