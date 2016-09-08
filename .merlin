@@ -1,0 +1,5 @@
+B src
+B node_modules/bs-platform/lib/ocaml
+
+S .
+S src
