@@ -7,7 +7,7 @@ Reason is a syntax on top of OCaml, a great language. BuckleScript compiles OCam
 ## Installation
 
 ```
-npm install chenglou/reason-dom
+npm install chenglou/reason-js
 ```
 
 (We'll release an official npm package soon!)
@@ -15,6 +15,6 @@ npm install chenglou/reason-dom
 ## Usage
 
 ```re
-/* Looks almost identical to JavaScript! But fully typed, of course. */
-let myInterval = Window.setInterval (fun () => Console.log "hello!") 1000;
+/* Looks almost identical to JavaScript, but fully typed! */
+let myInterval = ReasonJs.setInterval (fun () => ReasonJs.Console.log "hello!") 1000;
 ```

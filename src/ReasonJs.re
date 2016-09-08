@@ -3,11 +3,17 @@ let module Document = {
   external getElementById : string => element = "document.getElementById" [@@bs.val];
 };
 
-let module Window = {
-  type intervalId;
-  external setInterval : (unit => unit) => int => intervalId = "window.setInterval" [@@bs.val];
-  external clearInterval : intervalId => unit = "window.clearInterval" [@@bs.val];
-};
+type intervalId;
+
+external setInterval : (unit => unit) => int => intervalId = "setInterval" [@@bs.val];
+
+external clearInterval : intervalId => unit = "clearInterval" [@@bs.val];
+
+type timeoutId;
+
+external setTimeout : (unit => unit) => int => timeoutId = "setTimeout" [@@bs.val];
+
+external clearTimeout : timeoutId => unit = "clearTimeout" [@@bs.val];
 
 let module Console = {
   external log : 'anything => unit = "console.log" [@@bs.val];
