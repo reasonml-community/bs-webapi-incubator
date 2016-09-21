@@ -1,6 +1,25 @@
+let module Date = {
+  external now : unit => int = "Date.now" [@@bs.val];
+};
+let module Math = {
+  external random : unit => float = "Math.random" [@@bs.val];
+};
+
+let module Window = {
+  type t;
+  external window : t = "window" [@@bs.val];
+  external _innerWidth : t => int = "innerWidth" [@@bs.get];
+  let innerWidth () => _innerWidth window;
+  external _innerHeight : t => int = "innerHeight" [@@bs.get];
+  let innerHeight () => _innerHeight window;
+  external addEventListener : string => (unit => unit [@bs]) => unit = "window.addEventListener" [@@bs.val];
+  /* external onLoad : t => (unit => unit [@bs]) => unit = "window.onload" [@@bs.send]; */
+};
+
 let module Document = {
   type element;
   external getElementById : string => element = "document.getElementById" [@@bs.val];
+  external appendChild : element => 'element => unit = "appendChild" [@@bs.send];
 };
 
 type intervalId;

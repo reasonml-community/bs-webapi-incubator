@@ -12,5 +12,6 @@
   "devDependencies": {
     "bs-platform": "^0.9.7",
     "reason": "github:facebook/reason"
-  }
+  },
+  "rebel": {}
 }
