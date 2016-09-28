@@ -1,5 +1,7 @@
 B src
+B tests
 B node_modules/bs-platform/lib/ocaml
 
 S .
 S src
+S tests

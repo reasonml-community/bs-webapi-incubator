@@ -4,13 +4,14 @@
   "description": "Reason + BuckleScript bindings to DOM",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "mkdir -p _build && bsc -bin-annot -g -pp ./node_modules/reason/refmt_impl.native -bs-package-name reason-js -bs-package-output commonjs:_build -o _build/index -c -impl src/index.re"
+    "test": "node_modules/bs-platform/bin/bsc.exe -pp node_modules/reason/refmt_impl.native -I src -impl src/ReasonJs.re -impl tests/test.re && tests/run.sh",
+    "start": "mkdir -p _build && node_modules/bs-platform/bin/bsc.exe -bin-annot -g -pp ./node_modules/reason/refmt_impl.native -bs-package-name reason-js -bs-package-output commonjs:_build -o _build/index -c -impl src/ReasonJs.re"
   },
   "author": "chenglou",
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "^0.9.7",
+    "bs-platform": "^1.0.3",
+    "dependency-env": "github:npm-ml/dependency-env",
     "reason": "github:facebook/reason"
   }
 }
