@@ -1,3 +1,11 @@
+let module Date = {
+  external now : unit => int = "Date.now" [@@bs.val];
+};
+
+let module Math = {
+  external random : unit => float = "Math.random" [@@bs.val];
+};
+
 let module Document = {
   type element;
   external getElementById : string => element = "document.getElementById" [@@bs.val];
