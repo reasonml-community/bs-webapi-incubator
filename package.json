@@ -13,5 +13,6 @@
     "bs-platform": "^1.0.3",
     "dependency-env": "github:npm-ml/dependency-env",
     "reason": "github:facebook/reason"
-  }
+  },
+  "rebel": {}
 }
