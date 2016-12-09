@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/bs-platform/bin/bsc.exe -pp node_modules/reason/refmt_impl.native -I src -impl src/ReasonJs.re -impl tests/test.re && tests/run.sh",
-    "start": "mkdir -p _build && node_modules/bs-platform/bin/bsc.exe -bin-annot -g -pp ./node_modules/reason/refmt_impl.native -bs-package-name reason-js -bs-package-output commonjs:_build -o _build/index -c -impl src/ReasonJs.re"
+    "start": "mkdir -p _build && node_modules/bs-platform/bin/bsc.exe -bin-annot -g -pp ./node_modules/reason/refmt_impl.native -bs-package-name reason-js -bs-package-output commonjs:_build -o _build/index -c -impl src/reasonJs.re"
   },
   "author": "chenglou",
   "license": "MIT",
