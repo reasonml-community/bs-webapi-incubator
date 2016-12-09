@@ -1,3 +1,12 @@
+module Window = {
+  type t;
+  external window : t = "window" [@@bs.val];
+  external innerWidth : t => int = "innerWidth" [@@bs.get];
+  external innerHeight : t => int = "innerHeight" [@@bs.get];
+  external addEventListener : t => string => (unit => unit) => unit = "addEventListener" [@@bs.send];
+  external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
+};
+
 module Date = {
   type t;
   external make : unit => t = "Date" [@@bs.new];
@@ -15,6 +24,7 @@ module Math = {
 module Document = {
   type element;
   external getElementById : string => element = "document.getElementById" [@@bs.val];
+  external appendChild : element => 'element => unit = "appendChild" [@@bs.send];
 };
 
 type intervalId;
@@ -50,3 +60,4 @@ module SessionStorage = {
   external key : int => 'a = "sessionStorage.key" [@@bs.val];
   let length () :int => [%bs.raw {|sessionStorage.length|}];
 };
+
