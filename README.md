@@ -7,10 +7,8 @@ Reason is a syntax on top of OCaml, a great language. BuckleScript compiles OCam
 ## Installation
 
 ```
-npm install chenglou/reason-js
+npm install reason-js
 ```
-
-(We'll release an official npm package soon!)
 
 ## Usage
 
