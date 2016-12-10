@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/bs-platform/bin/bsc.exe -pp node_modules/reason/refmt_impl.native -I src -impl src/ReasonJs.re -impl tests/test.re && tests/run.sh",
-    "start": "mkdir -p _build && node_modules/bs-platform/bin/bsc.exe -bin-annot -g -pp ./node_modules/reason/refmt_impl.native -bs-package-name reason-js -bs-package-output commonjs:_build -o _build/index -c -impl src/reasonJs.re"
+    "start": "bsb -w"
   },
   "author": "chenglou",
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "^1.0.3",
+    "bs-platform": "^1.3.3",
     "dependency-env": "github:npm-ml/dependency-env",
     "reason": "github:facebook/reason"
   },

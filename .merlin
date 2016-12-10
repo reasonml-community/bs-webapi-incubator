@@ -1,7 +1,15 @@
-B src
-B tests
-B node_modules/bs-platform/lib/ocaml
+FLG -ppx /Users/chenglou/Desktop/okok/node_modules/bs-platform/bin/bsppx.exe
 
-S .
-S src
+####{BSB GENERATED: NO EDIT
+S /Users/chenglou/Github/reason-js/node_modules/bs-platform/bin/../lib/ocaml
+B /Users/chenglou/Github/reason-js/node_modules/bs-platform/bin/../lib/ocaml
+PPX /Users/chenglou/Github/reason-js/node_modules/bs-platform/bin/bsppx.exe
+
+                       
 S tests
+B lib/bs/tests
+
+S src
+B lib/bs/src
+
+####BSB GENERATED: NO EDIT}

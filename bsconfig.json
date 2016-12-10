@@ -1,0 +1,27 @@
+/* This is the BuckleScript configuration file. Note that this is a comment;
+  BuckleScript comes with a JSON parser that supports comments and trailing
+  comma. If this screws with your editor highlighting, please tell us by filing
+  an issue! */
+{
+  "name" : "reason-js",
+  "version": "0.0.0",
+  "bsc-flags": ["-bs-sort-imports", "-bin-annot"],
+  "refmt": "./node_modules/reason/refmt_impl.native",
+  "generate-merlin": true,
+  "sources": [
+    {
+      "dir": "src",
+      "public": "all",
+      "files": {
+        "slow-re": "[A-Za-z]+\\.re"
+      },
+    },
+    {
+      "dir": "tests",
+      "public": [],
+      "files": {
+        "slow-re": "[A-Za-z]+\\.re"
+      },
+    },
+  ],
+}
