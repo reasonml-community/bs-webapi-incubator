@@ -16,5 +16,5 @@ npm install chenglou/reason-js
 
 ```re
 /* Looks almost identical to JavaScript, but fully typed! */
-let myInterval = ReasonJs.setInterval (fun () => ReasonJs.Console.log "hello!") 1000;
+let myInterval = ReasonJs.setInterval (fun () => Js.log "hello!") 1000;
 ```

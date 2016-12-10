@@ -17,6 +17,7 @@ module Date = {
   external getTime : t => int = "" [@@bs.send "getTime"];
 };
 
+/* TODO: maybe remove this. We have Random.float 1.0 in OCaml */
 module Math = {
   external random : unit => float = "Math.random" [@@bs.val];
 };
@@ -39,10 +40,6 @@ external setTimeout : (unit => unit) => int => timeoutId = "setTimeout" [@@bs.va
 
 external clearTimeout : timeoutId => unit = "clearTimeout" [@@bs.val];
 
-module Console = {
-  external log : 'anything => unit = "console.log" [@@bs.val];
-};
-
 module LocalStorage = {
   external getItem : string => 'a = "localStorage.getItem" [@@bs.val];
   external setItem : string => 'a => unit = "localStorage.setItem" [@@bs.val];
@@ -60,4 +57,3 @@ module SessionStorage = {
   external key : int => 'a = "sessionStorage.key" [@@bs.val];
   let length () :int => [%bs.raw {|sessionStorage.length|}];
 };
-
