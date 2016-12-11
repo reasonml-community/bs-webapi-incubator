@@ -1,6 +1,4 @@
 .merlin
-/lib/
-!/lib/ocaml
-*.cm*
+/lib/bs/
 *.js
 !expected.js
