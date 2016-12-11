@@ -57,3 +57,27 @@ module SessionStorage = {
   external key : int => 'a = "sessionStorage.key" [@@bs.val];
   let length () :int => [%bs.raw {|sessionStorage.length|}];
 };
+
+module Promise = {
+  type promiseT 'a;
+  type errorT;
+  external thenDo : promiseT 'a => ('a => 'b) => promiseT 'b = "then" [@@bs.send];
+  external catchError : promiseT 'a => (errorT => unit) => promiseT 'a = "catch" [@@bs.send];
+};
+
+module Response = {
+  type responseT;
+  /* TODO: type Headers */
+  external ok : responseT => Js.boolean = "ok" [@@bs.get];
+  external redirected : responseT => Js.boolean = "redirected" [@@bs.get];
+  external status : responseT => int = "status" [@@bs.get];
+  external statusText : responseT => string = "statusText" [@@bs.get];
+  external type_ : responseT => string = "type" [@@bs.get];
+  external url : responseT => string = "url" [@@bs.get];
+
+  /** body getters **/
+  external json : responseT => Js.t 'a = "json" [@@bs.send];
+  external text : responseT => string = "text" [@@bs.send];
+};
+
+external fetch : string => Promise.promiseT Response.responseT = "fetch" [@@bs.val];
