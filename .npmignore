@@ -1,0 +1,6 @@
+.merlin
+/lib/
+!/lib/ocaml
+*.cm*
+*.js
+!expected.js

@@ -18,7 +18,6 @@
     },
     {
       "dir": "tests",
-      "public": [],
       "files": {
         "slow-re": "[A-Za-z]+\\.re"
       },
