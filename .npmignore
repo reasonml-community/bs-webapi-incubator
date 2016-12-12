@@ -1,4 +1,2 @@
 .merlin
 /lib/bs/
-*.js
-!expected.js
