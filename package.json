@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/bs-platform/bin/bsc.exe -pp node_modules/reason/refmt_impl.native -I src -impl src/ReasonJs.re -impl tests/test.re && tests/run.sh",
-    "start": "bsb -w"
+    "start": "bsb -w",
+    "prepublish": "bsb"
   },
   "author": "chenglou",
   "license": "MIT",
