@@ -11,7 +11,7 @@ actual=`cat $thisDir/test.js`
 if [[ "$expected" = "$actual" ]]; then
   echo "$checkmark test.js looks like the expected output (expected.js)."
 else
-  echo "$crossmark Wrong"
+  echo "$crossmark test.js looks different than expected.js"
   diff -u $thisDir/expected.js $thisDir/test.js
   exit 1
 fi

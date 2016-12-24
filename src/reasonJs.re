@@ -138,7 +138,7 @@ module GL = {
   external enableVertexAttribArray : glT => int => unit = "enableVertexAttribArray" [@@bs.send];
   /* void vertexAttribPointer(GLuint indx, GLint size, GLenum type,
      GLboolean normalized, GLsizei stride, GLintptr offset); */
-  external vertexAttribPointer : glT => int => int => int => bool => int => int => unit = "vertexAttribPointer" [@@bs.send];
+  external vertexAttribPointer : glT => int => int => int => Js.boolean => int => int => unit = "vertexAttribPointer" [@@bs.send];
 };
 
 module Document = {
