@@ -21,6 +21,11 @@ module Window = {
   external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
 };
 
+module JSON = {
+  external stringify : 'a => string = "JSON.stringify" [@@bs.val];
+  external parse : string => 'a = "JSON.parse" [@@bs.val];
+};
+
 module Date = {
   type t;
   external make : unit => t = "Date" [@@bs.new];
@@ -152,8 +157,8 @@ module Document = {
 };
 
 module LocalStorage = {
-  external getItem : string => 'a = "localStorage.getItem" [@@bs.val];
-  external setItem : string => 'a => unit = "localStorage.setItem" [@@bs.val];
+  external getItem : string => Js.null string = "localStorage.getItem" [@@bs.val];
+  external setItem : string => string => unit = "localStorage.setItem" [@@bs.val];
   external removeItem : string => unit = "localStorage.removeItem" [@@bs.val];
   external clear : unit => unit = "localStorage.clear" [@@bs.val];
   external key : int => 'a = "localStorage.key" [@@bs.val];
@@ -161,8 +166,8 @@ module LocalStorage = {
 };
 
 module SessionStorage = {
-  external getItem : string => 'a = "sessionStorage.getItem" [@@bs.val];
-  external setItem : string => 'a => unit = "sessionStorage.setItem" [@@bs.val];
+  external getItem : string => Js.null string = "sessionStorage.getItem" [@@bs.val];
+  external setItem : string => string => unit = "sessionStorage.setItem" [@@bs.val];
   external removeItem : string => unit = "sessionStorage.removeItem" [@@bs.val];
   external clear : unit => unit = "sessionStorage.clear" [@@bs.val];
   external key : int => 'a = "sessionStorage.key" [@@bs.val];
