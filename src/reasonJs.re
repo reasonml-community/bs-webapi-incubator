@@ -10,7 +10,7 @@ external setTimeout : (unit => unit) => int => timeoutId = "setTimeout" [@@bs.va
 
 external clearTimeout : timeoutId => unit = "clearTimeout" [@@bs.val];
 
-external requestAnimationFrame : (unit => unit) => unit = "requestAnimationFrame" [@@bs.send];
+external requestAnimationFrame : (unit => unit) => unit = "requestAnimationFrame" [@@bs.val];
 
 module Window = {
   type t;
