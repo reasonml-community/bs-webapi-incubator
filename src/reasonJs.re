@@ -151,9 +151,10 @@ module Document = {
   external getElementById : string => element = "document.getElementById" [@@bs.val];
   /* not really an array */
   external getElementsByClassName : string => array element = "document.getElementsByClassName" [@@bs.val];
-  external appendChild : element => 'element => unit = "appendChild" [@@bs.send];
+  external appendChild : element => element => unit = "appendChild" [@@bs.send];
   /* Should be on CanvasElement */
   external getContext : element => string => GL.glT = "getContext" [@@bs.send];
+  external contains : element => element => Js.boolean = "contains" [@@bs.send];
 };
 
 module LocalStorage = {
