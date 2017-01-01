@@ -6,7 +6,9 @@ let myInterval = setInterval (fun () => Js.log "hello!") 1000;
 
 let width = Window.(innerWidth window);
 
-let heigth = Window.(innerHeight window);
+let height = Window.(innerHeight window);
+
+let value = Document.getElementById "foo" |> Document.value;
 
 Window.(addEventListener window "click" (fun () => print_endline "asd"));
 

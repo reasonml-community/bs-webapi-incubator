@@ -155,6 +155,8 @@ module Document = {
   /* Should be on CanvasElement */
   external getContext : element => string => GL.glT = "getContext" [@@bs.send];
   external contains : element => element => Js.boolean = "contains" [@@bs.send];
+  external value : element => string = "value" [@@bs.get];
+  external checked : element => Js.boolean = "checked" [@@bs.get];
 };
 
 module LocalStorage = {

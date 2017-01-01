@@ -11,7 +11,9 @@ var myInterval = setInterval(function () {
 
 var width = window.innerWidth;
 
-var heigth = window.innerHeight;
+var height = window.innerHeight;
+
+var value = document.getElementById("foo").value;
 
 window.addEventListener("click", function () {
       console.log("asd");
@@ -47,7 +49,8 @@ var p4 = p.then(function (res) {
 exports.date       = date;
 exports.myInterval = myInterval;
 exports.width      = width;
-exports.heigth     = heigth;
+exports.height     = height;
+exports.value      = value;
 exports.p          = p;
 exports.p2         = p2;
 exports.p3         = p3;
