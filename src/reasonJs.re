@@ -36,9 +36,8 @@ module Date = {
   external getTime : t => int = "" [@@bs.send "getTime"];
 };
 
-/* TODO: maybe remove this. We have Random.float 1.0 in OCaml */
-module Math = {
-  external random : unit => float = "Math.random" [@@bs.val];
+module Object = {
+  external assign : Js.t {..} => Js.t {..} => Js.t {..} => Js.t {..} = "Object.assign" [@@bs.val];
 };
 
 module Float32Array = {
