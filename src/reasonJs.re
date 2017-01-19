@@ -29,11 +29,11 @@ module JSON = {
 module Date = {
   type t;
   external make : unit => t = "Date" [@@bs.new];
-  external makeWithValue : int => t = "Date" [@@bs.new];
-  external now : unit => int = "" [@@bs.val "Date.now"];
-  external getTimezoneOffset : t => int = "" [@@bs.send "getTimezoneOffset"];
-  external getHours : t => int = "" [@@bs.send "getHours"];
-  external getTime : t => int = "" [@@bs.send "getTime"];
+  external makeWithValue : float => t = "Date" [@@bs.new];
+  external now : unit => float = "" [@@bs.val "Date.now"];
+  external getTimezoneOffset : t => float = "" [@@bs.send "getTimezoneOffset"];
+  external getHours : t => float = "" [@@bs.send "getHours"];
+  external getTime : t => float = "" [@@bs.send "getTime"];
 };
 
 module Object = {
