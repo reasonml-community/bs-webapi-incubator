@@ -12,15 +12,10 @@
     {
       "dir": "src",
       "public": "all",
-      "files": {
-        "slow-re": "[A-Za-z]+\\.re"
-      },
     },
     {
       "dir": "tests",
-      "files": {
-        "slow-re": "[A-Za-z]+\\.re"
-      },
+      "type": "dev",
     },
   ],
 }

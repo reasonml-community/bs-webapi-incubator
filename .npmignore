@@ -1,3 +1,4 @@
 .merlin
 /lib/
 *.cm*
+*.js
