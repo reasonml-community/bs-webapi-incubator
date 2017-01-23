@@ -1,6 +1,6 @@
 {
   "name": "reason-js",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Reason + BuckleScript bindings to DOM",
   "main": "index.js",
   "scripts": {
