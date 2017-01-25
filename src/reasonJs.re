@@ -17,8 +17,12 @@ module Window = {
   external window : t = "window" [@@bs.val];
   external innerWidth : t => int = "innerWidth" [@@bs.get];
   external innerHeight : t => int = "innerHeight" [@@bs.get];
-  external addEventListener : t => string => (unit => unit) => unit = "addEventListener" [@@bs.send];
+  external addEventListener : t => string => (unit => unit) => unit =
+    "addEventListener" [@@bs.send];
   external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
+  module Location = {
+    external href : string = "window.location.href" [@@bs.val];
+  };
 };
 
 module JSON = {
@@ -125,12 +129,14 @@ module GL = {
   external deleteBuffer : glT => bufferT => unit = "createBuffer" [@@bs.send];
   external bindBuffer : glT => int => bufferT => unit = "bindBuffer" [@@bs.send];
   external bufferData : glT => int => Uint16Array.t => int => unit = "bufferData" [@@bs.send];
-  external bufferFloatData : glT => int => Float32Array.t => int => unit = "bufferData" [@@bs.send];
+  external bufferFloatData : glT => int => Float32Array.t => int => unit =
+    "bufferData" [@@bs.send];
   external createProgram : glT => programT = "createProgram" [@@bs.send];
   external linkProgram : glT => programT => unit = "linkProgram" [@@bs.send];
   external useProgram : glT => programT => unit = "useProgram" [@@bs.send];
   external getProgramInfoLog : glT => programT => string = "getProgramInfoLog" [@@bs.send];
-  external bindAttribLocation : glT => programT => int => string => unit = "bindAttribLocation" [@@bs.send];
+  external bindAttribLocation : glT => programT => int => string => unit =
+    "bindAttribLocation" [@@bs.send];
   external createShader : glT => int => shaderT = "createShader" [@@bs.send];
   external shaderSource : glT => shaderT => string => unit = "shaderSource" [@@bs.send];
   external compileShader : glT => shaderT => unit = "compileShader" [@@bs.send];
@@ -142,14 +148,16 @@ module GL = {
   external enableVertexAttribArray : glT => int => unit = "enableVertexAttribArray" [@@bs.send];
   /* void vertexAttribPointer(GLuint indx, GLint size, GLenum type,
      GLboolean normalized, GLsizei stride, GLintptr offset); */
-  external vertexAttribPointer : glT => int => int => int => Js.boolean => int => int => unit = "vertexAttribPointer" [@@bs.send];
+  external vertexAttribPointer : glT => int => int => int => Js.boolean => int => int => unit =
+    "vertexAttribPointer" [@@bs.send];
 };
 
 module Document = {
   type element;
   external getElementById : string => element = "document.getElementById" [@@bs.val];
   /* not really an array */
-  external getElementsByClassName : string => array element = "document.getElementsByClassName" [@@bs.val];
+  external getElementsByClassName : string => array element =
+    "document.getElementsByClassName" [@@bs.val];
   external appendChild : element => element => unit = "appendChild" [@@bs.send];
   /* Should be on CanvasElement */
   external getContext : element => string => GL.glT = "getContext" [@@bs.send];
