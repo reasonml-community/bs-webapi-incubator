@@ -4,15 +4,10 @@
   an issue! */
 {
   "name" : "reason-js",
-  "version": "0.0.0",
-  "bsc-flags": ["-bs-sort-imports", "-bin-annot"],
   "refmt": "reason/refmt_impl.native",
-  "generate-merlin": true,
+  "refmt-flags": ["--print", "binary"],
   "sources": [
-    {
-      "dir": "src",
-      "public": "all",
-    },
+    "src",
     {
       "dir": "tests",
       "type": "dev",
