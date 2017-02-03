@@ -5,7 +5,6 @@
 {
   "name" : "reason-js",
   "refmt": "reason/refmt_impl.native",
-  "refmt-flags": ["--print", "binary"],
   "sources": [
     "src",
     {
