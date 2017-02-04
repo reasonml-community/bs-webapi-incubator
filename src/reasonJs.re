@@ -222,7 +222,7 @@ module Element = {
 
 module History = {
   type t;
-  type state = Js.t {. }; /* "anything that can be serializable" apparently */
+  type state; /* TODO: should be "anything that can be serializable" apparently */
 
   /* a more ergonomic API would perhaps accept a Window.t directly instead of History.t */
 
@@ -234,8 +234,8 @@ module History = {
   external back : t => unit = "back" [@@bs.send];
   external forward : t => unit = "forward" [@@bs.send];
   external go : t => int => unit = "go" [@@bs.send];
-  external pushState : t => state => string => string = "pushState" [@@bs.send];
-  external replaceState : t => state => string => string = "replaceState" [@@bs.send];
+  external pushState : t => state => string => string => unit = "pushState" [@@bs.send];
+  external replaceState : t => state => string => string => unit = "replaceState" [@@bs.send];
 };
 
 module Location = {
