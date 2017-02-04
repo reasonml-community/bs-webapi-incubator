@@ -147,7 +147,7 @@ module Element = {
   external addEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "addEventListener" [@@bs.send];
   external removeEventListener : t => string /* enum */ => (Event.t => unit) => unit = "removeEventListener" [@@bs.send];
   external removeEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "removeEventListener" [@@bs.send]; /* not widely supported */
-  external renoveEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "removeEventListener" [@@bs.send];
+  external removeEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "removeEventListener" [@@bs.send];
   external dispatchEvent : t => Event.t => Js.boolean = "dispatchEvent" [@@bs.send];
 
   /* element-specific */

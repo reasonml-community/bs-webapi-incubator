@@ -196,6 +196,27 @@ el.setAttribute("href", "http://...");
 
 el.setAttributeNS("http://...", "foo", "bar");
 
+function handleClick() {
+  console.log("asd");
+  return /* () */0;
+}
+
+el.addEventListener("click", handleClick);
+
+el.addEventListener("click", handleClick, {
+      passive: /* true */1
+    });
+
+el.addEventListener("click", handleClick, Js_boolean.to_js_boolean(/* true */1));
+
+el.removeEventListener("click", handleClick);
+
+el.removeEventListener("click", handleClick, {
+      passive: /* true */1
+    });
+
+el.removeEventListener("click", handleClick, Js_boolean.to_js_boolean(/* true */1));
+
 new Date();
 
 new Date(0);

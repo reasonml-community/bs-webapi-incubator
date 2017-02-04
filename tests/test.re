@@ -4,6 +4,7 @@
   let el = Document.getElementById "some-element";
   let el2 = Document.getElementById "some-other-element";
 
+  /* Node interface */
   let _ = Element.childNodes el;
   let _ = Element.firstChild el;
   let _ = Element.lastChild el;
@@ -37,6 +38,7 @@
   let _ = Element.normalize el;
   let _ = Element.removeChild el el2;
 
+  /* Element interface */
   let _ = Element.assignedSlot el;
   let _ = Element.attributes el;
   let _ = Element.classList el;
@@ -87,7 +89,7 @@
   let _ = Element.matches el "input";
   let _ = Element.querySelector el "input";
   let _ = Element.querySelectorAll el "input";
-  /*let _ = Element.releasePointerCapture el pointerId /* There's no way to get a pointerId right now */ */
+  /*let _ = Element.releasePointerCapture el pointerId /* TODO: There's no way to get a pointerId right now */ */
   let _ = Element.remove el;
   let _ = Element.removeAttribute el "href";
   let _ = Element.removeAttributeNS el "http://..." "foo";
@@ -98,10 +100,17 @@
   let _ = Element.scrollIntoViewWithOptions el { "block": "end", "behvaior": "smooth" };
   let _ = Element.setAttribute el "href" "http://...";
   let _ = Element.setAttributeNS el "http://..." "foo" "bar";
-  /*let _ = Element.setPointerCapture el pointerId /* There's no way to get a pointerId right now */ */
+  /*let _ = Element.setPointerCapture el pointerId /* TODO: There's no way to get a pointerId right now */ */
 
-
-
+  /* EventTarget interface */
+  let handleClick e => print_endline "asd";
+  Element.addEventListener el "click" handleClick;
+  Element.addEventListenerWithOptions el "click" handleClick  { "passive": true };
+  Element.addEventListenerUseCapture el "click" handleClick (Js.Boolean.to_js_boolean true);
+  Element.removeEventListener el "click" handleClick;
+  Element.removeEventListenerWithOptions el "click" handleClick  { "passive": true };
+  Element.removeEventListenerUseCapture el "click" handleClick (Js.Boolean.to_js_boolean true);
+  /* let _ = Element.dispatchEvent el event /* TODO:No way to create an event right now */ */
 
   let _ = Date.make ();
   let _ = Date.makeWithValue 0.;
