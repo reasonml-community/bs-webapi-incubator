@@ -217,6 +217,96 @@ el.removeEventListener("click", handleClick, {
 
 el.removeEventListener("click", handleClick, Js_boolean.to_js_boolean(/* true */1));
 
+el.accessKey;
+
+el.accessKey = "";
+
+el.accessKeyLabel;
+
+el.contentEditable;
+
+el.contentEditable = "inherit";
+
+el.isContentEditable;
+
+el.contextMenu;
+
+el.contextMenu = el2;
+
+el.dataset;
+
+el.dir;
+
+el.dir = "ltr";
+
+el.draggable;
+
+el.draggable = Js_boolean.to_js_boolean(/* true */1);
+
+el.dropzone;
+
+el.hidden;
+
+el.hidden = Js_boolean.to_js_boolean(/* true */1);
+
+el.itemScope;
+
+el.itemScope = Js_boolean.to_js_boolean(/* true */1);
+
+el.itemType;
+
+el.itemId;
+
+el.itemId = "my-id";
+
+el.itemRed;
+
+el.itemProp;
+
+el.itemValue;
+
+el.itemValue = ({});
+
+el.lang;
+
+el.lang = "en";
+
+el.offsetHeight;
+
+el.offsetLeft;
+
+el.offsetParent;
+
+el.offsetTop;
+
+el.offsetWidth;
+
+el.spellcheck;
+
+el.spellcheck = Js_boolean.to_js_boolean(/* true */1);
+
+el.style;
+
+el.tabIndex;
+
+el.tabIndex = 42;
+
+el.title;
+
+el.title = "hovertext!";
+
+el.translate;
+
+el.translate = Js_boolean.to_js_boolean(/* true */1);
+
+el.blur();
+
+el.click();
+
+el.focus();
+
+el.forceSpellCheck();
+
 new Date();
 
 new Date(0);

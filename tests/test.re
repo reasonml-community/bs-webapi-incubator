@@ -112,6 +112,56 @@
   Element.removeEventListenerUseCapture el "click" handleClick (Js.Boolean.to_js_boolean true);
   /* let _ = Element.dispatchEvent el event /* TODO:No way to create an event right now */ */
 
+  /* HTMLElement interface */
+  let _ = Element.accessKey el;
+  let _ = Element.setAccessKey el "";
+  let _ = Element.accessKeyLabel el;
+  let _ = Element.contentEditable el;
+  let _ = Element.setContentEditable el "inherit";
+  let _ = Element.isContentEditable el;
+  let _ = Element.contextMenu el;
+  let _ = Element.setContextMenu el el2;
+  let _ = Element.dataset el;
+  let _ = Element.dir el;
+  let _ = Element.setDir el "ltr";
+  let _ = Element.draggable el;
+  let _ = Element.setDraggable el (Js.Boolean.to_js_boolean true);
+  let _ = Element.dropzone el;
+  let _ = Element.hidden el;
+  let _ = Element.setHidden el (Js.Boolean.to_js_boolean true);
+  let _ = Element.itemScope el;
+  let _ = Element.setItemScope el (Js.Boolean.to_js_boolean true);
+  let _ = Element.itemType el;
+  let _ = Element.itemId el;
+  let _ = Element.setItemId el "my-id";
+  let _ = Element.itemRef el;
+  let _ = Element.itemProp el;
+  let _ = Element.itemValue el;
+  let _ = Element.setItemValue el [%bs.raw "{}"];
+  let _ = Element.lang el;
+  let _ = Element.setLang el "en";
+  let _ = Element.offsetHeight el;
+  let _ = Element.offsetLeft el;
+  let _ = Element.offsetParent el;
+  let _ = Element.offsetTop el;
+  let _ = Element.offsetWidth el;
+  let _ = Element.spellcheck el;
+  let _ = Element.setSpellcheck el (Js.Boolean.to_js_boolean true);
+  let _ = Element.style el;
+  /* let _ = Element.setStyle el CSSStyleDeclaration.t; /* TODO: No way to make a CSSStyleDeclaration at the moment */*/
+  let _ = Element.tabIndex el;
+  let _ = Element.setTabIndex el 42;
+  let _ = Element.title el;
+  let _ = Element.setTitle el "hovertext!";
+  let _ = Element.translate el;
+  let _ = Element.setTranslate el (Js.Boolean.to_js_boolean true);
+
+  Element.blur el;
+  Element.click el;
+  Element.focus el;
+  Element.forceSpellCheck el;
+
+
   let _ = Date.make ();
   let _ = Date.makeWithValue 0.;
   let _ = Date.makeWithYearMonth 0. 1.;
