@@ -141,6 +141,15 @@ module Element = {
   external setAttributeNS : t => string => string => string => unit = "setAttributeNS" [@@bs.send];
   external setPointerCapture : t => Event.pointerId => unit = "setPointerCapture" [@@bs.send];
 
+  /* EventTarget interface */
+  external addEventListener : t => string /* enum */ => (Event.t => unit) => unit = "addEventListener" [@@bs.send];
+  external addEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "addEventListener" [@@bs.send]; /* not widely supported */
+  external addEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "addEventListener" [@@bs.send];
+  external removeEventListener : t => string /* enum */ => (Event.t => unit) => unit = "removeEventListener" [@@bs.send];
+  external removeEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "removeEventListener" [@@bs.send]; /* not widely supported */
+  external renoveEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "removeEventListener" [@@bs.send];
+  external dispatchEvent : t => Event.t => Js.boolean = "dispatchEvent" [@@bs.send];
+
   /* element-specific */
   external value : t => string = "value" [@@bs.get];
   external checked : t => Js.boolean = "checked" [@@bs.get];
@@ -152,8 +161,7 @@ module Window = {
   external window : t = "window" [@@bs.val];
   external innerWidth : t => int = "innerWidth" [@@bs.get];
   external innerHeight : t => int = "innerHeight" [@@bs.get];
-  external addEventListener : t => string => (unit => unit) => unit =
-    "addEventListener" [@@bs.send];
+  external addEventListener : t => string => (unit => unit) => unit = "addEventListener" [@@bs.send];
   external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
 
   module Location = {
