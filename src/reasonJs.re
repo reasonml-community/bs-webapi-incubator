@@ -222,9 +222,9 @@ module Element = {
 
 module History = {
   type t;
-  type state = Js.t {..}; /* "anything that can be serializable" apparently */
+  type state = Js.t {. }; /* "anything that can be serializable" apparently */
 
-  /* a more ergonomic API would perhaps accept a Window.t instead of a History.t */
+  /* a more ergonomic API would perhaps accept a Window.t directly instead of History.t */
 
   external length : t => int = "length" [@@bs.get];
   external scrollRestoration : t => Js.boolean = "scrollRestoration" [@@bs.get]; /* experimental */
@@ -240,6 +240,36 @@ module History = {
 
 module Location = {
   type t;
+
+  /* a more ergonomic API would perhaps accept a Window.t directly instead of Location.t */
+
+  external href : t => string = "href" [@@bs.get];
+  external setHref : t => string => string = "href" [@@bs.set];
+  external protocol : t => string = "protocol" [@@bs.get];
+  external setProtocol : t => string => string = "protocol" [@@bs.set];
+  external host : t => string = "host" [@@bs.get];
+  external setHost : t => string => string = "host" [@@bs.set];
+  external hostname : t => string = "hostname" [@@bs.get];
+  external setHostname : t => string => string = "hostname" [@@bs.set];
+  external port : t => string = "prot" [@@bs.get];
+  external setPort : t => string => string  = "port" [@@bs.set];
+  external pathname : t => string = "pathname" [@@bs.get];
+  external setPathname : t => string => string = "pathname" [@@bs.set];
+  external search : t => string = "search" [@@bs.get];
+  external setSearch : t => string => string = "search" [@@bs.set];
+  external hash : t => string = "hash" [@@bs.get];
+  external setHash : t => string => string = "hash" [@@bs.set];
+  external username : t => string = "username" [@@bs.get];
+  external setUsername : t => string => string = "username" [@@bs.set];
+  external password : t => string = "password" [@@bs.get];
+  external setPassword : t => string => string = "password" [@@bs.set];
+  external origin : t => string = "origin" [@@bs.get];
+
+  external assign : t => string => unit = "assign" [@@bs.send];
+  external reload : t => unit = "reload" [@@bs.send];
+  external reloadWithForce : t => Js.boolean => unit = "reload" [@@bs.send];
+  external replace : t => string => unit = "replace" [@@bs.send];
+  external toString : t => string = "toString" [@@bs.send];
 };
 
 module Window = {
