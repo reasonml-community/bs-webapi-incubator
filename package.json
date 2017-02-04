@@ -4,7 +4,7 @@
   "description": "Reason + BuckleScript bindings to DOM",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/bs-platform/bin/bsc.exe -pp node_modules/reason/refmt_impl.native -I src -impl src/ReasonJs.re -impl tests/test.re && tests/run.sh",
+    "test": "node_modules/bs-platform/bin/bsc.exe -pp 'node_modules/reason/refmt_impl.native --print binary' -I src -impl src/reasonJs.re -impl tests/test.re && tests/run.sh",
     "start": "bsb -make-world -w"
   },
   "author": "chenglou",
