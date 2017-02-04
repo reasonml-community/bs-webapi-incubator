@@ -18,11 +18,23 @@ module Attr = {
   type t;
 };
 
+module CSSStyleDeclaration = {
+  type t;
+};
+
 module DOMTokenList = {
   type t;
 };
 
 module DOMRect = {
+  type t;
+};
+
+module DOMSettableTokenList = {
+  type t;
+};
+
+module DOMStringMap = {
   type t;
 };
 
@@ -43,7 +55,7 @@ module Element = {
     and cast it to the correct type?
   */
 
-  /* Node */
+  /* Node interface */
   external childNodes : t => array t  = "childNodes" [@@bs.get]; /* returns a NodeList, not an array */
   external firstChild : t => Js.null t = "firstChild" [@@bs.get];
   external lastChild : t => Js.null t = "lastChild" [@@bs.get];
@@ -77,7 +89,7 @@ module Element = {
   external normalize : t => unit = "normalize" [@@bs.send];
   external removeChild : t => t => t = "removeChild" [@@bs.send];
 
-  /* Element */
+  /* Element interface */
   external assignedSlot : t => t = "assignedSlot" [@@bs.get]; /* experimental, returns HTMLSlotElement */
   external attributes : t => array Attr.t = "attributes" [@@bs.get]; /* return NameNodeMap, not array */
   external classList : t => DOMTokenList.t = "classList" [@@bs.get];
@@ -111,7 +123,7 @@ module Element = {
 
   external attachShadow : t => Js.t {..} => ShadowRoot.t  = "attachShadow" [@@bs.send]; /* experimental */
   external animate : t => Js.t {..} => Js.t {..} => Animation.t = "animate" [@@bs.send]; /* experimental */
-  external closest : t => string => t = "closest" [@@bs.send]; /* experimetnal */
+  external closest : t => string => t = "closest" [@@bs.send]; /* experimental */
   external createShadowRoot : t => ShadowRoot.t = "createShadowRoot" [@@bs.send]; /* experimental AND deprecated (?!) */
   external getAttribute : t => string => Js.null string = "getAttribute" [@@bs.send];
   external getAttributeNS : t => string => string => Js.null string = "getAttributeNS" [@@bs.send];
@@ -149,6 +161,59 @@ module Element = {
   external removeEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "removeEventListener" [@@bs.send]; /* not widely supported */
   external removeEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "removeEventListener" [@@bs.send];
   external dispatchEvent : t => Event.t => Js.boolean = "dispatchEvent" [@@bs.send];
+
+  /* HTMLElement interface */
+  external accessKey : t => string = "accessKey" [@@bs.get];
+  external setAccessKey : t => string => string = "accessKey" [@@bs.set];
+  external accessKeyLabel : t => string = "accessKeyLabel" [@@bs.get];
+  external contentEditable : t => string /* enum */ = "contentEditable" [@@bs.get];
+  external setContentEditable : t => string /* enum */ => string /* enum */ = "contentEditable" [@@bs.set];
+  external isContentEditable : t => Js.boolean = "isContentEditable" [@@bs.get];
+  external contextMenu : t => t = "contextMenu" [@@bs.get]; /* returns HTMLMenuElement */
+  external setContextMenu : t => t => t = "contextMenu" [@@bs.set]; /* accepts and returns HTMLMenuElement */
+  external dataset : t => DOMStringMap.t = "dataset" [@@bs.get];
+  external dir : t => string /* enum */ = "dir" [@@bs.get];
+  external setDir : t => string /* enum */ => string /* enum */ = "dir" [@@bs.set];
+  external draggable : t => Js.boolean = "draggable" [@@bs.get];
+  external setDraggable : t => Js.boolean => Js.boolean = "draggable" [@@bs.set];
+  external dropzone : t => DOMSettableTokenList.t = "dropzone" [@@bs.get];
+  external hidden : t => Js.boolean = "hidden" [@@bs.get];
+  external setHidden : t => Js.boolean => Js.boolean = "hidden" [@@bs.set];
+  external itemScope : t => Js.boolean = "itemScope" [@@bs.get]; /* experimental */
+  external setItemScope : t => Js.boolean => Js.boolean = "itemScope" [@@bs.set]; /* experimental */
+  external itemType : t => DOMSettableTokenList.t = "itemType" [@@bs.get]; /* experimental */
+  external itemId : t => string = "itemId" [@@bs.get]; /* experimental */
+  external setItemId : t => string => string = "itemId" [@@bs.set]; /* experimental */
+  external itemRef : t => DOMSettableTokenList.t = "itemRed" [@@bs.get]; /* experimental */
+  external itemProp : t => DOMSettableTokenList.t = "itemProp" [@@bs.get]; /* experimental */
+  external itemValue : t => Js.t {..} = "itemValue" [@@bs.get]; /* experimental */
+  external setItemValue : t => Js.t {..} => Js.t {..} = "itemValue" [@@bs.set]; /* experimental */
+  external lang : t => string = "lang" [@@bs.get];
+  external setLang : t => string => string = "lang" [@@bs.set];
+  external offsetHeight : t => int = "offsetHeight" [@@bs.get]; /* experimental */
+  external offsetLeft : t => int = "offsetLeft" [@@bs.get]; /* experimental */
+  external offsetParent : t => int = "offsetParent" [@@bs.get]; /* experimental */
+  external offsetTop : t => int = "offsetTop" [@@bs.get]; /* experimental, but widely supported */
+  external offsetWidth : t => int = "offsetWidth" [@@bs.get]; /* experimental */
+  /*external properties : r => HTMLPropertiesCollection.t = "properties" [@@bs.get]; /* experimental */*/
+  external spellcheck : t => Js.boolean = "spellcheck" [@@bs.get];
+  external setSpellcheck : t => Js.boolean => Js.boolean = "spellcheck" [@@bs.set];
+  external style : t => CSSStyleDeclaration.t = "style" [@@bs.get];
+  external setStyle : t => CSSStyleDeclaration.t => CSSStyleDeclaration.t = "style" [@@bs.set];
+  external tabIndex : t => int = "tabIndex" [@@bs.get];
+  external setTabIndex : t => int => int = "tabIndex" [@@bs.set];
+  external title : t => string = "title" [@@bs.get];
+  external setTitle : t => string => string = "title" [@@bs.set];
+  external translate : t => Js.boolean = "translate" [@@bs.get]; /* experimental */
+  external setTranslate : t => Js.boolean => Js.boolean = "translate" [@@bs.set]; /* experimental */
+
+  external blur : t => unit = "blur" [@@bs.send];
+  external click : t => unit = "click" [@@bs.send];
+  external focus : t => unit = "focus" [@@bs.send];
+  external forceSpellCheck : t => unit = "forceSpellCheck" [@@bs.send]; /* experimental */
+
+  /* GlobalEventHandlers interface */
+  /* Not sure this should be exposed, since EventTarget seems like a better API */
 
   /* element-specific */
   external value : t => string = "value" [@@bs.get];
