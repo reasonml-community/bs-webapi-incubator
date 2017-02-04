@@ -8,12 +8,54 @@ external clearTimeout : timeoutId => unit = "clearTimeout" [@@bs.val];
 
 external requestAnimationFrame : (unit => unit) => unit = "requestAnimationFrame" [@@bs.val];
 
+type document;
+
+module Attr = {
+  type t;
+};
+
+module DOMTokenList = {
+  type t;
+};
+
 module Element = {
   type t;
 
-  external appendChild : t => t => unit = "appendChild" [@@bs.send];
-  external contains : t => t => Js.boolean = "contains" [@@bs.send];
+  /* Node */
+  external childNodes : t => array t  = "childNodes" [@@bs.get]; /* returns a NodeList, not an array */
+  external firstChild : t => Js.null t = "firstChild" [@@bs.get];
+  external lastChild : t => Js.null t = "lastChild" [@@bs.get];
+  external nextSibling : t => Js.null t = "nextSibling" [@@bs.get];
+  external nodeName : t => string = "nodeName" [@@bs.get];
+  external nodeType : t => int = "nodeType" [@@bs.get]; /* returns an enum, see https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType */
+  external nodeValue : t => Js.null string = "nodeValue" [@@bs.get];
+  external setNodeValue : t => Js.null string => Js.null string = "nodeValue" [@@bs.set];
+  external ownerDocument : t => document = "ownerDocument" [@@bs.get];
+  external parentNode : t => Js.null t = "parentNode" [@@bs.get];
+  external parentElement : t => Js.null t = "parentElement" [@@bs.get];
+  external previousSibling : t => Js.null t = "previousSibling" [@@bs.get];
+  external rootNode : t => t = "rootNode" [@@bs.get];
+  external textContent : t => string = "textContent" [@@bs.get];
+  external setTextContent : t => string => string = "textContent" [@@bs.set];
 
+  external appendChild : t => t => unit = "appendChild" [@@bs.send];
+  external cloneNode : t => t = "cloneNode" [@@bs.send];
+  external cloneNodeDeep : t => Js.boolean => t = "cloneNode" [@@bs.send]; /* The only sensible argument value is `Js.Boolean.to_js_boolean true` */
+  external compareDocumentPosition : t => t => int = "compareDocumentPosition" [@@bs.send]; /* returns a bitmask which could also be represeneted as an enum, see https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition */
+  external contains : t => t => Js.boolean = "contains" [@@bs.send];
+  external getRootNode : t => t = "getRootNode" [@@bs.send];
+  external getRootNodeComposed : t => Js.boolean => t = "getRootNode" [@@bs.send]; /* The only sensible argument value is `Js.Boolean.to_js_boolean true` */
+  external hasChildNodes : t => Js.boolean = "hasChildNodes" [@@bs.send];
+  external insertBefore : t => t => Js.null t => t = "insertBefore" [@@bs.send];
+  external isDefaultNamespace : t => string => Js.boolean = "isDefaultNamespace" [@@bs.send];
+  external isEqualNode : t => t => Js.boolean = "isEqualNode" [@@bs.send];
+  external isSameNode : t => t => Js.boolean = "isSameNode" [@@bs.send];
+  external lookupPrefix : t => string = "lookupPrefix" [@@bs.send];
+  external lookupNamespaceURI : t => Js.null string => Js.null string = "lookupNamespaceURI" [@@bs.send];
+  external normalize : t => unit = "normalize" [@@bs.send];
+  external removeChild : t => t => t = "removeChild" [@@bs.send];
+
+  /* element-specific */
   external value : t => string = "value" [@@bs.get];
   external checked : t => Js.boolean = "checked" [@@bs.get];
 };
@@ -34,6 +76,8 @@ module Window = {
 };
 
 module Document = {
+  type t = document;
+
   external getElementById : string => Element.t = "document.getElementById" [@@bs.val];
   /* not really an array */
   external getElementsByClassName : string => array Element.t =

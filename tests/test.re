@@ -1,6 +1,45 @@
 {
   open ReasonJs;
 
+  let el = Document.getElementById "some-element";
+  let el2 = Document.getElementById "some-other-element";
+
+  let _ = Element.childNodes el;
+  let _ = Element.firstChild el;
+  let _ = Element.lastChild el;
+  let _ = Element.nextSibling el;
+  let _ = Element.nodeName el;
+  let _ = Element.nodeType el;
+  let _ = Element.nodeValue el;
+  let _ = Element.setNodeValue el Js.Null.empty;
+  let _ = Element.ownerDocument el;
+  let _ = Element.parentNode el;
+  let _ = Element.parentElement el;
+  let _ = Element.previousSibling el;
+  let _ = Element.rootNode el;
+  let _ = Element.textContent el;
+  let _ = Element.setTextContent el "foo";
+
+  let _ = Element.appendChild el el2;
+  let _ = Element.cloneNode el;
+  let _ = Element.cloneNodeDeep el (Js.Boolean.to_js_boolean true);
+  let _ = Element.compareDocumentPosition el el2;
+  let _ = Element.contains el el2;
+  let _ = Element.getRootNode el;
+  let _ = Element.getRootNodeComposed el (Js.Boolean.to_js_boolean true);
+  let _ = Element.hasChildNodes el;
+  let _ = Element.insertBefore el el2 Js.Null.empty;
+  let _ = Element.isDefaultNamespace el "http://...";
+  let _ = Element.isEqualNode el el2;
+  let _ = Element.isSameNode el el2;
+  let _ = Element.lookupPrefix el;
+  let _ = Element.lookupNamespaceURI el Js.Null.empty;
+  let _ = Element.normalize el;
+  let _ = Element.removeChild el el2;
+
+
+
+
   let _ = Date.make ();
   let _ = Date.makeWithValue 0.;
   let _ = Date.makeWithYearMonth 0. 1.;
