@@ -92,7 +92,7 @@
 
   let _ = Window.(innerHeight window);
 
-  let _ = Document.getElementById "foo" |> Document.value;
+  let _ = Document.getElementById "foo" |> Element.value;
 
   Window.(addEventListener window "click" (fun () => print_endline "asd"));
 

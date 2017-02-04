@@ -1,29 +1,45 @@
 type intervalId;
-
 external setInterval : (unit => unit) => int => intervalId = "setInterval" [@@bs.val];
-
 external clearInterval : intervalId => unit = "clearInterval" [@@bs.val];
 
 type timeoutId;
-
 external setTimeout : (unit => unit) => int => timeoutId = "setTimeout" [@@bs.val];
-
 external clearTimeout : timeoutId => unit = "clearTimeout" [@@bs.val];
 
 external requestAnimationFrame : (unit => unit) => unit = "requestAnimationFrame" [@@bs.val];
 
+module Element = {
+  type t;
+
+  external appendChild : t => t => unit = "appendChild" [@@bs.send];
+  external contains : t => t => Js.boolean = "contains" [@@bs.send];
+
+  external value : t => string = "value" [@@bs.get];
+  external checked : t => Js.boolean = "checked" [@@bs.get];
+};
+
 module Window = {
   type t;
+
   external window : t = "window" [@@bs.val];
   external innerWidth : t => int = "innerWidth" [@@bs.get];
   external innerHeight : t => int = "innerHeight" [@@bs.get];
   external addEventListener : t => string => (unit => unit) => unit =
     "addEventListener" [@@bs.send];
   external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
+
   module Location = {
     external href : string = "window.location.href" [@@bs.val];
   };
 };
+
+module Document = {
+  external getElementById : string => Element.t = "document.getElementById" [@@bs.val];
+  /* not really an array */
+  external getElementsByClassName : string => array Element.t =
+    "document.getElementsByClassName" [@@bs.val];
+};
+
 
 module JSON = {
   external stringify : 'a => string = "JSON.stringify" [@@bs.val];
@@ -231,18 +247,8 @@ module GL = {
     "vertexAttribPointer" [@@bs.send];
 };
 
-module Document = {
-  type element;
-  external getElementById : string => element = "document.getElementById" [@@bs.val];
-  /* not really an array */
-  external getElementsByClassName : string => array element =
-    "document.getElementsByClassName" [@@bs.val];
-  external appendChild : element => element => unit = "appendChild" [@@bs.send];
-  /* Should be on CanvasElement */
-  external getContext : element => string => GL.glT = "getContext" [@@bs.send];
-  external contains : element => element => Js.boolean = "contains" [@@bs.send];
-  external value : element => string = "value" [@@bs.get];
-  external checked : element => Js.boolean = "checked" [@@bs.get];
+module CanvasElement = {
+  external getContext : Element.t => string => GL.glT = "getContext" [@@bs.send];
 };
 
 module LocalStorage = {
