@@ -282,18 +282,18 @@ module Window = {
   external innerWidth : t => int = "innerWidth" [@@bs.get];
   external innerHeight : t => int = "innerHeight" [@@bs.get];
   external location : t => Location.t = "location" [@@bs.get];
-  external setLocation : t => string => Location.t = "location" [@@bs.set];
+  external setLocation : t => string => Location.t = "location" [@@bs.set]; /* Will thi return Location.t, or the string it was passed? */
   external parent : t => t = "parent" [@@bs.get];
   external top : t => t = "top" [@@bs.get];
   external window : t = "window" [@@bs.val];
 
   external alert : t => string => unit = "alert" [@@bs.send];
   external confirm : t => string => Js.boolean = "confirm" [@@bs.send];
-  external getComputedStyle : t => Element.t = "getComputedStyle" [@@bs.send];
-  external getComputedStyleWithPseudoElement : t => Element.t => string = "getComputedStyle" [@@bs.send];
+  external getComputedStyle : t => Element.t => CSSStyleDeclaration.t = "getComputedStyle" [@@bs.send];
+  external getComputedStyleWithPseudoElement : t => Element.t => string => CSSStyleDeclaration.t = "getComputedStyle" [@@bs.send];
   external prompt : t => string => string = "prompt" [@@bs.send];
-  external propmtWithDefault : t => string => string => string = "propmt" [@@bs.send];
-  external sccroll : t => int => int => unit = "scroll" [@@bs.send];
+  external promptWithDefault : t => string => string => string = "prompt" [@@bs.send];
+  external scroll : t => int => int => unit = "scroll" [@@bs.send];
 
   external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
 

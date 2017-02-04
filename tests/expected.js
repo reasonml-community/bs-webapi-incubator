@@ -383,6 +383,57 @@ $$location.replace("http://reason.ml");
 
 $$location.toString();
 
+$$window.fullScreen;
+
+$$window.history;
+
+$$window.innerWidth;
+
+$$window.innerHeight;
+
+$$window.location;
+
+$$window.location = "http://reason.ml";
+
+$$window.parent;
+
+$$window.top;
+
+$$window.alert("hello!");
+
+$$window.confirm("is ok?");
+
+$$window.getComputedStyle(el);
+
+$$window.getComputedStyle(el, "hover");
+
+$$window.prompt("type you password, please?");
+
+$$window.prompt("type password or use this?", "password");
+
+$$window.scroll(0, 0);
+
+$$window.onload = function () {
+  console.log("load");
+  return /* () */0;
+};
+
+$$window.addEventListener("click", handleClick);
+
+$$window.addEventListener("click", handleClick, {
+      passive: /* true */1
+    });
+
+$$window.addEventListener("click", handleClick, Js_boolean.to_js_boolean(/* true */1));
+
+$$window.removeEventListener("click", handleClick);
+
+$$window.removeEventListener("click", handleClick, {
+      passive: /* true */1
+    });
+
+$$window.removeEventListener("click", handleClick, Js_boolean.to_js_boolean(/* true */1));
+
 new Date();
 
 new Date(0);
@@ -546,21 +597,7 @@ setInterval(function () {
       return /* () */0;
     }, 1000);
 
-window.innerWidth;
-
-window.innerHeight;
-
 document.getElementById("foo").value;
-
-window.addEventListener("click", function () {
-      console.log("asd");
-      return /* () */0;
-    });
-
-window.onload = function () {
-  console.log("load");
-  return /* () */0;
-};
 
 var p = fetch("/greatings");
 
