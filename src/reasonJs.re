@@ -222,6 +222,20 @@ module Element = {
 
 module History = {
   type t;
+  type state = Js.t {..}; /* "anything that can be serializable" apparently */
+
+  /* a more ergonomic API would perhaps accept a Window.t instead of a History.t */
+
+  external length : t => int = "length" [@@bs.get];
+  external scrollRestoration : t => Js.boolean = "scrollRestoration" [@@bs.get]; /* experimental */
+  external setScrollRestoration : t => Js.boolean => Js.boolean = "scrollRestoration" [@@bs.set]; /* experimental */
+  external state : t => state = "state" [@@bs.get];
+
+  external back : t => unit = "back" [@@bs.send];
+  external forward : t => unit = "forward" [@@bs.send];
+  external go : t => int => unit = "go" [@@bs.send];
+  external pushState : t => state => string => string = "pushState" [@@bs.send];
+  external replaceState : t => state => string => string = "replaceState" [@@bs.send];
 };
 
 module Location = {
@@ -238,6 +252,7 @@ module Window = {
   external innerWidth : t => int = "innerWidth" [@@bs.get];
   external innerHeight : t => int = "innerHeight" [@@bs.get];
   external location : t => Location.t = "location" [@@bs.get];
+  external setLocation : t => string => Location.t = "location" [@@bs.set];
   external parent : t => t = "parent" [@@bs.get];
   external top : t => t = "top" [@@bs.get];
   external window : t = "window" [@@bs.val];
