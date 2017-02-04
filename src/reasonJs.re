@@ -117,9 +117,9 @@ module Element = {
   external getAttributeNS : t => string => string => Js.null string = "getAttributeNS" [@@bs.send];
   external getBoundingClientRect : t => DOMRect.t = "getBoundingClientRect" [@@bs.send];
   external getClientRects : t => array DOMRect.t = "getClientRects" [@@bs.send];
-  external getElementsByClassName : t => string => array t = "getELementsByClassName" [@@bs.send]; /* return HTMLCollection, not array */
-  external getElementsByTagName : t => string => array t = "getELementsByTagName" [@@bs.send]; /* return HTMLCollection, not array */
-  external getElementsByTagNameNS : t => string => string => array t = "getELementsByTagNameNS" [@@bs.send]; /* return HTMLCollection, not array */
+  external getElementsByClassName : t => string => array t = "getElementsByClassName" [@@bs.send]; /* return HTMLCollection, not array */
+  external getElementsByTagName : t => string => array t = "getElementsByTagName" [@@bs.send]; /* return HTMLCollection, not array */
+  external getElementsByTagNameNS : t => string => string => array t = "getElementsByTagNameNS" [@@bs.send]; /* return HTMLCollection, not array */
   external hasAttribute : t => string => Js.boolean = "hasAttribute" [@@bs.send];
   external hasAttributeNS : t => string => string => Js.boolean = "hasAttributeNS" [@@bs.send];
   external hasAttributes : t => Js.boolean = "hasAttributes" [@@bs.send];
@@ -134,9 +134,9 @@ module Element = {
   external removeAttributeNS : t => string => string => unit = "removeAttributeNS" [@@bs.send];
   external requestFullscreen : t => unit = "requestFullscreen" [@@bs.send]; /* experimental */
   external requestPointerLock : t => unit = "requestPointerLock" [@@bs.send]; /* experimental */
-  external scrollintoView : t => unit = "scrollIntoView" [@@bs.send]; /* experimental, but widely supported */
-  external scrollintoViewAlignToTop : t => Js.boolean => unit = "scrollIntoView" [@@bs.send]; /* experimental, but widely supported */
-  external scrollintoViewWithOptions : t => Js.t {..} => unit = "scrollIntoView" [@@bs.send]; /* experimental */
+  external scrollIntoView : t => unit = "scrollIntoView" [@@bs.send]; /* experimental, but widely supported */
+  external scrollIntoViewAlignToTop : t => Js.boolean => unit = "scrollIntoView" [@@bs.send]; /* experimental, but widely supported */
+  external scrollIntoViewWithOptions : t => Js.t {..} => unit = "scrollIntoView" [@@bs.send]; /* experimental */
   external setAttribute : t => string => string => unit = "setAttribute" [@@bs.send];
   external setAttributeNS : t => string => string => string => unit = "setAttributeNS" [@@bs.send];
   external setPointerCapture : t => Event.pointerId => unit = "setPointerCapture" [@@bs.send];

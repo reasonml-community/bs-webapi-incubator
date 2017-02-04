@@ -69,6 +69,133 @@ el.normalize();
 
 el.removeChild(el2);
 
+el.assignedSlot;
+
+el.attributes;
+
+el.classList;
+
+el.className;
+
+el.className = "my-class-name";
+
+el.clientHeight;
+
+el.clientLeft;
+
+el.clientTop;
+
+el.clientWidth;
+
+el.id;
+
+el.id = "my-id";
+
+el.innerHTML;
+
+el.innerHTML = "<strong>stuff</strong>";
+
+el.localName;
+
+el.namespaceURI;
+
+el.nextElementSibling;
+
+el.outerHTML;
+
+el.outerHTML = "<strong>stuff</strong>";
+
+el.prefix;
+
+el.previousElementSibling;
+
+el.scrollHeight;
+
+el.scrollLeft;
+
+el.scrollLeft = 0;
+
+el.scrollTop;
+
+el.scrollTop = 0;
+
+el.scrollWidth;
+
+el.shadowRoot;
+
+el.slot;
+
+el.slot = "<strong>stuff</strong>";
+
+el.tagName;
+
+el.attachShadow({
+      mode: "open"
+    });
+
+el.animate({
+      transform: "translateT(0px)"
+    }, {
+      duration: 1000
+    });
+
+el.closest("input");
+
+el.createShadowRoot();
+
+el.getAttribute("href");
+
+el.getAttributeNS("http://...", "foo");
+
+el.getBoundingClientRect();
+
+el.getClientRects();
+
+el.getElementsByClassName("some-class-name");
+
+el.getElementsByTagName("pre");
+
+el.getElementsByTagNameNS("http://...", "td");
+
+el.hasAttribute("data-my-value");
+
+el.hasAttributeNS("http://...", "foo");
+
+el.hasAttributes();
+
+el.insertAdjacentElement("beforebegin", el2);
+
+el.insertAdjacentText("afterbegin", "text");
+
+el.matches("input");
+
+el.querySelector("input");
+
+el.querySelectorAll("input");
+
+el.remove();
+
+el.removeAttribute("href");
+
+el.removeAttributeNS("http://...", "foo");
+
+el.requestFullscreen();
+
+el.requestPointerLock();
+
+el.scrollIntoView();
+
+el.scrollIntoView(Js_boolean.to_js_boolean(/* true */1));
+
+el.scrollIntoView({
+      block: "end",
+      behvaior: "smooth"
+    });
+
+el.setAttribute("href", "http://...");
+
+el.setAttributeNS("http://...", "foo", "bar");
+
 new Date();
 
 new Date(0);

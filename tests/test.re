@@ -37,6 +37,69 @@
   let _ = Element.normalize el;
   let _ = Element.removeChild el el2;
 
+  let _ = Element.assignedSlot el;
+  let _ = Element.attributes el;
+  let _ = Element.classList el;
+  let _ = Element.className el;
+  let _ = Element.setClassName el "my-class-name";
+  let _ = Element.clientHeight el;
+  let _ = Element.clientLeft el;
+  let _ = Element.clientTop el;
+  let _ = Element.clientWidth el;
+  let _ = Element.id el;
+  let _ = Element.setId el "my-id";
+  let _ = Element.innerHTML el;
+  let _ = Element.setInnerHTML el "<strong>stuff</strong>";
+  let _ = Element.localName el;
+  let _ = Element.namespaceURI el;
+  let _ = Element.nextElementSibling el;
+  let _ = Element.outerHTML el;
+  let _ = Element.setOuterHTML el "<strong>stuff</strong>";
+  let _ = Element.prefix el;
+  let _ = Element.previousElementSibling el;
+  let _ = Element.scrollHeight el;
+  let _ = Element.scrollLeft el;
+  let _ = Element.setScrollLeft el 0;
+  let _ = Element.scrollTop el;
+  let _ = Element.setScrollTop el 0;
+  let _ = Element.scrollWidth el;
+  let _ = Element.shadowRoot el;
+  let _ = Element.slot el;
+  let _ = Element.setSlot el "<strong>stuff</strong>";
+  let _ = Element.tagName el;
+
+  let _ = Element.attachShadow el { "mode": "open" };
+  let _ = Element.animate el { "transform": "translateT(0px)" } { "duration": 1000 };
+  let _ = Element.closest el "input";
+  let _ = Element.createShadowRoot el;
+  let _ = Element.getAttribute el "href";
+  let _ = Element.getAttributeNS el "http://..." "foo";
+  let _ = Element.getBoundingClientRect el;
+  let _ = Element.getClientRects el;
+  let _ = Element.getElementsByClassName el "some-class-name";
+  let _ = Element.getElementsByTagName el "pre";
+  let _ = Element.getElementsByTagNameNS el "http://..." "td";
+  let _ = Element.hasAttribute el "data-my-value";
+  let _ = Element.hasAttributeNS el "http://..." "foo";
+  let _ = Element.hasAttributes el;
+  let _ = Element.insertAdjacentElement el "beforebegin" el2;
+  let _ = Element.insertAdjacentText el "afterbegin" "text";
+  let _ = Element.matches el "input";
+  let _ = Element.querySelector el "input";
+  let _ = Element.querySelectorAll el "input";
+  /*let _ = Element.releasePointerCapture el pointerId /* There's no way to get a pointerId right now */ */
+  let _ = Element.remove el;
+  let _ = Element.removeAttribute el "href";
+  let _ = Element.removeAttributeNS el "http://..." "foo";
+  let _ = Element.requestFullscreen el;
+  let _ = Element.requestPointerLock el;
+  let _ = Element.scrollIntoView el;
+  let _ = Element.scrollIntoViewAlignToTop el (Js.Boolean.to_js_boolean true);
+  let _ = Element.scrollIntoViewWithOptions el { "block": "end", "behvaior": "smooth" };
+  let _ = Element.setAttribute el "href" "http://...";
+  let _ = Element.setAttributeNS el "http://..." "foo" "bar";
+  /*let _ = Element.setPointerCapture el pointerId /* There's no way to get a pointerId right now */ */
+
 
 
 
