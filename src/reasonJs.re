@@ -10,6 +10,10 @@ external requestAnimationFrame : (unit => unit) => unit = "requestAnimationFrame
 
 type document;
 
+module Animation = {
+  type t;
+};
+
 module Attr = {
   type t;
 };
@@ -18,8 +22,26 @@ module DOMTokenList = {
   type t;
 };
 
+module DOMRect = {
+  type t;
+};
+
+module Event = {
+  type t;
+  type pointerId;
+};
+
+module ShadowRoot = {
+  type t;
+};
+
 module Element = {
   type t;
+
+  /*
+    NOTE: Interface inheritance could be modeled by include, but how then would you check "nodeType"
+    and cast it to the correct type?
+  */
 
   /* Node */
   external childNodes : t => array t  = "childNodes" [@@bs.get]; /* returns a NodeList, not an array */
@@ -54,6 +76,70 @@ module Element = {
   external lookupNamespaceURI : t => Js.null string => Js.null string = "lookupNamespaceURI" [@@bs.send];
   external normalize : t => unit = "normalize" [@@bs.send];
   external removeChild : t => t => t = "removeChild" [@@bs.send];
+
+  /* Element */
+  external assignedSlot : t => t = "assignedSlot" [@@bs.get]; /* experimental, returns HTMLSlotElement */
+  external attributes : t => array Attr.t = "attributes" [@@bs.get]; /* return NameNodeMap, not array */
+  external classList : t => DOMTokenList.t = "classList" [@@bs.get];
+  external className : t => string = "className" [@@bs.get];
+  external setClassName : t => string => string = "className" [@@bs.set];
+  external clientHeight : t => int = "clientHeight" [@@bs.get]; /* experimental */
+  external clientLeft : t => int = "clientLeft" [@@bs.get]; /* experimental */
+  external clientTop : t => int = "clientTop" [@@bs.get]; /* experimental */
+  external clientWidth : t => int = "clientWidth" [@@bs.get]; /* experimental */
+  external id : t => string = "id" [@@bs.get];
+  external setId : t => string => string = "id" [@@bs.set];
+  external innerHTML : t => string = "innerHTML" [@@bs.get];
+  external setInnerHTML : t => string => string = "innerHTML" [@@bs.set];
+  external localName : t => string = "localName" [@@bs.get];
+  external namespaceURI : t => Js.null string = "namespaceURI" [@@bs.get];
+  external nextElementSibling : t => Js.null t = "nextElementSibling" [@@bs.get]; /* strictly part of the NonDocumentTypeChildNode interface */
+  external outerHTML : t => string = "outerHTML" [@@bs.get]; /* experimental, but widely supported */
+  external setOuterHTML : t => string => string = "outerHTML" [@@bs.set]; /* experimental, but widely supported */
+  external prefix : t => Js.null string = "prefix" [@@bs.get];
+  external previousElementSibling : t => Js.null t = "previousElementSibling" [@@bs.get]; /* strictly part of the NonDocumentTypeChildNode interface */
+  external scrollHeight : t => int = "scrollHeight" [@@bs.get]; /* experimental, but widely supported */
+  external scrollLeft : t => int = "scrollLeft" [@@bs.get]; /* experimental */
+  external setScrollLeft : t => int => int = "scrollLeft" [@@bs.set]; /* experimental */
+  external scrollTop : t => int = "scrollTop" [@@bs.get]; /* experimental, but widely supported */
+  external setScrollTop : t => int => int = "scrollTop" [@@bs.set]; /* experimental, but widely supported */
+  external scrollWidth : t => int = "scrollWidth" [@@bs.get]; /* experimental */
+  external shadowRoot : t => t = "shadowRoot" [@@bs.get]; /* experimental */
+  external slot : t => string = "slot" [@@bs.get]; /* experimental */
+  external setSlot : t => string => string = "slot" [@@bs.set]; /* experimental */
+  external tagName : t => string = "tagName" [@@bs.get];
+
+  external attachShadow : t => Js.t {..} => ShadowRoot.t  = "attachShadow" [@@bs.send]; /* experimental */
+  external animate : t => Js.t {..} => Js.t {..} => Animation.t = "animate" [@@bs.send]; /* experimental */
+  external closest : t => string => t = "closest" [@@bs.send]; /* experimetnal */
+  external createShadowRoot : t => ShadowRoot.t = "createShadowRoot" [@@bs.send]; /* experimental AND deprecated (?!) */
+  external getAttribute : t => string => Js.null string = "getAttribute" [@@bs.send];
+  external getAttributeNS : t => string => string => Js.null string = "getAttributeNS" [@@bs.send];
+  external getBoundingClientRect : t => DOMRect.t = "getBoundingClientRect" [@@bs.send];
+  external getClientRects : t => array DOMRect.t = "getClientRects" [@@bs.send];
+  external getElementsByClassName : t => string => array t = "getELementsByClassName" [@@bs.send]; /* return HTMLCollection, not array */
+  external getElementsByTagName : t => string => array t = "getELementsByTagName" [@@bs.send]; /* return HTMLCollection, not array */
+  external getElementsByTagNameNS : t => string => string => array t = "getELementsByTagNameNS" [@@bs.send]; /* return HTMLCollection, not array */
+  external hasAttribute : t => string => Js.boolean = "hasAttribute" [@@bs.send];
+  external hasAttributeNS : t => string => string => Js.boolean = "hasAttributeNS" [@@bs.send];
+  external hasAttributes : t => Js.boolean = "hasAttributes" [@@bs.send];
+  external insertAdjacentElement : t => string /* enum */ => t => Js.null t = "insertAdjacentElement" [@@bs.send]; /* experimental */
+  external insertAdjacentText : t => string /* enum */ => string => Js.null string = "insertAdjacentText" [@@bs.send]; /* experimental */
+  external matches : t => string => Js.boolean = "matches" [@@bs.send]; /* experimental, but widely supported */
+  external querySelector : t => string => Js.null t = "querySelector" [@@bs.send];
+  external querySelectorAll : t => string => array t = "querySelectorAll" [@@bs.send]; /* returns NodeList, not array */
+  external releasePointerCapture : t => Event.pointerId => unit = "releasePointerCapture" [@@bs.send];
+  external remove : t => unit = "remove" [@@bs.send]; /* experimental */
+  external removeAttribute : t => string => unit = "removeAttribute" [@@bs.send];
+  external removeAttributeNS : t => string => string => unit = "removeAttributeNS" [@@bs.send];
+  external requestFullscreen : t => unit = "requestFullscreen" [@@bs.send]; /* experimental */
+  external requestPointerLock : t => unit = "requestPointerLock" [@@bs.send]; /* experimental */
+  external scrollintoView : t => unit = "scrollIntoView" [@@bs.send]; /* experimental, but widely supported */
+  external scrollintoViewAlignToTop : t => Js.boolean => unit = "scrollIntoView" [@@bs.send]; /* experimental, but widely supported */
+  external scrollintoViewWithOptions : t => Js.t {..} => unit = "scrollIntoView" [@@bs.send]; /* experimental */
+  external setAttribute : t => string => string => unit = "setAttribute" [@@bs.send];
+  external setAttributeNS : t => string => string => string => unit = "setAttributeNS" [@@bs.send];
+  external setPointerCapture : t => Event.pointerId => unit = "setPointerCapture" [@@bs.send];
 
   /* element-specific */
   external value : t => string = "value" [@@bs.get];
