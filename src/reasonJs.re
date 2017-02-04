@@ -32,12 +32,91 @@ module JSON = {
 
 module Date = {
   type t;
+
   external make : unit => t = "Date" [@@bs.new];
   external makeWithValue : float => t = "Date" [@@bs.new];
+  external makeWithYearMonth : float => float => t = "Date" [@@bs.new];
+  external makeWithYearMonthDate : float => float => float => t = "Date" [@@bs.new];
+  external makeWithYearMonthDateHours : float => float => float => float => t = "Date" [@@bs.new];
+  external makeWithYearMonthDateHoursMinutes : float => float => float => float => float => t = "Date" [@@bs.new];
+  external makeWithYearMonthDateHoursMinutesSeconds : float => float => float => float => float => float => t = "Date" [@@bs.new];
+  external utc : unit => float = "" [@@bs.val "Date.utc"];
+  external utcWithYearMonth : float => float => t = "" [@@bs.val "Date.utc"];
+  external utcWithYearMonthDate : float => float => float => t = "" [@@bs.val "Date.utc"];
+  external utcWithYearMonthDateHours : float => float => float => float => t = "" [@@bs.val "Date.utc"];
+  external utcWithYearMonthDateHoursMinutes : float => float => float => float => float => t = "" [@@bs.val "Date.utc"];
+  external utcWithYearMonthDateHoursMinutesSeconds : float => float => float => float => float => float => t = "" [@@bs.val "Date.utc"];
   external now : unit => float = "" [@@bs.val "Date.now"];
-  external getTimezoneOffset : t => float = "" [@@bs.send "getTimezoneOffset"];
+  external parse : string => t = "Date" [@@bs.new];
+
+  external getDate : t => float = "" [@@bs.send "getDate"];
+  external getDay : t => float = "" [@@bs.send "getDay"];
+  external getFullYear : t => float = "" [@@bs.send "getFullYear"];
   external getHours : t => float = "" [@@bs.send "getHours"];
+  external getMilliseconds : t => float = "" [@@bs.send "getMilliseconds"];
+  external getMinutes : t => float = "" [@@bs.send "getMinutes"];
+  external getMonth : t => float = "" [@@bs.send "getMonth"];
+  external getSeconds : t => float = "" [@@bs.send "getSeconds"];
   external getTime : t => float = "" [@@bs.send "getTime"];
+  external getTimezoneOffset : t => float = "" [@@bs.send "getTimezoneOffset"];
+  external getUTCDate : t => float = "" [@@bs.send "getUTCDate"];
+  external getUTCDay : t => float = "" [@@bs.send "getUTCDay"];
+  external getUTCFullYear : t => float = "" [@@bs.send "getUTCFullYear"];
+  external getUTCHours : t => float = "" [@@bs.send "getUTCHours"];
+  external getUTCMilliseconds : t => float = "" [@@bs.send "getUTCMilliseconds"];
+  external getUTCMinutes : t => float = "" [@@bs.send "getUTCMinutes"];
+  external getUTCMonth : t => float = "" [@@bs.send "getUTCMonth"];
+  external getUTCSeconds : t => float = "" [@@bs.send "getUTCSeconds"];
+  external getYear : t => float = "" [@@bs.send "getYear"]; /* deprecated */
+
+  external setDate : t => float => float = "" [@@bs.send "setDate"];
+  external setFullYear : t => float => float = "" [@@bs.send "setFullYear"];
+  external setFullYearMonth : t => float => float => float = "" [@@bs.send "setFullYear"];
+  external setFullYearMonthDay : t => float => float => float => float = "" [@@bs.send "setFullYear"];
+  external setHours : t => float => float = "" [@@bs.send "setHours"];
+  external setHoursMinutes : t => float => float => float = "" [@@bs.send "setHours"];
+  external setHoursMinutesSeconds : t => float => float => float => float = "" [@@bs.send "setHours"];
+  external setHoursMinutesSecondsMilliseconds : t => float => float => float => float => float = "" [@@bs.send "setHours"];
+  external setMilliseconds : t => float => float = "" [@@bs.send "setMilliseconds"];
+  external setMinutes : t => float => float = "" [@@bs.send "setMinutes"];
+  external setMinutesSeconds : t => float => float => float = "" [@@bs.send "setMinutes"];
+  external setMinutesSecondsMilliseconds : t => float => float => float => float = "" [@@bs.send "setMinutes"];
+  external setMonth : t => float => float = "" [@@bs.send "setMonth"];
+  external setMonthDay : t => float => float => float = "" [@@bs.send "setMonth"];
+  external setSeconds : t => float => float = "" [@@bs.send "setSeconds"];
+  external setSecondsMilliseconds : t => float => float => float = "" [@@bs.send "setSeconds"];
+  external setTime : t => float => float = "" [@@bs.send "setTime"];
+  external setUTCDate : t => float => float = "" [@@bs.send "setUTCDate"];
+  external setUTCFullYear : t => float => float = "" [@@bs.send "setUTCFullYear"];
+  external setUTCFullYearMonth : t => float => float => float = "" [@@bs.send "setUTCFullYear"];
+  external setUTCFullYearMonthDay : t => float => float => float => float = "" [@@bs.send "setUTCFullYear"];
+  external setUTCHours : t => float => float = "" [@@bs.send "setUTCHours"];
+  external setUTCHoursMinutes : t => float => float => float = "" [@@bs.send "setUTCHours"];
+  external setUTCHoursMinutesSeconds : t => float => float => float => float = "" [@@bs.send "setUTCHours"];
+  external setUTCHoursMinutesSecondsMilliseconds : t => float => float => float => float => float = "" [@@bs.send "setUTCHours"];
+  external setUTCMilliseconds : t => float => float = "" [@@bs.send "setUTCMilliseconds"];
+  external setUTCMinutes : t => float => float = "" [@@bs.send "setUTCMinutes"];
+  external setUTCMinutesSeconds : t => float => float => float = "" [@@bs.send "setUTCMinutes"];
+  external setUTCMinutesSecondsMilliseconds : t => float => float => float => float = "" [@@bs.send "setUTCMinutes"];
+  external setUTCMonth : t => float => float = "" [@@bs.send "setUTCMonth"];
+  external setUTCMonthDay : t => float => float => float = "" [@@bs.send "setUTCMonth"];
+  external setUTCSeconds : t => float => float = "" [@@bs.send "setUTCSeconds"];
+  external setUTCSecondsMilliseconds : t => float => float => float = "" [@@bs.send "setUTCSeconds"];
+  external setUTCTime : t => float => float = "" [@@bs.send "setUTCTime"];
+  external setYear : t => float => float = "" [@@bs.send "setYear"]; /* deprecated */
+
+  external toDateString : t => string = "" [@@bs.send "toDateString"];
+  external toGMTString : t => string = "" [@@bs.send "toGMTString"]; /* deprecated */
+  external toISOString : t => string = "" [@@bs.send "toISOString"];
+  external toJSON : t => string = "" [@@bs.send "toJSON"];
+  external toLocaleDateString : t => string = "" [@@bs.send "toLocaleDateString"]; /* TODO: has overloads with somewhat poor browser support */
+  external toLocaleString: t => string = "" [@@bs.send "toLocaleString"]; /* TODO: has overloads with somewhat poor browser support */
+  external toLocaleTimeString: t => string = "" [@@bs.send "toLocaleTimeString"]; /* TODO: has overloads with somewhat poor browser support */
+  external toString : t => string = "" [@@bs.send "toString"];
+  external toTimeString : t => string = "" [@@bs.send "toTimeString"];
+  external toUTCString : t => string = "" [@@bs.send "toUTCString"];
+
+  external valueOf : t => float = "" [@@bs.send "valueOf"];
 };
 
 module Object = {
