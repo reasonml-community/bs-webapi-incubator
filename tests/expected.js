@@ -307,6 +307,82 @@ el.focus();
 
 el.forceSpellCheck();
 
+var $$window = window;
+
+var history = $$window.history;
+
+history.length;
+
+history.scrollRestoration;
+
+history.scrollRestoration = Js_boolean.to_js_boolean(/* true */1);
+
+history.state;
+
+history.back();
+
+history.forward();
+
+history.go(-2);
+
+history.pushState(history.state, "My title", "http://...");
+
+history.replaceState(history.state, "My title", "http://...");
+
+var $$location = $$window.location;
+
+$$location.href;
+
+$$location.href = "http://reason.ml";
+
+$$location.protocol;
+
+$$location.protocol = "https";
+
+$$location.host;
+
+$$location.host = "reason.ml";
+
+$$location.hostname;
+
+$$location.hostname = "reason.ml";
+
+$$location.prot;
+
+$$location.port = "443";
+
+$$location.pathname;
+
+$$location.pathname = "/reason/tools.html";
+
+$$location.search;
+
+$$location.search = "q=reasonml";
+
+$$location.hash;
+
+$$location.hash = "merlin-atom";
+
+$$location.username;
+
+$$location.username = "alonzo.church";
+
+$$location.password;
+
+$$location.password = "lambda-the-ultimate";
+
+$$location.origin;
+
+$$location.assign("http://reason.ml");
+
+$$location.reload();
+
+$$location.reload(Js_boolean.to_js_boolean(/* true */1));
+
+$$location.replace("http://reason.ml");
+
+$$location.toString();
+
 new Date();
 
 new Date(0);
