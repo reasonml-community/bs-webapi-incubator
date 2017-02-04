@@ -254,10 +254,11 @@
   let _ = Window.(innerHeight window);
 
   let _ = Document.getElementById "foo" |> Element.value;
-
+/*
   Window.(addEventListener window "click" (fun () => print_endline "asd"));
 
   Window.(onLoad window (fun () => print_endline "load"));
+*/
   let p = fetch "/greatings";
 
   let p2 =

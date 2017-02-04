@@ -220,18 +220,46 @@ module Element = {
   external checked : t => Js.boolean = "checked" [@@bs.get];
 };
 
+module History = {
+  type t;
+};
+
+module Location = {
+  type t;
+};
+
 module Window = {
   type t;
 
-  external window : t = "window" [@@bs.val];
+  /* This module is far from exhaustive */
+
+  external fullScreen : t => Js.boolean = "fullScreen" [@@bs.get];
+  external history : t => History.t = "history" [@@bs.get];
   external innerWidth : t => int = "innerWidth" [@@bs.get];
   external innerHeight : t => int = "innerHeight" [@@bs.get];
-  external addEventListener : t => string => (unit => unit) => unit = "addEventListener" [@@bs.send];
+  external location : t => Location.t = "location" [@@bs.get];
+  external parent : t => t = "parent" [@@bs.get];
+  external top : t => t = "top" [@@bs.get];
+  external window : t = "window" [@@bs.val];
+
+  external alert : t => string => unit = "alert" [@@bs.send];
+  external confirm : t => string => Js.boolean = "confirm" [@@bs.send];
+  external getComputedStyle : t => Element.t = "getComputedStyle" [@@bs.send];
+  external getComputedStyleWithPseudoElement : t => Element.t => string = "getComputedStyle" [@@bs.send];
+  external prompt : t => string => string = "prompt" [@@bs.send];
+  external propmtWithDefault : t => string => string => string = "propmt" [@@bs.send];
+  external sccroll : t => int => int => unit = "scroll" [@@bs.send];
+
   external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
 
-  module Location = {
-    external href : string = "window.location.href" [@@bs.val];
-  };
+  /* EventTarget interface */
+  external addEventListener : t => string /* enum */ => (Event.t => unit) => unit = "addEventListener" [@@bs.send];
+  external addEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "addEventListener" [@@bs.send]; /* not widely supported */
+  external addEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "addEventListener" [@@bs.send];
+  external removeEventListener : t => string /* enum */ => (Event.t => unit) => unit = "removeEventListener" [@@bs.send];
+  external removeEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "removeEventListener" [@@bs.send]; /* not widely supported */
+  external removeEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "removeEventListener" [@@bs.send];
+  external dispatchEvent : t => Event.t => Js.boolean = "dispatchEvent" [@@bs.send];
 };
 
 module Document = {
