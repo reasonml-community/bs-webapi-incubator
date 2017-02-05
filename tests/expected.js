@@ -190,6 +190,44 @@ range.intersectsNode(el);
 
 range.isPointInRange(el, 0);
 
+var sel = doc.getSelection();
+
+sel.anchorNode;
+
+sel.anchorOffset;
+
+sel.focusNode;
+
+sel.focusOffset;
+
+sel.isCollapsed;
+
+sel.rangeCount;
+
+sel.getRangeAt(0);
+
+sel.collapse(el, 0);
+
+sel.extend(el, 0);
+
+sel.collapseToStart();
+
+sel.collapseToEnd();
+
+sel.selectAllChildren(el);
+
+sel.addRange(range);
+
+sel.removeRange(range);
+
+sel.removeAllRanges();
+
+sel.deleteFromDocument();
+
+sel.toString();
+
+sel.containsNode(el, Js_boolean.to_js_boolean(/* true */1));
+
 el.childNodes;
 
 el.firstChild;

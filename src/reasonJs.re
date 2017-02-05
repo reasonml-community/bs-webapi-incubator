@@ -188,12 +188,12 @@ module Selection = {
   external anchorOffset : t => int = "anchorOffset" [@@bs.get];
   external focusNode : t => element = "focusNode" [@@bs.get]; /* returns Node */
   external focusOffset : t => int = "focusOffset" [@@bs.get];
-  external isCollapsed : t => Js.boolean = "isCollapsed" [@@b.get];
+  external isCollapsed : t => Js.boolean = "isCollapsed" [@@bs.get];
   external rangeCount : t => int = "rangeCount" [@@bs.get];
 
   external getRangeAt : t => int => Range.t = "getRangeAt" [@@bs.send];
-  external collapse : t => element => int = "collapse" [@@bs.send]; /* should accept Node */
-  external extend : t => element => int = "extend" [@@bs.send]; /* should accept Node */
+  external collapse : t => element => int => unit = "collapse" [@@bs.send]; /* should accept Node */
+  external extend : t => element => int => unit = "extend" [@@bs.send]; /* should accept Node */
   external collapseToStart : t => unit = "collapseToStart" [@@bs.send];
   external collapseToEnd : t => unit = "collapseToEnd" [@@bs.send];
   external selectAllChildren : t => element => unit = "selectAllChildren" [@@bs.send]; /* should accept Node */
