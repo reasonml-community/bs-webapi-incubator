@@ -128,6 +128,68 @@ var el = unNull(doc.getElementById("some-element"));
 
 var el2 = unNull(doc.getElementById("some-other-element"));
 
+var range = new Range();
+
+range.collapsed;
+
+range.commonAncestorContainer;
+
+range.endContainer;
+
+range.endOffset;
+
+range.startContainer;
+
+range.startOffset;
+
+range.setStart(el, 0);
+
+range.setEnd(el, 0);
+
+range.setStartBefore(el);
+
+range.setStartAfter(el);
+
+range.setEndBefore(el);
+
+range.setEndAfter(el);
+
+range.selectNode(el);
+
+range.selectNodeContents(el);
+
+range.collapse(Js_boolean.to_js_boolean(/* true */1));
+
+range.cloneContents();
+
+range.deleteContents();
+
+range.extractContents();
+
+range.insertNode(el);
+
+range.surroundContents(el);
+
+range.compareBoundaryPoints(0, range);
+
+range.cloneRange();
+
+range.detach();
+
+range.toString();
+
+range.comparePoint(el, 0);
+
+range.createContextualFragment("<strong>stuff</strong>");
+
+range.getBoundingClientRect();
+
+range.getClientRects();
+
+range.intersectsNode(el);
+
+range.isPointInRange(el, 0);
+
 el.childNodes;
 
 el.firstChild;
