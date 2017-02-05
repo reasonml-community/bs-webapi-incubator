@@ -145,6 +145,40 @@ module NodeIterator = {
 
 module Range = {
   type t;
+
+  external make : unit => t = "Range" [@@bs.new]; /* experimental */
+
+  external collapsed : t => Js.boolean = "collapsed" [@@bs.get];
+  external commonAncestorContainer : t => element = "commonAncestorContainer" [@@bs.get]; /* returns Node */
+  external endContainer : t => element = "endContainer" [@@bs.get]; /* returns Node */
+  external endOffset : t => int = "endOffset" [@@bs.get];
+  external startContainer : t => element = "startContainer" [@@bs.get]; /* returns Node */
+  external startOffset : t => int = "startOffset" [@@bs.get];
+
+  external setStart : t => element => int => unit = "setStart" [@@bs.send]; /* should accept Node */
+  external setEnd : t => element => int => unit = "setEnd" [@@bs.send]; /* should accept Node */
+  external setStartBefore : t => element => unit = "setStartBefore" [@@bs.send]; /* should accept Node */
+  external setStartAfter : t => element => unit = "setStartAfter" [@@bs.send]; /* should accept Node */
+  external setEndBefore : t => element => unit = "setEndBefore" [@@bs.send]; /* should accept Node */
+  external setEndAfter : t => element => unit = "setEndAfter" [@@bs.send]; /* should accept Node */
+  external selectNode : t => element => unit = "selectNode" [@@bs.send]; /* should accept Node */
+  external selectNodeContents : t => element => unit = "selectNodeContents" [@@bs.send]; /* should accept Node */
+  external collapse : t => Js.boolean => unit = "collapse" [@@bs.send];
+  external cloneContents : t => DocumentFragment.t = "cloneContents" [@@bs.send];
+  external deleteContents : t => unit = "deleteContents" [@@bs.send];
+  external extractContents : t => DocumentFragment.t = "extractContents" [@@bs.send];
+  external insertNode : t => element => unit = "insertNode" [@@bs.send]; /* should accept node */
+  external surroundContents : t => element => unit = "surroundContents" [@@bs.send]; /* should accept Node */
+  external compareBoundaryPoints : t => int /* enum */ => t => int /* enum */ = "compareBoundaryPoints" [@@bs.send];
+  external cloneRange : t => t = "cloneRange" [@@bs.send];
+  external detach : t => unit = "detach" [@@bs.send];
+  external toString : t => string = "toString" [@@bs.send];
+  external comparePoint : t => element => int => int /* enum */ = "comparePoint" [@@bs.send]; /* should accept Node */
+  external createContextualFragment : t => string => DocumentFragment.t = "createContextualFragment" [@@bs.send]; /* experimental, but widely supported */
+  external getBoundingClientRect : t => DOMRect.t = "getBoundingClientRect" [@@bs.send]; /* experimental, but widely supported */
+  external getClientRects : t => array DOMRect.t = "getClientRects" [@@bs.send]; /* experimental, but widely supported */
+  external intersectsNode : t => element => Js.boolean = "intersectsNode" [@@bs.send]; /* experimental, should accept Node */
+  external isPointInRange : t => element => int => Js.boolean = "isPointInRange" [@@bs.send]; /* experimental, should accept Node */
 };
 
 module Selection = {
