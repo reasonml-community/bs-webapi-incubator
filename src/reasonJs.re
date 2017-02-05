@@ -116,6 +116,15 @@ module Event = {
   external y : t => int = "y" [@@bs.get]; /* experimental */
   /* getModifierState */
 
+  /* PointerEvent interface */
+  external pointerId : t => pointerId = "pointerId" [@@bs.get];
+  external width : t => int = "width" [@@bs.get];
+  external height : t => int = "height" [@@bs.get];
+  external pressure : t => float = "pressure" [@@bs.get];
+  external titlX : t => int = "titlX" [@@bs.get];
+  external tiltY : t => int = "tiltY" [@@bs.get];
+  external pointerType : t => string /* enum */ = "pointerType" [@@s.get];
+  external isPrimary : t => Js.boolean = "isPrimary" [@@bs.get];
 };
 
 module NodeFilter = {
