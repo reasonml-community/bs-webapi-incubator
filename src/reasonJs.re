@@ -127,6 +127,16 @@ module Event = {
   external isPrimary : t => Js.boolean = "isPrimary" [@@bs.get];
 };
 
+module EventTarget = {
+  external addEventListener : 't => string /* enum */ => (Event.t => unit) => unit = "addEventListener" [@@bs.send];
+  external addEventListenerWithOptions : 't => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "addEventListener" [@@bs.send]; /* not widely supported */
+  external addEventListenerUseCapture : 't => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "addEventListener" [@@bs.send];
+  external removeEventListener : 't => string /* enum */ => (Event.t => unit) => unit = "removeEventListener" [@@bs.send];
+  external removeEventListenerWithOptions : 't => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "removeEventListener" [@@bs.send]; /* not widely supported */
+  external removeEventListenerUseCapture : 't => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "removeEventListener" [@@bs.send];
+  external dispatchEvent : 't => Event.t => Js.boolean = "dispatchEvent" [@@bs.send];
+};
+
 module NodeFilter = {
   type t = {
     acceptNode: element => int /* one of the enum values below */
@@ -215,11 +225,6 @@ module TreeWalker = {
 
 module Element = {
   type t = element;
-
-  /*
-    NOTE: Interface inheritance could be modeled by include, but how then would you check "nodeType"
-    and cast it to the correct type?
-  */
 
   /* Node interface */
   external childNodes : t => array t  = "childNodes" [@@bs.get]; /* returns a NodeList, not an array */
@@ -320,13 +325,7 @@ module Element = {
   external setPointerCapture : t => Event.pointerId => unit = "setPointerCapture" [@@bs.send];
 
   /* EventTarget interface */
-  external addEventListener : t => string /* enum */ => (Event.t => unit) => unit = "addEventListener" [@@bs.send];
-  external addEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "addEventListener" [@@bs.send]; /* not widely supported */
-  external addEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "addEventListener" [@@bs.send];
-  external removeEventListener : t => string /* enum */ => (Event.t => unit) => unit = "removeEventListener" [@@bs.send];
-  external removeEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "removeEventListener" [@@bs.send]; /* not widely supported */
-  external removeEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "removeEventListener" [@@bs.send];
-  external dispatchEvent : t => Event.t => Js.boolean = "dispatchEvent" [@@bs.send];
+  include EventTarget;
 
   /* HTMLElement interface */
   external accessKey : t => string = "accessKey" [@@bs.get];
@@ -464,14 +463,7 @@ module Window = {
 
   external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
 
-  /* EventTarget interface */
-  external addEventListener : t => string /* enum */ => (Event.t => unit) => unit = "addEventListener" [@@bs.send];
-  external addEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "addEventListener" [@@bs.send]; /* not widely supported */
-  external addEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "addEventListener" [@@bs.send];
-  external removeEventListener : t => string /* enum */ => (Event.t => unit) => unit = "removeEventListener" [@@bs.send];
-  external removeEventListenerWithOptions : t => string /* enum */ => (Event.t => unit) => Js.t {..} => unit = "removeEventListener" [@@bs.send]; /* not widely supported */
-  external removeEventListenerUseCapture : t => string /* enum */ => (Event.t => unit) => Js.boolean => unit = "removeEventListener" [@@bs.send];
-  external dispatchEvent : t => Event.t => Js.boolean = "dispatchEvent" [@@bs.send];
+  include EventTarget;
 };
 
 module Document = {
