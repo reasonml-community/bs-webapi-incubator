@@ -9,6 +9,7 @@ external clearTimeout : timeoutId => unit = "clearTimeout" [@@bs.val];
 external requestAnimationFrame : (unit => unit) => unit = "requestAnimationFrame" [@@bs.val];
 
 type document;
+type element;
 
 module Animation = {
   type t;
@@ -19,6 +20,22 @@ module Attr = {
 };
 
 module CSSStyleDeclaration = {
+  type t;
+};
+
+module CSSStyleSheet = {
+  type t;
+};
+
+module DocumentFragment = {
+  type t;
+};
+
+module DocumentImplementation = {
+  type t;
+};
+
+module DocumentType = {
   type t;
 };
 
@@ -43,12 +60,32 @@ module Event = {
   type pointerId;
 };
 
+module Range = {
+  type t;
+};
+
+module NodeFilter = {
+  type t = {
+    acceptNode: element => int /* one of the enum values below */
+  };
+
+  /* + a bunch of enum values */
+};
+
+module NodeIterator = {
+  type t;
+};
+
 module ShadowRoot = {
   type t;
 };
 
-module Element = {
+module TreeWalker = {
   type t;
+};
+
+module Element = {
+  type t = element;
 
   /*
     NOTE: Interface inheritance could be modeled by include, but how then would you check "nodeType"
@@ -309,11 +346,74 @@ module Window = {
 
 module Document = {
   type t = document;
+  type commentNode;
+  type textNode;
+
+  /* Node interface */
+
+  /* Document interface */
+  external characterSet : t => string = "characterSet" [@@bs.get];
+  external compatMode : t => string /* enum */ = "compatMode" [@@bs.get]; /* experimental */
+  external docType : t => DocumentType.t = "docType" [@@bs.get];
+  external documentElement : t => Element.t = "documentElement" [@@bs.get];
+  external documentURI : t => string = "documentURI" [@@bs.get];
+  external hidden : t => Js.boolean = "hidden" [@@bs.get];
+  external implementation : t => DocumentImplementation.t = "implementation" [@@bs.get];
+  external lastStyleSheetSet : t => string = "lastStyleSheetSet" [@@bs.get];
+  external pointerLockElement : t => Js.null Element.t = "pointerLockElement" [@@bs.get]; /* experimental */
+  external preferredStyleSheetSet : t => string = "preferredStyleSheetSet" [@@bs.get];
+  external scrollingELement : t => Js.null Element.t = "scrollingElement" [@@bs.get];
+  external selectedStyleSheetSet : t => string = "selectedStyleSheetSet" [@@bs.get];
+  external setSelectedStyleSheetSet : t => string => string = "selectedStyleSheetSet" [@@bs.set];
+  external styleSheets : t => array CSSStyleSheet.t = "styleSheets" [@@bs.get]; /* return StyleSheetList, not array */
+  external styleSheetSets : t => array string = "styleSheetSets" [@@bs.get];
+  external visibilityState : t => string /* enum */ = "visibilityState" [@@bs.get];
+
+  external adoptNode : t => Element.t => Element.t = "adoptNode" [@@bs.send];
+  external createAttribute : t => string => Attr.t = "createAttribute" [@@bs.send];
+  external createAttributeNS : t => string => string => Attr.t = "createAttributeNS" [@@bs.send];
+  external createComment : t => string => commentNode = "createComment" [@@bs.send];
+  external createDocumentFragment : t => DocumentFragment.t = "createDocumentFragment" [@@bs.send];
+  external createElement : t => string => Element.t = "createElement" [@@bs.send];
+  external createElementWithOptions : t => string => Js.t {..} => Element.t = "createEement" [@@bs.send];
+  external createElementNS : t => string => string => Element.t = "createElementNS" [@@bs.send];
+  external createElementNSWithOptions : t => string => string => Js.t {..} => Element.t = "createEementNS" [@@bs.send];
+  external createEvent : t => string /* large enum */ => Event.t = "createEvent" [@@bs.send]; /* discouraged (but not deprecated) in favor of Event constructors */
+  external createNodeIterator : t => Element.t => NodeIterator.t = "createNodeIterator" [@@bs.send];
+  external createNodeIteratorWithWhatToShow : t => Element.t => int /* NodeFilter enum */ => NodeIterator.t = "createNodeIterator" [@@bs.send];
+  external createNodeIteratorWithWhatToShowFilter : t => Element.t => int /* NodeFilter enum */ => NodeFilter.t => NodeIterator.t = "createNodeIterator" [@@bs.send];
+  /* createProcessingInstruction */
+  external createRange : t => Range.t = "createRange" [@@bs.send];
+  external createText : t => string => textNode = "createText" [@@bs.send];
+  external createTreeWalker : t => Element.t => TreeWalker.t = "createNodeIterator" [@@bs.send];
+  external createTreeWalkerWithWhatToShow : t => Element.t => int /* NodeFilter enum */ => TreeWalker.t = "createNodeIterator" [@@bs.send];
+  external createTreeWalkerWithWhatToShowFilter : t => Element.t => int /* NodeFilter enum */ => TreeWalker.t => NodeIterator.t = "createNodeIterator" [@@bs.send];
+  external elementFromPoint : t => int => int => Element.t = "elementFromPoint" [@@bs.send]; /* experimental, but widely supported */
+  external elementsFromPoint : t => int => int => array Element.t = "elementsFromPoint" [@@bs.send]; /* experimental */
+  external enableStyleSheetsForSet : t => string => unit = "enableStyleSheetsForSet" [@@bs.send];
+  external exitPointerLock : t => unit = "exitPointerLock" [@@bs.send]; /* experimental */
+  external getAnimations : t => array Animation.t = "getAnimations" [@@bs.send]; /* experimental */
+  external getElementsByClassName : t => string => array Element.t = "getElementsByClassName" [@@bs.send]; /* returns HTMLCollection, not array */
+  external getElementsByTagName : t => string => array Element.t = "getElementsByTagName" [@@bs.send]; /* returns HTMLCollection, not array */
+  external getElementsByTagNameNS : t => string => string => array Element.t = "getElementsByTagNameNS" [@@bs.send]; /* returns HTMLCollection, not array */
+  external importNode : t => Element.t => Element.t = "importNode" [@@bs.send];
+  external importNodeDeep : t => Element.t => Js.boolean => Element.t = "importNode" [@@bs.send];
+  external registerElement : t => string => (unit => Element.t) = "registerElement" [@@bs.send]; /* experimental and deprecated in favor of customElements.define() */
+  external registerElementWithOptions : t => string => Js.t {..} => (unit => Element.t) = "registerElement" [@@bs.send]; /* experimental and deprecated in favor of customElements.define() */
+  external getElementById : t => string => Js.null Element.t = "getElementById" [@@bs.send];
+  external querySelector : t => string => Js.null Element.t = "querySelector" [@@bs.send];
+  external querySelectorAll : t => string => array Element.t = "querySelectorAll" [@@bs.send]; /* returns NodeList, not array */
+
+  /* XPath */
+  /* createExpresson */
+  /* createNSResolver */
+  /* evaluate */
+
+  /* HTMLDocument interface */
 
   external getElementById : string => Element.t = "document.getElementById" [@@bs.val];
   /* not really an array */
-  external getElementsByClassName : string => array Element.t =
-    "document.getElementsByClassName" [@@bs.val];
+
 };
 
 
