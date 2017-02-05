@@ -60,10 +60,6 @@ module Event = {
   type pointerId;
 };
 
-module Range = {
-  type t;
-};
-
 module NodeFilter = {
   type t = {
     acceptNode: element => int /* one of the enum values below */
@@ -77,6 +73,14 @@ module NodeFilter = {
 };
 
 module NodeIterator = {
+  type t;
+};
+
+module Range = {
+  type t;
+};
+
+module Selection = {
   type t;
 };
 
@@ -409,14 +413,54 @@ module Document = {
   external querySelector : t => string => Js.null Element.t = "querySelector" [@@bs.send];
   external querySelectorAll : t => string => array Element.t = "querySelectorAll" [@@bs.send]; /* returns NodeList, not array */
 
-  /* XPath */
+  /** XPath stuff */
   /* createExpression */
   /* createNSResolver */
   /* evaluate */
 
   /* HTMLDocument interface */
+  external activeElement : t => Js.null Element.t = "activeElement" [@@bs.get];
+  external body : t => Js.null Element.t = "body" [@@bs.get]; /* returns Js.null HTMLBodyElement */
+  external setBody : t => Element.t => Js.null Element.t = "body" [@@bs.set]; /* accepth HTMLBodyElement and returns Js.null HTMLBodyElement */
+  external cookie : t => string = "cookie" [@@bs.get];
+  external setCookie : t => string => string = "cookie" [@@bs.set];
+  external defaultView : t => Js.null Window.t = "defaultView" [@@bs.get];
+  external designMode : t => string /* enum */ = "designMode" [@@bs.get];
+  external setDesignMode : t => string /* enum */ => string /* enum */ = "designMode" [@@bs.set];
+  external dir : t => string /* enum */ = "dir" [@@bs.get];
+  external setDir : t => string /* enum */ => string /* enum */ = "dir" [@@bs.set];
+  external domain : t => Js.null string = "domain" [@@bs.get];
+  external setDomain : t => string => Js.null string = "domain" [@@bs.set];
+  external embeds : t => array Element.t = "embeds" [@@bs.get]; /* returns NodeList, not array */
+  external forms : t => array Element.t = "forms" [@@bs.get]; /* return HTMLCollection, not array */
+  external head : t => Element.t = "head" [@@bs.get]; /* returns HTMLHeadElement */
+  external images : t => array Element.t = "images" [@@bs.get]; /* return HTMLCollection, not array */
+  external lastModified : t => string = "lastModified" [@@bs.get];
+  external links : t => array Element.t = "links" [@@bs.get]; /* returns NodeList, not array */
+  external location : t => Location.t = "location" [@@bs.get];
+  external setLocation : t => string => Location.t = "location" [@@bs.set];
+  external plugins : t => array Element.t = "plugins" [@@bs.get]; /* returns HTMLCollection, not array */
+  external readyState : t => string /* enum */ = "readyState" [@@bs.get];
+  external referrer : t => string = "referrer" [@@bs.get];
+  external scripts : t => array Element.t = "scripts" [@@bs.get]; /* returns HTMLCOllection, not array */
+  external title : t => string = "title" [@@bs.get];
+  external setTitle : t => string => string = "title" [@@bs.set];
+  external url : t => string = "URL" [@@bs.get];
 
+  external close : t => unit = "close" [@@bs.send];
+  external execCommand : t => string => Js.boolean => Js.null string => Js.boolean = "execCommand" [@@bs.send];
+  external getElementsByName : t => string => array Element.t = "getElementsByName" [@@bs.send]; /* returns NodelList, not array */
+  external getSelection : t => Selection.t = "getSelection" [@@bs.send];
+  external hasFocus : t => Js.boolean = "hasFocus" [@@bs.send];
+  external open_ : t => unit = "open" [@@bs.send];
+  external queryCommandEnabled : t => string => Js.boolean = "queryCommandEnabled" [@@bs.send];
+  external queryCommandIndeterm : t => string => Js.boolean = "queryCommandIndeterm" [@@bs.send];
+  external queryCommandSupported : t => string => Js.boolean = "queryCommandSupported" [@@bs.send];
+  external queryCommandValue : t => string => string = "queryCommandValue" [@@bs.send];
+  external write : t => string => unit = "write" [@@bs.send];
+  external writeln : t => string => unit = "writeln" [@@bs.send];
 
+  /* GlobalEventHandlers interface */
 };
 
 
