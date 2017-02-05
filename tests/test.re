@@ -38,7 +38,25 @@
   let _ = Event.shiftKey event;
 
   let _ = Event.getModifierState event "Alt";
-  
+
+  /* MouseEvent interface */
+  let _ = Event.button event;
+  let _ = Event.buttons event;
+  let _ = Event.clientX event;
+  let _ = Event.clientY event;
+  let _ = Event.movementX event;
+  let _ = Event.movementY event;
+  let _ = Event.offsetX event;
+  let _ = Event.offsetY event;
+  let _ = Event.pageX event;
+  let _ = Event.pageY event;
+  let _ = Event.region event;
+  let _ = Event.relatedTarget event;
+  let _ = Event.screenX event;
+  let _ = Event.screenY event;
+  let _ = Event.x event;
+  let _ = Event.y event;
+
 
   let window = Window.window;
   let doc = Window.document window;

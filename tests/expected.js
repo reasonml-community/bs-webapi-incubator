@@ -72,6 +72,38 @@ $$event.shiftKey;
 
 $$event.getModifierState("Alt");
 
+$$event.button;
+
+$$event.buttons;
+
+$$event.clientX;
+
+$$event.clientY;
+
+$$event.movementX;
+
+$$event.movementY;
+
+$$event.offsetX;
+
+$$event.offsetY;
+
+$$event.pageX;
+
+$$event.pageY;
+
+$$event.region;
+
+$$event.relatedTarget;
+
+$$event.screenX;
+
+$$event.screenY;
+
+$$event.x;
+
+$$event.y;
+
 var $$window = window;
 
 var doc = $$window.document;
