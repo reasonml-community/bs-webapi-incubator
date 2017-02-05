@@ -104,6 +104,22 @@ $$event.x;
 
 $$event.y;
 
+$$event.pointerId;
+
+$$event.width;
+
+$$event.height;
+
+$$event.pressure;
+
+$$event.tiltX;
+
+$$event.tiltY;
+
+$$event.pointerType;
+
+$$event.isPrimary;
+
 var $$window = window;
 
 var doc = $$window.document;
@@ -278,6 +294,8 @@ el.querySelector("input");
 
 el.querySelectorAll("input");
 
+el.releasePointerCapture($$event.pointerId);
+
 el.remove();
 
 el.removeAttribute("href");
@@ -300,6 +318,8 @@ el.scrollIntoView({
 el.setAttribute("href", "http://...");
 
 el.setAttributeNS("http://...", "foo", "bar");
+
+el.setPointerCapture($$event.pointerId);
 
 function handleClick() {
   console.log("asd");

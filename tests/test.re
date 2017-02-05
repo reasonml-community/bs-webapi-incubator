@@ -57,6 +57,16 @@
   let _ = Event.x event;
   let _ = Event.y event;
 
+  /* PointerEvent interface */
+  let _ = Event.pointerId event;
+  let _ = Event.width event;
+  let _ = Event.height event;
+  let _ = Event.pressure event;
+  let _ = Event.tiltX event;
+  let _ = Event.tiltY event;
+  let _ = Event.pointerType event;
+  let _ = Event.isPrimary event;
+
 
   let window = Window.window;
   let doc = Window.document window;
@@ -148,7 +158,7 @@
   let _ = Element.matches el "input";
   let _ = Element.querySelector el "input";
   let _ = Element.querySelectorAll el "input";
-  /*let _ = Element.releasePointerCapture el pointerId /* TODO: There's no way to get a pointerId right now */ */
+  let _ = Element.releasePointerCapture el (Event.pointerId event);
   let _ = Element.remove el;
   let _ = Element.removeAttribute el "href";
   let _ = Element.removeAttributeNS el "http://..." "foo";
@@ -159,7 +169,7 @@
   let _ = Element.scrollIntoViewWithOptions el { "block": "end", "behvaior": "smooth" };
   let _ = Element.setAttribute el "href" "http://...";
   let _ = Element.setAttributeNS el "http://..." "foo" "bar";
-  /*let _ = Element.setPointerCapture el pointerId /* TODO: There's no way to get a pointerId right now */ */
+  let _ = Element.setPointerCapture el (Event.pointerId event);
 
   /* EventTarget interface */
   let handleClick e => print_endline "asd";

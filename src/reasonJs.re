@@ -121,9 +121,9 @@ module Event = {
   external width : t => int = "width" [@@bs.get];
   external height : t => int = "height" [@@bs.get];
   external pressure : t => float = "pressure" [@@bs.get];
-  external titlX : t => int = "titlX" [@@bs.get];
+  external tiltX : t => int = "tiltX" [@@bs.get];
   external tiltY : t => int = "tiltY" [@@bs.get];
-  external pointerType : t => string /* enum */ = "pointerType" [@@s.get];
+  external pointerType : t => string /* enum */ = "pointerType" [@@bs.get];
   external isPrimary : t => Js.boolean = "isPrimary" [@@bs.get];
 };
 
