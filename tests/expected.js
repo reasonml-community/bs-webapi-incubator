@@ -50,6 +50,28 @@ $$event.stopImmediatePropagation();
 
 $$event.stopPropagation();
 
+$$event.altKey;
+
+$$event.code;
+
+$$event.ctrlKey;
+
+$$event.isComposing;
+
+$$event.key;
+
+$$event.locale;
+
+$$event.location;
+
+$$event.metaKey;
+
+$$event.repeat;
+
+$$event.shiftKey;
+
+$$event.getModifierState("Alt");
+
 var $$window = window;
 
 var doc = $$window.document;

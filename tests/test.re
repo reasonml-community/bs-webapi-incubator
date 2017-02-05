@@ -25,6 +25,20 @@
   Event.stopImmediatePropagation event;
   Event.stopPropagation event;
 
+  /* KeyboardEvent interface */
+  let _ = Event.altKey event;
+  let _ = Event.code event;
+  let _ = Event.ctrlKey event;
+  let _ = Event.isComposing event;
+  let _ = Event.key event;
+  let _ = Event.locale event;
+  let _ = Event.location event;
+  let _ = Event.metaKey event;
+  let _ = Event.repeat event;
+  let _ = Event.shiftKey event;
+
+  let _ = Event.getModifierState event "Alt";
+  
 
   let window = Window.window;
   let doc = Window.document window;
