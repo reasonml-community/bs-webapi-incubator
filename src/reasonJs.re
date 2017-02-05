@@ -58,6 +58,31 @@ module DOMStringMap = {
 module Event = {
   type t;
   type pointerId;
+
+  /* constructors */
+  external make : string => t = "Event" [@@bs.new];
+  external makeWithOptions : string => Js.t {..} = "Event" [@@bs.new];
+
+  /* Event interface */
+  external bubbles : t => Js.boolean = "bubbles" [@@bs.get];
+  external cancelable : t => Js.boolean = "cancelable" [@@bs.get];
+  external composed : t => Js.boolean = "composed" [@@bs.get];
+  external currentTarget : t => element = "currentTarget" [@@bs.get];
+  external defaultPrevented : t => Js.boolean = "defaultPrevented" [@@bs.get];
+  external eventPhase : t => int /* enum */ = "eventPhase" [@@bs.get];
+  external target : t => element = "target" [@@bs.get];
+  external timeStamp : t => float = "timeStamp" [@@bs.get];
+  external type_ : t => string = "type" [@@bs.get];
+  external isTrusted : t => Js.boolean = "isTrusted" [@@bs.get];
+
+  external preventDefault : t => unit = "preventDefault" [@@bs.send];
+  external stopImmediatePropagation : t => unit = "stopImmediatePropagation" [@@bs.send];
+  external stopPropagation : t => unit = "stopPropagation" [@@bs.send];
+
+  /* KeyboardEvent interface */
+
+  /* MouseEvent interface */
+
 };
 
 module NodeFilter = {
