@@ -543,6 +543,84 @@ doc.querySelector(".lstlisting");
 
 doc.querySelectorAll(".lstlisting");
 
+doc.activeElement;
+
+doc.body;
+
+doc.body = el;
+
+doc.cookie;
+
+doc.cookie = "foo=bar;reason=ml";
+
+doc.defaultView;
+
+doc.designMode;
+
+doc.designMode = "on";
+
+doc.dir;
+
+doc.dir = "ltr";
+
+doc.domain;
+
+doc.domain = "reason.ml";
+
+doc.embeds;
+
+doc.forms;
+
+doc.head;
+
+doc.images;
+
+doc.lastModified;
+
+doc.links;
+
+doc.location;
+
+doc.location = "http://reason.ml";
+
+doc.plugins;
+
+doc.readyState;
+
+doc.referrer;
+
+doc.scripts;
+
+doc.title;
+
+doc.title = "Reason: Rapid Expressive Systems Programming.";
+
+doc.URL;
+
+doc.close();
+
+doc.execCommand("copy", Js_boolean.to_js_boolean(/* false */0), null);
+
+doc.getElementsByName("angry-joe");
+
+doc.getSelection();
+
+doc.hasFocus();
+
+doc.open();
+
+doc.queryCommandEnabled("copy");
+
+doc.queryCommandIndeterm("cut");
+
+doc.queryCommandSupported("paste");
+
+doc.queryCommandValue("fontName");
+
+doc.write("Hello World!");
+
+doc.writeln("Hello Newline!");
+
 new Date();
 
 new Date(0);

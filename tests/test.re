@@ -294,6 +294,47 @@
   let _ = Document.querySelector doc ".lstlisting";
   let _ = Document.querySelectorAll doc ".lstlisting";
 
+  /* HTMLDocument interface */
+  let _ = Document.activeElement doc;
+  let _ = Document.body doc;
+  let _ = Document.setBody doc el;
+  let _ = Document.cookie doc;
+  let _ = Document.setCookie doc "foo=bar;reason=ml";
+  let _ = Document.defaultView doc;
+  let _ = Document.designMode doc;
+  let _ = Document.setDesignMode doc "on";
+  let _ = Document.dir doc;
+  let _ = Document.setDir doc "ltr";
+  let _ = Document.domain doc;
+  let _ = Document.setDomain doc "reason.ml";
+  let _ = Document.embeds doc;
+  let _ = Document.forms doc;
+  let _ = Document.head doc;
+  let _ = Document.images doc;
+  let _ = Document.lastModified doc;
+  let _ = Document.links doc;
+  let _ = Document.location doc;
+  let _ = Document.setLocation doc "http://reason.ml";
+  let _ = Document.plugins doc;
+  let _ = Document.readyState doc;
+  let _ = Document.referrer doc;
+  let _ = Document.scripts doc;
+  let _ = Document.title doc;
+  let _ = Document.setTitle doc "Reason: Rapid Expressive Systems Programming.";
+  let _ = Document.url doc;
+
+  Document.close doc;
+  let _ = Document.execCommand doc "copy" (Js.Boolean.to_js_boolean false) Js.Null.empty;
+  let _ = Document.getElementsByName doc "angry-joe";
+  let _ = Document.getSelection doc;
+  let _ = Document.hasFocus doc;
+  Document.open_ doc;
+  let _ = Document.queryCommandEnabled doc "copy";
+  let _ = Document.queryCommandIndeterm doc "cut";
+  let _ = Document.queryCommandSupported doc "paste";
+  let _ = Document.queryCommandValue doc "fontName";
+  Document.write doc "Hello World!";
+  Document.writeln doc "Hello Newline!";
 
 
   let _ = Date.make ();
