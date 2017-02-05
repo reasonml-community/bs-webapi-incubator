@@ -22,6 +22,34 @@ function unNull(definitelyNotNull) {
   }
 }
 
+var $$event = new Event("foo");
+
+$$event.bubbles;
+
+$$event.cancelable;
+
+$$event.composed;
+
+$$event.currentTarget;
+
+$$event.defaultPrevented;
+
+$$event.eventPhase;
+
+$$event.target;
+
+$$event.timeStamp;
+
+$$event.type;
+
+$$event.isTrusted;
+
+$$event.preventDefault();
+
+$$event.stopImmediatePropagation();
+
+$$event.stopPropagation();
+
 var $$window = window;
 
 var doc = $$window.document;
@@ -240,6 +268,8 @@ el.removeEventListener("click", handleClick, {
 
 el.removeEventListener("click", handleClick, Js_boolean.to_js_boolean(/* true */1));
 
+el.dispatchEvent($$event);
+
 el.accessKey;
 
 el.accessKey = "";
@@ -456,6 +486,8 @@ $$window.removeEventListener("click", handleClick, {
     });
 
 $$window.removeEventListener("click", handleClick, Js_boolean.to_js_boolean(/* true */1));
+
+$$window.dispatchEvent($$event);
 
 doc.characterSet;
 
@@ -805,4 +837,4 @@ p.then(function (res) {
       return /* () */0;
     });
 
-/* window Not a pure module */
+/* event Not a pure module */

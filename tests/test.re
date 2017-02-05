@@ -7,6 +7,25 @@
     | None => assert false;
   };
 
+  /* Event interface */
+  let event = Event.make "foo";
+
+  let _ = Event.bubbles event;
+  let _ = Event.cancelable event;
+  let _ = Event.composed event;
+  let _ = Event.currentTarget event;
+  let _ = Event.defaultPrevented event;
+  let _ = Event.eventPhase event;
+  let _ = Event.target event;
+  let _ = Event.timeStamp event;
+  let _ = Event.type_ event;
+  let _ = Event.isTrusted event;
+
+  Event.preventDefault event;
+  Event.stopImmediatePropagation event;
+  Event.stopPropagation event;
+
+
   let window = Window.window;
   let doc = Window.document window;
   let el = unNull (Document.getElementById doc "some-element");
@@ -118,7 +137,7 @@
   Element.removeEventListener el "click" handleClick;
   Element.removeEventListenerWithOptions el "click" handleClick  { "passive": true };
   Element.removeEventListenerUseCapture el "click" handleClick (Js.Boolean.to_js_boolean true);
-  /* let _ = Element.dispatchEvent el event /* TODO:No way to create an event right now */ */
+  let _ = Element.dispatchEvent el event;
 
   /* HTMLElement interface */
   let _ = Element.accessKey el;
@@ -242,7 +261,7 @@
   Window.removeEventListener window "click" handleClick;
   Window.removeEventListenerWithOptions window "click" handleClick  { "passive": true };
   Window.removeEventListenerUseCapture window "click" handleClick (Js.Boolean.to_js_boolean true);
-  /* let _ = Window.dispatchEvent window event /* TODO:No way to create an event right now */ */
+  let _ = Window.dispatchEvent window event;
 
 
   /* Document interface */
