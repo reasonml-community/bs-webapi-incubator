@@ -1,8 +1,16 @@
 {
   open ReasonJs;
 
-  let el = Document.getElementById "some-element";
-  let el2 = Document.getElementById "some-other-element";
+  let unNull definitelyNotNull =>
+    switch (Js.Null.to_opt definitelyNotNull) {
+    | Some x => x
+    | None => assert false;
+  };
+
+  let window = Window.window;
+  let doc = Window.document window;
+  let el = unNull (Document.getElementById doc "some-element");
+  let el2 = unNull (Document.getElementById doc "some-other-element");
 
   /* Node interface */
   let _ = Element.childNodes el;
@@ -162,7 +170,6 @@
   Element.forceSpellCheck el;
 
 
-  let window = Window.window;
   let history = Window.history window;
 
   let _ = History.length history;
@@ -207,7 +214,7 @@
   Location.replace location "http://reason.ml";
   let _ = Location.toString location;
 
-
+  let _ = Window.document window;
   let _ = Window.fullScreen window;
   let _ = Window.history window;
   let _ = Window.innerWidth window;
@@ -236,6 +243,57 @@
   Window.removeEventListenerWithOptions window "click" handleClick  { "passive": true };
   Window.removeEventListenerUseCapture window "click" handleClick (Js.Boolean.to_js_boolean true);
   /* let _ = Window.dispatchEvent window event /* TODO:No way to create an event right now */ */
+
+
+  /* Document interface */
+  let _ = Document.characterSet doc;
+  let _ = Document.compatMode doc;
+  let _ = Document.docType doc;
+  let _ = Document.documentElement doc;
+  let _ = Document.documentURI doc;
+  let _ = Document.hidden doc;
+  let _ = Document.implementation doc;
+  let _ = Document.lastStyleSheetSet doc;
+  let _ = Document.pointerLockElement doc;
+  let _ = Document.preferredStyleSheetSet doc;
+  let _ = Document.scrollingElement doc;
+  let _ = Document.selectedStyleSheetSet doc;
+  let _ = Document.setSelectedStyleSheetSet doc "muh-stylesheet";
+  let _ = Document.styleSheets doc;
+  let _ = Document.styleSheetSets doc;
+  let _ = Document.visibilityState doc;
+
+  let _ = Document.adoptNode doc el;
+  let _ = Document.createAttribute doc "data-foo";
+  let _ = Document.createAttributeNS doc "http://..." "foo";
+  let _ = Document.createComment doc "witty comment";
+  let _ = Document.createDocumentFragment doc;
+  let _ = Document.createElement doc "div";
+  let _ = Document.createElementWithOptions doc "div" [%bs.raw "{}"]; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
+  let _ = Document.createElementNS doc "http://..." "foo";
+  let _ = Document.createElementNSWithOptions doc "http://..." "div" [%bs.raw "{}"]; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
+  let _ = Document.createEvent doc "MyCustomEvent";
+  let _ = Document.createNodeIterator doc el;
+  let _ = Document.createNodeIteratorWithWhatToShow doc el 0;
+  let _ = Document.createNodeIteratorWithWhatToShowFilter doc el 0 (NodeFilter.make (fun _ => 0));
+  let _ = Document.elementFromPoint doc 0 0;
+  let _ = Document.elementsFromPoint doc 0 0;
+  let _ = Document.enableStyleSheetsForSet doc "my-stylesheet-set";
+  let _ = Document.exitPointerLock doc;
+  let _ = Document.getAnimations doc;
+  let _ = Document.getElementsByClassName doc "lstlisting";
+  let _ = Document.getElementsByTagName doc "code";
+  let _ = Document.getElementsByTagNameNS doc "http://..." "foo";
+  let _ = Document.importNode doc el;
+  let _ = Document.importNodeDeep doc el (Js.Boolean.to_js_boolean true);
+  /* TODO: These get dead code eliminated
+  let _ = Document.registerElement doc "my-component";
+  let _ = Document.registerElementWithOptions doc "my-component" [%bs.raw "{}"];
+  */
+  let _ = Document.getElementById doc "root";
+  let _ = Document.querySelector doc ".lstlisting";
+  let _ = Document.querySelectorAll doc ".lstlisting";
+
 
 
   let _ = Date.make ();
@@ -324,9 +382,6 @@
 
 
   let _ = setInterval (fun () => Js.log "hello!") 1000;
-
-
-  let _ = Document.getElementById "foo" |> Element.value;
 
   let p = fetch "/greatings";
 

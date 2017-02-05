@@ -69,6 +69,10 @@ module NodeFilter = {
     acceptNode: element => int /* one of the enum values below */
   };
 
+  let make f => {
+    acceptNode: f
+  };
+
   /* + a bunch of enum values */
 };
 
@@ -314,6 +318,7 @@ module Window = {
 
   /* This module is far from exhaustive */
 
+  external document : t => document = "document" [@@bs.get];
   external fullScreen : t => Js.boolean = "fullScreen" [@@bs.get];
   external history : t => History.t = "history" [@@bs.get];
   external innerWidth : t => int = "innerWidth" [@@bs.get];
@@ -362,7 +367,7 @@ module Document = {
   external lastStyleSheetSet : t => string = "lastStyleSheetSet" [@@bs.get];
   external pointerLockElement : t => Js.null Element.t = "pointerLockElement" [@@bs.get]; /* experimental */
   external preferredStyleSheetSet : t => string = "preferredStyleSheetSet" [@@bs.get];
-  external scrollingELement : t => Js.null Element.t = "scrollingElement" [@@bs.get];
+  external scrollingElement : t => Js.null Element.t = "scrollingElement" [@@bs.get];
   external selectedStyleSheetSet : t => string = "selectedStyleSheetSet" [@@bs.get];
   external setSelectedStyleSheetSet : t => string => string = "selectedStyleSheetSet" [@@bs.set];
   external styleSheets : t => array CSSStyleSheet.t = "styleSheets" [@@bs.get]; /* return StyleSheetList, not array */
@@ -375,9 +380,9 @@ module Document = {
   external createComment : t => string => commentNode = "createComment" [@@bs.send];
   external createDocumentFragment : t => DocumentFragment.t = "createDocumentFragment" [@@bs.send];
   external createElement : t => string => Element.t = "createElement" [@@bs.send];
-  external createElementWithOptions : t => string => Js.t {..} => Element.t = "createEement" [@@bs.send];
+  external createElementWithOptions : t => string => Js.t {..} => Element.t = "createEement" [@@bs.send]; /* not widely supported */
   external createElementNS : t => string => string => Element.t = "createElementNS" [@@bs.send];
-  external createElementNSWithOptions : t => string => string => Js.t {..} => Element.t = "createEementNS" [@@bs.send];
+  external createElementNSWithOptions : t => string => string => Js.t {..} => Element.t = "createEementNS" [@@bs.send]; /* not widely supported */
   external createEvent : t => string /* large enum */ => Event.t = "createEvent" [@@bs.send]; /* discouraged (but not deprecated) in favor of Event constructors */
   external createNodeIterator : t => Element.t => NodeIterator.t = "createNodeIterator" [@@bs.send];
   external createNodeIteratorWithWhatToShow : t => Element.t => int /* NodeFilter enum */ => NodeIterator.t = "createNodeIterator" [@@bs.send];
@@ -405,14 +410,12 @@ module Document = {
   external querySelectorAll : t => string => array Element.t = "querySelectorAll" [@@bs.send]; /* returns NodeList, not array */
 
   /* XPath */
-  /* createExpresson */
+  /* createExpression */
   /* createNSResolver */
   /* evaluate */
 
   /* HTMLDocument interface */
 
-  external getElementById : string => Element.t = "document.getElementById" [@@bs.val];
-  /* not really an array */
 
 };
 
