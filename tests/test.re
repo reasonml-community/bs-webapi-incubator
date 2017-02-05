@@ -7,6 +7,11 @@
     | None => assert false;
   };
 
+  let window = Current.window;
+  let doc = Current.document;
+  let history = Current.history;
+  let location = Current.location;
+
   /* Event interface */
   let event = Event.make "foo";
 
@@ -68,8 +73,6 @@
   let _ = Event.isPrimary event;
 
 
-  let window = Window.window;
-  let doc = Window.document window;
   let el = unNull (Document.getElementById doc "some-element");
   let el2 = unNull (Document.getElementById doc "some-other-element");
 
@@ -288,8 +291,6 @@
   Element.forceSpellCheck el;
 
 
-  let history = Window.history window;
-
   let _ = History.length history;
   let _ = History.scrollRestoration history;
   let _ = History.setScrollRestoration history (Js.Boolean.to_js_boolean true);
@@ -301,8 +302,6 @@
   History.pushState history (History.state history) "My title" "http://...";
   History.replaceState history (History.state history) "My title" "http://...";
 
-
-  let location = Window.location window;
 
   let _ = Location.href location;
   let _ = Location.setHref location "http://reason.ml";
@@ -331,6 +330,7 @@
   Location.reloadWithForce location (Js.Boolean.to_js_boolean true);
   Location.replace location "http://reason.ml";
   let _ = Location.toString location;
+
 
   let _ = Window.document window;
   let _ = Window.fullScreen window;

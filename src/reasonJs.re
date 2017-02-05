@@ -452,7 +452,7 @@ module Window = {
   external setLocation : t => string => Location.t = "location" [@@bs.set]; /* Will thi return Location.t, or the string it was passed? */
   external parent : t => t = "parent" [@@bs.get];
   external top : t => t = "top" [@@bs.get];
-  external window : t = "window" [@@bs.val];
+  external window : t => t = "window" [@@bs.get];
 
   external alert : t => string => unit = "alert" [@@bs.send];
   external confirm : t => string => Js.boolean = "confirm" [@@bs.send];
@@ -836,3 +836,10 @@ module Response = {
 };
 
 external fetch : string => Promise.promiseT Response.responseT = "fetch" [@@bs.val];
+
+module Current = {
+  external window : Window.t = "window" [@@bs.val];
+  external document : Document.t = "window.document" [@@bs.val];
+  external history : History.t = "window.document.history" [@@bs.val];
+  external location : Location.t = "window.document.location" [@@bs.val];
+};

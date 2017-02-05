@@ -22,6 +22,14 @@ function unNull(definitelyNotNull) {
   }
 }
 
+var $$window = window;
+
+var doc = window.document;
+
+var history = window.document.history;
+
+var $$location = window.document.location;
+
 var $$event = new Event("foo");
 
 $$event.bubbles;
@@ -119,10 +127,6 @@ $$event.tiltY;
 $$event.pointerType;
 
 $$event.isPrimary;
-
-var $$window = window;
-
-var doc = $$window.document;
 
 var el = unNull(doc.getElementById("some-element"));
 
@@ -534,8 +538,6 @@ el.focus();
 
 el.forceSpellCheck();
 
-var history = $$window.history;
-
 history.length;
 
 history.scrollRestoration;
@@ -553,8 +555,6 @@ history.go(-2);
 history.pushState(history.state, "My title", "http://...");
 
 history.replaceState(history.state, "My title", "http://...");
-
-var $$location = $$window.location;
 
 $$location.href;
 
@@ -1011,4 +1011,4 @@ p.then(function (res) {
       return /* () */0;
     });
 
-/* event Not a pure module */
+/* window Not a pure module */
