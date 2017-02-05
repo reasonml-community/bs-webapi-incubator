@@ -183,6 +183,26 @@ module Range = {
 
 module Selection = {
   type t;
+
+  external anchorNode : t => element = "anchorNode" [@@bs.get]; /* returns node */
+  external anchorOffset : t => int = "anchorOffset" [@@bs.get];
+  external focusNode : t => element = "focusNode" [@@bs.get]; /* returns Node */
+  external focusOffset : t => int = "focusOffset" [@@bs.get];
+  external isCollapsed : t => Js.boolean = "isCollapsed" [@@b.get];
+  external rangeCount : t => int = "rangeCount" [@@bs.get];
+
+  external getRangeAt : t => int => Range.t = "getRangeAt" [@@bs.send];
+  external collapse : t => element => int = "collapse" [@@bs.send]; /* should accept Node */
+  external extend : t => element => int = "extend" [@@bs.send]; /* should accept Node */
+  external collapseToStart : t => unit = "collapseToStart" [@@bs.send];
+  external collapseToEnd : t => unit = "collapseToEnd" [@@bs.send];
+  external selectAllChildren : t => element => unit = "selectAllChildren" [@@bs.send]; /* should accept Node */
+  external addRange : t => Range.t => unit = "addRange" [@@bs.send];
+  external removeRange : t => Range.t => unit = "removeRange" [@@bs.send];
+  external removeAllRanges : t => unit = "removeAllRanges" [@@bs.send];
+  external deleteFromDocument : t => unit = "deleteFromDocument" [@@bs.send];
+  external toString : t => string = "toString" [@@bs.send];
+  external containsNode : t => element => Js.boolean => Js.boolean = "containsNode" [@@bs.send]; /* should accept Node */
 };
 
 module ShadowRoot = {
