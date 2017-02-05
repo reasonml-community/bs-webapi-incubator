@@ -80,6 +80,18 @@ module Event = {
   external stopPropagation : t => unit = "stopPropagation" [@@bs.send];
 
   /* KeyboardEvent interface */
+  external altKey : t => Js.boolean = "altKey" [@@bs.get];
+  external code : t => string = "code" [@@bs.get];
+  external ctrlKey : t => Js.boolean = "ctrlKey" [@@bs.get];
+  external isComposing : t => Js.boolean = "isComposing" [@@bs.get];
+  external key : t => string = "key" [@@bs.get];
+  external locale : t => string = "locale" [@@bs.get];
+  external location : t => int = "location" [@@bs.get];
+  external metaKey : t => Js.boolean = "metaKey" [@@bs.get];
+  external repeat : t => Js.boolean = "repeat" [@@bs.get];
+  external shiftKey : t => Js.boolean = "shiftKey" [@@bs.get];
+
+  external getModifierState : t => string /* enum */ => Js.boolean = "getModifierState" [@@bs.send];
 
   /* MouseEvent interface */
 
