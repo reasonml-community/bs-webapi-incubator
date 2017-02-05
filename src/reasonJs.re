@@ -94,6 +94,27 @@ module Event = {
   external getModifierState : t => string /* enum */ => Js.boolean = "getModifierState" [@@bs.send];
 
   /* MouseEvent interface */
+  /* altKey */
+  external button : t => int = "button" [@@bs.get];
+  external buttons : t => int /* bitmask */ = "buttons" [@@bs.get];
+  external clientX : t => int = "clientX" [@@bs.get];
+  external clientY : t => int = "clientY" [@@bs.get];
+  /* ctrlKey */
+  /* metaKey */
+  external movementX : t => int = "movementX" [@@bs.get];
+  external movementY : t => int = "movementY" [@@bs.get];
+  external offsetX : t => int = "offsetX" [@@bs.get]; /* experimental, but widely supported */
+  external offsetY : t => int = "offsetY" [@@bs.get]; /* experimental, but widely supported */
+  external pageX : t => int = "pageX" [@@bs.get]; /* experimental, but widely supported */
+  external pageY : t => int = "pageY" [@@bs.get]; /* experimental, but widely supported */
+  external region : t => Js.null string = "region" [@@bs.get];
+  external relatedTarget : t => Js.null element = "relatedTarget" [@@bs.get]; /* return Js.null EventTarget */
+  external screenX : t => int = "screenX" [@@bs.get];
+  external screenY : t => int = "screenY" [@@bs.get];
+  /* shiftKey */
+  external x : t => int = "x" [@@bs.get]; /* experimental */
+  external y : t => int = "y" [@@bs.get]; /* experimental */
+  /* getModifierState */
 
 };
 
