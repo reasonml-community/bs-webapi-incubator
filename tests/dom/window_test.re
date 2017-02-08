@@ -24,12 +24,3 @@ let _ = Window.promptWithDefault "type password or use this?" "password" window;
 let _ = Window.scroll 0 0 window;
 
 Window.onLoad window (fun () => print_endline "load");
-
-/* EventTarget interface */
-Window.addEventListener "click" handleClick window;
-Window.addEventListenerWithOptions "click" handleClick  { "passive": true } window;
-Window.addEventListenerUseCapture "click" handleClick (Js.Boolean.to_js_boolean true) window;
-Window.removeEventListener "click" handleClick window;
-Window.removeEventListenerWithOptions "click" handleClick  { "passive": true } window;
-Window.removeEventListenerUseCapture "click" handleClick (Js.Boolean.to_js_boolean true) window;
-let _ = Window.dispatchEvent event window;

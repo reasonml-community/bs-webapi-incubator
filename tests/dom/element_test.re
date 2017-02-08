@@ -104,17 +104,6 @@ let _ = Element.setAttribute "href" "http://..." el;
 let _ = Element.setAttributeNS "http://..." "foo" "bar" el;
 let _ = Element.setPointerCapture (Event.pointerId event) el;
 
-/* EventTarget interface */
-let et = Element.asEventTarget el;
-let handleClick e => print_endline "asd";
-Element.addEventListener "click" handleClick et;
-Element.addEventListenerWithOptions "click" handleClick  { "passive": true } et;
-Element.addEventListenerUseCapture "click" handleClick (Js.Boolean.to_js_boolean true) et;
-Element.removeEventListener "click" handleClick et;
-Element.removeEventListenerWithOptions "click" handleClick  { "passive": true } et;
-Element.removeEventListenerUseCapture "click" handleClick (Js.Boolean.to_js_boolean true) et;
-let _ = Element.dispatchEvent event et;
-
 /* HTMLElement interface */
 let _ = Element.accessKey el;
 let _ = Element.setAccessKey el "";

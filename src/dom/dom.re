@@ -30,11 +30,3 @@ type window;
 
 /* special */
 type eventPointerId;
-
-module AsNode = {
-  external asNode : 't => node = "%identity";
-};
-
-module AsEventTarget = {
-  external asEventTarget : 't => eventTarget = "%identity";
-};

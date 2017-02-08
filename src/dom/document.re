@@ -1,6 +1,7 @@
 type t = Dom.document;
 
-/* Node interface */
+external asNode : t => Dom.node = "%identity";
+external asEventTarget : t => Dom.eventTarget = "%identity";
 
 /* Document interface */
 external characterSet : t => string = "" [@@bs.get];

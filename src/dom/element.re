@@ -1,10 +1,7 @@
 type t = Dom.element;
 
-include Dom.AsEventTarget;
-include Dom.AsNode;
-include EventTarget.Interface;
-
-/* Node interface */
+external asNode : t => Dom.node = "%identity";
+external asEventTarget : t => Dom.eventTarget = "%identity";
 
 /* Element interface */
 external assignedSlot : t => t = "" [@@bs.get]; /* experimental, returns HTMLSlotElement */

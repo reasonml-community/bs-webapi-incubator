@@ -1,6 +1,6 @@
 type t = Dom.window;
 
-include EventTarget.Interface;
+external asEventTarget : t => Dom.eventTarget = "%identity";
 
 /* This module is far from exhaustive */
 
@@ -24,5 +24,3 @@ external promptWithDefault : string => string => string = "prompt" [@@bs.send.pi
 external scroll : int => int => unit = "" [@@bs.send.pipe: t];
 
 external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
-
-/*include EventTarget;*/

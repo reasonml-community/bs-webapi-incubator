@@ -9,5 +9,5 @@ external type_ : t => string = "type" [@@bs.get];
 external url : t => string = "" [@@bs.get];
 
 /** body getters **/
-external json : t => Js.t 'a = "" [@@bs.send];
-external text : t => string = "" [@@bs.send];
+external json : Js.t 'a = "" [@@bs.send.pipe: t];
+external text : string = "" [@@bs.send.pipe: t];
