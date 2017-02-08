@@ -8,31 +8,31 @@ external assignedSlot : t => t = "" [@@bs.get]; /* experimental, returns HTMLSlo
 external attributes : t => array Dom.attr = "" [@@bs.get]; /* return NameNodeMap, not array */
 external classList : t => Dom.domTokenList = "" [@@bs.get];
 external className : t => string = "" [@@bs.get];
-external setClassName : t => string => string = "className" [@@bs.set];
+external setClassName : t => string => unit = "className" [@@bs.set];
 external clientHeight : t => int = "" [@@bs.get]; /* experimental */
 external clientLeft : t => int = "" [@@bs.get]; /* experimental */
 external clientTop : t => int = "" [@@bs.get]; /* experimental */
 external clientWidth : t => int = "" [@@bs.get]; /* experimental */
 external id : t => string = "" [@@bs.get];
-external setId : t => string => string = "id" [@@bs.set];
+external setId : t => string => unit = "id" [@@bs.set];
 external innerHTML : t => string = "" [@@bs.get];
-external setInnerHTML : t => string => string = "innerHTML" [@@bs.set];
+external setInnerHTML : t => string => unit = "innerHTML" [@@bs.set];
 external localName : t => string = "" [@@bs.get];
 external namespaceURI : t => Js.null string = "" [@@bs.get];
 external nextElementSibling : t => Js.null t = "" [@@bs.get]; /* strictly part of the NonDocumentTypeChildNode interface */
 external outerHTML : t => string = "" [@@bs.get]; /* experimental, but widely supported */
-external setOuterHTML : t => string => string = "outerHTML" [@@bs.set]; /* experimental, but widely supported */
+external setOuterHTML : t => string => unit = "outerHTML" [@@bs.set]; /* experimental, but widely supported */
 external prefix : t => Js.null string = "" [@@bs.get];
 external previousElementSibling : t => Js.null t = "" [@@bs.get]; /* strictly part of the NonDocumentTypeChildNode interface */
 external scrollHeight : t => int = "" [@@bs.get]; /* experimental, but widely supported */
 external scrollLeft : t => int = "" [@@bs.get]; /* experimental */
-external setScrollLeft : t => int => int = "scrollLeft" [@@bs.set]; /* experimental */
+external setScrollLeft : t => int => unit = "scrollLeft" [@@bs.set]; /* experimental */
 external scrollTop : t => int = "" [@@bs.get]; /* experimental, but widely supported */
-external setScrollTop : t => int => int = "scrollTop" [@@bs.set]; /* experimental, but widely supported */
+external setScrollTop : t => int => unit = "scrollTop" [@@bs.set]; /* experimental, but widely supported */
 external scrollWidth : t => int = "" [@@bs.get]; /* experimental */
 external shadowRoot : t => t = "" [@@bs.get]; /* experimental */
 external slot : t => string = "" [@@bs.get]; /* experimental */
-external setSlot : t => string => string = "slot" [@@bs.set]; /* experimental */
+external setSlot : t => string => unit = "slot" [@@bs.set]; /* experimental */
 external tagName : t => string = "" [@@bs.get];
 
 external attachShadow : Js.t {..} => Dom.shadowRoot  = "" [@@bs.send.pipe: t]; /* experimental */
@@ -69,32 +69,32 @@ external setPointerCapture : Dom.eventPointerId => unit = "" [@@bs.send.pipe: t]
 
 /* HTMLElement interface */
 external accessKey : t => string = "" [@@bs.get];
-external setAccessKey : t => string => string = "accessKey" [@@bs.set];
+external setAccessKey : t => string => unit = "accessKey" [@@bs.set];
 external accessKeyLabel : t => string = "" [@@bs.get];
 external contentEditable : t => string /* enum */ = "" [@@bs.get];
-external setContentEditable : t => string /* enum */ => string /* enum */ = "contentEditable" [@@bs.set];
+external setContentEditable : t => string /* enum */ => unit = "contentEditable" [@@bs.set];
 external isContentEditable : t => Js.boolean = "" [@@bs.get];
 external contextMenu : t => t = "" [@@bs.get]; /* returns HTMLMenuElement */
-external setContextMenu : t => t => t = "contextMenu" [@@bs.set]; /* accepts and returns HTMLMenuElement */
+external setContextMenu : t => t => unit = "contextMenu" [@@bs.set]; /* accepts and returns HTMLMenuElement */
 external dataset : t => Dom.domStringMap = "" [@@bs.get];
 external dir : t => string /* enum */ = "" [@@bs.get];
-external setDir : t => string /* enum */ => string /* enum */ = "dir" [@@bs.set];
+external setDir : t => string /* enum */ => unit = "dir" [@@bs.set];
 external draggable : t => Js.boolean = "" [@@bs.get];
-external setDraggable : t => Js.boolean => Js.boolean = "draggable" [@@bs.set];
+external setDraggable : t => Js.boolean => unit = "draggable" [@@bs.set];
 external dropzone : t => Dom.domSettableTokenList = "" [@@bs.get];
 external hidden : t => Js.boolean = "" [@@bs.get];
-external setHidden : t => Js.boolean => Js.boolean = "hidden" [@@bs.set];
+external setHidden : t => Js.boolean => unit = "hidden" [@@bs.set];
 external itemScope : t => Js.boolean = "" [@@bs.get]; /* experimental */
-external setItemScope : t => Js.boolean => Js.boolean = "itemScope" [@@bs.set]; /* experimental */
+external setItemScope : t => Js.boolean => unit = "itemScope" [@@bs.set]; /* experimental */
 external itemType : t => Dom.domSettableTokenList = "" [@@bs.get]; /* experimental */
 external itemId : t => string = "" [@@bs.get]; /* experimental */
-external setItemId : t => string => string = "itemId" [@@bs.set]; /* experimental */
+external setItemId : t => string => unit = "itemId" [@@bs.set]; /* experimental */
 external itemRef : t => Dom.domSettableTokenList = "" [@@bs.get]; /* experimental */
 external itemProp : t => Dom.domSettableTokenList = "" [@@bs.get]; /* experimental */
 external itemValue : t => Js.t {..} = "" [@@bs.get]; /* experimental */
-external setItemValue : t => Js.t {..} => Js.t {..} = "itemValue" [@@bs.set]; /* experimental */
+external setItemValue : t => Js.t {..} => unit = "itemValue" [@@bs.set]; /* experimental */
 external lang : t => string = "" [@@bs.get];
-external setLang : t => string => string = "lang" [@@bs.set];
+external setLang : t => string => unit = "lang" [@@bs.set];
 external offsetHeight : t => int = "" [@@bs.get]; /* experimental */
 external offsetLeft : t => int = "" [@@bs.get]; /* experimental */
 external offsetParent : t => int = "" [@@bs.get]; /* experimental */
@@ -102,15 +102,15 @@ external offsetTop : t => int = "" [@@bs.get]; /* experimental, but widely suppo
 external offsetWidth : t => int = "" [@@bs.get]; /* experimental */
 /*external properties : r => HTMLPropertiesCollection.t = "properties" [@@bs.get]; /* experimental */*/
 external spellcheck : t => Js.boolean = "" [@@bs.get];
-external setSpellcheck : t => Js.boolean => Js.boolean = "spellcheck" [@@bs.set];
+external setSpellcheck : t => Js.boolean => unit = "spellcheck" [@@bs.set];
 external style : t => Dom.cssStyleDeclaration = "" [@@bs.get];
-external setStyle : t => Dom.cssStyleDeclaration => Dom.cssStyleDeclaration = "style" [@@bs.set];
+external setStyle : t => Dom.cssStyleDeclaration => unit = "style" [@@bs.set];
 external tabIndex : t => int = "" [@@bs.get];
-external setTabIndex : t => int => int = "tabIndex" [@@bs.set];
+external setTabIndex : t => int => unit = "tabIndex" [@@bs.set];
 external title : t => string = "" [@@bs.get];
-external setTitle : t => string => string = "title" [@@bs.set];
+external setTitle : t => string => unit = "title" [@@bs.set];
 external translate : t => Js.boolean = "" [@@bs.get]; /* experimental */
-external setTranslate : t => Js.boolean => Js.boolean = "translate" [@@bs.set]; /* experimental */
+external setTranslate : t => Js.boolean => unit = "translate" [@@bs.set]; /* experimental */
 
 external blur : unit = "" [@@bs.send.pipe: t];
 external click : unit = "" [@@bs.send.pipe: t];

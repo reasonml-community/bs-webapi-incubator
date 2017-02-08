@@ -5,7 +5,7 @@ type state; /* TODO: should be "anything that can be serializable" apparently */
 
 external length : t => int = "" [@@bs.get];
 external scrollRestoration : t => Js.boolean = "" [@@bs.get]; /* experimental */
-external setScrollRestoration : t => Js.boolean => Js.boolean = "scrollRestoration" [@@bs.set]; /* experimental */
+external setScrollRestoration : t => Js.boolean => unit = "scrollRestoration" [@@bs.set]; /* experimental */
 external state : t => state = "" [@@bs.get];
 
 external back : unit = "" [@@bs.send.pipe: t];

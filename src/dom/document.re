@@ -16,7 +16,7 @@ external pointerLockElement : t => Js.null Dom.element = "" [@@bs.get]; /* exper
 external preferredStyleSheetSet : t => string = "" [@@bs.get];
 external scrollingElement : t => Js.null Dom.element = "" [@@bs.get];
 external selectedStyleSheetSet : t => string = "" [@@bs.get];
-external setSelectedStyleSheetSet : t => string => string = "selectedStyleSheetSet" [@@bs.set];
+external setSelectedStyleSheetSet : t => string => unit = "selectedStyleSheetSet" [@@bs.set];
 external styleSheets : t => array Dom.cssStyleSheet = "" [@@bs.get]; /* return StyleSheetList, not array */
 external styleSheetSets : t => array string = "" [@@bs.get];
 external visibilityState : t => string /* enum */ = "" [@@bs.get];
@@ -64,16 +64,16 @@ external querySelectorAll : string => array Dom.element = "" [@@bs.send.pipe: t]
 /* HTMLDocument interface */
 external activeElement : t => Js.null Dom.element = "" [@@bs.get];
 external body : t => Js.null Dom.element = "" [@@bs.get]; /* returns Js.null HTMLBodyElement */
-external setBody : t => Dom.element => Js.null Element.t = "body" [@@bs.set]; /* accepth HTMLBodyElement and returns Js.null HTMLBodyElement */
+external setBody : t => Dom.element => unit = "body" [@@bs.set]; /* accepth HTMLBodyElement and returns Js.null HTMLBodyElement */
 external cookie : t => string = "" [@@bs.get];
-external setCookie : t => string => string = "cookie" [@@bs.set];
+external setCookie : t => string => unit = "cookie" [@@bs.set];
 external defaultView : t => Js.null Dom.window = "" [@@bs.get];
 external designMode : t => string /* enum */ = "" [@@bs.get];
-external setDesignMode : t => string /* enum */ => string /* enum */ = "designMode" [@@bs.set];
+external setDesignMode : t => string /* enum */ => unit = "designMode" [@@bs.set];
 external dir : t => string /* enum */ = "" [@@bs.get];
-external setDir : t => string /* enum */ => string /* enum */ = "dir" [@@bs.set];
+external setDir : t => string /* enum */ => unit = "dir" [@@bs.set];
 external domain : t => Js.null string = "" [@@bs.get];
-external setDomain : t => string => Js.null string = "domain" [@@bs.set];
+external setDomain : t => string => unit = "domain" [@@bs.set];
 external embeds : t => array Dom.element = "" [@@bs.get]; /* returns NodeList, not array */
 external forms : t => array Dom.element = "" [@@bs.get]; /* return HTMLCollection, not array */
 external head : t => Dom.element = "" [@@bs.get]; /* returns HTMLHeadElement */
@@ -81,13 +81,13 @@ external images : t => array Dom.element = "" [@@bs.get]; /* return HTMLCollecti
 external lastModified : t => string = "" [@@bs.get];
 external links : t => array Dom.element = "" [@@bs.get]; /* returns NodeList, not array */
 external location : t => Dom.location = "" [@@bs.get];
-external setLocation : t => string => Dom.location = "location" [@@bs.set];
+external setLocation : t => string => unit = "location" [@@bs.set];
 external plugins : t => array Dom.element = "" [@@bs.get]; /* returns HTMLCollection, not array */
 external readyState : t => string /* enum */ = "" [@@bs.get];
 external referrer : t => string = "" [@@bs.get];
 external scripts : t => array Dom.element = "" [@@bs.get]; /* returns HTMLCOllection, not array */
 external title : t => string = "" [@@bs.get];
-external setTitle : t => string => string = "title" [@@bs.set];
+external setTitle : t => string => unit = "title" [@@bs.set];
 external url : t => string = "URL" [@@bs.get];
 
 external close : unit = "" [@@bs.send.pipe: t];

@@ -7,14 +7,14 @@ external nextSibling : t => Js.null t = "" [@@bs.get];
 external nodeName : t => string = "" [@@bs.get];
 external nodeType : t => int = "" [@@bs.get]; /* returns an enum, see https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType */
 external nodeValue : t => Js.null string = "" [@@bs.get];
-external setNodeValue : t => Js.null string => Js.null string = "nodeValue" [@@bs.set];
+external setNodeValue : t => Js.null string => unit = "nodeValue" [@@bs.set];
 external ownerDocument : t => Dom.document = "" [@@bs.get];
 external parentNode : t => Js.null t = "" [@@bs.get];
 external parentElement : t => Js.null t = "" [@@bs.get];
 external previousSibling : t => Js.null t = "" [@@bs.get];
 external rootNode : t => t = "" [@@bs.get];
 external textContent : t => string = "" [@@bs.get];
-external setTextContent : t => string => string = "textContent" [@@bs.set];
+external setTextContent : t => string => unit = "textContent" [@@bs.set];
 
 external appendChild : t => unit = "" [@@bs.send.pipe: t];
 external cloneNode : t = "" [@@bs.send.pipe: t];
