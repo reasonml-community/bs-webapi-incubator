@@ -7,15 +7,15 @@ external focusOffset : t => int = "" [@@bs.get];
 external isCollapsed : t => Js.boolean = "" [@@bs.get];
 external rangeCount : t => int = "" [@@bs.get];
 
-external getRangeAt : t => int => Dom.range = "" [@@bs.send];
-external collapse : t => Dom.element => int => unit = "" [@@bs.send]; /* should accept Node */
-external extend : t => Dom.element => int => unit = "" [@@bs.send]; /* should accept Node */
-external collapseToStart : t => unit = "" [@@bs.send];
-external collapseToEnd : t => unit = "" [@@bs.send];
-external selectAllChildren : t => Dom.element => unit = "" [@@bs.send]; /* should accept Node */
-external addRange : t => Dom.range => unit = "" [@@bs.send];
-external removeRange : t => Dom.range => unit = "" [@@bs.send];
-external removeAllRanges : t => unit = "" [@@bs.send];
-external deleteFromDocument : t => unit = "" [@@bs.send];
-external toString : t => string = "" [@@bs.send];
-external containsNode : t => Dom.element => Js.boolean => Js.boolean = "" [@@bs.send]; /* should accept Node */
+external getRangeAt : int => Dom.range = "" [@@bs.send.pipe: t];
+external collapse : Dom.element => int => unit = "" [@@bs.send.pipe: t]; /* should accept Node */
+external extend : Dom.element => int => unit = "" [@@bs.send.pipe: t]; /* should accept Node */
+external collapseToStart : unit = "" [@@bs.send.pipe: t];
+external collapseToEnd : unit = "" [@@bs.send.pipe: t];
+external selectAllChildren : Dom.element => unit = "" [@@bs.send.pipe: t]; /* should accept Node */
+external addRange : Dom.range => unit = "" [@@bs.send.pipe: t];
+external removeRange : Dom.range => unit = "" [@@bs.send.pipe: t];
+external removeAllRanges : unit = "" [@@bs.send.pipe: t];
+external deleteFromDocument : unit = "" [@@bs.send.pipe: t];
+external toString : string = "" [@@bs.send.pipe: t];
+external containsNode : Dom.element => Js.boolean => Js.boolean = "" [@@bs.send.pipe: t]; /* should accept Node */

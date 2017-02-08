@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-shopt -s extglob
 
 esc=$(printf '\033')
 checkmark="${esc}[32m✔${esc}[0m";

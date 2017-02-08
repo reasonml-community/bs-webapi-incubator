@@ -1,7 +1,7 @@
 open ReasonJs;
 
-let el = Document.createElement document "strong";
-let event = Document.createEvent document "my-event";
+let el = document |> Document.createElement "strong";
+let event = document |> Document.createEvent "my-event";
 let handleClick e => print_endline "asd";
 
 let _ = Window.document window;
@@ -15,21 +15,21 @@ let _ = Window.parent window;
 let _ = Window.top window;
 let _ = Window.window;
 
-Window.alert window "hello!";
-let _ = Window.confirm window "is ok?";
-let _ = Window.getComputedStyle window el;
-let _ = Window.getComputedStyleWithPseudoElement window el "hover";
-let _ = Window.prompt window "type you password, please?";
-let _ = Window.promptWithDefault window "type password or use this?" "password";
-let _ = Window.scroll window 0 0;
+Window.alert "hello!" window;
+let _ = Window.confirm "is ok?" window;
+let _ = Window.getComputedStyle el window;
+let _ = Window.getComputedStyleWithPseudoElement el "hover" window;
+let _ = Window.prompt "type you password, please?" window;
+let _ = Window.promptWithDefault "type password or use this?" "password" window;
+let _ = Window.scroll 0 0 window;
 
 Window.onLoad window (fun () => print_endline "load");
 
 /* EventTarget interface */
-Window.addEventListener window "click" handleClick;
-Window.addEventListenerWithOptions window "click" handleClick  { "passive": true };
-Window.addEventListenerUseCapture window "click" handleClick (Js.Boolean.to_js_boolean true);
-Window.removeEventListener window "click" handleClick;
-Window.removeEventListenerWithOptions window "click" handleClick  { "passive": true };
-Window.removeEventListenerUseCapture window "click" handleClick (Js.Boolean.to_js_boolean true);
-let _ = Window.dispatchEvent window event;
+Window.addEventListener "click" handleClick window;
+Window.addEventListenerWithOptions "click" handleClick  { "passive": true } window;
+Window.addEventListenerUseCapture "click" handleClick (Js.Boolean.to_js_boolean true) window;
+Window.removeEventListener "click" handleClick window;
+Window.removeEventListenerWithOptions "click" handleClick  { "passive": true } window;
+Window.removeEventListenerUseCapture "click" handleClick (Js.Boolean.to_js_boolean true) window;
+let _ = Window.dispatchEvent event window;

@@ -15,13 +15,13 @@ external parent : t => t = "" [@@bs.get];
 external top : t => t = "" [@@bs.get];
 external window : t => t = "" [@@bs.get];
 
-external alert : t => string => unit = "" [@@bs.send];
-external confirm : t => string => Js.boolean = "" [@@bs.send];
-external getComputedStyle : t => Dom.element => Dom.cssStyleDeclaration = "" [@@bs.send];
-external getComputedStyleWithPseudoElement : t => Dom.element => string => Dom.cssStyleDeclaration = "getComputedStyle" [@@bs.send];
-external prompt : t => string => string = "" [@@bs.send];
-external promptWithDefault : t => string => string => string = "prompt" [@@bs.send];
-external scroll : t => int => int => unit = "" [@@bs.send];
+external alert : string => unit = "" [@@bs.send.pipe: t];
+external confirm : string => Js.boolean = "" [@@bs.send.pipe: t];
+external getComputedStyle : Dom.element => Dom.cssStyleDeclaration = "" [@@bs.send.pipe: t];
+external getComputedStyleWithPseudoElement : Dom.element => string => Dom.cssStyleDeclaration = "getComputedStyle" [@@bs.send.pipe: t];
+external prompt : string => string = "" [@@bs.send.pipe: t];
+external promptWithDefault : string => string => string = "prompt" [@@bs.send.pipe: t];
+external scroll : int => int => unit = "" [@@bs.send.pipe: t];
 
 external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
 

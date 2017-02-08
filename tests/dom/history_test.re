@@ -7,6 +7,6 @@ let _ = History.state history;
 
 History.back history;
 History.forward history;
-History.go history (-2);
-History.pushState history (History.state history) "My title" "http://...";
-History.replaceState history (History.state history) "My title" "http://...";
+History.go (-2) history;
+History.pushState (History.state history) "My title" "http://..." history;
+History.replaceState (History.state history) "My title" "http://..." history;

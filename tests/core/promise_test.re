@@ -1,6 +1,6 @@
 open ReasonJs;
 
-let p = fetch "/greatings";
+let p = fetch "/greetings";
 
 let p2 = Promise.(
   p |> then_ (fun res => Response.text res)

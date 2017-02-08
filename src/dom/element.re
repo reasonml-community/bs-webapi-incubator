@@ -38,37 +38,37 @@ external slot : t => string = "" [@@bs.get]; /* experimental */
 external setSlot : t => string => string = "slot" [@@bs.set]; /* experimental */
 external tagName : t => string = "" [@@bs.get];
 
-external attachShadow : t => Js.t {..} => Dom.shadowRoot  = "" [@@bs.send]; /* experimental */
-external animate : t => Js.t {..} => Js.t {..} => Dom.animation = "" [@@bs.send]; /* experimental */
-external closest : t => string => t = "" [@@bs.send]; /* experimental */
-external createShadowRoot : t => Dom.shadowRoot = "" [@@bs.send]; /* experimental AND deprecated (?!) */
-external getAttribute : t => string => Js.null string = "" [@@bs.send];
-external getAttributeNS : t => string => string => Js.null string = "" [@@bs.send];
-external getBoundingClientRect : t => Dom.domRect = "" [@@bs.send];
-external getClientRects : t => array Dom.domRect = "" [@@bs.send];
-external getElementsByClassName : t => string => array t = "" [@@bs.send]; /* return HTMLCollection, not array */
-external getElementsByTagName : t => string => array t = "" [@@bs.send]; /* return HTMLCollection, not array */
-external getElementsByTagNameNS : t => string => string => array t = "" [@@bs.send]; /* return HTMLCollection, not array */
-external hasAttribute : t => string => Js.boolean = "" [@@bs.send];
-external hasAttributeNS : t => string => string => Js.boolean = "" [@@bs.send];
-external hasAttributes : t => Js.boolean = "" [@@bs.send];
-external insertAdjacentElement : t => string /* enum */ => t => Js.null t = "" [@@bs.send]; /* experimental */
-external insertAdjacentText : t => string /* enum */ => string => Js.null string = "" [@@bs.send]; /* experimental */
-external matches : t => string => Js.boolean = "" [@@bs.send]; /* experimental, but widely supported */
-external querySelector : t => string => Js.null t = "" [@@bs.send];
-external querySelectorAll : t => string => array t = "" [@@bs.send]; /* returns NodeList, not array */
-external releasePointerCapture : t => Dom.eventPointerId => unit = "" [@@bs.send];
-external remove : t => unit = "" [@@bs.send]; /* experimental */
-external removeAttribute : t => string => unit = "" [@@bs.send];
-external removeAttributeNS : t => string => string => unit = "" [@@bs.send];
-external requestFullscreen : t => unit = "" [@@bs.send]; /* experimental */
-external requestPointerLock : t => unit = "" [@@bs.send]; /* experimental */
-external scrollIntoView : t => unit = "" [@@bs.send]; /* experimental, but widely supported */
-external scrollIntoViewAlignToTop : t => Js.boolean => unit = "scrollIntoView" [@@bs.send]; /* experimental, but widely supported */
-external scrollIntoViewWithOptions : t => Js.t {..} => unit = "scrollIntoView" [@@bs.send]; /* experimental */
-external setAttribute : t => string => string => unit = "" [@@bs.send];
-external setAttributeNS : t => string => string => string => unit = "" [@@bs.send];
-external setPointerCapture : t => Dom.eventPointerId => unit = "" [@@bs.send];
+external attachShadow : Js.t {..} => Dom.shadowRoot  = "" [@@bs.send.pipe: t]; /* experimental */
+external animate : Js.t {..} => Js.t {..} => Dom.animation = "" [@@bs.send.pipe: t]; /* experimental */
+external closest : string => t = "" [@@bs.send.pipe: t]; /* experimental */
+external createShadowRoot : Dom.shadowRoot = "" [@@bs.send.pipe: t]; /* experimental AND deprecated (?!) */
+external getAttribute : string => Js.null string = "" [@@bs.send.pipe: t];
+external getAttributeNS : string => string => Js.null string = "" [@@bs.send.pipe: t];
+external getBoundingClientRect : Dom.domRect = "" [@@bs.send.pipe: t];
+external getClientRects : array Dom.domRect = "" [@@bs.send.pipe: t];
+external getElementsByClassName : string => array t = "" [@@bs.send.pipe: t]; /* return HTMLCollection, not array */
+external getElementsByTagName : string => array t = "" [@@bs.send.pipe: t]; /* return HTMLCollection, not array */
+external getElementsByTagNameNS : string => string => array t = "" [@@bs.send.pipe: t]; /* return HTMLCollection, not array */
+external hasAttribute : string => Js.boolean = "" [@@bs.send.pipe: t];
+external hasAttributeNS : string => string => Js.boolean = "" [@@bs.send.pipe: t];
+external hasAttributes : Js.boolean = "" [@@bs.send.pipe: t];
+external insertAdjacentElement : string /* enum */ => t => Js.null t = "" [@@bs.send.pipe: t]; /* experimental */
+external insertAdjacentText : string /* enum */ => string => Js.null string = "" [@@bs.send.pipe: t]; /* experimental */
+external matches : string => Js.boolean = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
+external querySelector : string => Js.null t = "" [@@bs.send.pipe: t];
+external querySelectorAll : string => array t = "" [@@bs.send.pipe: t]; /* returns NodeList, not array */
+external releasePointerCapture : Dom.eventPointerId => unit = "" [@@bs.send.pipe: t];
+external remove : unit = "" [@@bs.send.pipe: t]; /* experimental */
+external removeAttribute : string => unit = "" [@@bs.send.pipe: t];
+external removeAttributeNS : string => string => unit = "" [@@bs.send.pipe: t];
+external requestFullscreen : unit = "" [@@bs.send.pipe: t]; /* experimental */
+external requestPointerLock : unit = "" [@@bs.send.pipe: t]; /* experimental */
+external scrollIntoView : unit = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
+external scrollIntoViewAlignToTop : Js.boolean => unit = "scrollIntoView" [@@bs.send.pipe: t]; /* experimental, but widely supported */
+external scrollIntoViewWithOptions : Js.t {..} => unit = "scrollIntoView" [@@bs.send.pipe: t]; /* experimental */
+external setAttribute : string => string => unit = "" [@@bs.send.pipe: t];
+external setAttributeNS : string => string => string => unit = "" [@@bs.send.pipe: t];
+external setPointerCapture : Dom.eventPointerId => unit = "" [@@bs.send.pipe: t];
 
 /* HTMLElement interface */
 external accessKey : t => string = "" [@@bs.get];
@@ -115,10 +115,10 @@ external setTitle : t => string => string = "title" [@@bs.set];
 external translate : t => Js.boolean = "" [@@bs.get]; /* experimental */
 external setTranslate : t => Js.boolean => Js.boolean = "translate" [@@bs.set]; /* experimental */
 
-external blur : t => unit = "" [@@bs.send];
-external click : t => unit = "" [@@bs.send];
-external focus : t => unit = "" [@@bs.send];
-external forceSpellCheck : t => unit = "" [@@bs.send]; /* experimental */
+external blur : unit = "" [@@bs.send.pipe: t];
+external click : unit = "" [@@bs.send.pipe: t];
+external focus : unit = "" [@@bs.send.pipe: t];
+external forceSpellCheck : unit = "" [@@bs.send.pipe: t]; /* experimental */
 
 /* GlobalEventHandlers interface */
 /* Not sure this should be exposed, since EventTarget seems like a better API */

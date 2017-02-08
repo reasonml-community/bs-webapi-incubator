@@ -1,6 +1,6 @@
 open ReasonJs;
 
-let el = Document.createElement document "strong";
+let el = document |> Document.createElement "strong";
 
 /* Document interface */
 let _ = Document.characterSet document;
@@ -20,36 +20,36 @@ let _ = Document.styleSheets document;
 let _ = Document.styleSheetSets document;
 let _ = Document.visibilityState document;
 
-let _ = Document.adoptNode document el;
-let _ = Document.createAttribute document "data-foo";
-let _ = Document.createAttributeNS document "http://..." "foo";
-let _ = Document.createComment document "witty comment";
+let _ = Document.adoptNode el document;
+let _ = Document.createAttribute "data-foo" document;
+let _ = Document.createAttributeNS "http://..." "foo" document;
+let _ = Document.createComment "witty comment" document;
 let _ = Document.createDocumentFragment document;
-let _ = Document.createElement document "div";
-let _ = Document.createElementWithOptions document "div" [%bs.raw "{}"]; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
-let _ = Document.createElementNS document "http://..." "foo";
-let _ = Document.createElementNSWithOptions document "http://..." "div" [%bs.raw "{}"]; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
-let _ = Document.createEvent document "MyCustomEvent";
-let _ = Document.createNodeIterator document el;
-let _ = Document.createNodeIteratorWithWhatToShow document el 0;
-let _ = Document.createNodeIteratorWithWhatToShowFilter document el 0 (NodeFilter.make (fun _ => 0));
-let _ = Document.elementFromPoint document 0 0;
-let _ = Document.elementsFromPoint document 0 0;
-let _ = Document.enableStyleSheetsForSet document "my-stylesheet-set";
+let _ = Document.createElement "div" document;
+let _ = Document.createElementWithOptions "div" [%bs.raw "{}"] document; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
+let _ = Document.createElementNS "http://..." "foo" document;
+let _ = Document.createElementNSWithOptions "http://..." "div" [%bs.raw "{}"] document; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
+let _ = Document.createEvent "MyCustomEvent" document;
+let _ = Document.createNodeIterator el document;
+let _ = Document.createNodeIteratorWithWhatToShow el 0 document;
+let _ = Document.createNodeIteratorWithWhatToShowFilter el 0 (NodeFilter.make (fun _ => 0)) document;
+let _ = Document.elementFromPoint 0 0 document;
+let _ = Document.elementsFromPoint 0 0 document;
+let _ = Document.enableStyleSheetsForSet "my-stylesheet-set" document;
 let _ = Document.exitPointerLock document;
 let _ = Document.getAnimations document;
-let _ = Document.getElementsByClassName document "lstlisting";
-let _ = Document.getElementsByTagName document "code";
-let _ = Document.getElementsByTagNameNS document "http://..." "foo";
-let _ = Document.importNode document el;
-let _ = Document.importNodeDeep document el (Js.Boolean.to_js_boolean true);
+let _ = Document.getElementsByClassName "lstlisting" document;
+let _ = Document.getElementsByTagName "code" document;
+let _ = Document.getElementsByTagNameNS "http://..." "foo" document;
+let _ = Document.importNode el document;
+let _ = Document.importNodeDeep el (Js.Boolean.to_js_boolean true) document;
 /* TODO: These get dead code eliminated
 let _ = Document.registerElement document"my-component";
 let _ = Document.registerElementWithOptions document"my-component" [%bs.raw "{}"];
 */
-let _ = Document.getElementById document "root";
-let _ = Document.querySelector document ".lstlisting";
-let _ = Document.querySelectorAll document ".lstlisting";
+let _ = Document.getElementById "root" document;
+let _ = Document.querySelector ".lstlisting" document;
+let _ = Document.querySelectorAll ".lstlisting" document;
 
 /* HTMLDocument interface */
 let _ = Document.activeElement document;
@@ -81,14 +81,14 @@ let _ = Document.setTitle document "Reason: Rapid Expressive Systems Programming
 let _ = Document.url document;
 
 Document.close document;
-let _ = Document.execCommand document "copy" (Js.Boolean.to_js_boolean false) Js.Null.empty;
-let _ = Document.getElementsByName document "angry-joe";
+let _ = Document.execCommand "copy" (Js.Boolean.to_js_boolean false) Js.Null.empty document;
+let _ = Document.getElementsByName "angry-joe" document;
 let _ = Document.getSelection document;
 let _ = Document.hasFocus document;
 Document.open_ document;
-let _ = Document.queryCommandEnabled document "copy";
-let _ = Document.queryCommandIndeterm document "cut";
-let _ = Document.queryCommandSupported document "paste";
-let _ = Document.queryCommandValue document "fontName";
-Document.write document "Hello World!";
-Document.writeln document "Hello Newline!";
+let _ = Document.queryCommandEnabled "copy" document;
+let _ = Document.queryCommandIndeterm "cut" document;
+let _ = Document.queryCommandSupported "paste" document;
+let _ = Document.queryCommandValue "fontName" document;
+Document.write "Hello World!" document;
+Document.writeln "Hello Newline!" document;

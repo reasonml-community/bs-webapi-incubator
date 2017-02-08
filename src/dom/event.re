@@ -17,9 +17,9 @@ external timeStamp : t => float = "" [@@bs.get];
 external type_ : t => string = "type" [@@bs.get];
 external isTrusted : t => Js.boolean = "" [@@bs.get];
 
-external preventDefault : t => unit = "" [@@bs.send];
-external stopImmediatePropagation : t => unit = "" [@@bs.send];
-external stopPropagation : t => unit = "" [@@bs.send];
+external preventDefault : unit = "" [@@bs.send.pipe: t];
+external stopImmediatePropagation : unit = "" [@@bs.send.pipe: t];
+external stopPropagation : unit = "" [@@bs.send.pipe: t];
 
 /* KeyboardEvent interface */
 external altKey : t => Js.boolean = "" [@@bs.get];
@@ -33,7 +33,7 @@ external metaKey : t => Js.boolean = "" [@@bs.get];
 external repeat : t => Js.boolean = "" [@@bs.get];
 external shiftKey : t => Js.boolean = "" [@@bs.get];
 
-external getModifierState : t => string /* enum */ => Js.boolean = "" [@@bs.send];
+external getModifierState : string /* enum */ => Js.boolean = "" [@@bs.send.pipe: t];
 
 /* MouseEvent interface */
 /* altKey */

@@ -24,8 +24,8 @@ external password : t => string = "" [@@bs.get];
 external setPassword : t => string => string = "password" [@@bs.set];
 external origin : t => string = "" [@@bs.get];
 
-external assign : t => string => unit = "" [@@bs.send];
-external reload : t => unit = "" [@@bs.send];
-external reloadWithForce : t => Js.boolean => unit = "reload" [@@bs.send];
-external replace : t => string => unit = "" [@@bs.send];
-external toString : t => string = "" [@@bs.send];
+external assign : string => unit = "" [@@bs.send.pipe: t];
+external reload : unit = "" [@@bs.send.pipe: t];
+external reloadWithForce : Js.boolean => unit = "reload" [@@bs.send.pipe: t];
+external replace : string => unit = "" [@@bs.send.pipe: t];
+external toString : string = "" [@@bs.send.pipe: t];

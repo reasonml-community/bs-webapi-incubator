@@ -20,40 +20,40 @@ external styleSheets : t => array Dom.cssStyleSheet = "" [@@bs.get]; /* return S
 external styleSheetSets : t => array string = "" [@@bs.get];
 external visibilityState : t => string /* enum */ = "" [@@bs.get];
 
-external adoptNode : t => Dom.element => Dom.element = "" [@@bs.send];
-external createAttribute : t => string => Dom.attr = "" [@@bs.send];
-external createAttributeNS : t => string => string => Dom.attr = "" [@@bs.send];
-external createComment : t => string => Dom.comment = "" [@@bs.send];
-external createDocumentFragment : t => Dom.documentFragment = "" [@@bs.send];
-external createElement : t => string => Dom.element = "" [@@bs.send];
-external createElementWithOptions : t => string => Js.t {..} => Dom.element = "createElement" [@@bs.send]; /* not widely supported */
-external createElementNS : t => string => string => Dom.element = "" [@@bs.send];
-external createElementNSWithOptions : t => string => string => Js.t {..} => Dom.element = "createEementNS" [@@bs.send]; /* not widely supported */
-external createEvent : t => string /* large enum */ => Dom.event = "" [@@bs.send]; /* discouraged (but not deprecated) in favor of Event constructors */
-external createNodeIterator : t => Dom.element => Dom.nodeIterator = "" [@@bs.send];
-external createNodeIteratorWithWhatToShow : t => Dom.element => int /* NodeFilter enum */ => Dom.nodeIterator = "createNodeIterator" [@@bs.send];
-external createNodeIteratorWithWhatToShowFilter : t => Dom.element => int /* NodeFilter enum */ => Dom.nodeFilter => Dom.nodeIterator = "createNodeIterator" [@@bs.send];
+external adoptNode : Dom.element => Dom.element = "" [@@bs.send.pipe: t];
+external createAttribute : string => Dom.attr = "" [@@bs.send.pipe: t];
+external createAttributeNS : string => string => Dom.attr = "" [@@bs.send.pipe: t];
+external createComment : string => Dom.comment = "" [@@bs.send.pipe: t];
+external createDocumentFragment : Dom.documentFragment = "" [@@bs.send.pipe: t];
+external createElement : string => Dom.element = "" [@@bs.send.pipe: t];
+external createElementWithOptions : string => Js.t {..} => Dom.element = "createElement" [@@bs.send.pipe: t]; /* not widely supported */
+external createElementNS : string => string => Dom.element = "" [@@bs.send.pipe: t];
+external createElementNSWithOptions : string => string => Js.t {..} => Dom.element = "createEementNS" [@@bs.send.pipe: t]; /* not widely supported */
+external createEvent : string /* large enum */ => Dom.event = "" [@@bs.send.pipe: t]; /* discouraged (but not deprecated) in favor of Event constructors */
+external createNodeIterator : Dom.element => Dom.nodeIterator = "" [@@bs.send.pipe: t];
+external createNodeIteratorWithWhatToShow : Dom.element => int /* NodeFilter enum */ => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
+external createNodeIteratorWithWhatToShowFilter : Dom.element => int /* NodeFilter enum */ => Dom.nodeFilter => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
 /* createProcessingInstruction */
-external createRange : t => Dom.range = "" [@@bs.send];
-external createText : t => string => Dom.textNode = "" [@@bs.send];
-external createTreeWalker : t => Dom.element => Dom.treeWalker = "" [@@bs.send];
-external createTreeWalkerWithWhatToShow : t => Dom.element => int /* NodeFilter enum */ => Dom.treeWalker = "createTreeWalker" [@@bs.send];
-external createTreeWalkerWithWhatToShowFilter : t => Dom.element => int /* NodeFilter enum */ => Dom.treeWalker => Dom.nodeIterator = "createTreeWalker" [@@bs.send];
-external elementFromPoint : t => int => int => Dom.element = "" [@@bs.send]; /* experimental, but widely supported */
-external elementsFromPoint : t => int => int => array Dom.element = "" [@@bs.send]; /* experimental */
-external enableStyleSheetsForSet : t => string => unit = "" [@@bs.send];
-external exitPointerLock : t => unit = "" [@@bs.send]; /* experimental */
-external getAnimations : t => array Dom.animation = "" [@@bs.send]; /* experimental */
-external getElementsByClassName : t => string => array Dom.element = "" [@@bs.send]; /* returns HTMLCollection, not array */
-external getElementsByTagName : t => string => array Dom.element = "" [@@bs.send]; /* returns HTMLCollection, not array */
-external getElementsByTagNameNS : t => string => string => array Dom.element = "" [@@bs.send]; /* returns HTMLCollection, not array */
-external importNode : t => Dom.element => Dom.element = "" [@@bs.send];
-external importNodeDeep : t => Dom.element => Js.boolean => Dom.element = "importNode" [@@bs.send];
-external registerElement : t => string => (unit => Dom.element) = "" [@@bs.send]; /* experimental and deprecated in favor of customElements.define() */
-external registerElementWithOptions : t => string => Js.t {..} => (unit => Dom.element) = "registerElement" [@@bs.send]; /* experimental and deprecated in favor of customElements.define() */
-external getElementById : t => string => Js.null Dom.element = "" [@@bs.send];
-external querySelector : t => string => Js.null Dom.element = "" [@@bs.send];
-external querySelectorAll : t => string => array Dom.element = "" [@@bs.send]; /* returns NodeList, not array */
+external createRange : Dom.range = "" [@@bs.send.pipe: t];
+external createText : string => Dom.textNode = "" [@@bs.send.pipe: t];
+external createTreeWalker : Dom.element => Dom.treeWalker = "" [@@bs.send.pipe: t];
+external createTreeWalkerWithWhatToShow : Dom.element => int /* NodeFilter enum */ => Dom.treeWalker = "createTreeWalker" [@@bs.send.pipe: t];
+external createTreeWalkerWithWhatToShowFilter : Dom.element => int /* NodeFilter enum */ => Dom.treeWalker => Dom.nodeIterator = "createTreeWalker" [@@bs.send.pipe: t];
+external elementFromPoint : int => int => Dom.element = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
+external elementsFromPoint : int => int => array Dom.element = "" [@@bs.send.pipe: t]; /* experimental */
+external enableStyleSheetsForSet : string => unit = "" [@@bs.send.pipe: t];
+external exitPointerLock : unit = "" [@@bs.send.pipe: t]; /* experimental */
+external getAnimations : array Dom.animation = "" [@@bs.send.pipe: t]; /* experimental */
+external getElementsByClassName : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns HTMLCollection, not array */
+external getElementsByTagName : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns HTMLCollection, not array */
+external getElementsByTagNameNS : string => string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns HTMLCollection, not array */
+external importNode : Dom.element => Dom.element = "" [@@bs.send.pipe: t];
+external importNodeDeep : Dom.element => Js.boolean => Dom.element = "importNode" [@@bs.send.pipe: t];
+external registerElement : string => (unit => Dom.element) = "" [@@bs.send.pipe: t]; /* experimental and deprecated in favor of customElements.define() */
+external registerElementWithOptions : string => Js.t {..} => (unit => Dom.element) = "registerElement" [@@bs.send.pipe: t]; /* experimental and deprecated in favor of customElements.define() */
+external getElementById : string => Js.null Dom.element = "" [@@bs.send.pipe: t];
+external querySelector : string => Js.null Dom.element = "" [@@bs.send.pipe: t];
+external querySelectorAll : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns NodeList, not array */
 
 /** XPath stuff */
 /* createExpression */
@@ -89,17 +89,17 @@ external title : t => string = "" [@@bs.get];
 external setTitle : t => string => string = "title" [@@bs.set];
 external url : t => string = "URL" [@@bs.get];
 
-external close : t => unit = "" [@@bs.send];
-external execCommand : t => string => Js.boolean => Js.null string => Js.boolean = "" [@@bs.send];
-external getElementsByName : t => string => array Dom.element = "" [@@bs.send]; /* returns NodelList, not array */
-external getSelection : t => Dom.selection = "" [@@bs.send];
-external hasFocus : t => Js.boolean = "" [@@bs.send];
-external open_ : t => unit = "open" [@@bs.send];
-external queryCommandEnabled : t => string => Js.boolean = "" [@@bs.send];
-external queryCommandIndeterm : t => string => Js.boolean = "" [@@bs.send];
-external queryCommandSupported : t => string => Js.boolean = "" [@@bs.send];
-external queryCommandValue : t => string => string = "" [@@bs.send];
-external write : t => string => unit = "" [@@bs.send];
-external writeln : t => string => unit = "" [@@bs.send];
+external close : unit = "" [@@bs.send.pipe: t];
+external execCommand : string => Js.boolean => Js.null string => Js.boolean = "" [@@bs.send.pipe: t];
+external getElementsByName : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns NodelList, not array */
+external getSelection : Dom.selection = "" [@@bs.send.pipe: t];
+external hasFocus : Js.boolean = "" [@@bs.send.pipe: t];
+external open_ : unit = "open" [@@bs.send.pipe: t];
+external queryCommandEnabled : string => Js.boolean = "" [@@bs.send.pipe: t];
+external queryCommandIndeterm : string => Js.boolean = "" [@@bs.send.pipe: t];
+external queryCommandSupported : string => Js.boolean = "" [@@bs.send.pipe: t];
+external queryCommandValue : string => string = "" [@@bs.send.pipe: t];
+external write : string => unit = "" [@@bs.send.pipe: t];
+external writeln : string => unit = "" [@@bs.send.pipe: t];
 
 /* GlobalEventHandlers interface */

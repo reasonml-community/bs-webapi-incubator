@@ -1,8 +1,8 @@
 open ReasonJs;
 
-let el = Document.createElement document "strong";
-let el2 = Document.createElement document "small";
-let event = Document.createEvent document "my-event";
+let el = document |> Document.createElement "strong";
+let el2 = document |> Document.createElement "small";
+let event = document |> Document.createEvent "my-event";
 
 /* Node interface */
 let node = Element.asNode el;
@@ -23,22 +23,22 @@ let _ = Node.rootNode node;
 let _ = Node.textContent node;
 let _ = Node.setTextContent node "foo";
 
-let _ = Node.appendChild node node2;
+let _ = Node.appendChild node2 node;
 let _ = Node.cloneNode node;
-let _ = Node.cloneNodeDeep node (Js.Boolean.to_js_boolean true);
-let _ = Node.compareDocumentPosition node node2;
-let _ = Node.contains node node2;
+let _ = Node.cloneNodeDeep (Js.Boolean.to_js_boolean true) node;
+let _ = Node.compareDocumentPosition node2 node;
+let _ = Node.contains node2 node;
 let _ = Node.getRootNode node;
-let _ = Node.getRootNodeComposed node (Js.Boolean.to_js_boolean true);
+let _ = Node.getRootNodeComposed (Js.Boolean.to_js_boolean true) node;
 let _ = Node.hasChildNodes node;
-let _ = Node.insertBefore node node2 Js.Null.empty;
-let _ = Node.isDefaultNamespace node "http://...";
-let _ = Node.isEqualNode node node2;
-let _ = Node.isSameNode node node2;
+let _ = Node.insertBefore node2 Js.Null.empty node;
+let _ = Node.isDefaultNamespace "http://..." node;
+let _ = Node.isEqualNode node2 node;
+let _ = Node.isSameNode node2 node;
 let _ = Node.lookupPrefix node;
-let _ = Node.lookupNamespaceURI node Js.Null.empty;
+let _ = Node.lookupNamespaceURI Js.Null.empty node;
 let _ = Node.normalize node;
-let _ = Node.removeChild node node2;
+let _ = Node.removeChild node2 node;
 
 /* Element interface */
 let _ = Element.assignedSlot el;
@@ -72,48 +72,48 @@ let _ = Element.slot el;
 let _ = Element.setSlot el "<strong>stuff</strong>";
 let _ = Element.tagName el;
 
-let _ = Element.attachShadow el { "mode": "open" };
-let _ = Element.animate el { "transform": "translateT(0px)" } { "duration": 1000 };
-let _ = Element.closest el "input";
+let _ = Element.attachShadow { "mode": "open" } el;
+let _ = Element.animate { "transform": "translateT(0px)" } { "duration": 1000 } el;
+let _ = Element.closest "input" el;
 let _ = Element.createShadowRoot el;
-let _ = Element.getAttribute el "href";
-let _ = Element.getAttributeNS el "http://..." "foo";
+let _ = Element.getAttribute "href" el;
+let _ = Element.getAttributeNS "http://..." "foo" el;
 let _ = Element.getBoundingClientRect el;
 let _ = Element.getClientRects el;
-let _ = Element.getElementsByClassName el "some-class-name";
-let _ = Element.getElementsByTagName el "pre";
-let _ = Element.getElementsByTagNameNS el "http://..." "td";
-let _ = Element.hasAttribute el "data-my-value";
-let _ = Element.hasAttributeNS el "http://..." "foo";
+let _ = Element.getElementsByClassName "some-class-name" el;
+let _ = Element.getElementsByTagName "pre" el;
+let _ = Element.getElementsByTagNameNS "http://..." "td" el;
+let _ = Element.hasAttribute "data-my-value" el;
+let _ = Element.hasAttributeNS "http://..." "foo" el;
 let _ = Element.hasAttributes el;
-let _ = Element.insertAdjacentElement el "beforebegin" el2;
-let _ = Element.insertAdjacentText el "afterbegin" "text";
-let _ = Element.matches el "input";
-let _ = Element.querySelector el "input";
-let _ = Element.querySelectorAll el "input";
-let _ = Element.releasePointerCapture el (Event.pointerId event);
+let _ = Element.insertAdjacentElement "beforebegin" el2 el;
+let _ = Element.insertAdjacentText "afterbegin" "text" el;
+let _ = Element.matches "input" el;
+let _ = Element.querySelector "input" el;
+let _ = Element.querySelectorAll "input" el;
+let _ = Element.releasePointerCapture (Event.pointerId event) el;
 let _ = Element.remove el;
-let _ = Element.removeAttribute el "href";
-let _ = Element.removeAttributeNS el "http://..." "foo";
+let _ = Element.removeAttribute "href" el;
+let _ = Element.removeAttributeNS "http://..." "foo" el;
 let _ = Element.requestFullscreen el;
 let _ = Element.requestPointerLock el;
 let _ = Element.scrollIntoView el;
-let _ = Element.scrollIntoViewAlignToTop el (Js.Boolean.to_js_boolean true);
-let _ = Element.scrollIntoViewWithOptions el { "block": "end", "behvaior": "smooth" };
-let _ = Element.setAttribute el "href" "http://...";
-let _ = Element.setAttributeNS el "http://..." "foo" "bar";
-let _ = Element.setPointerCapture el (Event.pointerId event);
+let _ = Element.scrollIntoViewAlignToTop (Js.Boolean.to_js_boolean true) el;
+let _ = Element.scrollIntoViewWithOptions { "block": "end", "behvaior": "smooth" } el;
+let _ = Element.setAttribute "href" "http://..." el;
+let _ = Element.setAttributeNS "http://..." "foo" "bar" el;
+let _ = Element.setPointerCapture (Event.pointerId event) el;
 
 /* EventTarget interface */
 let et = Element.asEventTarget el;
 let handleClick e => print_endline "asd";
-Element.addEventListener et "click" handleClick;
-Element.addEventListenerWithOptions et "click" handleClick  { "passive": true };
-Element.addEventListenerUseCapture et "click" handleClick (Js.Boolean.to_js_boolean true);
-Element.removeEventListener et "click" handleClick;
-Element.removeEventListenerWithOptions et "click" handleClick  { "passive": true };
-Element.removeEventListenerUseCapture et "click" handleClick (Js.Boolean.to_js_boolean true);
-let _ = Element.dispatchEvent et event;
+Element.addEventListener "click" handleClick et;
+Element.addEventListenerWithOptions "click" handleClick  { "passive": true } et;
+Element.addEventListenerUseCapture "click" handleClick (Js.Boolean.to_js_boolean true) et;
+Element.removeEventListener "click" handleClick et;
+Element.removeEventListenerWithOptions "click" handleClick  { "passive": true } et;
+Element.removeEventListenerUseCapture "click" handleClick (Js.Boolean.to_js_boolean true) et;
+let _ = Element.dispatchEvent event et;
 
 /* HTMLElement interface */
 let _ = Element.accessKey el;

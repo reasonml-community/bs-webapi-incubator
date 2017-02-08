@@ -8,8 +8,8 @@ external scrollRestoration : t => Js.boolean = "" [@@bs.get]; /* experimental */
 external setScrollRestoration : t => Js.boolean => Js.boolean = "scrollRestoration" [@@bs.set]; /* experimental */
 external state : t => state = "" [@@bs.get];
 
-external back : t => unit = "" [@@bs.send];
-external forward : t => unit = "" [@@bs.send];
-external go : t => int => unit = "" [@@bs.send];
-external pushState : t => state => string => string => unit = "" [@@bs.send];
-external replaceState : t => state => string => string => unit = "" [@@bs.send];
+external back : unit = "" [@@bs.send.pipe: t];
+external forward : unit = "" [@@bs.send.pipe: t];
+external go : int => unit = "" [@@bs.send.pipe: t];
+external pushState : state => string => string => unit = "" [@@bs.send.pipe: t];
+external replaceState : state => string => string => unit = "" [@@bs.send.pipe: t];

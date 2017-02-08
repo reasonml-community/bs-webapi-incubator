@@ -22,8 +22,8 @@ let _ = Location.password location;
 let _ = Location.setPassword location "lambda-the-ultimate";
 let _ = Location.origin location;
 
-Location.assign location "http://reason.ml";
+Location.assign "http://reason.ml" location;
 Location.reload location;
-Location.reloadWithForce location (Js.Boolean.to_js_boolean true);
-Location.replace location "http://reason.ml";
+Location.reloadWithForce (Js.Boolean.to_js_boolean true) location;
+Location.replace "http://reason.ml" location;
 let _ = Location.toString location;
