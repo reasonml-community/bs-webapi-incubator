@@ -4,7 +4,7 @@
   "description": "Reason + BuckleScript bindings to DOM",
   "main": "index.js",
   "scripts": {
-    "test": "bsb -make-world && cp lib/js/tests/test.js tests/ && tests/run.sh",
+    "test": "bsb -make-world && tests/run.sh",
     "start": "bsb -make-world -w"
   },
   "author": "chenglou",
