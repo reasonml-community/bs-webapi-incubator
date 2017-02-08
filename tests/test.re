@@ -7,10 +7,8 @@
     | None => assert false;
   };
 
-  let window = Current.window;
-  let doc = Current.document;
-  let history = Current.history;
-  let location = Current.location;
+  let history = history;
+  let location = location;
 
   /* Event interface */
   let event = Event.make "foo";
@@ -73,8 +71,8 @@
   let _ = Event.isPrimary event;
 
 
-  let el = unNull (Document.getElementById doc "some-element");
-  let el2 = unNull (Document.getElementById doc "some-other-element");
+  let el = unNull (Document.getElementById document"some-element");
+  let el2 = unNull (Document.getElementById document"some-other-element");
 
   let range = Range.make ();
   let _ = Range.collapsed range;
@@ -110,7 +108,7 @@
   let _ = Range.isPointInRange range el 0;
 
 
-  let sel = Document.getSelection doc;
+  let sel = Document.getSelection document;
 
   let _ = Selection.anchorNode sel;
   let _ = Selection.anchorOffset sel;
@@ -134,38 +132,40 @@
 
 
   /* Node interface */
-  let _ = Element.childNodes el;
-  let _ = Element.firstChild el;
-  let _ = Element.lastChild el;
-  let _ = Element.nextSibling el;
-  let _ = Element.nodeName el;
-  let _ = Element.nodeType el;
-  let _ = Element.nodeValue el;
-  let _ = Element.setNodeValue el Js.Null.empty;
-  let _ = Element.ownerDocument el;
-  let _ = Element.parentNode el;
-  let _ = Element.parentElement el;
-  let _ = Element.previousSibling el;
-  let _ = Element.rootNode el;
-  let _ = Element.textContent el;
-  let _ = Element.setTextContent el "foo";
+  let node = Element.asNode el;
+  let node2 = Element.asNode el2;
+  let _ = Node.childNodes node;
+  let _ = Node.firstChild node;
+  let _ = Node.lastChild node;
+  let _ = Node.nextSibling node;
+  let _ = Node.nodeName node;
+  let _ = Node.nodeType node;
+  let _ = Node.nodeValue node;
+  let _ = Node.setNodeValue node Js.Null.empty;
+  let _ = Node.ownerDocument node;
+  let _ = Node.parentNode node;
+  let _ = Node.parentElement node;
+  let _ = Node.previousSibling node;
+  let _ = Node.rootNode node;
+  let _ = Node.textContent node;
+  let _ = Node.setTextContent node "foo";
 
-  let _ = Element.appendChild el el2;
-  let _ = Element.cloneNode el;
-  let _ = Element.cloneNodeDeep el (Js.Boolean.to_js_boolean true);
-  let _ = Element.compareDocumentPosition el el2;
-  let _ = Element.contains el el2;
-  let _ = Element.getRootNode el;
-  let _ = Element.getRootNodeComposed el (Js.Boolean.to_js_boolean true);
-  let _ = Element.hasChildNodes el;
-  let _ = Element.insertBefore el el2 Js.Null.empty;
-  let _ = Element.isDefaultNamespace el "http://...";
-  let _ = Element.isEqualNode el el2;
-  let _ = Element.isSameNode el el2;
-  let _ = Element.lookupPrefix el;
-  let _ = Element.lookupNamespaceURI el Js.Null.empty;
-  let _ = Element.normalize el;
-  let _ = Element.removeChild el el2;
+  let _ = Node.appendChild node node2;
+  let _ = Node.cloneNode node;
+  let _ = Node.cloneNodeDeep node (Js.Boolean.to_js_boolean true);
+  let _ = Node.compareDocumentPosition node node2;
+  let _ = Node.contains node node2;
+  let _ = Node.getRootNode node;
+  let _ = Node.getRootNodeComposed node (Js.Boolean.to_js_boolean true);
+  let _ = Node.hasChildNodes node;
+  let _ = Node.insertBefore node node2 Js.Null.empty;
+  let _ = Node.isDefaultNamespace node "http://...";
+  let _ = Node.isEqualNode node node2;
+  let _ = Node.isSameNode node node2;
+  let _ = Node.lookupPrefix node;
+  let _ = Node.lookupNamespaceURI node Js.Null.empty;
+  let _ = Node.normalize node;
+  let _ = Node.removeChild node node2;
 
   /* Element interface */
   let _ = Element.assignedSlot el;
@@ -232,14 +232,15 @@
   let _ = Element.setPointerCapture el (Event.pointerId event);
 
   /* EventTarget interface */
+  let et = Element.asEventTarget el;
   let handleClick e => print_endline "asd";
-  Element.addEventListener el "click" handleClick;
-  Element.addEventListenerWithOptions el "click" handleClick  { "passive": true };
-  Element.addEventListenerUseCapture el "click" handleClick (Js.Boolean.to_js_boolean true);
-  Element.removeEventListener el "click" handleClick;
-  Element.removeEventListenerWithOptions el "click" handleClick  { "passive": true };
-  Element.removeEventListenerUseCapture el "click" handleClick (Js.Boolean.to_js_boolean true);
-  let _ = Element.dispatchEvent el event;
+  Element.addEventListener et "click" handleClick;
+  Element.addEventListenerWithOptions et "click" handleClick  { "passive": true };
+  Element.addEventListenerUseCapture et "click" handleClick (Js.Boolean.to_js_boolean true);
+  Element.removeEventListener et "click" handleClick;
+  Element.removeEventListenerWithOptions et "click" handleClick  { "passive": true };
+  Element.removeEventListenerUseCapture et "click" handleClick (Js.Boolean.to_js_boolean true);
+  let _ = Element.dispatchEvent et event;
 
   /* HTMLElement interface */
   let _ = Element.accessKey el;
@@ -362,97 +363,96 @@
   Window.removeEventListenerUseCapture window "click" handleClick (Js.Boolean.to_js_boolean true);
   let _ = Window.dispatchEvent window event;
 
-
   /* Document interface */
-  let _ = Document.characterSet doc;
-  let _ = Document.compatMode doc;
-  let _ = Document.docType doc;
-  let _ = Document.documentElement doc;
-  let _ = Document.documentURI doc;
-  let _ = Document.hidden doc;
-  let _ = Document.implementation doc;
-  let _ = Document.lastStyleSheetSet doc;
-  let _ = Document.pointerLockElement doc;
-  let _ = Document.preferredStyleSheetSet doc;
-  let _ = Document.scrollingElement doc;
-  let _ = Document.selectedStyleSheetSet doc;
-  let _ = Document.setSelectedStyleSheetSet doc "muh-stylesheet";
-  let _ = Document.styleSheets doc;
-  let _ = Document.styleSheetSets doc;
-  let _ = Document.visibilityState doc;
+  let _ = Document.characterSet document;
+  let _ = Document.compatMode document;
+  let _ = Document.docType document;
+  let _ = Document.documentElement document;
+  let _ = Document.documentURI document;
+  let _ = Document.hidden document;
+  let _ = Document.implementation document;
+  let _ = Document.lastStyleSheetSet document;
+  let _ = Document.pointerLockElement document;
+  let _ = Document.preferredStyleSheetSet document;
+  let _ = Document.scrollingElement document;
+  let _ = Document.selectedStyleSheetSet document;
+  let _ = Document.setSelectedStyleSheetSet document"muh-stylesheet";
+  let _ = Document.styleSheets document;
+  let _ = Document.styleSheetSets document;
+  let _ = Document.visibilityState document;
 
-  let _ = Document.adoptNode doc el;
-  let _ = Document.createAttribute doc "data-foo";
-  let _ = Document.createAttributeNS doc "http://..." "foo";
-  let _ = Document.createComment doc "witty comment";
-  let _ = Document.createDocumentFragment doc;
-  let _ = Document.createElement doc "div";
-  let _ = Document.createElementWithOptions doc "div" [%bs.raw "{}"]; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
-  let _ = Document.createElementNS doc "http://..." "foo";
-  let _ = Document.createElementNSWithOptions doc "http://..." "div" [%bs.raw "{}"]; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
-  let _ = Document.createEvent doc "MyCustomEvent";
-  let _ = Document.createNodeIterator doc el;
-  let _ = Document.createNodeIteratorWithWhatToShow doc el 0;
-  let _ = Document.createNodeIteratorWithWhatToShowFilter doc el 0 (NodeFilter.make (fun _ => 0));
-  let _ = Document.elementFromPoint doc 0 0;
-  let _ = Document.elementsFromPoint doc 0 0;
-  let _ = Document.enableStyleSheetsForSet doc "my-stylesheet-set";
-  let _ = Document.exitPointerLock doc;
-  let _ = Document.getAnimations doc;
-  let _ = Document.getElementsByClassName doc "lstlisting";
-  let _ = Document.getElementsByTagName doc "code";
-  let _ = Document.getElementsByTagNameNS doc "http://..." "foo";
-  let _ = Document.importNode doc el;
-  let _ = Document.importNodeDeep doc el (Js.Boolean.to_js_boolean true);
+  let _ = Document.adoptNode document el;
+  let _ = Document.createAttribute document "data-foo";
+  let _ = Document.createAttributeNS document "http://..." "foo";
+  let _ = Document.createComment document "witty comment";
+  let _ = Document.createDocumentFragment document;
+  let _ = Document.createElement document "div";
+  let _ = Document.createElementWithOptions document "div" [%bs.raw "{}"]; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
+  let _ = Document.createElementNS document "http://..." "foo";
+  let _ = Document.createElementNSWithOptions document "http://..." "div" [%bs.raw "{}"]; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
+  let _ = Document.createEvent document "MyCustomEvent";
+  let _ = Document.createNodeIterator document el;
+  let _ = Document.createNodeIteratorWithWhatToShow document el 0;
+  let _ = Document.createNodeIteratorWithWhatToShowFilter document el 0 (NodeFilter.make (fun _ => 0));
+  let _ = Document.elementFromPoint document 0 0;
+  let _ = Document.elementsFromPoint document 0 0;
+  let _ = Document.enableStyleSheetsForSet document "my-stylesheet-set";
+  let _ = Document.exitPointerLock document;
+  let _ = Document.getAnimations document;
+  let _ = Document.getElementsByClassName document "lstlisting";
+  let _ = Document.getElementsByTagName document "code";
+  let _ = Document.getElementsByTagNameNS document "http://..." "foo";
+  let _ = Document.importNode document el;
+  let _ = Document.importNodeDeep document el (Js.Boolean.to_js_boolean true);
   /* TODO: These get dead code eliminated
-  let _ = Document.registerElement doc "my-component";
-  let _ = Document.registerElementWithOptions doc "my-component" [%bs.raw "{}"];
+  let _ = Document.registerElement document"my-component";
+  let _ = Document.registerElementWithOptions document"my-component" [%bs.raw "{}"];
   */
-  let _ = Document.getElementById doc "root";
-  let _ = Document.querySelector doc ".lstlisting";
-  let _ = Document.querySelectorAll doc ".lstlisting";
+  let _ = Document.getElementById document "root";
+  let _ = Document.querySelector document ".lstlisting";
+  let _ = Document.querySelectorAll document ".lstlisting";
 
   /* HTMLDocument interface */
-  let _ = Document.activeElement doc;
-  let _ = Document.body doc;
-  let _ = Document.setBody doc el;
-  let _ = Document.cookie doc;
-  let _ = Document.setCookie doc "foo=bar;reason=ml";
-  let _ = Document.defaultView doc;
-  let _ = Document.designMode doc;
-  let _ = Document.setDesignMode doc "on";
-  let _ = Document.dir doc;
-  let _ = Document.setDir doc "ltr";
-  let _ = Document.domain doc;
-  let _ = Document.setDomain doc "reason.ml";
-  let _ = Document.embeds doc;
-  let _ = Document.forms doc;
-  let _ = Document.head doc;
-  let _ = Document.images doc;
-  let _ = Document.lastModified doc;
-  let _ = Document.links doc;
-  let _ = Document.location doc;
-  let _ = Document.setLocation doc "http://reason.ml";
-  let _ = Document.plugins doc;
-  let _ = Document.readyState doc;
-  let _ = Document.referrer doc;
-  let _ = Document.scripts doc;
-  let _ = Document.title doc;
-  let _ = Document.setTitle doc "Reason: Rapid Expressive Systems Programming.";
-  let _ = Document.url doc;
+  let _ = Document.activeElement document;
+  let _ = Document.body document;
+  let _ = Document.setBody document el;
+  let _ = Document.cookie document;
+  let _ = Document.setCookie document "foo=bar;reason=ml";
+  let _ = Document.defaultView document;
+  let _ = Document.designMode document;
+  let _ = Document.setDesignMode document "on";
+  let _ = Document.dir document;
+  let _ = Document.setDir document "ltr";
+  let _ = Document.domain document;
+  let _ = Document.setDomain document "reason.ml";
+  let _ = Document.embeds document;
+  let _ = Document.forms document;
+  let _ = Document.head document;
+  let _ = Document.images document;
+  let _ = Document.lastModified document;
+  let _ = Document.links document;
+  let _ = Document.location document;
+  let _ = Document.setLocation document "http://reason.ml";
+  let _ = Document.plugins document;
+  let _ = Document.readyState document;
+  let _ = Document.referrer document;
+  let _ = Document.scripts document;
+  let _ = Document.title document;
+  let _ = Document.setTitle document "Reason: Rapid Expressive Systems Programming.";
+  let _ = Document.url document;
 
-  Document.close doc;
-  let _ = Document.execCommand doc "copy" (Js.Boolean.to_js_boolean false) Js.Null.empty;
-  let _ = Document.getElementsByName doc "angry-joe";
-  let _ = Document.getSelection doc;
-  let _ = Document.hasFocus doc;
-  Document.open_ doc;
-  let _ = Document.queryCommandEnabled doc "copy";
-  let _ = Document.queryCommandIndeterm doc "cut";
-  let _ = Document.queryCommandSupported doc "paste";
-  let _ = Document.queryCommandValue doc "fontName";
-  Document.write doc "Hello World!";
-  Document.writeln doc "Hello Newline!";
+  Document.close document;
+  let _ = Document.execCommand document "copy" (Js.Boolean.to_js_boolean false) Js.Null.empty;
+  let _ = Document.getElementsByName document "angry-joe";
+  let _ = Document.getSelection document;
+  let _ = Document.hasFocus document;
+  Document.open_ document;
+  let _ = Document.queryCommandEnabled document "copy";
+  let _ = Document.queryCommandIndeterm document "cut";
+  let _ = Document.queryCommandSupported document "paste";
+  let _ = Document.queryCommandValue document "fontName";
+  Document.write document "Hello World!";
+  Document.writeln document "Hello Newline!";
 
 
   let _ = Date.make ();
@@ -544,10 +544,15 @@
 
   let p = fetch "/greatings";
 
-  let p2 =
-    Promise.(thenDo (thenDo p (fun res => Response.text res)) (fun text => print_endline text));
+  let p2 = Promise.(
+    p |> then_ (fun res => Response.text res)
+      |> then_ (fun text => print_endline text)
+  );
 
-  let _ = Promise.catchError p2 (fun err => Js.log err);
+  let _ = p2 |> Promise.catch (fun err => Js.log err);
 
-  let _ = Promise.(thenDo (thenDo p (fun res => Response.json res)) (fun json => Js.log json));
+  let _ = Promise.(
+    p |> then_ (fun res => Response.json res)
+      |> then_ (fun json => Js.log json)
+  );
 }

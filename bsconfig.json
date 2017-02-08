@@ -5,9 +5,16 @@
 {
   "name" : "reason-js",
   "refmt": "reason/refmt_impl.native",
-  "sources": [
-    "src",
-    {
+  "sources": [{
+      "dir": "src",
+      "subdirs": [
+        "core",
+        "dom",
+        "fetch",
+        "gl",
+        "storage"
+      ]
+    }, {
       "dir": "tests",
       "type": "dev",
     },
