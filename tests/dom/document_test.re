@@ -30,9 +30,9 @@ let _ = Document.createElementWithOptions "div" [%bs.raw "{}"] document; /* I've
 let _ = Document.createElementNS "http://..." "foo" document;
 let _ = Document.createElementNSWithOptions "http://..." "div" [%bs.raw "{}"] document; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
 let _ = Document.createEvent "MyCustomEvent" document;
-let _ = Document.createNodeIterator el document;
-let _ = Document.createNodeIteratorWithWhatToShow el 0 document;
-let _ = Document.createNodeIteratorWithWhatToShowFilter el 0 (NodeFilter.make (fun _ => 0)) document;
+let _ = Document.createNodeIterator (el |> Element.asNode) document;
+let _ = Document.createNodeIteratorWithWhatToShow (el |> Element.asNode) 0 document;
+let _ = Document.createNodeIteratorWithWhatToShowFilter (el |> Element.asNode) 0 (NodeFilter.make (fun _ => 0)) document;
 let _ = Document.elementFromPoint 0 0 document;
 let _ = Document.elementsFromPoint 0 0 document;
 let _ = Document.enableStyleSheetsForSet "my-stylesheet-set" document;

@@ -31,9 +31,9 @@ external createElementWithOptions : string => Js.t {..} => Dom.element = "create
 external createElementNS : string => string => Dom.element = "" [@@bs.send.pipe: t];
 external createElementNSWithOptions : string => string => Js.t {..} => Dom.element = "createEementNS" [@@bs.send.pipe: t]; /* not widely supported */
 external createEvent : string /* large enum */ => Dom.event = "" [@@bs.send.pipe: t]; /* discouraged (but not deprecated) in favor of Event constructors */
-external createNodeIterator : Dom.element => Dom.nodeIterator = "" [@@bs.send.pipe: t];
-external createNodeIteratorWithWhatToShow : Dom.element => int /* NodeFilter enum */ => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
-external createNodeIteratorWithWhatToShowFilter : Dom.element => int /* NodeFilter enum */ => Dom.nodeFilter => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
+external createNodeIterator : Dom.node => Dom.nodeIterator = "" [@@bs.send.pipe: t];
+external createNodeIteratorWithWhatToShow : Dom.node => int /* NodeFilter enum */ => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
+external createNodeIteratorWithWhatToShowFilter : Dom.node => int /* NodeFilter enum */ => Dom.nodeFilter => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
 /* createProcessingInstruction */
 external createRange : Dom.range = "" [@@bs.send.pipe: t];
 external createText : string => Dom.textNode = "" [@@bs.send.pipe: t];
