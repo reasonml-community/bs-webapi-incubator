@@ -24,6 +24,7 @@ type nodeIterator;
 type range;
 type selection;
 type shadowRoot;
+type style;
 type textNode;
 type treeWalker;
 type window;

@@ -23,4 +23,4 @@ let _ = Window.prompt "type you password, please?" window;
 let _ = Window.promptWithDefault "type password or use this?" "password" window;
 let _ = Window.scroll 0 0 window;
 
-Window.onLoad window (fun () => print_endline "load");
+Window.setOnLoad window (fun () => print_endline "load");

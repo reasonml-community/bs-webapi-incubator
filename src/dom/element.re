@@ -145,6 +145,8 @@ external forceSpellCheck : unit = "" [@@bs.send.pipe: t]; /* experimental */
 /* GlobalEventHandlers interface */
 /* Not sure this should be exposed, since EventTarget seems like a better API */
 
+external setOnClick : t => (Dom.event => unit) => unit = "onclick" [@@bs.set]; /* should be MouseEvent */
+
 /* element-specific */
 external value : t => string = "" [@@bs.get];
 external checked : t => Js.boolean = "" [@@bs.get];

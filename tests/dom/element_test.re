@@ -4,41 +4,6 @@ let el = document |> Document.createElement "strong";
 let el2 = document |> Document.createElement "small";
 let event = document |> Document.createEvent "my-event";
 
-/* Node interface */
-let node = Element.asNode el;
-let node2 = Element.asNode el2;
-let _ = Node.childNodes node;
-let _ = Node.firstChild node;
-let _ = Node.lastChild node;
-let _ = Node.nextSibling node;
-let _ = Node.nodeName node;
-let _ = Node.nodeType node;
-let _ = Node.nodeValue node;
-let _ = Node.setNodeValue node Js.Null.empty;
-let _ = Node.ownerDocument node;
-let _ = Node.parentNode node;
-let _ = Node.parentElement node;
-let _ = Node.previousSibling node;
-let _ = Node.rootNode node;
-let _ = Node.textContent node;
-let _ = Node.setTextContent node "foo";
-
-let _ = Node.appendChild node2 node;
-let _ = Node.cloneNode node;
-let _ = Node.cloneNodeDeep (Js.Boolean.to_js_boolean true) node;
-let _ = Node.compareDocumentPosition node2 node;
-let _ = Node.contains node2 node;
-let _ = Node.getRootNode node;
-let _ = Node.getRootNodeComposed (Js.Boolean.to_js_boolean true) node;
-let _ = Node.hasChildNodes node;
-let _ = Node.insertBefore node2 Js.Null.empty node;
-let _ = Node.isDefaultNamespace "http://..." node;
-let _ = Node.isEqualNode node2 node;
-let _ = Node.isSameNode node2 node;
-let _ = Node.lookupPrefix node;
-let _ = Node.lookupNamespaceURI Js.Null.empty node;
-let _ = Node.normalize node;
-let _ = Node.removeChild node2 node;
 
 /* Element interface */
 let _ = Element.assignedSlot el;

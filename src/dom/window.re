@@ -25,4 +25,4 @@ external prompt : string => string = "" [@@bs.send.pipe: t];
 external promptWithDefault : string => string => string = "prompt" [@@bs.send.pipe: t];
 external scroll : int => int => unit = "" [@@bs.send.pipe: t];
 
-external onLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
+external setOnLoad : t => (unit => unit) => unit = "onload" [@@bs.set];
