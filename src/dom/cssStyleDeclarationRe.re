@@ -7,8 +7,6 @@ external parentRule : t => cssRule = "" [@@bs.get];
 
 external getPropertyPriority : string => string = "" [@@bs.send.pipe: t];
 external getPropertyValue : string => string = "" [@@bs.send.pipe: t];
-external getPropertyValue : string = "" [@@bs.send.pipe: t];
->>>>>>> Removed Style module, added CssStyleDeclaration
 external item : int => string = "" [@@bs.send.pipe: t];
 external removeProperty : string => string = "" [@@bs.send.pipe: t];
 external setProperty : string => string => string => unit = "" [@@bs.send.pipe: t];
