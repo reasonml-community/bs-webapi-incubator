@@ -42,7 +42,7 @@ let _ = Document.getElementsByClassName "lstlisting" document;
 let _ = Document.getElementsByTagName "code" document;
 let _ = Document.getElementsByTagNameNS "http://..." "foo" document;
 let _ = Document.importNode el document;
-let _ = Document.importNodeDeep el (Js.Boolean.to_js_boolean true) document;
+let _ = Document.importNodeDeep el document;
 /* TODO: These get dead code eliminated
 let _ = Document.registerElement document"my-component";
 let _ = Document.registerElementWithOptions document"my-component" [%bs.raw "{}"];
@@ -81,7 +81,7 @@ let _ = Document.setTitle document "Reason: Rapid Expressive Systems Programming
 let _ = Document.url document;
 
 Document.close document;
-let _ = Document.execCommand "copy" (Js.Boolean.to_js_boolean false) Js.Null.empty document;
+let _ = Document.execCommand "copy" false None document;
 let _ = Document.getElementsByName "angry-joe" document;
 let _ = Document.getSelection document;
 let _ = Document.hasFocus document;

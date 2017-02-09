@@ -25,4 +25,4 @@ Selection.removeRange range sel;
 Selection.removeAllRanges sel;
 Selection.deleteFromDocument sel;
 let _ = Selection.toString sel;
-let _ = Selection.containsNode node (Js.Boolean.to_js_boolean true) sel;
+let _ = Selection.containsNode node true sel;

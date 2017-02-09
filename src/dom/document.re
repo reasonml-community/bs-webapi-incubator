@@ -10,11 +10,14 @@ external docType : t => Dom.documentType = "" [@@bs.get];
 external documentElement : t => Dom.element = "" [@@bs.get];
 external documentURI : t => string = "" [@@bs.get];
 external hidden : t => Js.boolean = "" [@@bs.get];
+let hidden : t => bool = fun v => Js.to_bool (hidden v);
 external implementation : t => Dom.documentImplementation = "" [@@bs.get];
 external lastStyleSheetSet : t => string = "" [@@bs.get];
 external pointerLockElement : t => Js.null Dom.element = "" [@@bs.get]; /* experimental */
+let pointerLockElement : t => option Dom.element = fun self => Js.Null.to_opt (pointerLockElement self);
 external preferredStyleSheetSet : t => string = "" [@@bs.get];
 external scrollingElement : t => Js.null Dom.element = "" [@@bs.get];
+let scrollingElement : t => option Dom.element = fun self => Js.Null.to_opt (scrollingElement self);
 external selectedStyleSheetSet : t => string = "" [@@bs.get];
 external setSelectedStyleSheetSet : t => string => unit = "selectedStyleSheetSet" [@@bs.set];
 external styleSheets : t => array Dom.cssStyleSheet = "" [@@bs.get]; /* return StyleSheetList, not array */
@@ -50,10 +53,13 @@ external getElementsByTagName : string => array Dom.element = "" [@@bs.send.pipe
 external getElementsByTagNameNS : string => string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns HTMLCollection, not array */
 external importNode : Dom.element => Dom.element = "" [@@bs.send.pipe: t];
 external importNodeDeep : Dom.element => Js.boolean => Dom.element = "importNode" [@@bs.send.pipe: t];
+let importNodeDeep : Dom.element => t => Dom.element = fun element self => importNodeDeep element (Js.Boolean.to_js_boolean true) self;
 external registerElement : string => (unit => Dom.element) = "" [@@bs.send.pipe: t]; /* experimental and deprecated in favor of customElements.define() */
 external registerElementWithOptions : string => Js.t {..} => (unit => Dom.element) = "registerElement" [@@bs.send.pipe: t]; /* experimental and deprecated in favor of customElements.define() */
 external getElementById : string => Js.null Dom.element = "" [@@bs.send.pipe: t];
+let getElementById : string => t => option Dom.element = fun id self => Js.Null.to_opt (getElementById id self);
 external querySelector : string => Js.null Dom.element = "" [@@bs.send.pipe: t];
+let querySelector : string => t => option Dom.element = fun selector self => Js.Null.to_opt (querySelector selector self);
 external querySelectorAll : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns NodeList, not array */
 
 /** XPath stuff */
@@ -63,16 +69,20 @@ external querySelectorAll : string => array Dom.element = "" [@@bs.send.pipe: t]
 
 /* HTMLDocument interface */
 external activeElement : t => Js.null Dom.element = "" [@@bs.get];
+let activeElement : t => option Dom.element = fun self => Js.Null.to_opt (activeElement self);
 external body : t => Js.null Dom.element = "" [@@bs.get]; /* returns Js.null HTMLBodyElement */
-external setBody : t => Dom.element => unit = "body" [@@bs.set]; /* accepth HTMLBodyElement and returns Js.null HTMLBodyElement */
+let body : t => option Dom.element = fun self => Js.Null.to_opt (body self);
+external setBody : t => Dom.element => unit = "body" [@@bs.set]; /* accepth HTMLBodyElement */
 external cookie : t => string = "" [@@bs.get];
 external setCookie : t => string => unit = "cookie" [@@bs.set];
 external defaultView : t => Js.null Dom.window = "" [@@bs.get];
+let defautView : t => option Dom.window = fun self => Js.Null.to_opt (defaultView self);
 external designMode : t => string /* enum */ = "" [@@bs.get];
 external setDesignMode : t => string /* enum */ => unit = "designMode" [@@bs.set];
 external dir : t => string /* enum */ = "" [@@bs.get];
 external setDir : t => string /* enum */ => unit = "dir" [@@bs.set];
 external domain : t => Js.null string = "" [@@bs.get];
+let domain : t => option string = fun self => Js.Null.to_opt (domain self);
 external setDomain : t => string => unit = "domain" [@@bs.set];
 external embeds : t => array Dom.element = "" [@@bs.get]; /* returns NodeList, not array */
 external forms : t => array Dom.element = "" [@@bs.get]; /* return HTMLCollection, not array */
@@ -92,13 +102,18 @@ external url : t => string = "URL" [@@bs.get];
 
 external close : unit = "" [@@bs.send.pipe: t];
 external execCommand : string => Js.boolean => Js.null string => Js.boolean = "" [@@bs.send.pipe: t];
+let execCommand : string => bool => option string => t => bool = fun command show value self => Js.to_bool (execCommand command (Js.Boolean.to_js_boolean show) (Js.Null.from_opt value) self);
 external getElementsByName : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns NodelList, not array */
 external getSelection : Dom.selection = "" [@@bs.send.pipe: t];
 external hasFocus : Js.boolean = "" [@@bs.send.pipe: t];
+let hasFocus : t => bool = fun self => Js.to_bool (hasFocus self);
 external open_ : unit = "open" [@@bs.send.pipe: t];
 external queryCommandEnabled : string => Js.boolean = "" [@@bs.send.pipe: t];
+let queryCommandEnabled : string => t => bool = fun command self => Js.to_bool (queryCommandEnabled command self);
 external queryCommandIndeterm : string => Js.boolean = "" [@@bs.send.pipe: t];
+let queryCommandIndeterm : string => t => bool = fun command self => Js.to_bool (queryCommandIndeterm command self);
 external queryCommandSupported : string => Js.boolean = "" [@@bs.send.pipe: t];
+let queryCommandSupported : string => t => bool = fun command self => Js.to_bool (queryCommandSupported command self);
 external queryCommandValue : string => string = "" [@@bs.send.pipe: t];
 external write : string => unit = "" [@@bs.send.pipe: t];
 external writeln : string => unit = "" [@@bs.send.pipe: t];

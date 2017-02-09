@@ -50,7 +50,9 @@ external offsetY : t => int = "" [@@bs.get]; /* experimental, but widely support
 external pageX : t => int = "" [@@bs.get]; /* experimental, but widely supported */
 external pageY : t => int = "" [@@bs.get]; /* experimental, but widely supported */
 external region : t => Js.null string = "" [@@bs.get];
+let region : t => option string = fun event => Js.Null.to_opt (region event);
 external relatedTarget : t => Js.null Dom.element = "" [@@bs.get]; /* return Js.null EventTarget */
+let relatedTarget : t => option Dom.element = fun event => Js.Null.to_opt (relatedTarget event);
 external screenX : t => int = "" [@@bs.get];
 external screenY : t => int = "" [@@bs.get];
 /* shiftKey */
@@ -67,3 +69,4 @@ external tiltX : t => int = "" [@@bs.get];
 external tiltY : t => int = "" [@@bs.get];
 external pointerType : t => string /* enum */ = "" [@@bs.get];
 external isPrimary : t => Js.boolean = "" [@@bs.get];
+let isPrimary : t => bool = fun event => Js.to_bool (isPrimary event);

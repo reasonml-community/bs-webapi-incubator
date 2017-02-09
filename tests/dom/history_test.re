@@ -2,7 +2,7 @@ open ReasonJs;
 
 let _ = History.length history;
 let _ = History.scrollRestoration history;
-let _ = History.setScrollRestoration history (Js.Boolean.to_js_boolean true);
+let _ = History.setScrollRestoration history true;
 let _ = History.state history;
 
 History.back history;

@@ -27,5 +27,6 @@ external origin : t => string = "" [@@bs.get];
 external assign : string => unit = "" [@@bs.send.pipe: t];
 external reload : unit = "" [@@bs.send.pipe: t];
 external reloadWithForce : Js.boolean => unit = "reload" [@@bs.send.pipe: t];
+let reloadWithForce : t => unit = fun self => reloadWithForce (Js.Boolean.to_js_boolean true) self;
 external replace : string => unit = "" [@@bs.send.pipe: t];
 external toString : string = "" [@@bs.send.pipe: t];

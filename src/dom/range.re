@@ -3,6 +3,7 @@ type t = Dom.range;
 external make : unit => t = "Range" [@@bs.new]; /* experimental */
 
 external collapsed : t => Js.boolean = "" [@@bs.get];
+let collapsed : t => bool = fun self => Js.to_bool (collapsed self);
 external commonAncestorContainer : t => Dom.node = "" [@@bs.get];
 external endContainer : t => Dom.node = "" [@@bs.get];
 external endOffset : t => int = "" [@@bs.get];
@@ -17,7 +18,9 @@ external setEndBefore : Dom.node => unit = "" [@@bs.send.pipe: t];
 external setEndAfter : Dom.node => unit = "" [@@bs.send.pipe: t];
 external selectNode : Dom.node => unit = "" [@@bs.send.pipe: t];
 external selectNodeContents : Dom.node => unit = "" [@@bs.send.pipe: t];
-external collapse : Js.boolean => unit = "" [@@bs.send.pipe: t];
+external collapse : unit = "" [@@bs.send.pipe: t];
+external collapseToStart : Js.boolean =>unit = "" [@@bs.send.pipe: t];
+let collapseToStart : t => unit = fun self => collapseToStart (Js.Boolean.to_js_boolean true) self;
 external cloneContents : Dom.documentFragment = "" [@@bs.send.pipe: t];
 external deleteContents : unit = "" [@@bs.send.pipe: t];
 external extractContents : Dom.documentFragment = "" [@@bs.send.pipe: t];
@@ -32,4 +35,6 @@ external createContextualFragment : string => Dom.documentFragment = "" [@@bs.se
 external getBoundingClientRect : Dom.domRect = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
 external getClientRects : array Dom.domRect = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
 external intersectsNode : Dom.node => Js.boolean = "" [@@bs.send.pipe: t];
+let intersectsNode : Dom.node => t => bool = fun node self => Js.to_bool (intersectsNode node self);
 external isPointInRange : Dom.node => int => Js.boolean = "" [@@bs.send.pipe: t];
+let isPointInRange : Dom.node => int => t => bool = fun node offset self => Js.to_bool (isPointInRange node offset self);

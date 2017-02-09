@@ -24,6 +24,6 @@ let _ = Location.origin location;
 
 Location.assign "http://reason.ml" location;
 Location.reload location;
-Location.reloadWithForce (Js.Boolean.to_js_boolean true) location;
+Location.reloadWithForce location;
 Location.replace "http://reason.ml" location;
 let _ = Location.toString location;
