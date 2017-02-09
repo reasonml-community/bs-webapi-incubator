@@ -29,25 +29,30 @@ let decodeNodeType = fun /* internal */
 | 12 => Notation
 |  _ => Unknown;
 
+/* baseURI */
 external childNodes : t => DomRe.nodeList  = "" [@@bs.get];
 external firstChild : t => Js.null t = "" [@@bs.get];
 let firstChild : t => option t = fun self => Js.Null.to_opt (firstChild self);
+external innerText : t => string = "" [@@bs.get];
+external setInnerText : t => string => unit = "innerText" [@@bs.set];
 external lastChild : t => Js.null t = "" [@@bs.get];
 let lastChild : t => option t = fun self => Js.Null.to_opt (lastChild self);
 external nextSibling : t => Js.null t = "" [@@bs.get];
 let nextSibling : t => option t = fun self => Js.Null.to_opt (nextSibling self);
 external nodeName : t => string = "" [@@bs.get];
+/* nodePrincipal */
 external nodeType : t => int /* nodeType enum */ = "" [@@bs.get];
 let nodeType : t => nodeType = fun self => decodeNodeType (nodeType self);
 external nodeValue : t => Js.null string = "" [@@bs.get];
 let nodeValue : t => option string = fun self => Js.Null.to_opt (nodeValue self);
 external setNodeValue : t => Js.null string => unit = "nodeValue" [@@bs.set];
 let setNodeValue : t => option string => unit = fun self value => setNodeValue self (Js.Null.from_opt value);
+/* outerText */
 external ownerDocument : t => DomRe.document = "" [@@bs.get];
-external parentNode : t => Js.null t = "" [@@bs.get];
-let parentNode : t => option t = fun self => Js.Null.to_opt (parentNode self);
 external parentElement : t => Js.null DomRe.element = "" [@@bs.get];
 let parentElement : t => option DomRe.element = fun self => Js.Null.to_opt (parentElement self);
+external parentNode : t => Js.null t = "" [@@bs.get];
+let parentNode : t => option t = fun self => Js.Null.to_opt (parentNode self);
 external previousSibling : t => Js.null t = "" [@@bs.get];
 let previousSibling : t => option t = fun self => Js.Null.to_opt (previousSibling self);
 external rootNode : t => t = "" [@@bs.get];
@@ -74,8 +79,9 @@ external isEqualNode : t => Js.boolean = "" [@@bs.send.pipe: t];
 let isEqualNode: t => t => bool = fun node self => Js.to_bool (isEqualNode node self);
 external isSameNode : t => Js.boolean = "" [@@bs.send.pipe: t];
 let isSameNode: t => t => bool = fun node self => Js.to_bool (isSameNode node self);
-external lookupPrefix : string = "lookupPrefix" [@@bs.send.pipe: t];
 external lookupNamespaceURI : Js.null string => Js.null string = "" [@@bs.send.pipe: t];
 let lookupNamespaceURI: option string => t => option string = fun prefix self => Js.Null.to_opt (lookupNamespaceURI (Js.Null.from_opt prefix) self);
+external lookupPrefix : string = "lookupPrefix" [@@bs.send.pipe: t];
 external normalize : unit = "" [@@bs.send.pipe: t];
 external removeChild : t => t = "" [@@bs.send.pipe: t];
+/* replacChild */

@@ -86,6 +86,12 @@ external forceSpellCheck : unit = "" [@@bs.send.pipe: t]; /* experimental */
 
 
 /* TODO: element-spcific, should be pulled out */
-external value : t => string = "" [@@bs.get];
-external checked : t => Js.boolean = "" [@@bs.get];
+external value : t => string = "" [@@bs.get]; /* HTMLInputElement */
+external checked : t => Js.boolean = "" [@@bs.get]; /* HTMLInputElement */
 let checked : t => bool = fun value => Js.to_bool (checked value);
+external type_ : t => string = "" [@@bs.get]; /* HTMLStyleElement */
+external setType : t => string => unit = "type" [@@bs.set]; /* HTMLStyleElement */
+external rel : t => string = "" [@@bs.get]; /* HTMLLinkElement */
+external setRel : t => string => unit = "rel" [@@bs.set]; /* HTMLLinkElement */
+external href : t => string = "" [@@bs.get]; /* HTMLLinkElement, HTMLAnchorElement */
+external setHref : t => string => unit = "href" [@@bs.set]; /* HTMLLinkElement, HTMLAnchorElement */
