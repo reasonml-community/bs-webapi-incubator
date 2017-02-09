@@ -5,7 +5,7 @@ external asEventTarget : t => Dom.eventTarget = "%identity";
 
 let asHtmlElement : t => Js.null Dom.htmlElement = [%bs.raw {|
   function (element) {
-    // Assumes "contentEditable" uniquely identifies an HTMLELement
+    // BEWARE: Assumes "contentEditable" uniquely identifies an HTMLELement
     return element.contentEditable !== undefined ?  element : null;
   };
 |}];

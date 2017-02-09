@@ -1,0 +1,45 @@
+open ReasonJs;
+
+let el = document |> Document.createElement "strong";
+let htmlDocument = document |> Document.asHtmlDocument |> TestHelpers.unsafelyUnwrapOption;
+
+let _ = HtmlDocument.activeElement htmlDocument;
+let _ = HtmlDocument.body htmlDocument;
+let _ = HtmlDocument.setBody htmlDocument el;
+let _ = HtmlDocument.cookie htmlDocument;
+let _ = HtmlDocument.setCookie htmlDocument "foo=bar;reason=ml";
+let _ = HtmlDocument.defaultView htmlDocument;
+let _ = HtmlDocument.designMode htmlDocument;
+let _ = HtmlDocument.setDesignMode htmlDocument "on";
+let _ = HtmlDocument.dir htmlDocument;
+let _ = HtmlDocument.setDir htmlDocument "ltr";
+let _ = HtmlDocument.domain htmlDocument;
+let _ = HtmlDocument.setDomain htmlDocument "reason.ml";
+let _ = HtmlDocument.embeds htmlDocument;
+let _ = HtmlDocument.forms htmlDocument;
+let _ = HtmlDocument.head htmlDocument;
+let _ = HtmlDocument.images htmlDocument;
+let _ = HtmlDocument.lastModified htmlDocument;
+let _ = HtmlDocument.links htmlDocument;
+let _ = HtmlDocument.location htmlDocument;
+let _ = HtmlDocument.setLocation htmlDocument "http://reason.ml";
+let _ = HtmlDocument.plugins htmlDocument;
+let _ = HtmlDocument.readyState htmlDocument;
+let _ = HtmlDocument.referrer htmlDocument;
+let _ = HtmlDocument.scripts htmlDocument;
+let _ = HtmlDocument.title htmlDocument;
+let _ = HtmlDocument.setTitle htmlDocument "Reason: Rapid Expressive Systems Programming.";
+let _ = HtmlDocument.url htmlDocument;
+
+HtmlDocument.close htmlDocument;
+let _ = HtmlDocument.execCommand "copy" false None htmlDocument;
+let _ = HtmlDocument.getElementsByName "angry-joe" htmlDocument;
+let _ = HtmlDocument.getSelection htmlDocument;
+let _ = HtmlDocument.hasFocus htmlDocument;
+HtmlDocument.open_ htmlDocument;
+let _ = HtmlDocument.queryCommandEnabled "copy" htmlDocument;
+let _ = HtmlDocument.queryCommandIndeterm "cut" htmlDocument;
+let _ = HtmlDocument.queryCommandSupported "paste" htmlDocument;
+let _ = HtmlDocument.queryCommandValue "fontName" htmlDocument;
+HtmlDocument.write "Hello World!" htmlDocument;
+HtmlDocument.writeln "Hello Newline!" htmlDocument;

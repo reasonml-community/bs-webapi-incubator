@@ -4,7 +4,9 @@ let node = document
   |> Document.createElement "strong"
   |> Element.asNode;
 let sel = document
-  |> Document.getSelection;
+  |> Document.asHtmlDocument
+  |> TestHelpers.unsafelyUnwrapOption
+  |> HtmlDocument.getSelection;
 let range = Range.make ();
 
 let _ = Selection.anchorNode sel;

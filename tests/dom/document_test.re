@@ -2,7 +2,6 @@ open ReasonJs;
 
 let el = document |> Document.createElement "strong";
 
-/* Document interface */
 let _ = Document.characterSet document;
 let _ = Document.compatMode document;
 let _ = Document.docType document;
@@ -50,45 +49,3 @@ let _ = Document.registerElementWithOptions document"my-component" [%bs.raw "{}"
 let _ = Document.getElementById "root" document;
 let _ = Document.querySelector ".lstlisting" document;
 let _ = Document.querySelectorAll ".lstlisting" document;
-
-/* HTMLDocument interface */
-let _ = Document.activeElement document;
-let _ = Document.body document;
-let _ = Document.setBody document el;
-let _ = Document.cookie document;
-let _ = Document.setCookie document "foo=bar;reason=ml";
-let _ = Document.defaultView document;
-let _ = Document.designMode document;
-let _ = Document.setDesignMode document "on";
-let _ = Document.dir document;
-let _ = Document.setDir document "ltr";
-let _ = Document.domain document;
-let _ = Document.setDomain document "reason.ml";
-let _ = Document.embeds document;
-let _ = Document.forms document;
-let _ = Document.head document;
-let _ = Document.images document;
-let _ = Document.lastModified document;
-let _ = Document.links document;
-let _ = Document.location document;
-let _ = Document.setLocation document "http://reason.ml";
-let _ = Document.plugins document;
-let _ = Document.readyState document;
-let _ = Document.referrer document;
-let _ = Document.scripts document;
-let _ = Document.title document;
-let _ = Document.setTitle document "Reason: Rapid Expressive Systems Programming.";
-let _ = Document.url document;
-
-Document.close document;
-let _ = Document.execCommand "copy" false None document;
-let _ = Document.getElementsByName "angry-joe" document;
-let _ = Document.getSelection document;
-let _ = Document.hasFocus document;
-Document.open_ document;
-let _ = Document.queryCommandEnabled "copy" document;
-let _ = Document.queryCommandIndeterm "cut" document;
-let _ = Document.queryCommandSupported "paste" document;
-let _ = Document.queryCommandValue "fontName" document;
-Document.write "Hello World!" document;
-Document.writeln "Hello Newline!" document;
