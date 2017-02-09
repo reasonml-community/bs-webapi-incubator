@@ -97,8 +97,8 @@ external pageX : t => int = "" [@@bs.get]; /* experimental, but widely supported
 external pageY : t => int = "" [@@bs.get]; /* experimental, but widely supported */
 external region : t => Js.null string = "" [@@bs.get];
 let region : t => option string = fun event => Js.Null.to_opt (region event);
-external relatedTarget : t => Js.null DomRe.element = "" [@@bs.get]; /* return Js.null EventTarget */
-let relatedTarget : t => option DomRe.element = fun event => Js.Null.to_opt (relatedTarget event);
+external relatedTarget : t => Js.null DomRe.eventTarget = "" [@@bs.get];
+let relatedTarget : t => option DomRe.eventTarget = fun event => Js.Null.to_opt (relatedTarget event);
 external screenX : t => int = "" [@@bs.get];
 external screenY : t => int = "" [@@bs.get];
 /* shiftKey */
