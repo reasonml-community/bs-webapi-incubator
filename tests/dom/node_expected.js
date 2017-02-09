@@ -17,7 +17,7 @@ Node.nextSibling(node);
 
 node.nodeName;
 
-node.nodeType;
+Node.nodeType(node);
 
 Node.nodeValue(node);
 

@@ -103,9 +103,11 @@ Element.hasAttributeNS("http://...", "foo", el);
 
 Element.hasAttributes(el);
 
-Element.insertAdjacentElement("beforebegin", el2, el);
+Element.insertAdjacentElement(/* BeforeBegin */0, el2, el);
 
-Element.insertAdjacentText("afterbegin", "text", el);
+Element.insertAdjacentHTML(/* AfterBegin */1, "<strong>text</strong>", el);
+
+Element.insertAdjacentText(/* AfterEnd */3, "text", el);
 
 Element.matches("input", el);
 

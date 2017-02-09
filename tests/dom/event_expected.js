@@ -15,7 +15,7 @@ $$event.currentTarget;
 
 $$event.defaultPrevented;
 
-$$event.eventPhase;
+Event.eventPhase($$event);
 
 $$event.target;
 
@@ -51,7 +51,7 @@ $$event.repeat;
 
 $$event.shiftKey;
 
-$$event.getModifierState("Alt");
+Event.getModifierState(/* Alt */0, $$event);
 
 $$event.button;
 
@@ -97,7 +97,7 @@ $$event.tiltX;
 
 $$event.tiltY;
 
-$$event.pointerType;
+Event.pointerType($$event);
 
 Event.isPrimary($$event);
 

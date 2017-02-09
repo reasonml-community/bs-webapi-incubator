@@ -21,13 +21,13 @@ htmlDocument.cookie = "foo=bar;reason=ml";
 
 htmlDocument.defaultView;
 
-htmlDocument.designMode;
+HtmlDocument.designMode(htmlDocument);
 
-htmlDocument.designMode = "on";
+HtmlDocument.setDesignMode(htmlDocument, /* On */0);
 
-htmlDocument.dir;
+HtmlDocument.dir(htmlDocument);
 
-htmlDocument.dir = "ltr";
+HtmlDocument.setDir(htmlDocument, /* Ltr */0);
 
 HtmlDocument.domain(htmlDocument);
 
@@ -51,7 +51,7 @@ htmlDocument.location = "http://reason.ml";
 
 htmlDocument.plugins;
 
-htmlDocument.readyState;
+HtmlDocument.readyState(htmlDocument);
 
 htmlDocument.referrer;
 

@@ -21,7 +21,7 @@ type htmlElement;
 type location;
 type node;
 type nodeFilter = {
-  acceptNode: element => int /* one of the enum values defined in NodeFilter */
+  acceptNode: element => int /* return type should be NodeFilter.action, but that would create a cycle */
 };
 type nodeIterator;
 type nodeList;
@@ -35,3 +35,16 @@ type window;
 
 /* special */
 type eventPointerId;
+
+type dir =
+| Ltr
+| Rtl
+| Unknown;
+let encodeDir = fun /* internal */
+| Ltr     => "ltr"
+| Rtl     => "rtl"
+| Unknown => "";
+let decodeDir = fun /* internal */
+| "ltr" => Ltr
+| "rtl" => Rtl
+| _     => Unknown

@@ -11,7 +11,17 @@ let asHtmlElement : t => Js.null Dom.htmlElement = [%bs.raw {|
 |}];
 let asHtmlElement : t => option Dom.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self);
 
-/* Element interface */
+type insertPosition =
+| BeforeBegin
+| AfterBegin
+| BeforeEnd
+| AfterEnd;
+let encodeInsertPosition = fun /* internal */
+| BeforeBegin => "beforebegin"
+| AfterBegin  => "afterbegin"
+| BeforeEnd   => "beforeemd"
+| AfterEnd    => "afterend";
+
 external assignedSlot : t => t = "" [@@bs.get]; /* experimental, returns HTMLSlotElement */
 external attributes : t => array Dom.attr = "" [@@bs.get]; /* return NameNodeMap, not array */
 external classList : t => Dom.domTokenList = "" [@@bs.get];
@@ -66,10 +76,12 @@ external hasAttributeNS : string => string => Js.boolean = "" [@@bs.send.pipe: t
 let hasAttributeNS : string => string => t => bool = fun ns name self => Js.to_bool (hasAttributeNS ns name self);
 external hasAttributes : Js.boolean = "" [@@bs.send.pipe: t];
 let hasAttributes : t => bool = fun self => Js.to_bool (hasAttributes self);
-external insertAdjacentElement : string /* enum */ => t => Js.null t = "" [@@bs.send.pipe: t]; /* experimental */
-let insertAdjacentElement : string => t => t => option t = fun position element self => Js.Null.to_opt (insertAdjacentElement position element self);
-external insertAdjacentText : string /* enum */ => string => Js.null string = "" [@@bs.send.pipe: t]; /* experimental */
-let insertAdjacentText : string => string => t => option string = fun position text self => Js.Null.to_opt (insertAdjacentText position text self);
+external insertAdjacentElement : string /* insertPosition enum */ => t => unit = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
+let insertAdjacentElement : insertPosition => t => t => unit = fun position element self => insertAdjacentElement (encodeInsertPosition position) element self;
+external insertAdjacentHTML : string /* insertPosition enum */ => string => unit = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
+let insertAdjacentHTML : insertPosition => string => t => unit = fun position text self => insertAdjacentHTML (encodeInsertPosition position) text self;
+external insertAdjacentText : string /* insertPosition enum */ => string => unit = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
+let insertAdjacentText : insertPosition => string => t => unit = fun position text self => insertAdjacentText (encodeInsertPosition position) text self;
 external matches : string => Js.boolean = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
 let matches : string => t => bool = fun selector self => Js.to_bool (matches selector self);
 external querySelector : string => Js.null t = "" [@@bs.send.pipe: t];

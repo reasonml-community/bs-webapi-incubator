@@ -29,7 +29,7 @@ let _ = Event.metaKey event;
 let _ = Event.repeat event;
 let _ = Event.shiftKey event;
 
-let _ = Event.getModifierState "Alt" event;
+let _ = Event.getModifierState Event.Alt event;
 
 /* MouseEvent interface */
 let _ = Event.button event;

@@ -57,7 +57,7 @@ range.detach();
 
 range.toString();
 
-range.comparePoint(node, 0);
+Range.comparePoint(node, 0, range);
 
 range.createContextualFragment("<strong>stuff</strong>");
 

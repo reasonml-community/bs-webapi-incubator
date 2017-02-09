@@ -1,6 +1,19 @@
 type t = Dom.event;
 type pointerId = Dom.eventPointerId;
 
+type eventPhase =
+| None
+| CapturingPhase
+| AtTarget
+| BubblingPhase
+| Unknown;
+let decodeEventPhase = fun /* internal */
+| 0 => None
+| 1 => CapturingPhase
+| 2 => AtTarget
+| 3 => BubblingPhase
+| _ => Unknown;
+
 /* constructors */
 external make : string => t = "Event" [@@bs.new];
 external makeWithOptions : string => Js.t {..} = "Event" [@@bs.new];
@@ -11,7 +24,8 @@ external cancelable : t => Js.boolean = "" [@@bs.get];
 external composed : t => Js.boolean = "" [@@bs.get];
 external currentTarget : t => Dom.eventTarget = "" [@@bs.get];
 external defaultPrevented : t => Js.boolean = "" [@@bs.get];
-external eventPhase : t => int /* enum */ = "" [@@bs.get];
+external eventPhase : t => int /* eventPhase enum */ = "" [@@bs.get];
+let eventPhase : t => eventPhase = fun self => decodeEventPhase (eventPhase self);
 external target : t => Dom.eventTarget = "" [@@bs.get];
 external timeStamp : t => float = "" [@@bs.get];
 external type_ : t => string = "type" [@@bs.get];
@@ -22,6 +36,37 @@ external stopImmediatePropagation : unit = "" [@@bs.send.pipe: t];
 external stopPropagation : unit = "" [@@bs.send.pipe: t];
 
 /* KeyboardEvent interface */
+type modifierKey =
+| Alt
+| AltGraph
+| CapsLock
+| Control
+| Fn
+| FnLock
+| Hyper
+| Meta
+| NumLock
+| ScrollLock
+| Shift
+| Super
+| Symbol
+| SymbolLock;
+let encodeModifierKey = fun /* internal */
+| Alt => "Alt"
+| AltGraph    => "AltGraph"
+| CapsLock    => "CapsLock"
+| Control     => "Control"
+| Fn          => "Fn"
+| FnLock      => "FnLock"
+| Hyper       => "Hyper"
+| Meta        => "Meta"
+| NumLock     => "NumLock"
+| ScrollLock  => "ScrollLock"
+| Shift       => "Shift"
+| Super       => "Super"
+| Symbol      => "Symbol"
+| SymbolLock  => "SymbolLock";
+
 external altKey : t => Js.boolean = "" [@@bs.get];
 external code : t => string = "" [@@bs.get];
 external ctrlKey : t => Js.boolean = "" [@@bs.get];
@@ -33,7 +78,8 @@ external metaKey : t => Js.boolean = "" [@@bs.get];
 external repeat : t => Js.boolean = "" [@@bs.get];
 external shiftKey : t => Js.boolean = "" [@@bs.get];
 
-external getModifierState : string /* enum */ => Js.boolean = "" [@@bs.send.pipe: t];
+external getModifierState : string /* modifierKey enum */ => Js.boolean = "" [@@bs.send.pipe: t];
+let getModifierState : modifierKey => t => bool = fun key self => Js.to_bool (getModifierState (encodeModifierKey key) self);
 
 /* MouseEvent interface */
 /* altKey */
@@ -61,12 +107,24 @@ external y : t => int = "" [@@bs.get]; /* experimental */
 /* getModifierState */
 
 /* PointerEvent interface */
+type pointerType =
+| Mouse
+| Pen
+| Touch
+| Unknown;
+let decodePointerType = fun /* itnernal */
+| "mouse"   => Mouse
+| "pen"     => Pen
+| "touch|"  => Touch
+| _         => Unknown;
+
 external pointerId : t => pointerId = "" [@@bs.get];
 external width : t => int = "" [@@bs.get];
 external height : t => int = "" [@@bs.get];
 external pressure : t => float = "" [@@bs.get];
 external tiltX : t => int = "" [@@bs.get];
 external tiltY : t => int = "" [@@bs.get];
-external pointerType : t => string /* enum */ = "" [@@bs.get];
+external pointerType : t => string /* pointerType enum */ = "" [@@bs.get];
+let pointerType : t => pointerType = fun self => decodePointerType (pointerType self);
 external isPrimary : t => Js.boolean = "" [@@bs.get];
 let isPrimary : t => bool = fun event => Js.to_bool (isPrimary event);

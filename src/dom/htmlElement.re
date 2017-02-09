@@ -4,18 +4,38 @@ external asNode : t => Dom.node = "%identity";
 external asEventTarget : t => Dom.eventTarget = "%identity";
 external asElement : t => Dom.element = "%identity";
 
+type contentEditable =
+| True
+| False
+| Inherit
+| Unknown;
+let encodeContentEditable = fun /* internal */
+| True    => "true"
+| False   => "false"
+| Inherit => "inherit"
+| Unknown => "";
+let decodeContentEditable = fun /* internal */
+| "true"    => True
+| "false"   => False
+| "inherit" => Inherit
+| _         => Unknown;
+
 external accessKey : t => string = "" [@@bs.get];
 external setAccessKey : t => string => unit = "accessKey" [@@bs.set];
 external accessKeyLabel : t => string = "" [@@bs.get];
 external contentEditable : t => string /* enum */ = "" [@@bs.get];
+let contentEditable : t => contentEditable = fun self => decodeContentEditable (contentEditable self);
 external setContentEditable : t => string /* enum */ => unit = "contentEditable" [@@bs.set];
+let setContentEditable : t => contentEditable => unit = fun  self value => setContentEditable self (encodeContentEditable value);
 external isContentEditable : t => Js.boolean = "" [@@bs.get];
 let isContentEditable : t => bool = fun self => Js.to_bool (isContentEditable self);
 external contextMenu : t => t = "" [@@bs.get]; /* returns HTMLMenuElement */
 external setContextMenu : t => t => unit = "contextMenu" [@@bs.set]; /* accepts and returns HTMLMenuElement */
 external dataset : t => Dom.domStringMap = "" [@@bs.get];
 external dir : t => string /* enum */ = "" [@@bs.get];
+let dir : t => Dom.dir = fun self => Dom.decodeDir (dir self);
 external setDir : t => string /* enum */ => unit = "dir" [@@bs.set];
+let setDir : t => Dom.dir => unit = fun self value => setDir self (Dom.encodeDir value);
 external draggable : t => Js.boolean = "" [@@bs.get];
 let draggable : t => bool = fun self => Js.to_bool (draggable self);
 external setDraggable : t => Js.boolean => unit = "draggable" [@@bs.set];

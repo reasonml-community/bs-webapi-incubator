@@ -17,9 +17,9 @@ el.accessKey = "";
 
 el.accessKeyLabel;
 
-el.contentEditable;
+HtmlElement.contentEditable(el);
 
-el.contentEditable = "inherit";
+HtmlElement.setContentEditable(el, /* Inherit */2);
 
 HtmlElement.isContentEditable(el);
 
@@ -29,9 +29,9 @@ el.contextMenu = el2;
 
 el.dataset;
 
-el.dir;
+HtmlElement.dir(el);
 
-el.dir = "ltr";
+HtmlElement.setDir(el, /* Rtl */1);
 
 HtmlElement.draggable(el);
 

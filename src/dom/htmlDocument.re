@@ -4,6 +4,30 @@ external asNode : t => Dom.node = "%identity";
 external asEventTarget : t => Dom.eventTarget = "%identity";
 external asDocument : t => Dom.document = "%identity";
 
+type designMode =
+| On
+| Off
+| Unknown;
+let encodeDesignMode = fun /* internal */
+| On      => "on"
+| Off     => "off"
+| Unknown => "";
+let decodeDesignMode = fun /* internal */
+| "on"  => On
+| "off" => Off
+| _     => Unknown;
+
+type readyState =
+| Loading
+| Interactive
+| Complete
+| Unknown;
+let decodeReadyState = fun /* internal */
+| "loading"     => Loading
+| "interactive" => Interactive
+| "complete"    => Complete
+| _             => Unknown;
+
 external activeElement : t => Js.null Dom.element = "" [@@bs.get];
 let activeElement : t => option Dom.element = fun self => Js.Null.to_opt (activeElement self);
 external body : t => Js.null Dom.element = "" [@@bs.get]; /* returns Js.null HTMLBodyElement */
@@ -13,10 +37,14 @@ external cookie : t => string = "" [@@bs.get];
 external setCookie : t => string => unit = "cookie" [@@bs.set];
 external defaultView : t => Js.null Dom.window = "" [@@bs.get];
 let defautView : t => option Dom.window = fun self => Js.Null.to_opt (defaultView self);
-external designMode : t => string /* enum */ = "" [@@bs.get];
-external setDesignMode : t => string /* enum */ => unit = "designMode" [@@bs.set];
-external dir : t => string /* enum */ = "" [@@bs.get];
-external setDir : t => string /* enum */ => unit = "dir" [@@bs.set];
+external designMode : t => string /* designMode enum */ = "" [@@bs.get];
+let designMode : t => designMode = fun self => decodeDesignMode (designMode self);
+external setDesignMode : t => string /* designMode enum */ => unit = "designMode" [@@bs.set];
+let setDesignMode : t => designMode => unit = fun self value => setDesignMode self (encodeDesignMode value);
+external dir : t => string /* dir enum */ = "" [@@bs.get];
+let dir : t => Dom.dir = fun self => Dom.decodeDir (dir self);
+external setDir : t => string /* dir enum */ => unit = "dir" [@@bs.set];
+let setDir : t => Dom.dir => unit = fun self value => setDir self (Dom.encodeDir value);
 external domain : t => Js.null string = "" [@@bs.get];
 let domain : t => option string = fun self => Js.Null.to_opt (domain self);
 external setDomain : t => string => unit = "domain" [@@bs.set];
@@ -30,6 +58,7 @@ external location : t => Dom.location = "" [@@bs.get];
 external setLocation : t => string => unit = "location" [@@bs.set];
 external plugins : t => Dom.htmlCollection = "" [@@bs.get];
 external readyState : t => string /* enum */ = "" [@@bs.get];
+let readyState : t => readyState = fun self => decodeReadyState (readyState self);
 external referrer : t => string = "" [@@bs.get];
 external scripts : t => Dom.htmlCollection = "" [@@bs.get];
 external title : t => string = "" [@@bs.get];

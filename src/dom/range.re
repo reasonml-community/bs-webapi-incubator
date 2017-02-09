@@ -1,5 +1,27 @@
 type t = Dom.range;
 
+type compareHow =
+| StartToStart
+| StartToEnd
+| EndToEnd
+| EndToStart;
+let encodeCompareHow = fun /* internal */
+| StartToStart  => 0
+| StartToEnd    => 1
+| EndToEnd      => 2
+| EndToStart    => 3;
+
+type compareResult =
+| Before
+| Equal
+| After
+| Unknown;
+let decodeCompareResult = fun /* internal */
+| -1 => Before
+|  0 => Equal
+|  1 => After
+|  _ => Unknown;
+
 external make : unit => t = "Range" [@@bs.new]; /* experimental */
 
 external collapsed : t => Js.boolean = "" [@@bs.get];
@@ -26,11 +48,13 @@ external deleteContents : unit = "" [@@bs.send.pipe: t];
 external extractContents : Dom.documentFragment = "" [@@bs.send.pipe: t];
 external insertNode : Dom.node => unit = "" [@@bs.send.pipe: t];
 external surroundContents : Dom.node => unit = "" [@@bs.send.pipe: t];
-external compareBoundaryPoints : int /* enum */ => t => int /* enum */ = "" [@@bs.send.pipe: t];
+external compareBoundaryPoints : int /* compareHow enum */ => t => int /* compareResult enum */ = "" [@@bs.send.pipe: t];
+let compareBoundaryPoint : compareHow => t => t => compareResult = fun how range self => decodeCompareResult (compareBoundaryPoints (encodeCompareHow how) range self);
 external cloneRange : t = "" [@@bs.send.pipe: t];
 external detach : unit = "" [@@bs.send.pipe: t];
 external toString : string = "" [@@bs.send.pipe: t];
-external comparePoint : Dom.node => int => int /* enum */ = "" [@@bs.send.pipe: t];
+external comparePoint : Dom.node => int => int /* compareRsult enum */ = "" [@@bs.send.pipe: t];
+let comparePoint : Dom.node => int => t => compareResult = fun node offset self => decodeCompareResult (comparePoint node offset self);
 external createContextualFragment : string => Dom.documentFragment = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
 external getBoundingClientRect : Dom.domRect = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
 external getClientRects : array Dom.domRect = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */

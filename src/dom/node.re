@@ -12,22 +12,22 @@ type nodeType =
 | Document
 | DocumentType
 | DocumentFragment
-| Notation; /* deprecated */
-
-/* internal */
-let nodeTypeToInt = fun
-| Element => 1
-| Attribute => 2
-| Text => 3
-| CDATASection => 4
-| EntityReference => 5
-| Entity => 6
-| ProcessingInstruction => 7
-| Comment => 8
-| Document => 9
-| DocumentType => 10
-| DocumentFragment => 11
-| Notation => 12;
+| Notation /* deprecated */
+| Unknown;
+let decodeNodeType = fun /* internal */
+|  1 => Element
+|  2 => Attribute
+|  3 => Text
+|  4 => CDATASection
+|  5 => EntityReference
+|  6 => Entity
+|  7 => ProcessingInstruction
+|  8 => Comment
+|  9 => Document
+| 10 => DocumentType
+| 11 => DocumentFragment
+| 12 => Notation
+|  _ => Unknown;
 
 external childNodes : t => Dom.nodeList  = "" [@@bs.get];
 external firstChild : t => Js.null t = "" [@@bs.get];
@@ -37,7 +37,8 @@ let lastChild : t => option t = fun self => Js.Null.to_opt (lastChild self);
 external nextSibling : t => Js.null t = "" [@@bs.get];
 let nextSibling : t => option t = fun self => Js.Null.to_opt (nextSibling self);
 external nodeName : t => string = "" [@@bs.get];
-external nodeType : t => nodeType = "" [@@bs.get];
+external nodeType : t => int /* nodeType enum */ = "" [@@bs.get];
+let nodeType : t => nodeType = fun self => decodeNodeType (nodeType self);
 external nodeValue : t => Js.null string = "" [@@bs.get];
 let nodeValue : t => option string = fun self => Js.Null.to_opt (nodeValue self);
 external setNodeValue : t => Js.null string => unit = "nodeValue" [@@bs.set];

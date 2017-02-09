@@ -10,8 +10,31 @@ let asHtmlDocument : t => Js.null Dom.htmlDocument = [%bs.raw {|
 |}];
 let asHtmlDocument : t => option Dom.htmlDocument = fun self => Js.Null.to_opt (asHtmlDocument self);
 
+type compatMode =
+| BackCompat
+| CSS1Compat
+| Unknown;
+let decodeCompatMode = fun /* internal */
+| "BackCompat" => BackCompat
+| "CSS1Compat" => CSS1Compat
+| _            => Unknown;
+
+type visibilityState =
+| Visible
+| Hidden
+| Prerender
+| Unloaded
+| Unknown;
+let decodeVisibilityState = fun /* internal */
+| "visible"   => Visible
+| "hidden"    => Hidden
+| "prerender" => Prerender
+| "unloaded"  => Unloaded
+| _           => Unknown;
+
 external characterSet : t => string = "" [@@bs.get];
-external compatMode : t => string /* enum */ = "" [@@bs.get]; /* experimental */
+external compatMode : t => string /* compatMode enum */ = "" [@@bs.get]; /* experimental */
+let compatMode : t => compatMode = fun self => decodeCompatMode (compatMode self);
 external docType : t => Dom.documentType = "" [@@bs.get];
 external documentElement : t => Dom.element = "" [@@bs.get];
 external documentURI : t => string = "" [@@bs.get];
@@ -28,7 +51,8 @@ external selectedStyleSheetSet : t => string = "" [@@bs.get];
 external setSelectedStyleSheetSet : t => string => unit = "selectedStyleSheetSet" [@@bs.set];
 external styleSheets : t => array Dom.cssStyleSheet = "" [@@bs.get]; /* return StyleSheetList, not array */
 external styleSheetSets : t => array string = "" [@@bs.get];
-external visibilityState : t => string /* enum */ = "" [@@bs.get];
+external visibilityState : t => string /* visibilityState enum */ = "" [@@bs.get];
+let visibilityState : t => visibilityState = fun self => decodeVisibilityState (visibilityState self);
 
 external adoptNode : Dom.element => Dom.element = "" [@@bs.send.pipe: t];
 external createAttribute : string => Dom.attr = "" [@@bs.send.pipe: t];
@@ -41,14 +65,14 @@ external createElementNS : string => string => Dom.element = "" [@@bs.send.pipe:
 external createElementNSWithOptions : string => string => Js.t {..} => Dom.element = "createEementNS" [@@bs.send.pipe: t]; /* not widely supported */
 external createEvent : string /* large enum */ => Dom.event = "" [@@bs.send.pipe: t]; /* discouraged (but not deprecated) in favor of Event constructors */
 external createNodeIterator : Dom.node => Dom.nodeIterator = "" [@@bs.send.pipe: t];
-external createNodeIteratorWithWhatToShow : Dom.node => int /* NodeFilter enum */ => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
-external createNodeIteratorWithWhatToShowFilter : Dom.node => int /* NodeFilter enum */ => Dom.nodeFilter => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
+external createNodeIteratorWithWhatToShow : Dom.node => NodeFilter.WhatToShow.t => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
+external createNodeIteratorWithWhatToShowFilter : Dom.node => NodeFilter.WhatToShow.t => Dom.nodeFilter => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t];
 /* createProcessingInstruction */
 external createRange : Dom.range = "" [@@bs.send.pipe: t];
 external createText : string => Dom.textNode = "" [@@bs.send.pipe: t];
 external createTreeWalker : Dom.element => Dom.treeWalker = "" [@@bs.send.pipe: t];
-external createTreeWalkerWithWhatToShow : Dom.element => int /* NodeFilter enum */ => Dom.treeWalker = "createTreeWalker" [@@bs.send.pipe: t];
-external createTreeWalkerWithWhatToShowFilter : Dom.element => int /* NodeFilter enum */ => Dom.treeWalker => Dom.nodeIterator = "createTreeWalker" [@@bs.send.pipe: t];
+external createTreeWalkerWithWhatToShow : Dom.element => NodeFilter.WhatToShow.t => Dom.treeWalker = "createTreeWalker" [@@bs.send.pipe: t];
+external createTreeWalkerWithWhatToShowFilter : Dom.element => NodeFilter.WhatToShow.t => Dom.nodeFilter => Dom.treeWalker = "createTreeWalker" [@@bs.send.pipe: t];
 external elementFromPoint : int => int => Dom.element = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
 external elementsFromPoint : int => int => array Dom.element = "" [@@bs.send.pipe: t]; /* experimental */
 external enableStyleSheetsForSet : string => unit = "" [@@bs.send.pipe: t];
