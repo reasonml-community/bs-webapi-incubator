@@ -4,5 +4,5 @@
 /lib/
 *.cm*
 *.js
-!expected.js
+!*_expected.js
 npm-debug.log

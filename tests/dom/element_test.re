@@ -4,7 +4,6 @@ let el = document |> Document.createElement "strong";
 let el2 = document |> Document.createElement "small";
 let event = document |> Document.createEvent "my-event";
 
-
 /* Element interface */
 let _ = Element.assignedSlot el;
 let _ = Element.attributes el;
