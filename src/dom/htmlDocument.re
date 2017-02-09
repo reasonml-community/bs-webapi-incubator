@@ -20,18 +20,18 @@ external setDir : t => string /* enum */ => unit = "dir" [@@bs.set];
 external domain : t => Js.null string = "" [@@bs.get];
 let domain : t => option string = fun self => Js.Null.to_opt (domain self);
 external setDomain : t => string => unit = "domain" [@@bs.set];
-external embeds : t => array Dom.element = "" [@@bs.get]; /* returns NodeList, not array */
-external forms : t => array Dom.element = "" [@@bs.get]; /* return HTMLCollection, not array */
+external embeds : t => Dom.nodeList = "" [@@bs.get];
+external forms : t => Dom.htmlCollection = "" [@@bs.get];
 external head : t => Dom.element = "" [@@bs.get]; /* returns HTMLHeadElement */
-external images : t => array Dom.element = "" [@@bs.get]; /* return HTMLCollection, not array */
+external images : t => Dom.htmlCollection = "" [@@bs.get];
 external lastModified : t => string = "" [@@bs.get];
-external links : t => array Dom.element = "" [@@bs.get]; /* returns NodeList, not array */
+external links : t => Dom.nodeList = "" [@@bs.get];
 external location : t => Dom.location = "" [@@bs.get];
 external setLocation : t => string => unit = "location" [@@bs.set];
-external plugins : t => array Dom.element = "" [@@bs.get]; /* returns HTMLCollection, not array */
+external plugins : t => Dom.htmlCollection = "" [@@bs.get];
 external readyState : t => string /* enum */ = "" [@@bs.get];
 external referrer : t => string = "" [@@bs.get];
-external scripts : t => array Dom.element = "" [@@bs.get]; /* returns HTMLCOllection, not array */
+external scripts : t => Dom.htmlCollection = "" [@@bs.get];
 external title : t => string = "" [@@bs.get];
 external setTitle : t => string => unit = "title" [@@bs.set];
 external url : t => string = "URL" [@@bs.get];
@@ -39,7 +39,7 @@ external url : t => string = "URL" [@@bs.get];
 external close : unit = "" [@@bs.send.pipe: t];
 external execCommand : string => Js.boolean => Js.null string => Js.boolean = "" [@@bs.send.pipe: t];
 let execCommand : string => bool => option string => t => bool = fun command show value self => Js.to_bool (execCommand command (Js.Boolean.to_js_boolean show) (Js.Null.from_opt value) self);
-external getElementsByName : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns NodelList, not array */
+external getElementsByName : string => Dom.nodeList = "" [@@bs.send.pipe: t];
 external getSelection : Dom.selection = "" [@@bs.send.pipe: t];
 external hasFocus : Js.boolean = "" [@@bs.send.pipe: t];
 let hasFocus : t => bool = fun self => Js.to_bool (hasFocus self);

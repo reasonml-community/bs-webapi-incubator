@@ -2,7 +2,7 @@ type t = Dom.window;
 
 external asEventTarget : t => Dom.eventTarget = "%identity";
 
-/* This module is far from exhaustive */
+/* This module is far from exhaustively implemented */
 
 external document : t => Dom.document = "" [@@bs.get];
 external fullScreen : t => Js.boolean = "" [@@bs.get];

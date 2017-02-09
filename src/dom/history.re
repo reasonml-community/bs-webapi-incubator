@@ -1,8 +1,6 @@
 type t = Dom.history;
 type state; /* TODO: should be "anything that can be serializable" apparently */
 
-/* a more ergonomic API would perhaps accept a Window.t directly instead of History.t */
-
 external length : t => int = "" [@@bs.get];
 external scrollRestoration : t => Js.boolean = "" [@@bs.get]; /* experimental */
 let scrollRestoration : t => bool = fun self => Js.to_bool (scrollRestoration self);

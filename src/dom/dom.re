@@ -15,6 +15,7 @@ type element;
 type event;
 type eventTarget;
 type history;
+type htmlCollection;
 type htmlDocument;
 type htmlElement;
 type location;
@@ -23,6 +24,7 @@ type nodeFilter = {
   acceptNode: element => int /* one of the enum values defined in NodeFilter */
 };
 type nodeIterator;
+type nodeList;
 type range;
 type selection;
 type shadowRoot;

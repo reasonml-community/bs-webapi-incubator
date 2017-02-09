@@ -54,9 +54,9 @@ external elementsFromPoint : int => int => array Dom.element = "" [@@bs.send.pip
 external enableStyleSheetsForSet : string => unit = "" [@@bs.send.pipe: t];
 external exitPointerLock : unit = "" [@@bs.send.pipe: t]; /* experimental */
 external getAnimations : array Dom.animation = "" [@@bs.send.pipe: t]; /* experimental */
-external getElementsByClassName : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns HTMLCollection, not array */
-external getElementsByTagName : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns HTMLCollection, not array */
-external getElementsByTagNameNS : string => string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns HTMLCollection, not array */
+external getElementsByClassName : string => Dom.htmlCollection = "" [@@bs.send.pipe: t];
+external getElementsByTagName : string => Dom.htmlCollection = "" [@@bs.send.pipe: t];
+external getElementsByTagNameNS : string => string => Dom.htmlCollection = "" [@@bs.send.pipe: t];
 external importNode : Dom.element => Dom.element = "" [@@bs.send.pipe: t];
 external importNodeDeep : Dom.element => Js.boolean => Dom.element = "importNode" [@@bs.send.pipe: t];
 let importNodeDeep : Dom.element => t => Dom.element = fun element self => importNodeDeep element (Js.Boolean.to_js_boolean true) self;
@@ -66,7 +66,7 @@ external getElementById : string => Js.null Dom.element = "" [@@bs.send.pipe: t]
 let getElementById : string => t => option Dom.element = fun id self => Js.Null.to_opt (getElementById id self);
 external querySelector : string => Js.null Dom.element = "" [@@bs.send.pipe: t];
 let querySelector : string => t => option Dom.element = fun selector self => Js.Null.to_opt (querySelector selector self);
-external querySelectorAll : string => array Dom.element = "" [@@bs.send.pipe: t]; /* returns NodeList, not array */
+external querySelectorAll : string => Dom.nodeList = "" [@@bs.send.pipe: t];
 
 /** XPath stuff */
 /* createExpression */

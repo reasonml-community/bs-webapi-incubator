@@ -57,9 +57,9 @@ external getAttributeNS : string => string => Js.null string = "" [@@bs.send.pip
 let getAttributeNS : string => string => t => option string = fun ns name self => Js.Null.to_opt (getAttributeNS ns name self);
 external getBoundingClientRect : Dom.domRect = "" [@@bs.send.pipe: t];
 external getClientRects : array Dom.domRect = "" [@@bs.send.pipe: t];
-external getElementsByClassName : string => array t = "" [@@bs.send.pipe: t]; /* return HTMLCollection, not array */
-external getElementsByTagName : string => array t = "" [@@bs.send.pipe: t]; /* return HTMLCollection, not array */
-external getElementsByTagNameNS : string => string => array t = "" [@@bs.send.pipe: t]; /* return HTMLCollection, not array */
+external getElementsByClassName : string => Dom.htmlCollection = "" [@@bs.send.pipe: t];
+external getElementsByTagName : string => Dom.htmlCollection = "" [@@bs.send.pipe: t];
+external getElementsByTagNameNS : string => string => Dom.htmlCollection = "" [@@bs.send.pipe: t];
 external hasAttribute : string => Js.boolean = "" [@@bs.send.pipe: t];
 let hasAttribute : string => t => bool = fun name self => Js.to_bool (hasAttribute name self);
 external hasAttributeNS : string => string => Js.boolean = "" [@@bs.send.pipe: t];
@@ -74,7 +74,7 @@ external matches : string => Js.boolean = "" [@@bs.send.pipe: t]; /* experimenta
 let matches : string => t => bool = fun selector self => Js.to_bool (matches selector self);
 external querySelector : string => Js.null t = "" [@@bs.send.pipe: t];
 let querySelector : string => t => option t = fun selector self => Js.Null.to_opt (querySelector selector self);
-external querySelectorAll : string => array t = "" [@@bs.send.pipe: t]; /* returns NodeList, not array */
+external querySelectorAll : string => Dom.nodeList = "" [@@bs.send.pipe: t];
 external releasePointerCapture : Dom.eventPointerId => unit = "" [@@bs.send.pipe: t];
 external remove : unit = "" [@@bs.send.pipe: t]; /* experimental */
 external removeAttribute : string => unit = "" [@@bs.send.pipe: t];

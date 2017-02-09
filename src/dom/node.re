@@ -29,7 +29,7 @@ let nodeTypeToInt = fun
 | DocumentFragment => 11
 | Notation => 12;
 
-external childNodes : t => array t  = "" [@@bs.get]; /* returns a NodeList, not an array */
+external childNodes : t => Dom.nodeList  = "" [@@bs.get];
 external firstChild : t => Js.null t = "" [@@bs.get];
 let firstChild : t => option t = fun self => Js.Null.to_opt (firstChild self);
 external lastChild : t => Js.null t = "" [@@bs.get];
