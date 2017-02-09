@@ -4,7 +4,6 @@ let el = document |> Document.createElement "strong";
 let el2 = document |> Document.createElement "small";
 let event = document |> Document.createEvent "my-event";
 
-/* Element interface */
 let _ = Element.assignedSlot el;
 let _ = Element.attributes el;
 let _ = Element.classList el;
@@ -67,52 +66,3 @@ let _ = Element.scrollIntoViewWithOptions { "block": "end", "behvaior": "smooth"
 let _ = Element.setAttribute "href" "http://..." el;
 let _ = Element.setAttributeNS "http://..." "foo" "bar" el;
 let _ = Element.setPointerCapture (Event.pointerId event) el;
-
-/* HTMLElement interface */
-let _ = Element.accessKey el;
-let _ = Element.setAccessKey el "";
-let _ = Element.accessKeyLabel el;
-let _ = Element.contentEditable el;
-let _ = Element.setContentEditable el "inherit";
-let _ = Element.isContentEditable el;
-let _ = Element.contextMenu el;
-let _ = Element.setContextMenu el el2;
-let _ = Element.dataset el;
-let _ = Element.dir el;
-let _ = Element.setDir el "ltr";
-let _ = Element.draggable el;
-let _ = Element.setDraggable el true;
-let _ = Element.dropzone el;
-let _ = Element.hidden el;
-let _ = Element.setHidden el true;
-let _ = Element.itemScope el;
-let _ = Element.setItemScope el true;
-let _ = Element.itemType el;
-let _ = Element.itemId el;
-let _ = Element.setItemId el "my-id";
-let _ = Element.itemRef el;
-let _ = Element.itemProp el;
-let _ = Element.itemValue el;
-let _ = Element.setItemValue el [%bs.raw "{}"];
-let _ = Element.lang el;
-let _ = Element.setLang el "en";
-let _ = Element.offsetHeight el;
-let _ = Element.offsetLeft el;
-let _ = Element.offsetParent el;
-let _ = Element.offsetTop el;
-let _ = Element.offsetWidth el;
-let _ = Element.spellcheck el;
-let _ = Element.setSpellcheck el true;
-let _ = Element.style el;
-/* let _ = Element.setStyle el CSSStyleDeclaration.t; /* TODO: No way to make a CSSStyleDeclaration at the moment */*/
-let _ = Element.tabIndex el;
-let _ = Element.setTabIndex el 42;
-let _ = Element.title el;
-let _ = Element.setTitle el "hovertext!";
-let _ = Element.translate el;
-let _ = Element.setTranslate el true;
-
-Element.blur el;
-Element.click el;
-Element.focus el;
-Element.forceSpellCheck el;

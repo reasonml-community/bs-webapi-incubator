@@ -3,6 +3,14 @@ type t = Dom.element;
 external asNode : t => Dom.node = "%identity";
 external asEventTarget : t => Dom.eventTarget = "%identity";
 
+let asHtmlElement : t => Js.null Dom.htmlElement = [%bs.raw {|
+  function (element) {
+    // Assumes "contentEditable" uniquely identifies an HTMLELement
+    return element.contentEditable !== undefined ?  element : null;
+  };
+|}];
+let asHtmlElement : t => option Dom.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self);
+
 /* Element interface */
 external assignedSlot : t => t = "" [@@bs.get]; /* experimental, returns HTMLSlotElement */
 external attributes : t => array Dom.attr = "" [@@bs.get]; /* return NameNodeMap, not array */
@@ -81,73 +89,7 @@ external setAttribute : string => string => unit = "" [@@bs.send.pipe: t];
 external setAttributeNS : string => string => string => unit = "" [@@bs.send.pipe: t];
 external setPointerCapture : Dom.eventPointerId => unit = "" [@@bs.send.pipe: t];
 
-/* HTMLElement interface */
-external accessKey : t => string = "" [@@bs.get];
-external setAccessKey : t => string => unit = "accessKey" [@@bs.set];
-external accessKeyLabel : t => string = "" [@@bs.get];
-external contentEditable : t => string /* enum */ = "" [@@bs.get];
-external setContentEditable : t => string /* enum */ => unit = "contentEditable" [@@bs.set];
-external isContentEditable : t => Js.boolean = "" [@@bs.get];
-let isContentEditable : t => bool = fun self => Js.to_bool (isContentEditable self);
-external contextMenu : t => t = "" [@@bs.get]; /* returns HTMLMenuElement */
-external setContextMenu : t => t => unit = "contextMenu" [@@bs.set]; /* accepts and returns HTMLMenuElement */
-external dataset : t => Dom.domStringMap = "" [@@bs.get];
-external dir : t => string /* enum */ = "" [@@bs.get];
-external setDir : t => string /* enum */ => unit = "dir" [@@bs.set];
-external draggable : t => Js.boolean = "" [@@bs.get];
-let draggable : t => bool = fun self => Js.to_bool (draggable self);
-external setDraggable : t => Js.boolean => unit = "draggable" [@@bs.set];
-let setDraggable : t => bool => unit = fun self value => setDraggable self (Js.Boolean.to_js_boolean value);
-external dropzone : t => Dom.domSettableTokenList = "" [@@bs.get];
-external hidden : t => Js.boolean = "" [@@bs.get];
-let hidden : t => bool = fun self => Js.to_bool (hidden self);
-external setHidden : t => Js.boolean => unit = "hidden" [@@bs.set];
-let setHidden : t => bool => unit = fun self value => setHidden self (Js.Boolean.to_js_boolean value);
-external itemScope : t => Js.boolean = "" [@@bs.get]; /* experimental */
-let itemScope : t => bool = fun self => Js.to_bool (itemScope self);
-external setItemScope : t => Js.boolean => unit = "itemScope" [@@bs.set]; /* experimental */
-let setItemScope : t => bool => unit = fun self value => setItemScope self (Js.Boolean.to_js_boolean value);
-external itemType : t => Dom.domSettableTokenList = "" [@@bs.get]; /* experimental */
-external itemId : t => string = "" [@@bs.get]; /* experimental */
-external setItemId : t => string => unit = "itemId" [@@bs.set]; /* experimental */
-external itemRef : t => Dom.domSettableTokenList = "" [@@bs.get]; /* experimental */
-external itemProp : t => Dom.domSettableTokenList = "" [@@bs.get]; /* experimental */
-external itemValue : t => Js.t {..} = "" [@@bs.get]; /* experimental */
-external setItemValue : t => Js.t {..} => unit = "itemValue" [@@bs.set]; /* experimental */
-external lang : t => string = "" [@@bs.get];
-external setLang : t => string => unit = "lang" [@@bs.set];
-external offsetHeight : t => int = "" [@@bs.get]; /* experimental */
-external offsetLeft : t => int = "" [@@bs.get]; /* experimental */
-external offsetParent : t => int = "" [@@bs.get]; /* experimental */
-external offsetTop : t => int = "" [@@bs.get]; /* experimental, but widely supported */
-external offsetWidth : t => int = "" [@@bs.get]; /* experimental */
-/*external properties : r => HTMLPropertiesCollection.t = "properties" [@@bs.get]; /* experimental */*/
-external spellcheck : t => Js.boolean = "" [@@bs.get];
-let spellcheck : t => bool = fun self => Js.to_bool (spellcheck self);
-external setSpellcheck : t => Js.boolean => unit = "spellcheck" [@@bs.set];
-let setSpellcheck : t => bool => unit = fun self value => setSpellcheck self (Js.Boolean.to_js_boolean value);
-external style : t => Dom.cssStyleDeclaration = "" [@@bs.get];
-external setStyle : t => Dom.cssStyleDeclaration => unit = "style" [@@bs.set];
-external tabIndex : t => int = "" [@@bs.get];
-external setTabIndex : t => int => unit = "tabIndex" [@@bs.set];
-external title : t => string = "" [@@bs.get];
-external setTitle : t => string => unit = "title" [@@bs.set];
-external translate : t => Js.boolean = "" [@@bs.get]; /* experimental */
-let translate : t => bool = fun self => Js.to_bool (translate self);
-external setTranslate : t => Js.boolean => unit = "translate" [@@bs.set]; /* experimental */
-let setTranslate : t => bool => unit = fun self value => setTranslate self (Js.Boolean.to_js_boolean value);
-
-external blur : unit = "" [@@bs.send.pipe: t];
-external click : unit = "" [@@bs.send.pipe: t];
-external focus : unit = "" [@@bs.send.pipe: t];
-external forceSpellCheck : unit = "" [@@bs.send.pipe: t]; /* experimental */
-
 /* GlobalEventHandlers interface */
 /* Not sure this should be exposed, since EventTarget seems like a better API */
 
 external setOnClick : t => (Dom.event => unit) => unit = "onclick" [@@bs.set]; /* should be MouseEvent */
-
-/* element-specific */
-external value : t => string = "" [@@bs.get];
-external checked : t => Js.boolean = "" [@@bs.get];
-let checked : t => bool = fun value => Js.to_bool (checked value);

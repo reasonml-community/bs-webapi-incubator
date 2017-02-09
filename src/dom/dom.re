@@ -15,6 +15,8 @@ type element;
 type event;
 type eventTarget;
 type history;
+type htmlDocument;
+type htmlElement;
 type location;
 type node;
 type nodeFilter = {
