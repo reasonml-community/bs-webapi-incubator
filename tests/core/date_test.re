@@ -1,3 +1,5 @@
+open ReasonJs;
+
 let _ = Date.make ();
 let _ = Date.makeWithValue 0.;
 let _ = Date.makeWithYearMonth 0. 1.;

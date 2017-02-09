@@ -1,4 +1,4 @@
-type t = Dom.nodeFilter;
+type t = DomRe.nodeFilter;
 
 let make f: t => {
   acceptNode: f

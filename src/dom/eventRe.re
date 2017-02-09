@@ -1,5 +1,5 @@
-type t = Dom.event;
-type pointerId = Dom.eventPointerId;
+type t = DomRe.event;
+type pointerId = DomRe.eventPointerId;
 
 type eventPhase =
 | None
@@ -22,11 +22,11 @@ external makeWithOptions : string => Js.t {..} = "Event" [@@bs.new];
 external bubbles : t => Js.boolean = "" [@@bs.get];
 external cancelable : t => Js.boolean = "" [@@bs.get];
 external composed : t => Js.boolean = "" [@@bs.get];
-external currentTarget : t => Dom.eventTarget = "" [@@bs.get];
+external currentTarget : t => DomRe.eventTarget = "" [@@bs.get];
 external defaultPrevented : t => Js.boolean = "" [@@bs.get];
 external eventPhase : t => int /* eventPhase enum */ = "" [@@bs.get];
 let eventPhase : t => eventPhase = fun self => decodeEventPhase (eventPhase self);
-external target : t => Dom.eventTarget = "" [@@bs.get];
+external target : t => DomRe.eventTarget = "" [@@bs.get];
 external timeStamp : t => float = "" [@@bs.get];
 external type_ : t => string = "type" [@@bs.get];
 external isTrusted : t => Js.boolean = "" [@@bs.get];
@@ -97,8 +97,8 @@ external pageX : t => int = "" [@@bs.get]; /* experimental, but widely supported
 external pageY : t => int = "" [@@bs.get]; /* experimental, but widely supported */
 external region : t => Js.null string = "" [@@bs.get];
 let region : t => option string = fun event => Js.Null.to_opt (region event);
-external relatedTarget : t => Js.null Dom.element = "" [@@bs.get]; /* return Js.null EventTarget */
-let relatedTarget : t => option Dom.element = fun event => Js.Null.to_opt (relatedTarget event);
+external relatedTarget : t => Js.null DomRe.element = "" [@@bs.get]; /* return Js.null EventTarget */
+let relatedTarget : t => option DomRe.element = fun event => Js.Null.to_opt (relatedTarget event);
 external screenX : t => int = "" [@@bs.get];
 external screenY : t => int = "" [@@bs.get];
 /* shiftKey */

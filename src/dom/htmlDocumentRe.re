@@ -1,8 +1,8 @@
-type t = Dom.htmlDocument;
+type t = DomRe.htmlDocument;
 
-external asNode : t => Dom.node = "%identity";
-external asEventTarget : t => Dom.eventTarget = "%identity";
-external asDocument : t => Dom.document = "%identity";
+external asNode : t => DomRe.node = "%identity";
+external asEventTarget : t => DomRe.eventTarget = "%identity";
+external asDocument : t => DomRe.document = "%identity";
 
 type designMode =
 | On
@@ -28,39 +28,39 @@ let decodeReadyState = fun /* internal */
 | "complete"    => Complete
 | _             => Unknown;
 
-external activeElement : t => Js.null Dom.element = "" [@@bs.get];
-let activeElement : t => option Dom.element = fun self => Js.Null.to_opt (activeElement self);
-external body : t => Js.null Dom.element = "" [@@bs.get]; /* returns Js.null HTMLBodyElement */
-let body : t => option Dom.element = fun self => Js.Null.to_opt (body self);
-external setBody : t => Dom.element => unit = "body" [@@bs.set]; /* accepth HTMLBodyElement */
+external activeElement : t => Js.null DomRe.element = "" [@@bs.get];
+let activeElement : t => option DomRe.element = fun self => Js.Null.to_opt (activeElement self);
+external body : t => Js.null DomRe.element = "" [@@bs.get]; /* returns Js.null HTMLBodyElement */
+let body : t => option DomRe.element = fun self => Js.Null.to_opt (body self);
+external setBody : t => DomRe.element => unit = "body" [@@bs.set]; /* accepth HTMLBodyElement */
 external cookie : t => string = "" [@@bs.get];
 external setCookie : t => string => unit = "cookie" [@@bs.set];
-external defaultView : t => Js.null Dom.window = "" [@@bs.get];
-let defautView : t => option Dom.window = fun self => Js.Null.to_opt (defaultView self);
+external defaultView : t => Js.null DomRe.window = "" [@@bs.get];
+let defautView : t => option DomRe.window = fun self => Js.Null.to_opt (defaultView self);
 external designMode : t => string /* designMode enum */ = "" [@@bs.get];
 let designMode : t => designMode = fun self => decodeDesignMode (designMode self);
 external setDesignMode : t => string /* designMode enum */ => unit = "designMode" [@@bs.set];
 let setDesignMode : t => designMode => unit = fun self value => setDesignMode self (encodeDesignMode value);
 external dir : t => string /* dir enum */ = "" [@@bs.get];
-let dir : t => Dom.dir = fun self => Dom.decodeDir (dir self);
+let dir : t => DomRe.dir = fun self => DomRe.decodeDir (dir self);
 external setDir : t => string /* dir enum */ => unit = "dir" [@@bs.set];
-let setDir : t => Dom.dir => unit = fun self value => setDir self (Dom.encodeDir value);
+let setDir : t => DomRe.dir => unit = fun self value => setDir self (DomRe.encodeDir value);
 external domain : t => Js.null string = "" [@@bs.get];
 let domain : t => option string = fun self => Js.Null.to_opt (domain self);
 external setDomain : t => string => unit = "domain" [@@bs.set];
-external embeds : t => Dom.nodeList = "" [@@bs.get];
-external forms : t => Dom.htmlCollection = "" [@@bs.get];
-external head : t => Dom.element = "" [@@bs.get]; /* returns HTMLHeadElement */
-external images : t => Dom.htmlCollection = "" [@@bs.get];
+external embeds : t => DomRe.nodeList = "" [@@bs.get];
+external forms : t => DomRe.htmlCollection = "" [@@bs.get];
+external head : t => DomRe.element = "" [@@bs.get]; /* returns HTMLHeadElement */
+external images : t => DomRe.htmlCollection = "" [@@bs.get];
 external lastModified : t => string = "" [@@bs.get];
-external links : t => Dom.nodeList = "" [@@bs.get];
-external location : t => Dom.location = "" [@@bs.get];
+external links : t => DomRe.nodeList = "" [@@bs.get];
+external location : t => DomRe.location = "" [@@bs.get];
 external setLocation : t => string => unit = "location" [@@bs.set];
-external plugins : t => Dom.htmlCollection = "" [@@bs.get];
+external plugins : t => DomRe.htmlCollection = "" [@@bs.get];
 external readyState : t => string /* enum */ = "" [@@bs.get];
 let readyState : t => readyState = fun self => decodeReadyState (readyState self);
 external referrer : t => string = "" [@@bs.get];
-external scripts : t => Dom.htmlCollection = "" [@@bs.get];
+external scripts : t => DomRe.htmlCollection = "" [@@bs.get];
 external title : t => string = "" [@@bs.get];
 external setTitle : t => string => unit = "title" [@@bs.set];
 external url : t => string = "URL" [@@bs.get];
@@ -68,8 +68,8 @@ external url : t => string = "URL" [@@bs.get];
 external close : unit = "" [@@bs.send.pipe: t];
 external execCommand : string => Js.boolean => Js.null string => Js.boolean = "" [@@bs.send.pipe: t];
 let execCommand : string => bool => option string => t => bool = fun command show value self => Js.to_bool (execCommand command (Js.Boolean.to_js_boolean show) (Js.Null.from_opt value) self);
-external getElementsByName : string => Dom.nodeList = "" [@@bs.send.pipe: t];
-external getSelection : Dom.selection = "" [@@bs.send.pipe: t];
+external getElementsByName : string => DomRe.nodeList = "" [@@bs.send.pipe: t];
+external getSelection : DomRe.selection = "" [@@bs.send.pipe: t];
 external hasFocus : Js.boolean = "" [@@bs.send.pipe: t];
 let hasFocus : t => bool = fun self => Js.to_bool (hasFocus self);
 external open_ : unit = "open" [@@bs.send.pipe: t];

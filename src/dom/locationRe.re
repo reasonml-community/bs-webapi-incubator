@@ -1,4 +1,4 @@
-type t = Dom.location;
+type t = DomRe.location;
 
 /* a more ergonomic API would perhaps accept a Window.t directly instead of Location.t */
 

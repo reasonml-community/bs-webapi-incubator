@@ -1,4 +1,4 @@
-  type t = Dom.style;
+  type t = DomRe.style;
 
   external backgroundImage : t => string = "" [@@bs.get];
   external setBackgroundImage : t => string => unit = "backgroundImage" [@@bs.set];

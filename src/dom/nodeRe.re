@@ -1,4 +1,4 @@
-type t = Dom.node;
+type t = DomRe.node;
 
 type nodeType =
 | Element
@@ -29,7 +29,7 @@ let decodeNodeType = fun /* internal */
 | 12 => Notation
 |  _ => Unknown;
 
-external childNodes : t => Dom.nodeList  = "" [@@bs.get];
+external childNodes : t => DomRe.nodeList  = "" [@@bs.get];
 external firstChild : t => Js.null t = "" [@@bs.get];
 let firstChild : t => option t = fun self => Js.Null.to_opt (firstChild self);
 external lastChild : t => Js.null t = "" [@@bs.get];
@@ -43,11 +43,11 @@ external nodeValue : t => Js.null string = "" [@@bs.get];
 let nodeValue : t => option string = fun self => Js.Null.to_opt (nodeValue self);
 external setNodeValue : t => Js.null string => unit = "nodeValue" [@@bs.set];
 let setNodeValue : t => option string => unit = fun self value => setNodeValue self (Js.Null.from_opt value);
-external ownerDocument : t => Dom.document = "" [@@bs.get];
+external ownerDocument : t => DomRe.document = "" [@@bs.get];
 external parentNode : t => Js.null t = "" [@@bs.get];
 let parentNode : t => option t = fun self => Js.Null.to_opt (parentNode self);
-external parentElement : t => Js.null Dom.element = "" [@@bs.get];
-let parentElement : t => option Dom.element = fun self => Js.Null.to_opt (parentElement self);
+external parentElement : t => Js.null DomRe.element = "" [@@bs.get];
+let parentElement : t => option DomRe.element = fun self => Js.Null.to_opt (parentElement self);
 external previousSibling : t => Js.null t = "" [@@bs.get];
 let previousSibling : t => option t = fun self => Js.Null.to_opt (previousSibling self);
 external rootNode : t => t = "" [@@bs.get];

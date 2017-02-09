@@ -1,4 +1,4 @@
-type t 'a;
+type t 'a = CoreRe.promise 'a;
 
 external make : ('a => unit) => t 'a = "Promise" [@@bs.new];
 

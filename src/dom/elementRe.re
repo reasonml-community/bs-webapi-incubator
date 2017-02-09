@@ -1,15 +1,15 @@
-type t = Dom.element;
+type t = DomRe.element;
 
-external asNode : t => Dom.node = "%identity";
-external asEventTarget : t => Dom.eventTarget = "%identity";
+external asNode : t => DomRe.node = "%identity";
+external asEventTarget : t => DomRe.eventTarget = "%identity";
 
-let asHtmlElement : t => Js.null Dom.htmlElement = [%bs.raw {|
+let asHtmlElement : t => Js.null DomRe.htmlElement = [%bs.raw {|
   function (element) {
     // BEWARE: Assumes "contentEditable" uniquely identifies an HTMLELement
     return element.contentEditable !== undefined ?  element : null;
   };
 |}];
-let asHtmlElement : t => option Dom.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self);
+let asHtmlElement : t => option DomRe.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self);
 
 type insertPosition =
 | BeforeBegin
@@ -23,8 +23,8 @@ let encodeInsertPosition = fun /* internal */
 | AfterEnd    => "afterend";
 
 external assignedSlot : t => t = "" [@@bs.get]; /* experimental, returns HTMLSlotElement */
-external attributes : t => array Dom.attr = "" [@@bs.get]; /* return NameNodeMap, not array */
-external classList : t => Dom.domTokenList = "" [@@bs.get];
+external attributes : t => array DomRe.attr = "" [@@bs.get]; /* return NameNodeMap, not array */
+external classList : t => DomRe.domTokenList = "" [@@bs.get];
 external className : t => string = "" [@@bs.get];
 external setClassName : t => string => unit = "className" [@@bs.set];
 external clientHeight : t => int = "" [@@bs.get]; /* experimental */
@@ -57,19 +57,19 @@ external slot : t => string = "" [@@bs.get]; /* experimental */
 external setSlot : t => string => unit = "slot" [@@bs.set]; /* experimental */
 external tagName : t => string = "" [@@bs.get];
 
-external attachShadow : Js.t {..} => Dom.shadowRoot  = "" [@@bs.send.pipe: t]; /* experimental */
-external animate : Js.t {..} => Js.t {..} => Dom.animation = "" [@@bs.send.pipe: t]; /* experimental */
+external attachShadow : Js.t {..} => DomRe.shadowRoot  = "" [@@bs.send.pipe: t]; /* experimental */
+external animate : Js.t {..} => Js.t {..} => DomRe.animation = "" [@@bs.send.pipe: t]; /* experimental */
 external closest : string => t = "" [@@bs.send.pipe: t]; /* experimental */
-external createShadowRoot : Dom.shadowRoot = "" [@@bs.send.pipe: t]; /* experimental AND deprecated (?!) */
+external createShadowRoot : DomRe.shadowRoot = "" [@@bs.send.pipe: t]; /* experimental AND deprecated (?!) */
 external getAttribute : string => Js.null string = "" [@@bs.send.pipe: t];
 let getAttribute : string => t => option string = fun name self => Js.Null.to_opt (getAttribute name self);
 external getAttributeNS : string => string => Js.null string = "" [@@bs.send.pipe: t];
 let getAttributeNS : string => string => t => option string = fun ns name self => Js.Null.to_opt (getAttributeNS ns name self);
-external getBoundingClientRect : Dom.domRect = "" [@@bs.send.pipe: t];
-external getClientRects : array Dom.domRect = "" [@@bs.send.pipe: t];
-external getElementsByClassName : string => Dom.htmlCollection = "" [@@bs.send.pipe: t];
-external getElementsByTagName : string => Dom.htmlCollection = "" [@@bs.send.pipe: t];
-external getElementsByTagNameNS : string => string => Dom.htmlCollection = "" [@@bs.send.pipe: t];
+external getBoundingClientRect : DomRe.domRect = "" [@@bs.send.pipe: t];
+external getClientRects : array DomRe.domRect = "" [@@bs.send.pipe: t];
+external getElementsByClassName : string => DomRe.htmlCollection = "" [@@bs.send.pipe: t];
+external getElementsByTagName : string => DomRe.htmlCollection = "" [@@bs.send.pipe: t];
+external getElementsByTagNameNS : string => string => DomRe.htmlCollection = "" [@@bs.send.pipe: t];
 external hasAttribute : string => Js.boolean = "" [@@bs.send.pipe: t];
 let hasAttribute : string => t => bool = fun name self => Js.to_bool (hasAttribute name self);
 external hasAttributeNS : string => string => Js.boolean = "" [@@bs.send.pipe: t];
@@ -86,8 +86,8 @@ external matches : string => Js.boolean = "" [@@bs.send.pipe: t]; /* experimenta
 let matches : string => t => bool = fun selector self => Js.to_bool (matches selector self);
 external querySelector : string => Js.null t = "" [@@bs.send.pipe: t];
 let querySelector : string => t => option t = fun selector self => Js.Null.to_opt (querySelector selector self);
-external querySelectorAll : string => Dom.nodeList = "" [@@bs.send.pipe: t];
-external releasePointerCapture : Dom.eventPointerId => unit = "" [@@bs.send.pipe: t];
+external querySelectorAll : string => DomRe.nodeList = "" [@@bs.send.pipe: t];
+external releasePointerCapture : DomRe.eventPointerId => unit = "" [@@bs.send.pipe: t];
 external remove : unit = "" [@@bs.send.pipe: t]; /* experimental */
 external removeAttribute : string => unit = "" [@@bs.send.pipe: t];
 external removeAttributeNS : string => string => unit = "" [@@bs.send.pipe: t];
@@ -99,9 +99,9 @@ let scrollIntoViewNoAlignToTop : t => unit = fun self => scrollIntoViewNoAlignTo
 external scrollIntoViewWithOptions : Js.t {..} => unit = "scrollIntoView" [@@bs.send.pipe: t]; /* experimental */
 external setAttribute : string => string => unit = "" [@@bs.send.pipe: t];
 external setAttributeNS : string => string => string => unit = "" [@@bs.send.pipe: t];
-external setPointerCapture : Dom.eventPointerId => unit = "" [@@bs.send.pipe: t];
+external setPointerCapture : DomRe.eventPointerId => unit = "" [@@bs.send.pipe: t];
 
 /* GlobalEventHandlers interface */
 /* Not sure this should be exposed, since EventTarget seems like a better API */
 
-external setOnClick : t => (Dom.event => unit) => unit = "onclick" [@@bs.set]; /* should be MouseEvent */
+external setOnClick : t => (DomRe.event => unit) => unit = "onclick" [@@bs.set]; /* should be MouseEvent */

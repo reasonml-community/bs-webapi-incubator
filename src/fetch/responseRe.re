@@ -1,4 +1,4 @@
-type t;
+type t = FetchRe.response;
 
 /* TODO: type Headers */
 external ok : t => Js.boolean = "" [@@bs.get];
