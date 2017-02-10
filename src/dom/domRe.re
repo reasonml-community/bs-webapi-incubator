@@ -46,4 +46,6 @@ let encodeDir = fun /* internal */
 let decodeDir = fun /* internal */
 | "ltr" => Ltr
 | "rtl" => Rtl
-| _     => Unknown
+| _     => Unknown;
+
+external cast : 'a => 'b = "%identity"; /* internal */
