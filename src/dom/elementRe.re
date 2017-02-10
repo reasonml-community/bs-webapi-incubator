@@ -6,7 +6,7 @@ let asHtmlElement : t => Js.null DomRe.htmlElement = [%bs.raw {|
   function (element) {
     // BEWARE: Assumes "contentEditable" uniquely identifies an HTMLELement
     return element.contentEditable !== undefined ?  element : null;
-  };
+  }
 |}];
 let asHtmlElement : t => option DomRe.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self);
 

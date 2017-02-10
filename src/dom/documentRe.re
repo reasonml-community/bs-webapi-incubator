@@ -5,7 +5,7 @@ external asEventTarget : t => DomRe.eventTarget = "%identity";
 let asHtmlDocument : t => Js.null DomRe.htmlDocument = [%bs.raw {|
   function (document) {
     return document.doctype.name === "html" ?  document : null;
-  };
+  }
 |}];
 let asHtmlDocument : t => option DomRe.htmlDocument = fun self => Js.Null.to_opt (asHtmlDocument self);
 
