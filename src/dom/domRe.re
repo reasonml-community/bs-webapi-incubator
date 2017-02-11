@@ -28,7 +28,6 @@ type nodeList;
 type range;
 type selection;
 type shadowRoot;
-type style;
 type textNode;
 type treeWalker;
 type window;
@@ -47,4 +46,6 @@ let encodeDir = fun /* internal */
 let decodeDir = fun /* internal */
 | "ltr" => Ltr
 | "rtl" => Rtl
-| _     => Unknown
+| _     => Unknown;
+
+external cast : 'a => 'b = "%identity"; /* internal */

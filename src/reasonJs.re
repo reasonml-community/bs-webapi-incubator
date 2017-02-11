@@ -21,6 +21,7 @@ module Object = ObjectRe;
 module Promise = PromiseRe;
 module RegExp = RegExpRe;
 
+module CssStyleDeclaration = CssStyleDeclarationRe;
 module Document = DocumentRe;
 module DomTokenList = DomTokenListRe;
 module Element = ElementRe;
@@ -36,7 +37,6 @@ module NodeFilter = NodeFilterRe;
 module NodeList = NodeListRe;
 module Range = RangeRe;
 module Selection = SelectionRe;
-module Style = StyleRe;
 module Window = WindowRe;
 
 module Fetch = FetchRe;

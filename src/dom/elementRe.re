@@ -2,14 +2,16 @@ type t = DomRe.element;
 
 external asNode : t => DomRe.node = "%identity";
 external asEventTarget : t => DomRe.eventTarget = "%identity";
-
 let asHtmlElement : t => Js.null DomRe.htmlElement = [%bs.raw {|
   function (element) {
     // BEWARE: Assumes "contentEditable" uniquely identifies an HTMLELement
     return element.contentEditable !== undefined ?  element : null;
-  };
+  }
 |}];
 let asHtmlElement : t => option DomRe.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self);
+
+let ofNode node: option t =>
+  (NodeRe.nodeType node) == Element ? Some (DomRe.cast node) : None;
 
 type insertPosition =
 | BeforeBegin

@@ -4,6 +4,9 @@ external asNode : t => DomRe.node = "%identity";
 external asEventTarget : t => DomRe.eventTarget = "%identity";
 external asElement : t => DomRe.element = "%identity";
 
+let ofElement element: option t =>
+  (ElementRe.tagName element) == "html" ? Some (DomRe.cast element) : None;
+
 type contentEditable =
 | True
 | False
