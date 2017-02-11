@@ -1,4 +1,5 @@
 type t = DomRe.cssStyleDeclaration;
+type cssRule; /* TODO: Move to DomRe */
 
 external cssText : t => string = "" [@@bs.get];
 external setCssText : t => string => unit = "cssText" [@@bs.set];

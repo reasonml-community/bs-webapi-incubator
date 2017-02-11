@@ -60,8 +60,6 @@ document
    |> Document.createElement "div"
    |> Element.nextElementSibling
    |> map Node.innerText;
-
-
 /*
  * These SHOULD NOT type check
  */
@@ -74,7 +72,6 @@ document
 
 /*
 /* ideal, but requires piped setters */
-
 switch (document |> body) {
   | Some body =>
     document
