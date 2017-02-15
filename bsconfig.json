@@ -19,10 +19,7 @@
       "type": "dev",
       "subdirs": [
         "core",
-        "dom",
-        "fetch",
-        "gl",
-        "storage"
+        "dom"
       ]
     }, {
       "dir": "examples",
