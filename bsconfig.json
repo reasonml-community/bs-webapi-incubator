@@ -4,7 +4,6 @@
   an issue! */
 {
   "name" : "reason-js",
-  "refmt": "reason/refmt_impl.native",
   "sources": [{
       "dir": "src",
       "subdirs": [
