@@ -4,6 +4,7 @@
   an issue! */
 {
   "name" : "reason-js",
+  "bsc-flags": ["-bs-no-version-header"],
   "sources": [{
       "dir": "src",
       "subdirs": [
