@@ -21,6 +21,9 @@ module Object = ObjectRe;
 module Promise = PromiseRe;
 module RegExp = RegExpRe;
 
+module Dom = DomRe;
+
+/* TODO: Should be moved into Dom */
 module CssStyleDeclaration = CssStyleDeclarationRe;
 module Document = DocumentRe;
 module DomTokenList = DomTokenListRe;
