@@ -5,6 +5,7 @@ type t 'a = CoreRe.promise 'a;
 external make : (('a => unit) => ('e => unit) => unit) => t 'a = "Promise" [@@bs.new];
 
 external then_ : ('a => 'b) => t 'b = "then" [@@bs.send.pipe: t 'a];
+external and_then : ('a => t 'b) => t 'b = "then" [@@bs.send.pipe: t 'a];
 external catch : ('e => unit) => t 'a = "" [@@bs.send.pipe: t 'a];
 external or_ : ('e => 'b) => t 'b = "catch" [@@bs.send.pipe: t 'a]; /* non-standard name for "overload" */
 external or_else : ('e => t 'b) => t 'b = "catch" [@@bs.send.pipe: t 'a]; /* non-standard name for "overload" */
