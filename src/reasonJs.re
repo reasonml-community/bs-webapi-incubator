@@ -21,6 +21,9 @@ module Object = ObjectRe;
 module Promise = PromiseRe;
 module RegExp = RegExpRe;
 
+module Dom = DomRe;
+
+/* TODO: Should be moved into Dom */
 module CssStyleDeclaration = CssStyleDeclarationRe;
 module Document = DocumentRe;
 module DomTokenList = DomTokenListRe;
@@ -40,7 +43,6 @@ module Selection = SelectionRe;
 module Window = WindowRe;
 
 module Fetch = FetchRe;
-module Response = ResponseRe;
 
 module Float32Array = Float32ArrayRe;
 module Gl = GlRe;
@@ -52,5 +54,3 @@ module SessionStorage = SessionStorageRe;
 module CanvasElement = {
   external getContext : DomRe.element => string => Gl.glT = "getContext" [@@bs.send];
 };
-
-let fetch = Fetch.fetch;
