@@ -1,2 +1,2 @@
 type date;
-type promise 'a;
+type promise 'res 'rej;
