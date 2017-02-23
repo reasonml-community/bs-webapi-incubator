@@ -10,7 +10,8 @@
   "author": "chenglou",
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "https://github.com/bloomberg/bucklescript.git"
+    "bs-platform": "https://github.com/bloomberg/bucklescript.git",
+    "reason": "https://github.com/facebook/reason.git"
   },
   "rebel": {}
 }

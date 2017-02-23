@@ -1,7 +1,7 @@
 module Impl (Type: DomInternalRe.Type) => {
   type t_htmlElement = Type.t;
 
-  let ofElement element: option t_htmlElement =>
+  let ofElement element: (option t_htmlElement) =>
     (ElementRe.tagName element) == "html" ? Some (DomInternalRe.cast element) : None;
 
   type contentEditable =

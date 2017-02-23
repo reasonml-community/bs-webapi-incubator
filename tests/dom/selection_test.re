@@ -1,8 +1,7 @@
 open ReasonJs;
 
 let node = document
-  |> Document.createElement "strong"
-  |> Element.asNode;
+  |> Document.createElement "strong";
 let sel = document
   |> Document.asHtmlDocument
   |> TestHelpers.unsafelyUnwrapOption

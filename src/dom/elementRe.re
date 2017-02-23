@@ -1,7 +1,9 @@
 module Impl(Type: DomInternalRe.Type) => {
   type t_element = Type.t;
 
+  /* Shouldn't be needed anymore
   external asElement : t_element => DomRe.element = "%identity";
+  */
 
   let asHtmlElement : t_element => Js.null DomRe.htmlElement = [%bs.raw {|
     function (element) {
@@ -11,7 +13,7 @@ module Impl(Type: DomInternalRe.Type) => {
   |}];
   let asHtmlElement : t_element => option DomRe.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self);
 
-  let ofNode node: option t_element =>
+  let ofNode node: option (t_element) =>
     (NodeRe.nodeType node) == Element ? Some (DomInternalRe.cast node) : None;
 
   type insertPosition =
@@ -79,8 +81,8 @@ module Impl(Type: DomInternalRe.Type) => {
   let hasAttributeNS : string => string => t_element => bool = fun ns name self => Js.to_bool (hasAttributeNS ns name self);
   external hasAttributes : Js.boolean = "" [@@bs.send.pipe: t_element];
   let hasAttributes : t_element => bool = fun self => Js.to_bool (hasAttributes self);
-  external insertAdjacentElement : string /* insertPosition enum */ => DomRe.element => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
-  let insertAdjacentElement : insertPosition => DomRe.element => t_element => unit = fun position element self => insertAdjacentElement (encodeInsertPosition position) element self;
+  external insertAdjacentElement : string /* insertPosition enum */ => DomRe.element_like 'a => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
+  let insertAdjacentElement : insertPosition => DomRe.element_like 'a => t_element => unit = fun position element self => insertAdjacentElement (encodeInsertPosition position) element self;
   external insertAdjacentHTML : string /* insertPosition enum */ => string => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
   let insertAdjacentHTML : insertPosition => string => t_element => unit = fun position text self => insertAdjacentHTML (encodeInsertPosition position) text self;
   external insertAdjacentText : string /* insertPosition enum */ => string => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */

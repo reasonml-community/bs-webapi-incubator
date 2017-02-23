@@ -30,7 +30,9 @@ module Impl (Type: DomInternalRe.Type) => {
   | 12 => Notation
   |  _ => Unknown;
 
+  /* Shouldn't be needed anymore
   external asNode : t_node => DomRe.node = "%identity";
+  */
 
   /* baseURI */
   external childNodes : t_node => DomRe.nodeList  = "" [@@bs.get];
@@ -62,31 +64,31 @@ module Impl (Type: DomInternalRe.Type) => {
   external textContent : t_node => string = "" [@@bs.get];
   external setTextContent : t_node => string => unit = "textContent" [@@bs.set];
 
-  external appendChild : DomRe.node => unit = "" [@@bs.send.pipe: t_node];
+  external appendChild : DomRe.node_like 'a => unit = "" [@@bs.send.pipe: t_node];
   external cloneNode : DomRe.node = "" [@@bs.send.pipe: t_node];
   external cloneNodeDeep : Js.boolean => DomRe.node = "cloneNode" [@@bs.send.pipe: t_node];
   let cloneNodeDeep : t_node => DomRe.node = fun self => cloneNodeDeep (Js.Boolean.to_js_boolean true) self;
-  external compareDocumentPosition : DomRe.node => int = "" [@@bs.send.pipe: t_node]; /* returns a bitmask which could also be represeneted as an enum, see https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition */
-  external contains : DomRe.node => Js.boolean = "" [@@bs.send.pipe: t_node];
-  let contains : DomRe.node => t_node => bool = fun node self => Js.to_bool (contains node self);
+  external compareDocumentPosition : DomRe.node_like 'a => int = "" [@@bs.send.pipe: t_node]; /* returns a bitmask which could also be represeneted as an enum, see https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition */
+  external contains : DomRe.node_like 'a => Js.boolean = "" [@@bs.send.pipe: t_node];
+  let contains : DomRe.node_like 'a => t_node => bool = fun node self => Js.to_bool (contains node self);
   external getRootNode : DomRe.node = "" [@@bs.send.pipe: t_node];
   external getRootNodeComposed : Js.boolean => DomRe.node = "getRootNode" [@@bs.send.pipe: t_node];
   let getRootNodeComposed : t_node => DomRe.node = fun self => getRootNodeComposed (Js.Boolean.to_js_boolean true) self;
   external hasChildNodes : Js.boolean = "" [@@bs.send.pipe: t_node];
   let hasChildNodes : t_node => bool = fun self => Js.to_bool (hasChildNodes self);
-  external insertBefore : DomRe.node => Js.null DomRe.node => DomRe.node = "" [@@bs.send.pipe: t_node];
-  let insertBefore : DomRe.node => option DomRe.node => t_node => DomRe.node = fun node reference self => insertBefore node (Js.Null.from_opt reference) self;
+  external insertBefore : DomRe.node_like 'a => Js.null (DomRe.node_like 'b) => DomRe.node_like 'a = "" [@@bs.send.pipe: t_node];
+  let insertBefore : DomRe.node_like 'a => option (DomRe.node_like 'b) => t_node => DomRe.node_like 'a = fun node reference self => insertBefore node (Js.Null.from_opt reference) self;
   external isDefaultNamespace : string => Js.boolean = "" [@@bs.send.pipe: t_node];
   let isDefaultNamespace : string => t_node => bool = fun ns self => Js.to_bool (isDefaultNamespace ns self);
-  external isEqualNode : DomRe.node => Js.boolean = "" [@@bs.send.pipe: t_node];
-  let isEqualNode: DomRe.node => t_node => bool = fun node self => Js.to_bool (isEqualNode node self);
-  external isSameNode : DomRe.node => Js.boolean = "" [@@bs.send.pipe: t_node];
-  let isSameNode: DomRe.node => t_node => bool = fun node self => Js.to_bool (isSameNode node self);
+  external isEqualNode : DomRe.node_like 'a => Js.boolean = "" [@@bs.send.pipe: t_node];
+  let isEqualNode: DomRe.node_like 'a => t_node => bool = fun node self => Js.to_bool (isEqualNode node self);
+  external isSameNode : DomRe.node_like 'a => Js.boolean = "" [@@bs.send.pipe: t_node];
+  let isSameNode: DomRe.node_like 'a => t_node => bool = fun node self => Js.to_bool (isSameNode node self);
   external lookupNamespaceURI : Js.null string => Js.null string = "" [@@bs.send.pipe: t_node];
   let lookupNamespaceURI: option string => t_node => option string = fun prefix self => Js.Null.to_opt (lookupNamespaceURI (Js.Null.from_opt prefix) self);
   external lookupPrefix : string = "lookupPrefix" [@@bs.send.pipe: t_node];
   external normalize : unit = "" [@@bs.send.pipe: t_node];
-  external removeChild : DomRe.node => DomRe.node = "" [@@bs.send.pipe: t_node];
+  external removeChild : DomRe.node_like 'a => DomRe.node_like 'a = "" [@@bs.send.pipe: t_node];
   /* replacChild */
 };
 

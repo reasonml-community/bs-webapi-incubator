@@ -29,10 +29,18 @@ document
   |> Element.nextElementSibling
   |> map Element.innerText; /* innerText is a function that accepts a Node */
 
+/* Before subtyping:
 document
   |> Document.createElement "div"
   |> Element.asNode
   |> Node.parentElement /* inherited from Node, returns DomRe.element */
+  |> map Element.innerText; /* inherited from Node */
+*/
+/* After subtyping: */
+
+document
+  |> Document.createElement "div"
+  |> Element.parentElement /* inherited from Node, returns DomRe.element */
   |> map Element.innerText; /* inherited from Node */
 
 let el = document
@@ -46,11 +54,18 @@ document
   |> and_then HtmlDocument.body
   |> map (Element.appendChild el);
 */
+
+/* Before subtyping:
 document
   |> Document.asHtmlDocument
   |> and_then HtmlDocument.body
   |> map (Element.appendChild (el |> HtmlElement.asNode));
-
+*/
+/* After subtyping: */
+document
+  |> Document.asHtmlDocument
+  |> and_then HtmlDocument.body
+  |> map (Element.appendChild el);
 
 /*
 /*
