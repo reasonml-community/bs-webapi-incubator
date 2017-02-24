@@ -1,7 +1,7 @@
 open ReasonJs;
 
-let node = document |> Document.createElement "strong" |> Element.asNode;
-let node2 = document |> Document.createElement "small" |> Element.asNode;
+let node = document |> Document.createElement "strong" |> Element.rootNode;
+let node2 = document |> Document.createElement "small" |> Element.rootNode;
 
 let _ = Node.childNodes node;
 let _ = Node.firstChild node;
