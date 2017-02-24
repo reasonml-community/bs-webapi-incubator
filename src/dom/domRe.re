@@ -25,6 +25,9 @@ type document = document_like unit;
 type htmlDocument_tag;
 type htmlDocument = document_like htmlDocument_tag;
 
+type shadowRoot_tag;
+type shadowRoot = node_like shadowRoot_tag;
+
 type event;
 type eventTarget;
 type history;
@@ -37,7 +40,6 @@ type nodeIterator;
 type nodeList;
 type range;
 type selection;
-type shadowRoot;
 type textNode;
 type treeWalker;
 type window;
