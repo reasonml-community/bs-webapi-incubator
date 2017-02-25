@@ -1,4 +1,4 @@
 
 let unsafelyUnwrapOption = fun
 | Some v => v
-| None => assert false;
+| None => raise (Invalid_argument "Passed `None` to unsafelyUnrapOption");

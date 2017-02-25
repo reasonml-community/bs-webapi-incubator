@@ -14,7 +14,7 @@ let and_then f => fun
 
 let unwrapUnsafely = fun
 | Some v => v
-| None => assert false;
+| None => raise (Invalid_argument "Passed `None` to unwrapUnsafely");
 
 
 /*
