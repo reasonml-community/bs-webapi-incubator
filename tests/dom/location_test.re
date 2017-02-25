@@ -1,4 +1,4 @@
-open ReasonJs;
+open ReasonJs.Dom;
 
 let _ = Location.href location;
 let _ = Location.setHref location "http://reason.ml";

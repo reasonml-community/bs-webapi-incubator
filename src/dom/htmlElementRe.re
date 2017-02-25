@@ -29,18 +29,18 @@ module Impl (Type: DomInternalRe.Type) => {
   let setContentEditable : t_htmlElement => contentEditable => unit = fun  self value => setContentEditable self (encodeContentEditable value);
   external isContentEditable : t_htmlElement => Js.boolean = "" [@@bs.get];
   let isContentEditable : t_htmlElement => bool = fun self => Js.to_bool (isContentEditable self);
-  external contextMenu : t_htmlElement => DomRe.htmlElement = "" [@@bs.get]; /* returns HTMLMenuElement */
-  external setContextMenu : t_htmlElement => DomRe.htmlElement => unit = "contextMenu" [@@bs.set]; /* accepts and returns HTMLMenuElement */
-  external dataset : t_htmlElement => DomRe.domStringMap = "" [@@bs.get];
+  external contextMenu : t_htmlElement => DomTypesRe.htmlElement = "" [@@bs.get]; /* returns HTMLMenuElement */
+  external setContextMenu : t_htmlElement => DomTypesRe.htmlElement => unit = "contextMenu" [@@bs.set]; /* accepts and returns HTMLMenuElement */
+  external dataset : t_htmlElement => DomTypesRe.domStringMap = "" [@@bs.get];
   external dir : t_htmlElement => string /* enum */ = "" [@@bs.get];
-  let dir : t_htmlElement => DomRe.dir = fun self => DomRe.decodeDir (dir self);
+  let dir : t_htmlElement => DomTypesRe.dir = fun self => DomTypesRe.decodeDir (dir self);
   external setDir : t_htmlElement => string /* enum */ => unit = "dir" [@@bs.set];
-  let setDir : t_htmlElement => DomRe.dir => unit = fun self value => setDir self (DomRe.encodeDir value);
+  let setDir : t_htmlElement => DomTypesRe.dir => unit = fun self value => setDir self (DomTypesRe.encodeDir value);
   external draggable : t_htmlElement => Js.boolean = "" [@@bs.get];
   let draggable : t_htmlElement => bool = fun self => Js.to_bool (draggable self);
   external setDraggable : t_htmlElement => Js.boolean => unit = "draggable" [@@bs.set];
   let setDraggable : t_htmlElement => bool => unit = fun self value => setDraggable self (Js.Boolean.to_js_boolean value);
-  external dropzone : t_htmlElement => DomRe.domSettableTokenList = "" [@@bs.get];
+  external dropzone : t_htmlElement => DomTypesRe.domSettableTokenList = "" [@@bs.get];
   external hidden : t_htmlElement => Js.boolean = "" [@@bs.get];
   let hidden : t_htmlElement => bool = fun self => Js.to_bool (hidden self);
   external setHidden : t_htmlElement => Js.boolean => unit = "hidden" [@@bs.set];
@@ -49,11 +49,11 @@ module Impl (Type: DomInternalRe.Type) => {
   let itemScope : t_htmlElement => bool = fun self => Js.to_bool (itemScope self);
   external setItemScope : t_htmlElement => Js.boolean => unit = "itemScope" [@@bs.set]; /* experimental */
   let setItemScope : t_htmlElement => bool => unit = fun self value => setItemScope self (Js.Boolean.to_js_boolean value);
-  external itemType : t_htmlElement => DomRe.domSettableTokenList = "" [@@bs.get]; /* experimental */
+  external itemType : t_htmlElement => DomTypesRe.domSettableTokenList = "" [@@bs.get]; /* experimental */
   external itemId : t_htmlElement => string = "" [@@bs.get]; /* experimental */
   external setItemId : t_htmlElement => string => unit = "itemId" [@@bs.set]; /* experimental */
-  external itemRef : t_htmlElement => DomRe.domSettableTokenList = "" [@@bs.get]; /* experimental */
-  external itemProp : t_htmlElement => DomRe.domSettableTokenList = "" [@@bs.get]; /* experimental */
+  external itemRef : t_htmlElement => DomTypesRe.domSettableTokenList = "" [@@bs.get]; /* experimental */
+  external itemProp : t_htmlElement => DomTypesRe.domSettableTokenList = "" [@@bs.get]; /* experimental */
   external itemValue : t_htmlElement => Js.t {..} = "" [@@bs.get]; /* experimental */
   external setItemValue : t_htmlElement => Js.t {..} => unit = "itemValue" [@@bs.set]; /* experimental */
   external lang : t_htmlElement => string = "" [@@bs.get];
@@ -68,8 +68,8 @@ module Impl (Type: DomInternalRe.Type) => {
   let spellcheck : t_htmlElement => bool = fun self => Js.to_bool (spellcheck self);
   external setSpellcheck : t_htmlElement => Js.boolean => unit = "spellcheck" [@@bs.set];
   let setSpellcheck : t_htmlElement => bool => unit = fun self value => setSpellcheck self (Js.Boolean.to_js_boolean value);
-  external style : t_htmlElement => DomRe.cssStyleDeclaration = "" [@@bs.get];
-  external setStyle : t_htmlElement => DomRe.cssStyleDeclaration => unit = "style" [@@bs.set];
+  external style : t_htmlElement => DomTypesRe.cssStyleDeclaration = "" [@@bs.get];
+  external setStyle : t_htmlElement => DomTypesRe.cssStyleDeclaration => unit = "style" [@@bs.set];
   external tabIndex : t_htmlElement => int = "" [@@bs.get];
   external setTabIndex : t_htmlElement => int => unit = "tabIndex" [@@bs.set];
   external title : t_htmlElement => string = "" [@@bs.get];
@@ -103,10 +103,10 @@ module Tree (Type: DomInternalRe.Type) => {
   include Impl { type t = Type };
 };
 
-include Tree { type t = DomRe.htmlElement };
+include Tree { type t = DomTypesRe.htmlElement };
 */
 
-include NodeRe.Impl { type t = DomRe.htmlElement };
-include EventTargetRe.Impl { type t = DomRe.htmlElement };
-include ElementRe.Impl { type t = DomRe.htmlElement };
-include Impl { type t = DomRe.htmlElement };
+include NodeRe.Impl { type t = DomTypesRe.htmlElement };
+include EventTargetRe.Impl { type t = DomTypesRe.htmlElement };
+include ElementRe.Impl { type t = DomTypesRe.htmlElement };
+include Impl { type t = DomTypesRe.htmlElement };

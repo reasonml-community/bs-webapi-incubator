@@ -1,4 +1,4 @@
-open ReasonJs;
+open ReasonJs.Dom;
 
 let _ = History.length history;
 let _ = History.scrollRestoration history;

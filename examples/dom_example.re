@@ -1,4 +1,4 @@
-open ReasonJs;
+open ReasonJs.Dom;
 
 /* Adapted from https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Examples#Example_7:_Displaying_Event_Object_Properties */
 
@@ -8,7 +8,7 @@ let map f => fun
 | Some v => Some (f v)
 | None => None;
 
-let and_then f => fun
+let andThen f => fun
 | Some v => f v
 | None => None;
 
@@ -64,7 +64,7 @@ document
 /* After subtyping: */
 document
   |> Document.asHtmlDocument
-  |> and_then HtmlDocument.body
+  |> andThen HtmlDocument.body
   |> map (Element.appendChild el);
 
 /*
