@@ -2,7 +2,7 @@ open ReasonJs.Dom;
 
 let el = document |> Document.createElement "strong";
 let event = document |> Document.createEvent "my-event";
-let handleClick e => print_endline "asd";
+let handleClick _ => print_endline "asd";
 
 let _ = Window.console window;
 let _ = Window.crypto window;

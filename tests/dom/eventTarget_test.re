@@ -2,7 +2,7 @@ open ReasonJs.Dom;
 
 let target = document |> Document.createElement "strong" |> Element.asEventTarget;
 let event = Event.make "my-event";
-let handleClick e => print_endline "asd";
+let handleClick _ => print_endline "asd";
 
 EventTarget.addEventListener "click" handleClick target;
 EventTarget.addEventListenerWithOptions "click" handleClick  { "passive": true } target;
