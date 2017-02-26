@@ -1,3 +1,3 @@
-type t = DomRe.htmlCollection;
+type t = DomTypesRe.htmlCollection;
 
-external toArray : t => array DomRe.element = "Array.prototype.slice.call" [@@bs.val];
+external toArray : t => array DomTypesRe.element = "Array.prototype.slice.call" [@@bs.val];

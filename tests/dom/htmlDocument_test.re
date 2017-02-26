@@ -1,4 +1,4 @@
-open ReasonJs;
+open ReasonJs.Dom;
 
 let el = document |> Document.createElement "strong";
 let htmlDocument = document |> Document.asHtmlDocument |> TestHelpers.unsafelyUnwrapOption;

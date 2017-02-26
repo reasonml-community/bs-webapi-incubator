@@ -1,14 +1,14 @@
 module Impl (Type: DomInternalRe.Type) => {
   type t_document = Type.t;
 
-  external asDocument : t_document => DomRe.document = "%identity";
+  external asDocument : t_document => DomTypesRe.document = "%identity";
 
-  let asHtmlDocument : t_document => Js.null DomRe.htmlDocument = [%bs.raw {|
+  let asHtmlDocument : t_document => Js.null DomTypesRe.htmlDocument = [%bs.raw {|
     function (document) {
       return document.doctype.name === "html" ?  document : null;
     }
   |}];
-  let asHtmlDocument : t_document => option DomRe.htmlDocument = fun self => Js.Null.to_opt (asHtmlDocument self);
+  let asHtmlDocument : t_document => option DomTypesRe.htmlDocument = fun self => Js.Null.to_opt (asHtmlDocument self);
 
   let ofNode node: option (t_document) =>
     (NodeRe.nodeType node) == Document ? Some (DomInternalRe.cast node) : None;
@@ -38,62 +38,62 @@ module Impl (Type: DomInternalRe.Type) => {
   external characterSet : t_document => string = "" [@@bs.get];
   external compatMode : t_document => string /* compatMode enum */ = "" [@@bs.get]; /* experimental */
   let compatMode : t_document => compatMode = fun self => decodeCompatMode (compatMode self);
-  external docType : t_document => DomRe.documentType = "" [@@bs.get];
-  external documentElement : t_document => DomRe.element = "" [@@bs.get];
+  external docType : t_document => DomTypesRe.documentType = "" [@@bs.get];
+  external documentElement : t_document => DomTypesRe.element = "" [@@bs.get];
   external documentURI : t_document => string = "" [@@bs.get];
   external hidden : t_document => Js.boolean = "" [@@bs.get];
   let hidden : t_document => bool = fun v => Js.to_bool (hidden v);
-  external implementation : t_document => DomRe.documentImplementation = "" [@@bs.get];
+  external implementation : t_document => DomTypesRe.documentImplementation = "" [@@bs.get];
   external lastStyleSheetSet : t_document => string = "" [@@bs.get];
-  external pointerLockElement : t_document => Js.null DomRe.element = "" [@@bs.get]; /* experimental */
-  let pointerLockElement : t_document => option DomRe.element = fun self => Js.Null.to_opt (pointerLockElement self);
+  external pointerLockElement : t_document => Js.null DomTypesRe.element = "" [@@bs.get]; /* experimental */
+  let pointerLockElement : t_document => option DomTypesRe.element = fun self => Js.Null.to_opt (pointerLockElement self);
   external preferredStyleSheetSet : t_document => string = "" [@@bs.get];
-  external scrollingElement : t_document => Js.null DomRe.element = "" [@@bs.get];
-  let scrollingElement : t_document => option DomRe.element = fun self => Js.Null.to_opt (scrollingElement self);
+  external scrollingElement : t_document => Js.null DomTypesRe.element = "" [@@bs.get];
+  let scrollingElement : t_document => option DomTypesRe.element = fun self => Js.Null.to_opt (scrollingElement self);
   external selectedStyleSheetSet : t_document => string = "" [@@bs.get];
   external setSelectedStyleSheetSet : t_document => string => unit = "selectedStyleSheetSet" [@@bs.set];
-  external styleSheets : t_document => array DomRe.cssStyleSheet = "" [@@bs.get]; /* return StyleSheetList, not array */
+  external styleSheets : t_document => array DomTypesRe.cssStyleSheet = "" [@@bs.get]; /* return StyleSheetList, not array */
   external styleSheetSets : t_document => array string = "" [@@bs.get];
   external visibilityState : t_document => string /* visibilityState enum */ = "" [@@bs.get];
   let visibilityState : t_document => visibilityState = fun self => decodeVisibilityState (visibilityState self);
 
-  external adoptNode : DomRe.element_like 'a => DomRe.element_like 'a = "" [@@bs.send.pipe: t_document];
-  external createAttribute : string => DomRe.attr = "" [@@bs.send.pipe: t_document];
-  external createAttributeNS : string => string => DomRe.attr = "" [@@bs.send.pipe: t_document];
-  external createComment : string => DomRe.comment = "" [@@bs.send.pipe: t_document];
-  external createDocumentFragment : DomRe.documentFragment = "" [@@bs.send.pipe: t_document];
-  external createElement : string => DomRe.element = "" [@@bs.send.pipe: t_document];
-  external createElementWithOptions : string => Js.t {..} => DomRe.element = "createElement" [@@bs.send.pipe: t_document]; /* not widely supported */
-  external createElementNS : string => string => DomRe.element = "" [@@bs.send.pipe: t_document];
-  external createElementNSWithOptions : string => string => Js.t {..} => DomRe.element = "createEementNS" [@@bs.send.pipe: t_document]; /* not widely supported */
-  external createEvent : string /* large enum */ => DomRe.event = "" [@@bs.send.pipe: t_document]; /* discouraged (but not deprecated) in favor of Event constructors */
-  external createNodeIterator : DomRe.node_like 'a => DomRe.nodeIterator = "" [@@bs.send.pipe: t_document];
-  external createNodeIteratorWithWhatToShow : DomRe.node_like 'a => NodeFilterRe.WhatToShow.t => DomRe.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t_document];
-  external createNodeIteratorWithWhatToShowFilter : DomRe.node_like 'a => NodeFilterRe.WhatToShow.t => DomRe.nodeFilter => DomRe.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t_document];
+  external adoptNode : DomTypesRe.element_like 'a => DomTypesRe.element_like 'a = "" [@@bs.send.pipe: t_document];
+  external createAttribute : string => DomTypesRe.attr = "" [@@bs.send.pipe: t_document];
+  external createAttributeNS : string => string => DomTypesRe.attr = "" [@@bs.send.pipe: t_document];
+  external createComment : string => DomTypesRe.comment = "" [@@bs.send.pipe: t_document];
+  external createDocumentFragment : DomTypesRe.documentFragment = "" [@@bs.send.pipe: t_document];
+  external createElement : string => DomTypesRe.element = "" [@@bs.send.pipe: t_document];
+  external createElementWithOptions : string => Js.t {..} => DomTypesRe.element = "createElement" [@@bs.send.pipe: t_document]; /* not widely supported */
+  external createElementNS : string => string => DomTypesRe.element = "" [@@bs.send.pipe: t_document];
+  external createElementNSWithOptions : string => string => Js.t {..} => DomTypesRe.element = "createEementNS" [@@bs.send.pipe: t_document]; /* not widely supported */
+  external createEvent : string /* large enum */ => DomTypesRe.event = "" [@@bs.send.pipe: t_document]; /* discouraged (but not deprecated) in favor of Event constructors */
+  external createNodeIterator : DomTypesRe.node_like 'a => DomTypesRe.nodeIterator = "" [@@bs.send.pipe: t_document];
+  external createNodeIteratorWithWhatToShow : DomTypesRe.node_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t_document];
+  external createNodeIteratorWithWhatToShowFilter : DomTypesRe.node_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.nodeFilter => DomTypesRe.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t_document];
   /* createProcessingInstruction */
-  external createRange : DomRe.range = "" [@@bs.send.pipe: t_document];
-  external createText : string => DomRe.textNode = "" [@@bs.send.pipe: t_document];
-  external createTreeWalker : DomRe.element_like 'a => DomRe.treeWalker = "" [@@bs.send.pipe: t_document];
-  external createTreeWalkerWithWhatToShow : DomRe.element_like 'a => NodeFilterRe.WhatToShow.t => DomRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
-  external createTreeWalkerWithWhatToShowFilter : DomRe.element_like 'a => NodeFilterRe.WhatToShow.t => DomRe.nodeFilter => DomRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
-  external elementFromPoint : int => int => DomRe.element = "" [@@bs.send.pipe: t_document]; /* experimental, but widely supported */
-  external elementsFromPoint : int => int => array DomRe.element = "" [@@bs.send.pipe: t_document]; /* experimental */
+  external createRange : DomTypesRe.range = "" [@@bs.send.pipe: t_document];
+  external createText : string => DomTypesRe.textNode = "" [@@bs.send.pipe: t_document];
+  external createTreeWalker : DomTypesRe.element_like 'a => DomTypesRe.treeWalker = "" [@@bs.send.pipe: t_document];
+  external createTreeWalkerWithWhatToShow : DomTypesRe.element_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
+  external createTreeWalkerWithWhatToShowFilter : DomTypesRe.element_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.nodeFilter => DomTypesRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
+  external elementFromPoint : int => int => DomTypesRe.element = "" [@@bs.send.pipe: t_document]; /* experimental, but widely supported */
+  external elementsFromPoint : int => int => array DomTypesRe.element = "" [@@bs.send.pipe: t_document]; /* experimental */
   external enableStyleSheetsForSet : string => unit = "" [@@bs.send.pipe: t_document];
   external exitPointerLock : unit = "" [@@bs.send.pipe: t_document]; /* experimental */
-  external getAnimations : array DomRe.animation = "" [@@bs.send.pipe: t_document]; /* experimental */
-  external getElementsByClassName : string => DomRe.htmlCollection = "" [@@bs.send.pipe: t_document];
-  external getElementsByTagName : string => DomRe.htmlCollection = "" [@@bs.send.pipe: t_document];
-  external getElementsByTagNameNS : string => string => DomRe.htmlCollection = "" [@@bs.send.pipe: t_document];
-  external importNode : DomRe.element_like 'a => DomRe.element_like 'a = "" [@@bs.send.pipe: t_document];
-  external importNodeDeep : DomRe.element_like 'a => Js.boolean => DomRe.element_like 'a = "importNode" [@@bs.send.pipe: t_document];
-  let importNodeDeep : DomRe.element_like 'a => t_document => DomRe.element_like 'a = fun element self => importNodeDeep element Js.true_ self;
-  external registerElement : string => (unit => DomRe.element) = "" [@@bs.send.pipe: t_document]; /* experimental and deprecated in favor of customElements.define() */
-  external registerElementWithOptions : string => Js.t {..} => (unit => DomRe.element) = "registerElement" [@@bs.send.pipe: t_document]; /* experimental and deprecated in favor of customElements.define() */
-  external getElementById : string => Js.null DomRe.element = "" [@@bs.send.pipe: t_document];
-  let getElementById : string => t_document => option DomRe.element = fun id self => Js.Null.to_opt (getElementById id self);
-  external querySelector : string => Js.null DomRe.element = "" [@@bs.send.pipe: t_document];
-  let querySelector : string => t_document => option DomRe.element = fun selector self => Js.Null.to_opt (querySelector selector self);
-  external querySelectorAll : string => DomRe.nodeList = "" [@@bs.send.pipe: t_document];
+  external getAnimations : array DomTypesRe.animation = "" [@@bs.send.pipe: t_document]; /* experimental */
+  external getElementsByClassName : string => DomTypesRe.htmlCollection = "" [@@bs.send.pipe: t_document];
+  external getElementsByTagName : string => DomTypesRe.htmlCollection = "" [@@bs.send.pipe: t_document];
+  external getElementsByTagNameNS : string => string => DomTypesRe.htmlCollection = "" [@@bs.send.pipe: t_document];
+  external importNode : DomTypesRe.element_like 'a => DomTypesRe.element_like 'a = "" [@@bs.send.pipe: t_document];
+  external importNodeDeep : DomTypesRe.element_like 'a => Js.boolean => DomTypesRe.element_like 'a = "importNode" [@@bs.send.pipe: t_document];
+  let importNodeDeep : DomTypesRe.element_like 'a => t_document => DomTypesRe.element_like 'a = fun element self => importNodeDeep element Js.true_ self;
+  external registerElement : string => (unit => DomTypesRe.element) = "" [@@bs.send.pipe: t_document]; /* experimental and deprecated in favor of customElements.define() */
+  external registerElementWithOptions : string => Js.t {..} => (unit => DomTypesRe.element) = "registerElement" [@@bs.send.pipe: t_document]; /* experimental and deprecated in favor of customElements.define() */
+  external getElementById : string => Js.null DomTypesRe.element = "" [@@bs.send.pipe: t_document];
+  let getElementById : string => t_document => option DomTypesRe.element = fun id self => Js.Null.to_opt (getElementById id self);
+  external querySelector : string => Js.null DomTypesRe.element = "" [@@bs.send.pipe: t_document];
+  let querySelector : string => t_document => option DomTypesRe.element = fun selector self => Js.Null.to_opt (querySelector selector self);
+  external querySelectorAll : string => DomTypesRe.nodeList = "" [@@bs.send.pipe: t_document];
 
   /** XPath stuff */
   /* createExpression */
@@ -103,6 +103,6 @@ module Impl (Type: DomInternalRe.Type) => {
   /* GlobalEventHandlers interface */
 };
 
-include NodeRe.Impl { type t = DomRe.document };
-include EventTargetRe.Impl { type t = DomRe.document };
-include Impl { type t = DomRe.document };
+include NodeRe.Impl { type t = DomTypesRe.document };
+include EventTargetRe.Impl { type t = DomTypesRe.document };
+include Impl { type t = DomTypesRe.document };

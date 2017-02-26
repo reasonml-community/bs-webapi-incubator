@@ -1,5 +1,6 @@
 'use strict';
 
+var DomRe     = require("../../src/dom/domRe");
 var ReasonJs  = require("../../src/reasonJs");
 var HistoryRe = require("../../src/dom/historyRe");
 

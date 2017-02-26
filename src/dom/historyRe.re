@@ -1,4 +1,4 @@
-type t = DomRe.history;
+type t = DomTypesRe.history;
 type state; /* TODO: should be "anything that can be serializable" apparently */
 
 external length : t => int = "" [@@bs.get];

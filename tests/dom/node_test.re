@@ -1,4 +1,4 @@
-open ReasonJs;
+open ReasonJs.Dom;
 
 let node = document |> Document.createElement "strong" |> Element.rootNode;
 let node2 = document |> Document.createElement "small" |> Element.rootNode;

@@ -1,3 +1,3 @@
-type t = DomRe.nodeList;
+type t = DomTypesRe.nodeList;
 
-external toArray : t => array DomRe.node = "Array.prototype.slice.call" [@@bs.val];
+external toArray : t => array DomTypesRe.node = "Array.prototype.slice.call" [@@bs.val];

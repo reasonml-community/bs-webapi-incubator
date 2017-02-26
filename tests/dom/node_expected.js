@@ -1,5 +1,6 @@
 'use strict';
 
+var DomRe    = require("../../src/dom/domRe");
 var NodeRe   = require("../../src/dom/nodeRe");
 var ReasonJs = require("../../src/reasonJs");
 

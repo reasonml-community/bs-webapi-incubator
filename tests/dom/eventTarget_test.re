@@ -1,4 +1,4 @@
-open ReasonJs;
+open ReasonJs.Dom;
 
 let target = document |> Document.createElement "strong" |> Element.asEventTarget;
 let event = Event.make "my-event";
