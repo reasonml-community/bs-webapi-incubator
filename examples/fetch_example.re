@@ -3,14 +3,14 @@ open Fetch;
 
 let _ = Promise.(
   fetch "/api/hellos/1"
-    |> and_then Response.text
+    |> andThen Response.text
     |> then_ print_endline
-    |> catch (fun err => print_endline err)
+    |> catch (fun _ => print_endline "error")
 );
 
 let _ = Promise.(
   fetchWithInit "/api/hello" (RequestInit.make method_::Post ())
-    |> and_then Response.text
+    |> andThen Response.text
     |> then_ print_endline
-    |> catch (fun err => print_endline err)
+    |> catch (fun _ => print_endline "error")
 );
