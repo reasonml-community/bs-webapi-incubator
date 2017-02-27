@@ -100,7 +100,7 @@ module Impl(Type: DomInternalRe.Type) => {
   external requestPointerLock : unit = "" [@@bs.send.pipe: t_element]; /* experimental */
   external scrollIntoView : unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
   external scrollIntoViewNoAlignToTop : Js.boolean => unit = "scrollIntoView" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
-  let scrollIntoViewNoAlignToTop : t_element => unit = fun self => scrollIntoViewNoAlignToTop (Js.Boolean.to_js_boolean true) self;
+  let scrollIntoViewNoAlignToTop : t_element => unit = fun self => scrollIntoViewNoAlignToTop Js.true_ self;
   external scrollIntoViewWithOptions : Js.t {..} => unit = "scrollIntoView" [@@bs.send.pipe: t_element]; /* experimental */
   external setAttribute : string => string => unit = "" [@@bs.send.pipe: t_element];
   external setAttributeNS : string => string => string => unit = "" [@@bs.send.pipe: t_element];

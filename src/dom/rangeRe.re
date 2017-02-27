@@ -42,7 +42,7 @@ external selectNode : DomTypesRe.node_like 'a => unit = "" [@@bs.send.pipe: t];
 external selectNodeContents : DomTypesRe.node_like 'a => unit = "" [@@bs.send.pipe: t];
 external collapse : unit = "" [@@bs.send.pipe: t];
 external collapseToStart : Js.boolean =>unit = "" [@@bs.send.pipe: t];
-let collapseToStart : t => unit = fun self => collapseToStart (Js.Boolean.to_js_boolean true) self;
+let collapseToStart : t => unit = fun self => collapseToStart Js.true_ self;
 external cloneContents : DomTypesRe.documentFragment = "" [@@bs.send.pipe: t];
 external deleteContents : unit = "" [@@bs.send.pipe: t];
 external extractContents : DomTypesRe.documentFragment = "" [@@bs.send.pipe: t];
