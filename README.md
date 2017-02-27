@@ -1,4 +1,4 @@
-# [Reason](http://facebook.github.io/reason/) bindings to JavaScript, through [BuckleScript](http://bloomberg.github.io/bucklescript/Manual.html)
+# [Reason](http://facebook.github.io/reason/) bindings to JavaScript, through [BuckleScript](http://bloomberg.github.io/bucklescript/Manual.html) [![Build Status](https://travis-ci.org/BuckleTypes/reason-js.svg?branch=master)](https://travis-ci.org/BuckleTypes/reason-js)
 
 ## What Does This Even Mean?
 
