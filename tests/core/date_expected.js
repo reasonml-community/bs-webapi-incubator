@@ -15,17 +15,15 @@ new Date(0, 1, 2, 3, 4);
 
 new Date(0, 1, 2, 3, 4, 5);
 
-Date.utc();
+Date.UTC(0, 1);
 
-Date.utc(0, 1);
+Date.UTC(0, 1, 2);
 
-Date.utc(0, 1, 2);
+Date.UTC(0, 1, 2, 3);
 
-Date.utc(0, 1, 2, 3);
+Date.UTC(0, 1, 2, 3, 4);
 
-Date.utc(0, 1, 2, 3, 4);
-
-Date.utc(0, 1, 2, 3, 4, 5);
+Date.UTC(0, 1, 2, 3, 4, 5);
 
 Date.now();
 
