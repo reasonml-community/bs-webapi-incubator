@@ -16,9 +16,11 @@
   },
   "author": "chenglou",
   "license": "MIT",
-  "devDependencies": {
-    "bs-platform": "https://github.com/bloomberg/bucklescript.git",
+  "dependencies": {
     "bs-promise": "BuckleTypes/bs-promise"
+  },
+  "devDependencies": {
+    "bs-platform": "bloomberg/bucklescript"
   },
   "rebel": {}
 }
