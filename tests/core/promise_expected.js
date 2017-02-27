@@ -1,30 +1,26 @@
 'use strict';
 
-var Curry      = require("bs-platform/lib/js/curry");
-var Pervasives = require("bs-platform/lib/js/pervasives");
 
-var p = new Promise(function (resolve, _) {
-      return Curry._1(resolve, 123);
-    });
+var p = fetch("/greetings");
 
-var p2 = p.then(function (n) {
-          var match = +(n % 2 === 0);
-          if (match !== 0) {
-            return Promise.reject(Pervasives.string_of_int(n));
-          }
-          else {
-            return Promise.resolve((n << 1));
-          }
-        }).then(Pervasives.string_of_float).then(Pervasives.print_endline);
-
-p2.catch(function (error) {
-      console.log(error);
+var p2 = p.then(function (res) {
+        return res.text();
+      }).then(function (text) {
+      console.log(text);
       return /* () */0;
     });
 
-p.then(function (n) {
-          return (n << 1);
-        }).then(Pervasives.string_of_int).then(Pervasives.print_endline);
+p2.catch(function (err) {
+      console.log(err);
+      return /* () */0;
+    });
+
+p.then(function (res) {
+        return res.json();
+      }).then(function (json) {
+      console.log(json);
+      return /* () */0;
+    });
 
 exports.p  = p;
 exports.p2 = p2;

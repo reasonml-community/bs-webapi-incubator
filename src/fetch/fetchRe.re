@@ -6,8 +6,6 @@ type response;
 type request;
 type requestInit;
 
-type error; /* TODO: Not even sure if fetch ever actually rejects a promise */
-
 /* external */
 type arrayBuffer; /* TypedArray */
 type blob; /* FileAPI */
@@ -252,11 +250,11 @@ module Body = {
     external bodyUsed : t_body => Js.boolean = "" [@@bs.get];
     let bodyUsed : t_body => bool = fun self => Js.to_bool (bodyUsed self);
 
-    external arrayBuffer : CoreRe.promise arrayBuffer error = "" [@@bs.send.pipe: t_body];
-    external blob : CoreRe.promise blob error = "" [@@bs.send.pipe: t_body];
-    external formData : CoreRe.promise formData error = "" [@@bs.send.pipe: t_body];
-    external json : CoreRe.promise (Js.t {..}) error = "" [@@bs.send.pipe: t_body];
-    external text : CoreRe.promise string error = "" [@@bs.send.pipe: t_body];
+    external arrayBuffer : CoreRe.promise arrayBuffer = "" [@@bs.send.pipe: t_body];
+    external blob : CoreRe.promise blob = "" [@@bs.send.pipe: t_body];
+    external formData : CoreRe.promise formData = "" [@@bs.send.pipe: t_body];
+    external json : CoreRe.promise (Js.t {..}) = "" [@@bs.send.pipe: t_body];
+    external text : CoreRe.promise string = "" [@@bs.send.pipe: t_body];
   };
 
   include Impl { type t = body };
@@ -369,7 +367,7 @@ module Response = {
   include Body.Impl { type t = response };
 };
 
-external fetch : string => CoreRe.promise response error = "" [@@bs.val];
-external fetchWithInit : string => requestInit => CoreRe.promise response error = "" [@@bs.val];
-external fetchWithRequest : request => CoreRe.promise response error = "" [@@bs.val];
-external fetchWithRequestInit : request => requestInit => CoreRe.promise response error = "" [@@bs.val];
+external fetch : string => CoreRe.promise response = "" [@@bs.val];
+external fetchWithInit : string => requestInit => CoreRe.promise response = "" [@@bs.val];
+external fetchWithRequest : request => CoreRe.promise response = "" [@@bs.val];
+external fetchWithRequestInit : request => requestInit => CoreRe.promise response = "" [@@bs.val];

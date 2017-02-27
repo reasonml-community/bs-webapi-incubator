@@ -1,20 +1,16 @@
-/* 'res - type the promise will be resolved with
-   'rej - type the promise will be rejected with */
-type t 'res 'rej = CoreRe.promise 'res 'rej;
+type t 'a = CoreRe.promise 'a;
 
-external make : (('res => unit) => ('rej => unit) => unit) => t 'res 'rej = "Promise" [@@bs.new];
+/* TODO: Include error in type? */
 
-external resolve : 'res => t 'res 'a = "Promise.resolve" [@@bs.val];
-external reject : 'rej => t 'a 'rej = "Promise.reject" [@@bs.val];
-external all : array (t 'res 'rej) => t (array 'res) 'rej = "Promise.all" [@@bs.val];
-external race : array (t 'res 'rej) => t 'res 'rej = "Promise.race" [@@bs.val];
+external make : (('a => unit) => ('e => unit) => unit) => t 'a = "Promise" [@@bs.new];
 
-external then_ : ('res => 'a) => t 'a 'b = "then" [@@bs.send.pipe: t 'res 'rej'];
-external andThen : ('res => t 'a 'b) => t 'a 'b = "then" [@@bs.send.pipe: t 'res 'rej];
-external and_then : ('res => t 'a unit) => t 'a unit = "then" [@@bs.send.pipe: t 'res 'rej]
-[@@ocaml.deprecated "Please use `andThen` instead"];
-external catch : ('rej => unit) => t 'a 'b = "catch" [@@bs.send.pipe: t 'res 'rej];
-external or_ : ('rej => 'a) => t 'a 'b = "catch" [@@bs.send.pipe: t 'res 'rej];
-external orElse : ('rej => t 'a 'b) => t 'a 'b = "catch" [@@bs.send.pipe: t 'res 'rej];
-external or_else : ('rej => t 'a unit) => t 'a unit = "catch" [@@bs.send.pipe: t 'res 'rej]
-[@@ocaml.deprecated "Please use `orElse` instead"];
+external then_ : ('a => 'b) => t 'b = "then" [@@bs.send.pipe: t 'a];
+external and_then : ('a => t 'b) => t 'b = "then" [@@bs.send.pipe: t 'a];
+external catch : ('e => unit) => t 'a = "" [@@bs.send.pipe: t 'a];
+external or_ : ('e => 'b) => t 'b = "catch" [@@bs.send.pipe: t 'a]; /* non-standard name for "overload" */
+external or_else : ('e => t 'b) => t 'b = "catch" [@@bs.send.pipe: t 'a]; /* non-standard name for "overload" */
+
+external all : array (t 'a) => t (array 'a) = "Promise.all" [@@bs.val];
+external race : array (t 'a) => t 'b = "Promise.race" [@@bs.val]; /* unsure about what the returned promise will hold */
+external reject : 'e => t unit = "Promise.reject" [@@bs.val];
+external resolve : 'a => t 'a = "Promise.resolve" [@@bs.val];
