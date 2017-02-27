@@ -1,3 +1,5 @@
+type promise 'a 'e = Bs_promise.t 'a 'e;
+
 type body;
 type bodyInit;
 type headers;
@@ -250,11 +252,11 @@ module Body = {
     external bodyUsed : t_body => Js.boolean = "" [@@bs.get];
     let bodyUsed : t_body => bool = fun self => Js.to_bool (bodyUsed self);
 
-    external arrayBuffer : CoreRe.promise arrayBuffer = "" [@@bs.send.pipe: t_body];
-    external blob : CoreRe.promise blob = "" [@@bs.send.pipe: t_body];
-    external formData : CoreRe.promise formData = "" [@@bs.send.pipe: t_body];
-    external json : CoreRe.promise (Js.t {..}) = "" [@@bs.send.pipe: t_body];
-    external text : CoreRe.promise string = "" [@@bs.send.pipe: t_body];
+    external arrayBuffer : promise arrayBuffer unit = "" [@@bs.send.pipe: t_body];
+    external blob : promise blob unit = "" [@@bs.send.pipe: t_body];
+    external formData : promise formData unit = "" [@@bs.send.pipe: t_body];
+    external json : promise (Js.t {..}) unit = "" [@@bs.send.pipe: t_body];
+    external text : promise string unit = "" [@@bs.send.pipe: t_body];
   };
 
   include Impl { type t = body };
@@ -367,7 +369,7 @@ module Response = {
   include Body.Impl { type t = response };
 };
 
-external fetch : string => CoreRe.promise response = "" [@@bs.val];
-external fetchWithInit : string => requestInit => CoreRe.promise response = "" [@@bs.val];
-external fetchWithRequest : request => CoreRe.promise response = "" [@@bs.val];
-external fetchWithRequestInit : request => requestInit => CoreRe.promise response = "" [@@bs.val];
+external fetch : string => promise response unit = "" [@@bs.val];
+external fetchWithInit : string => requestInit => promise response unit = "" [@@bs.val];
+external fetchWithRequest : request => promise response unit = "" [@@bs.val];
+external fetchWithRequestInit : request => requestInit => promise response unit = "" [@@bs.val];

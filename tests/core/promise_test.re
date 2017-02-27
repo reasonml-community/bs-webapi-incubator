@@ -3,7 +3,7 @@ open ReasonJs;
 let p = Fetch.fetch "/greetings";
 
 let p2 = Promise.(
-  p |> and_then (fun res => Fetch.Response.text res)
+  p |> andThen (fun res => Fetch.Response.text res)
     |> then_ (fun text => print_endline text)
 );
 

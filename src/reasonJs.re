@@ -18,11 +18,12 @@ external location : DomRe.location = "document.location" [@@bs.val]
 [@@ocaml.deprecated "Please use Dom.location instead"];
 
 module Base64 = Base64Re;
-module Date = DateRe;
+module Date = Js.Date;
 module Json = JsonRe;
 module Math = MathRe;
 module Object = ObjectRe;
-module Promise = PromiseRe;
+module Promise = Bs_promise
+[@@ocaml.deprecated "Please use 'Bs_promise' from the 'bs-promise' package directly instead"];
 module RegExp = RegExpRe;
 
 module Dom = DomRe;

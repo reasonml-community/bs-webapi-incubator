@@ -67,13 +67,13 @@ module Impl (Type: DomInternalRe.Type) => {
   external appendChild : DomTypesRe.node_like 'a => unit = "" [@@bs.send.pipe: t_node];
   external cloneNode : DomTypesRe.node = "" [@@bs.send.pipe: t_node];
   external cloneNodeDeep : Js.boolean => DomTypesRe.node = "cloneNode" [@@bs.send.pipe: t_node];
-  let cloneNodeDeep : t_node => DomTypesRe.node = fun self => cloneNodeDeep (Js.Boolean.to_js_boolean true) self;
+  let cloneNodeDeep : t_node => DomTypesRe.node = fun self => cloneNodeDeep Js.true_ self;
   external compareDocumentPosition : DomTypesRe.node_like 'a => int = "" [@@bs.send.pipe: t_node]; /* returns a bitmask which could also be represeneted as an enum, see https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition */
   external contains : DomTypesRe.node_like 'a => Js.boolean = "" [@@bs.send.pipe: t_node];
   let contains : DomTypesRe.node_like 'a => t_node => bool = fun node self => Js.to_bool (contains node self);
   external getRootNode : DomTypesRe.node = "" [@@bs.send.pipe: t_node];
   external getRootNodeComposed : Js.boolean => DomTypesRe.node = "getRootNode" [@@bs.send.pipe: t_node];
-  let getRootNodeComposed : t_node => DomTypesRe.node = fun self => getRootNodeComposed (Js.Boolean.to_js_boolean true) self;
+  let getRootNodeComposed : t_node => DomTypesRe.node = fun self => getRootNodeComposed Js.true_ self;
   external hasChildNodes : Js.boolean = "" [@@bs.send.pipe: t_node];
   let hasChildNodes : t_node => bool = fun self => Js.to_bool (hasChildNodes self);
   external insertBefore : DomTypesRe.node_like 'a => Js.null (DomTypesRe.node_like 'b) => DomTypesRe.node_like 'a = "" [@@bs.send.pipe: t_node];
