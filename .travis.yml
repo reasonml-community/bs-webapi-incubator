@@ -3,4 +3,4 @@ language: node_js
 node_js:
   - 6
 install:
-  - apt-get install ninja-build
+  - sudo apt-get install ninja-build
