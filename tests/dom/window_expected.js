@@ -1,7 +1,5 @@
 'use strict';
 
-var DomRe    = require("../../src/dom/domRe");
-var ReasonJs = require("../../src/reasonJs");
 var WindowRe = require("../../src/dom/windowRe");
 
 var el = document.createElement("strong");
@@ -159,4 +157,3 @@ exports.$$event     = $$event;
 exports.handleClick = handleClick;
 exports.idleId      = idleId;
 /* el Not a pure module */
-

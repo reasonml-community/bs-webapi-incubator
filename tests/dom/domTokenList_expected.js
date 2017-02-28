@@ -1,7 +1,5 @@
 'use strict';
 
-var DomRe          = require("../../src/dom/domRe");
-var ReasonJs       = require("../../src/reasonJs");
 var DomTokenListRe = require("../../src/dom/domTokenListRe");
 
 var tlist = document.createElement("div").classList;

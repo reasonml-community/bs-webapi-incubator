@@ -1,8 +1,6 @@
 'use strict';
 
-var DomRe    = require("../../src/dom/domRe");
-var EventRe  = require("../../src/dom/eventRe");
-var ReasonJs = require("../../src/reasonJs");
+var EventRe = require("../../src/dom/eventRe");
 
 var $$event = new Event("my-event");
 

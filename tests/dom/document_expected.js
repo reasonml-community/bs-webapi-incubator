@@ -1,8 +1,6 @@
 'use strict';
 
 var Curry        = require("bs-platform/lib/js/curry");
-var DomRe        = require("../../src/dom/domRe");
-var ReasonJs     = require("../../src/reasonJs");
 var DocumentRe   = require("../../src/dom/documentRe");
 var NodeFilterRe = require("../../src/dom/nodeFilterRe");
 

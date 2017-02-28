@@ -1,8 +1,6 @@
 'use strict';
 
-var DomRe    = require("../../src/dom/domRe");
-var RangeRe  = require("../../src/dom/rangeRe");
-var ReasonJs = require("../../src/reasonJs");
+var RangeRe = require("../../src/dom/rangeRe");
 
 var node = document.createElement("strong");
 
