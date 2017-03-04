@@ -128,3 +128,58 @@ external pointerType : t => string /* pointerType enum */ = "" [@@bs.get];
 let pointerType : t => pointerType = fun self => decodePointerType (pointerType self);
 external isPrimary : t => Js.boolean = "" [@@bs.get];
 let isPrimary : t => bool = fun event => Js.to_bool (isPrimary event);
+
+/* Unimplemented Event interfaces
+
+AnimationEvent
+AudioProcessingEvent
+BeforeInputEvent
+BeforeUnloadEvent
+BlobEvent
+ClipboardEvent
+CloseEvent
+CompositionEvent
+CSSFontFaceLoadEvent
+CustomEvent
+DeviceLightEvent
+DeviceMotionEvent
+DeviceOrientationEvent
+DeviceProximityEvent
+DOMTransactionEvent
+DragEvent
+EditingBeforeInputEvent
+ErrorEvent
+FetchEvent
+FocusEvent
+GamepadEvent
+HashChangeEvent
+IDBVersionChangeEvent
+InputEvent
+KeyboardEvent /* implemented on Event */
+MediaStreamEvent
+MessageEvent
+MouseEvent /* implemented on Event */
+MutationEvent
+OfflineAudioCompletionEvent
+PageTransitionEvent
+PointerEvent /* implemented on Event */
+PopStateEvent
+ProgressEvent
+RelatedEvent
+RTCDataChannelEvent
+RTCIdentityErrorEvent
+RTCIdentityEvent
+RTCPeerConnectionIceEvent
+SensorEvent
+StorageEvent
+SVGEvent
+SVGZoomEvent
+TimeEvent
+TouchEvent
+TrackEvent
+TransitionEvent
+UIEvent
+UserProximityEvent
+WebGLContextEvent
+WheelEvent
+*/
