@@ -8,27 +8,27 @@ var node2 = document.createElement("small").rootNode;
 
 node.childNodes;
 
-NodeRe.firstChild(node);
+node.firstChild;
 
-NodeRe.lastChild(node);
+node.lastChild;
 
-NodeRe.nextSibling(node);
+node.nextSibling;
 
 node.nodeName;
 
 NodeRe.nodeType(node);
 
-NodeRe.nodeValue(node);
+node.nodeValue;
 
 NodeRe.setNodeValue(node, /* None */0);
 
 node.ownerDocument;
 
-NodeRe.parentNode(node);
+node.parentNode;
 
-NodeRe.parentElement(node);
+node.parentElement;
 
-NodeRe.previousSibling(node);
+node.previousSibling;
 
 node.rootNode;
 
@@ -44,21 +44,21 @@ NodeRe.cloneNodeDeep(node);
 
 node.compareDocumentPosition(node2);
 
-NodeRe.contains(node2, node);
++node.contains(node2);
 
 node.getRootNode();
 
 NodeRe.getRootNodeComposed(node);
 
-NodeRe.hasChildNodes(node);
++node.hasChildNodes();
 
 NodeRe.insertBefore(node2, /* None */0, node);
 
-NodeRe.isDefaultNamespace("http://...", node);
++node.isDefaultNamespace("http://...");
 
-NodeRe.isEqualNode(node2, node);
++node.isEqualNode(node2);
 
-NodeRe.isSameNode(node2, node);
++node.isSameNode(node2);
 
 node.lookupPrefix();
 

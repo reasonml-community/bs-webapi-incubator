@@ -25,16 +25,13 @@ module Impl (Type: DomInternalRe.Type) => {
   external console : t_window => console = "" [@@bs.get];
   external crypto : t_window => crypto = "" [@@bs.get];
   external document : t_window => DomTypesRe.document = "" [@@bs.get];
-  external frameElement : t_window => Js.null DomTypesRe.element = "" [@@bs.get]; /* experimental? */
-  let frameElement : t_window => option DomTypesRe.element = fun self => Js.Null.to_opt (frameElement self);
+  external frameElement : t_window => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}]; /* experimental? */
   external frames : t_window => frameList = "" [@@bs.get];
-  external fullScreen : t_window => Js.boolean = "" [@@bs.get];
-  let fullScreen : t_window => bool = fun self => Js.to_bool (fullScreen self);
+  external fullScreen : t_window => bool = "" [@@bs.get];
   external history : t_window => DomTypesRe.history = "" [@@bs.get];
   external innerWidth : t_window => int = "" [@@bs.get];
   external innerHeight : t_window => int = "" [@@bs.get];
-  external isSecureContext : t_window => Js.boolean = "" [@@bs.get];
-  let isSecureContext : t_window => bool = fun self => Js.to_bool (isSecureContext self);
+  external isSecureContext : t_window => bool = "" [@@bs.get];
   external length : t_window => int = "" [@@bs.get];
   external location : t_window => DomTypesRe.location = "" [@@bs.get];
   external setLocation : t_window => string => unit = "location" [@@bs.set];
@@ -44,8 +41,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external name : t_window => string = "" [@@bs.get];
   external setName : t_window => string => unit = "name" [@@bs.set];
   external navigator : t_window => navigator = "" [@@bs.get];
-  external opener : t_window => Js.null DomTypesRe.window = "" [@@bs.get];
-  let opener : t_window => option DomTypesRe.window = fun self => Js.Null.to_opt (opener self);
+  external opener : t_window => option DomTypesRe.window = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
   external outerWidth : t_window => int = "" [@@bs.get];
   external outerHeight : t_window => int = "" [@@bs.get];
   external pageXOffset : t_window => int = "" [@@bs.get]; /* alias for screenX */
@@ -73,8 +69,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external blur : unit = "" [@@bs.send.pipe: t_window];
   external cancelIdleCallback : idleCallbackId => unit = "" [@@bs.send.pipe: t_window]; /* experimental, Cooperative Scheduling of Background Tasks */
   external close : unit = "" [@@bs.send.pipe: t_window];
-  external confirm : string => Js.boolean = "" [@@bs.send.pipe: t_window];
-  let confirm : string => t_window => bool = fun message self => Js.to_bool (confirm message self);
+  external confirm : string => bool = "" [@@bs.send.pipe: t_window];
   external focus : unit = "" [@@bs.send.pipe: t_window];
   external getComputedStyle : DomTypesRe.element => DomTypesRe.cssStyleDeclaration = "" [@@bs.send.pipe: t_window];
   external getComputedStyleWithPseudoElement : DomTypesRe.element => string => DomTypesRe.cssStyleDeclaration = "getComputedStyle" [@@bs.send.pipe: t_window];
@@ -82,8 +77,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external matchMedia : string => mediaQueryList = "" [@@bs.send.pipe: t_window]; /* experimental, CSSOM View module */
   external moveBy : int => int => unit = "" [@@bs.send.pipe: t_window]; /* experimental, CSSOM View module */
   external moveTo : int => int => unit = "" [@@bs.send.pipe: t_window]; /* experimental, CSSOM View module */
-  external open_ : url::string => name::string => features::string => Js.null DomTypesRe.window = "open" [@@bs.send.pipe: t_window]; /* yes, features is a stringly typed list of key value pairs, sigh */
-  let open_ : url::string => name::string => features::string => t_window => option DomTypesRe.window = fun ::url ::name ::features self => Js.Null.to_opt (open_ ::url ::name ::features self);
+  external open_ : url::string => name::string => features::string => option DomTypesRe.window = "open" [@@bs.send.pipe: t_window] [@@bs.return {null_to_opt: null_to_opt}]; /* yes, features is a stringly typed list of key value pairs, sigh */
   external postMessage : 'a => string => unit = "" [@@bs.send.pipe: t_window]; /* experimental-ish?, Web Messaging */
   external postMessageWithTransfers : 'a => string => array transferable => unit = "postMessage" [@@bs.send.pipe: t_window]; /* experimental-ish?, Web Messaging */
   external print : unit = "" [@@bs.send.pipe: t_window];

@@ -66,31 +66,24 @@ module Impl(Type: DomInternalRe.Type) => {
   external animate : Js.t {..} => Js.t {..} => DomTypesRe.animation = "" [@@bs.send.pipe: t_element]; /* experimental */
   external closest : string => DomTypesRe.element = "" [@@bs.send.pipe: t_element]; /* experimental */
   external createShadowRoot : DomTypesRe.shadowRoot = "" [@@bs.send.pipe: t_element]; /* experimental AND deprecated (?!) */
-  external getAttribute : string => Js.null string = "" [@@bs.send.pipe: t_element];
-  let getAttribute : string => t_element => option string = fun name self => Js.Null.to_opt (getAttribute name self);
-  external getAttributeNS : string => string => Js.null string = "" [@@bs.send.pipe: t_element];
-  let getAttributeNS : string => string => t_element => option string = fun ns name self => Js.Null.to_opt (getAttributeNS ns name self);
+  external getAttribute : string => option string = "" [@@bs.send.pipe: t_element] [@@bs.return {null_to_opt: null_to_opt}];
+  external getAttributeNS : string => string => option string = "" [@@bs.send.pipe: t_element] [@@bs.return {null_to_opt: null_to_opt}];
   external getBoundingClientRect : DomTypesRe.domRect = "" [@@bs.send.pipe: t_element];
   external getClientRects : array DomTypesRe.domRect = "" [@@bs.send.pipe: t_element];
   external getElementsByClassName : string => DomTypesRe.htmlCollection = "" [@@bs.send.pipe: t_element];
   external getElementsByTagName : string => DomTypesRe.htmlCollection = "" [@@bs.send.pipe: t_element];
   external getElementsByTagNameNS : string => string => DomTypesRe.htmlCollection = "" [@@bs.send.pipe: t_element];
-  external hasAttribute : string => Js.boolean = "" [@@bs.send.pipe: t_element];
-  let hasAttribute : string => t_element => bool = fun name self => Js.to_bool (hasAttribute name self);
-  external hasAttributeNS : string => string => Js.boolean = "" [@@bs.send.pipe: t_element];
-  let hasAttributeNS : string => string => t_element => bool = fun ns name self => Js.to_bool (hasAttributeNS ns name self);
-  external hasAttributes : Js.boolean = "" [@@bs.send.pipe: t_element];
-  let hasAttributes : t_element => bool = fun self => Js.to_bool (hasAttributes self);
+  external hasAttribute : string => bool = "" [@@bs.send.pipe: t_element];
+  external hasAttributeNS : string => string => bool = "" [@@bs.send.pipe: t_element];
+  external hasAttributes : bool = "" [@@bs.send.pipe: t_element];
   external insertAdjacentElement : string /* insertPosition enum */ => DomTypesRe.element_like 'a => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
   let insertAdjacentElement : insertPosition => DomTypesRe.element_like 'a => t_element => unit = fun position element self => insertAdjacentElement (encodeInsertPosition position) element self;
   external insertAdjacentHTML : string /* insertPosition enum */ => string => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
   let insertAdjacentHTML : insertPosition => string => t_element => unit = fun position text self => insertAdjacentHTML (encodeInsertPosition position) text self;
   external insertAdjacentText : string /* insertPosition enum */ => string => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
   let insertAdjacentText : insertPosition => string => t_element => unit = fun position text self => insertAdjacentText (encodeInsertPosition position) text self;
-  external matches : string => Js.boolean = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
-  let matches : string => t_element => bool = fun selector self => Js.to_bool (matches selector self);
-  external querySelector : string => Js.null DomTypesRe.element = "" [@@bs.send.pipe: t_element];
-  let querySelector : string => t_element => option DomTypesRe.element = fun selector self => Js.Null.to_opt (querySelector selector self);
+  external matches : string => bool = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
+  external querySelector : string => option DomTypesRe.element = "" [@@bs.send.pipe: t_element] [@@bs.return {null_to_opt: null_to_opt}];
   external querySelectorAll : string => DomTypesRe.nodeList = "" [@@bs.send.pipe: t_element];
   external releasePointerCapture : DomTypesRe.eventPointerId => unit = "" [@@bs.send.pipe: t_element];
   external remove : unit = "" [@@bs.send.pipe: t_element]; /* experimental */

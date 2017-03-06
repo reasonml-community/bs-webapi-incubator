@@ -16,17 +16,17 @@ document.documentElement;
 
 document.documentURI;
 
-DocumentRe.hidden(document);
++document.hidden;
 
 document.implementation;
 
 document.lastStyleSheetSet;
 
-DocumentRe.pointerLockElement(document);
+document.pointerLockElement;
 
 document.preferredStyleSheetSet;
 
-DocumentRe.scrollingElement(document);
+document.scrollingElement;
 
 document.selectedStyleSheetSet;
 
@@ -110,9 +110,9 @@ document.importNode(el);
 
 DocumentRe.importNodeDeep(el, document);
 
-DocumentRe.getElementById("root", document);
+document.getElementById("root");
 
-DocumentRe.querySelector(".lstlisting", document);
+document.querySelector(".lstlisting");
 
 document.querySelectorAll(".lstlisting");
 

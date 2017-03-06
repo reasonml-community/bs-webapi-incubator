@@ -18,7 +18,7 @@ sel.focusNode;
 
 sel.focusOffset;
 
-sel.isCollapsed;
++sel.isCollapsed;
 
 sel.rangeCount;
 

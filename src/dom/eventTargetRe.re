@@ -11,7 +11,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external removeEventListenerWithOptions : string => (DomTypesRe.event => unit) => Js.t {..} => unit = "removeEventListener" [@@bs.send.pipe: t_eventtarget]; /* not widely supported */
   external removeEventListenerUseCapture : string => (DomTypesRe.event => unit) => Js.boolean => unit = "removeEventListener" [@@bs.send.pipe: t_eventtarget];
   let removeEventListenerUseCapture : string => (DomTypesRe.event => unit) => t_eventtarget => unit = fun type_ listener self => removeEventListenerUseCapture type_ listener Js.true_ self;
-  external dispatchEvent : DomTypesRe.event => Js.boolean = "" [@@bs.send.pipe: t_eventtarget];
+  external dispatchEvent : DomTypesRe.event => bool = "" [@@bs.send.pipe: t_eventtarget];
 };
 
 include Impl { type t = DomTypesRe.eventTarget };

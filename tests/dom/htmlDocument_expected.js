@@ -8,9 +8,9 @@ var el = document.createElement("strong");
 
 var htmlDocument = TestHelpers.unsafelyUnwrapOption(DocumentRe.asHtmlDocument(document));
 
-HtmlDocumentRe.activeElement(htmlDocument);
+htmlDocument.activeElement;
 
-HtmlDocumentRe.body(htmlDocument);
+htmlDocument.body;
 
 htmlDocument.body = el;
 
@@ -28,7 +28,7 @@ HtmlDocumentRe.dir(htmlDocument);
 
 HtmlDocumentRe.setDir(htmlDocument, /* Ltr */0);
 
-HtmlDocumentRe.domain(htmlDocument);
+htmlDocument.domain;
 
 htmlDocument.domain = "reason.ml";
 
@@ -70,15 +70,15 @@ htmlDocument.getElementsByName("angry-joe");
 
 htmlDocument.getSelection();
 
-HtmlDocumentRe.hasFocus(htmlDocument);
++htmlDocument.hasFocus();
 
 htmlDocument.open();
 
-HtmlDocumentRe.queryCommandEnabled("copy", htmlDocument);
++htmlDocument.queryCommandEnabled("copy");
 
-HtmlDocumentRe.queryCommandIndeterm("cut", htmlDocument);
++htmlDocument.queryCommandIndeterm("cut");
 
-HtmlDocumentRe.queryCommandSupported("paste", htmlDocument);
++htmlDocument.queryCommandSupported("paste");
 
 htmlDocument.queryCommandValue("fontName");
 

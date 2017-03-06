@@ -6,13 +6,13 @@ var tlist = document.createElement("div").classList;
 
 tlist.length;
 
-DomTokenListRe.item(3, tlist);
+tlist.item(3);
 
 tlist.add("my-class");
 
 tlist.add("my-class", "my-other-class");
 
-DomTokenListRe.contains("my-class", tlist);
++tlist.contains("my-class");
 
 tlist.forEach(function (item, _) {
       console.log(item);
@@ -25,9 +25,9 @@ tlist.remove("my-class", "my-other-class");
 
 tlist.replace("my-class", "my-other-class");
 
-DomTokenListRe.supports("my-class", tlist);
++tlist.supports("my-class");
 
-DomTokenListRe.toggle("my-class", tlist);
++tlist.toggle("my-class");
 
 DomTokenListRe.toggleForced("my-class", tlist);
 

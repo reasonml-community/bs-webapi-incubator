@@ -24,8 +24,7 @@ let decodeCompareResult = fun /* internal */
 
 external make : unit => t = "Range" [@@bs.new]; /* experimental */
 
-external collapsed : t => Js.boolean = "" [@@bs.get];
-let collapsed : t => bool = fun self => Js.to_bool (collapsed self);
+external collapsed : t => bool = "" [@@bs.get];
 external commonAncestorContainer : t => DomTypesRe.node = "" [@@bs.get];
 external endContainer : t => DomTypesRe.node = "" [@@bs.get];
 external endOffset : t => int = "" [@@bs.get];
@@ -41,7 +40,7 @@ external setEndAfter : DomTypesRe.node_like 'a => unit = "" [@@bs.send.pipe: t];
 external selectNode : DomTypesRe.node_like 'a => unit = "" [@@bs.send.pipe: t];
 external selectNodeContents : DomTypesRe.node_like 'a => unit = "" [@@bs.send.pipe: t];
 external collapse : unit = "" [@@bs.send.pipe: t];
-external collapseToStart : Js.boolean =>unit = "" [@@bs.send.pipe: t];
+external collapseToStart : Js.boolean => unit = "" [@@bs.send.pipe: t];
 let collapseToStart : t => unit = fun self => collapseToStart Js.true_ self;
 external cloneContents : DomTypesRe.documentFragment = "" [@@bs.send.pipe: t];
 external deleteContents : unit = "" [@@bs.send.pipe: t];
@@ -58,7 +57,5 @@ let comparePoint : DomTypesRe.node_like 'a => int => t => compareResult = fun no
 external createContextualFragment : string => DomTypesRe.documentFragment = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
 external getBoundingClientRect : DomTypesRe.domRect = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
 external getClientRects : array DomTypesRe.domRect = "" [@@bs.send.pipe: t]; /* experimental, but widely supported */
-external intersectsNode : DomTypesRe.node_like 'a => Js.boolean = "" [@@bs.send.pipe: t];
-let intersectsNode : DomTypesRe.node_like 'a => t => bool = fun node self => Js.to_bool (intersectsNode node self);
-external isPointInRange : DomTypesRe.node_like 'a => int => Js.boolean = "" [@@bs.send.pipe: t];
-let isPointInRange : DomTypesRe.node_like 'a => int => t => bool = fun node offset self => Js.to_bool (isPointInRange node offset self);
+external intersectsNode : DomTypesRe.node_like 'a => bool = "" [@@bs.send.pipe: t];
+external isPointInRange : DomTypesRe.node_like 'a => int => bool = "" [@@bs.send.pipe: t];
