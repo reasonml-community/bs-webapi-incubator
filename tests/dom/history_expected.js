@@ -4,7 +4,7 @@ var HistoryRe = require("../../src/dom/historyRe");
 
 document.history.length;
 
-HistoryRe.scrollRestoration(document.history);
++document.history.scrollRestoration;
 
 HistoryRe.setScrollRestoration(document.history, /* true */1);
 

@@ -19,17 +19,17 @@ external make : string => t = "Event" [@@bs.new];
 external makeWithOptions : string => Js.t {..} = "Event" [@@bs.new];
 
 /* Event interface */
-external bubbles : t => Js.boolean = "" [@@bs.get];
-external cancelable : t => Js.boolean = "" [@@bs.get];
-external composed : t => Js.boolean = "" [@@bs.get];
+external bubbles : t => bool = "" [@@bs.get];
+external cancelable : t => bool = "" [@@bs.get];
+external composed : t => bool = "" [@@bs.get];
 external currentTarget : t => DomTypesRe.eventTarget = "" [@@bs.get];
-external defaultPrevented : t => Js.boolean = "" [@@bs.get];
+external defaultPrevented : t => bool = "" [@@bs.get];
 external eventPhase : t => int /* eventPhase enum */ = "" [@@bs.get];
 let eventPhase : t => eventPhase = fun self => decodeEventPhase (eventPhase self);
 external target : t => DomTypesRe.eventTarget = "" [@@bs.get];
 external timeStamp : t => float = "" [@@bs.get];
 external type_ : t => string = "type" [@@bs.get];
-external isTrusted : t => Js.boolean = "" [@@bs.get];
+external isTrusted : t => bool = "" [@@bs.get];
 
 external preventDefault : unit = "" [@@bs.send.pipe: t];
 external stopImmediatePropagation : unit = "" [@@bs.send.pipe: t];
@@ -67,19 +67,19 @@ let encodeModifierKey = fun /* internal */
 | Symbol      => "Symbol"
 | SymbolLock  => "SymbolLock";
 
-external altKey : t => Js.boolean = "" [@@bs.get];
+external altKey : t => bool = "" [@@bs.get];
 external code : t => string = "" [@@bs.get];
-external ctrlKey : t => Js.boolean = "" [@@bs.get];
-external isComposing : t => Js.boolean = "" [@@bs.get];
+external ctrlKey : t => bool = "" [@@bs.get];
+external isComposing : t => bool = "" [@@bs.get];
 external key : t => string = "" [@@bs.get];
 external locale : t => string = "" [@@bs.get];
 external location : t => int = "" [@@bs.get];
-external metaKey : t => Js.boolean = "" [@@bs.get];
-external repeat : t => Js.boolean = "" [@@bs.get];
-external shiftKey : t => Js.boolean = "" [@@bs.get];
+external metaKey : t => bool = "" [@@bs.get];
+external repeat : t => bool = "" [@@bs.get];
+external shiftKey : t => bool = "" [@@bs.get];
 
-external getModifierState : string /* modifierKey enum */ => Js.boolean = "" [@@bs.send.pipe: t];
-let getModifierState : modifierKey => t => bool = fun key self => Js.to_bool (getModifierState (encodeModifierKey key) self);
+external getModifierState : string /* modifierKey enum */ => bool = "" [@@bs.send.pipe: t];
+let getModifierState : modifierKey => t => bool = fun key self => getModifierState (encodeModifierKey key) self;
 
 /* MouseEvent interface */
 /* altKey */
@@ -95,10 +95,8 @@ external offsetX : t => int = "" [@@bs.get]; /* experimental, but widely support
 external offsetY : t => int = "" [@@bs.get]; /* experimental, but widely supported */
 external pageX : t => int = "" [@@bs.get]; /* experimental, but widely supported */
 external pageY : t => int = "" [@@bs.get]; /* experimental, but widely supported */
-external region : t => Js.null string = "" [@@bs.get];
-let region : t => option string = fun event => Js.Null.to_opt (region event);
-external relatedTarget : t => Js.null DomTypesRe.eventTarget = "" [@@bs.get];
-let relatedTarget : t => option DomTypesRe.eventTarget = fun event => Js.Null.to_opt (relatedTarget event);
+external region : t => option string = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+external relatedTarget : t => option DomTypesRe.eventTarget = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
 external screenX : t => int = "" [@@bs.get];
 external screenY : t => int = "" [@@bs.get];
 /* shiftKey */
@@ -126,8 +124,7 @@ external tiltX : t => int = "" [@@bs.get];
 external tiltY : t => int = "" [@@bs.get];
 external pointerType : t => string /* pointerType enum */ = "" [@@bs.get];
 let pointerType : t => pointerType = fun self => decodePointerType (pointerType self);
-external isPrimary : t => Js.boolean = "" [@@bs.get];
-let isPrimary : t => bool = fun event => Js.to_bool (isPrimary event);
+external isPrimary : t => bool = "" [@@bs.get];
 
 /* Unimplemented Event interfaces
 

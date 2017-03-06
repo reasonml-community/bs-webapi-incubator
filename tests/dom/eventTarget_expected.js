@@ -27,7 +27,7 @@ target.removeEventListener("click", handleClick, {
 
 EventTargetRe.removeEventListenerUseCapture("click", handleClick, target);
 
-target.dispatchEvent($$event);
++target.dispatchEvent($$event);
 
 exports.target      = target;
 exports.$$event     = $$event;

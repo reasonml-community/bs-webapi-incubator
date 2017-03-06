@@ -1,5 +1,4 @@
-external getItem : string => Js.null string = "localStorage.getItem" [@@bs.val];
-let getItem : string => option string = fun key => Js.Null.to_opt (getItem key);
+external getItem : string => option string = "localStorage.getItem" [@@bs.val] [@@bs.return {null_to_opt: null_to_opt}];
 external setItem : string => string => unit = "localStorage.setItem" [@@bs.val];
 external removeItem : string => unit = "localStorage.removeItem" [@@bs.val];
 external clear : unit => unit = "localStorage.clear" [@@bs.val];

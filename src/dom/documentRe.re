@@ -41,15 +41,13 @@ module Impl (Type: DomInternalRe.Type) => {
   external docType : t_document => DomTypesRe.documentType = "" [@@bs.get];
   external documentElement : t_document => DomTypesRe.element = "" [@@bs.get];
   external documentURI : t_document => string = "" [@@bs.get];
-  external hidden : t_document => Js.boolean = "" [@@bs.get];
-  let hidden : t_document => bool = fun v => Js.to_bool (hidden v);
+  external hidden : t_document => bool = "" [@@bs.get];
   external implementation : t_document => DomTypesRe.documentImplementation = "" [@@bs.get];
   external lastStyleSheetSet : t_document => string = "" [@@bs.get];
-  external pointerLockElement : t_document => Js.null DomTypesRe.element = "" [@@bs.get]; /* experimental */
-  let pointerLockElement : t_document => option DomTypesRe.element = fun self => Js.Null.to_opt (pointerLockElement self);
+  external pointerLockElement : t_document => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}]; /* experimental */
+
   external preferredStyleSheetSet : t_document => string = "" [@@bs.get];
-  external scrollingElement : t_document => Js.null DomTypesRe.element = "" [@@bs.get];
-  let scrollingElement : t_document => option DomTypesRe.element = fun self => Js.Null.to_opt (scrollingElement self);
+  external scrollingElement : t_document => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
   external selectedStyleSheetSet : t_document => string = "" [@@bs.get];
   external setSelectedStyleSheetSet : t_document => string => unit = "selectedStyleSheetSet" [@@bs.set];
   external styleSheets : t_document => array DomTypesRe.cssStyleSheet = "" [@@bs.get]; /* return StyleSheetList, not array */
@@ -89,10 +87,8 @@ module Impl (Type: DomInternalRe.Type) => {
   let importNodeDeep : DomTypesRe.element_like 'a => t_document => DomTypesRe.element_like 'a = fun element self => importNodeDeep element Js.true_ self;
   external registerElement : string => (unit => DomTypesRe.element) = "" [@@bs.send.pipe: t_document]; /* experimental and deprecated in favor of customElements.define() */
   external registerElementWithOptions : string => Js.t {..} => (unit => DomTypesRe.element) = "registerElement" [@@bs.send.pipe: t_document]; /* experimental and deprecated in favor of customElements.define() */
-  external getElementById : string => Js.null DomTypesRe.element = "" [@@bs.send.pipe: t_document];
-  let getElementById : string => t_document => option DomTypesRe.element = fun id self => Js.Null.to_opt (getElementById id self);
-  external querySelector : string => Js.null DomTypesRe.element = "" [@@bs.send.pipe: t_document];
-  let querySelector : string => t_document => option DomTypesRe.element = fun selector self => Js.Null.to_opt (querySelector selector self);
+  external getElementById : string => option DomTypesRe.element = "" [@@bs.send.pipe: t_document] [@@bs.return {null_to_opt: null_to_opt}];
+  external querySelector : string => option DomTypesRe.element = "" [@@bs.send.pipe: t_document] [@@bs.return {null_to_opt: null_to_opt}];
   external querySelectorAll : string => DomTypesRe.nodeList = "" [@@bs.send.pipe: t_document];
 
   /** XPath stuff */

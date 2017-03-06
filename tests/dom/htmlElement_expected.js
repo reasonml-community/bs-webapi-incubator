@@ -20,7 +20,7 @@ HtmlElementRe.contentEditable(el);
 
 HtmlElementRe.setContentEditable(el, /* Inherit */2);
 
-HtmlElementRe.isContentEditable(el);
++el.isContentEditable;
 
 el.contextMenu;
 
@@ -32,17 +32,17 @@ HtmlElementRe.dir(el);
 
 HtmlElementRe.setDir(el, /* Rtl */1);
 
-HtmlElementRe.draggable(el);
++el.draggable;
 
 HtmlElementRe.setDraggable(el, /* true */1);
 
 el.dropzone;
 
-HtmlElementRe.hidden(el);
++el.hidden;
 
 HtmlElementRe.setHidden(el, /* true */1);
 
-HtmlElementRe.itemScope(el);
++el.itemScope;
 
 HtmlElementRe.setItemScope(el, /* true */1);
 
@@ -74,7 +74,7 @@ el.offsetTop;
 
 el.offsetWidth;
 
-HtmlElementRe.spellcheck(el);
++el.spellcheck;
 
 HtmlElementRe.setSpellcheck(el, /* true */1);
 
@@ -88,7 +88,7 @@ el.title;
 
 el.title = "hovertext!";
 
-HtmlElementRe.translate(el);
++el.translate;
 
 HtmlElementRe.setTranslate(el, /* true */1);
 

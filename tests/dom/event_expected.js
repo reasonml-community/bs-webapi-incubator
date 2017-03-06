@@ -4,15 +4,15 @@ var EventRe = require("../../src/dom/eventRe");
 
 var $$event = new Event("my-event");
 
-$$event.bubbles;
++$$event.bubbles;
 
-$$event.cancelable;
++$$event.cancelable;
 
-$$event.composed;
++$$event.composed;
 
 $$event.currentTarget;
 
-$$event.defaultPrevented;
++$$event.defaultPrevented;
 
 EventRe.eventPhase($$event);
 
@@ -22,7 +22,7 @@ $$event.timeStamp;
 
 $$event.type;
 
-$$event.isTrusted;
++$$event.isTrusted;
 
 $$event.preventDefault();
 
@@ -30,13 +30,13 @@ $$event.stopImmediatePropagation();
 
 $$event.stopPropagation();
 
-$$event.altKey;
++$$event.altKey;
 
 $$event.code;
 
-$$event.ctrlKey;
++$$event.ctrlKey;
 
-$$event.isComposing;
++$$event.isComposing;
 
 $$event.key;
 
@@ -44,11 +44,11 @@ $$event.locale;
 
 $$event.location;
 
-$$event.metaKey;
++$$event.metaKey;
 
-$$event.repeat;
++$$event.repeat;
 
-$$event.shiftKey;
++$$event.shiftKey;
 
 EventRe.getModifierState(/* Alt */0, $$event);
 
@@ -72,9 +72,9 @@ $$event.pageX;
 
 $$event.pageY;
 
-EventRe.region($$event);
+$$event.region;
 
-EventRe.relatedTarget($$event);
+$$event.relatedTarget;
 
 $$event.screenX;
 
@@ -98,7 +98,7 @@ $$event.tiltY;
 
 EventRe.pointerType($$event);
 
-EventRe.isPrimary($$event);
++$$event.isPrimary;
 
 exports.$$event = $$event;
 /* event Not a pure module */

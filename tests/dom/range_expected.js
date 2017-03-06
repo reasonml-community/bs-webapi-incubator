@@ -6,7 +6,7 @@ var node = document.createElement("strong");
 
 var range = new Range();
 
-RangeRe.collapsed(range);
++range.collapsed;
 
 range.commonAncestorContainer;
 
@@ -64,9 +64,9 @@ range.getBoundingClientRect();
 
 range.getClientRects();
 
-RangeRe.intersectsNode(node, range);
++range.intersectsNode(node);
 
-RangeRe.isPointInRange(node, 0, range);
++range.isPointInRange(node, 0);
 
 exports.node  = node;
 exports.range = range;

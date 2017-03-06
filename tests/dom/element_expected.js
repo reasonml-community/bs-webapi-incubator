@@ -82,9 +82,9 @@ el.closest("input");
 
 el.createShadowRoot();
 
-ElementRe.getAttribute("href", el);
+el.getAttribute("href");
 
-ElementRe.getAttributeNS("http://...", "foo", el);
+el.getAttributeNS("http://...", "foo");
 
 el.getBoundingClientRect();
 
@@ -96,11 +96,11 @@ el.getElementsByTagName("pre");
 
 el.getElementsByTagNameNS("http://...", "td");
 
-ElementRe.hasAttribute("data-my-value", el);
++el.hasAttribute("data-my-value");
 
-ElementRe.hasAttributeNS("http://...", "foo", el);
++el.hasAttributeNS("http://...", "foo");
 
-ElementRe.hasAttributes(el);
++el.hasAttributes();
 
 ElementRe.insertAdjacentElement(/* BeforeBegin */0, el2, el);
 
@@ -108,9 +108,9 @@ ElementRe.insertAdjacentHTML(/* AfterBegin */1, "<strong>text</strong>", el);
 
 ElementRe.insertAdjacentText(/* AfterEnd */3, "text", el);
 
-ElementRe.matches("input", el);
++el.matches("input");
 
-ElementRe.querySelector("input", el);
+el.querySelector("input");
 
 el.querySelectorAll("input");
 

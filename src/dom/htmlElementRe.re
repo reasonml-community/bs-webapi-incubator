@@ -27,8 +27,7 @@ module Impl (Type: DomInternalRe.Type) => {
   let contentEditable : t_htmlElement => contentEditable = fun self => decodeContentEditable (contentEditable self);
   external setContentEditable : t_htmlElement => string /* enum */ => unit = "contentEditable" [@@bs.set];
   let setContentEditable : t_htmlElement => contentEditable => unit = fun  self value => setContentEditable self (encodeContentEditable value);
-  external isContentEditable : t_htmlElement => Js.boolean = "" [@@bs.get];
-  let isContentEditable : t_htmlElement => bool = fun self => Js.to_bool (isContentEditable self);
+  external isContentEditable : t_htmlElement => bool = "" [@@bs.get];
   external contextMenu : t_htmlElement => DomTypesRe.htmlElement = "" [@@bs.get]; /* returns HTMLMenuElement */
   external setContextMenu : t_htmlElement => DomTypesRe.htmlElement => unit = "contextMenu" [@@bs.set]; /* accepts and returns HTMLMenuElement */
   external dataset : t_htmlElement => DomTypesRe.domStringMap = "" [@@bs.get];
@@ -36,17 +35,14 @@ module Impl (Type: DomInternalRe.Type) => {
   let dir : t_htmlElement => DomTypesRe.dir = fun self => DomTypesRe.decodeDir (dir self);
   external setDir : t_htmlElement => string /* enum */ => unit = "dir" [@@bs.set];
   let setDir : t_htmlElement => DomTypesRe.dir => unit = fun self value => setDir self (DomTypesRe.encodeDir value);
-  external draggable : t_htmlElement => Js.boolean = "" [@@bs.get];
-  let draggable : t_htmlElement => bool = fun self => Js.to_bool (draggable self);
+  external draggable : t_htmlElement => bool = "" [@@bs.get];
   external setDraggable : t_htmlElement => Js.boolean => unit = "draggable" [@@bs.set];
   let setDraggable : t_htmlElement => bool => unit = fun self value => setDraggable self (Js.Boolean.to_js_boolean value);
   external dropzone : t_htmlElement => DomTypesRe.domSettableTokenList = "" [@@bs.get];
-  external hidden : t_htmlElement => Js.boolean = "" [@@bs.get];
-  let hidden : t_htmlElement => bool = fun self => Js.to_bool (hidden self);
+  external hidden : t_htmlElement => bool = "" [@@bs.get];
   external setHidden : t_htmlElement => Js.boolean => unit = "hidden" [@@bs.set];
   let setHidden : t_htmlElement => bool => unit = fun self value => setHidden self (Js.Boolean.to_js_boolean value);
-  external itemScope : t_htmlElement => Js.boolean = "" [@@bs.get]; /* experimental */
-  let itemScope : t_htmlElement => bool = fun self => Js.to_bool (itemScope self);
+  external itemScope : t_htmlElement => bool = "" [@@bs.get]; /* experimental */
   external setItemScope : t_htmlElement => Js.boolean => unit = "itemScope" [@@bs.set]; /* experimental */
   let setItemScope : t_htmlElement => bool => unit = fun self value => setItemScope self (Js.Boolean.to_js_boolean value);
   external itemType : t_htmlElement => DomTypesRe.domSettableTokenList = "" [@@bs.get]; /* experimental */
@@ -64,8 +60,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external offsetTop : t_htmlElement => int = "" [@@bs.get]; /* experimental, but widely supported */
   external offsetWidth : t_htmlElement => int = "" [@@bs.get]; /* experimental */
   /*external properties : r => HTMLPropertiesCollection.t = "properties" [@@bs.get]; /* experimental */*/
-  external spellcheck : t_htmlElement => Js.boolean = "" [@@bs.get];
-  let spellcheck : t_htmlElement => bool = fun self => Js.to_bool (spellcheck self);
+  external spellcheck : t_htmlElement => bool = "" [@@bs.get];
   external setSpellcheck : t_htmlElement => Js.boolean => unit = "spellcheck" [@@bs.set];
   let setSpellcheck : t_htmlElement => bool => unit = fun self value => setSpellcheck self (Js.Boolean.to_js_boolean value);
   external style : t_htmlElement => DomTypesRe.cssStyleDeclaration = "" [@@bs.get];
@@ -74,8 +69,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external setTabIndex : t_htmlElement => int => unit = "tabIndex" [@@bs.set];
   external title : t_htmlElement => string = "" [@@bs.get];
   external setTitle : t_htmlElement => string => unit = "title" [@@bs.set];
-  external translate : t_htmlElement => Js.boolean = "" [@@bs.get]; /* experimental */
-  let translate : t_htmlElement => bool = fun self => Js.to_bool (translate self);
+  external translate : t_htmlElement => bool = "" [@@bs.get]; /* experimental */
   external setTranslate : t_htmlElement => Js.boolean => unit = "translate" [@@bs.set]; /* experimental */
   let setTranslate : t_htmlElement => bool => unit = fun self value => setTranslate self (Js.Boolean.to_js_boolean value);
 
@@ -87,8 +81,7 @@ module Impl (Type: DomInternalRe.Type) => {
 
   /* TODO: element-spcific, should be pulled out */
   external value : t_htmlElement => string = "" [@@bs.get]; /* HTMLInputElement */
-  external checked : t_htmlElement => Js.boolean = "" [@@bs.get]; /* HTMLInputElement */
-  let checked : t_htmlElement => bool = fun value => Js.to_bool (checked value);
+  external checked : t_htmlElement => bool = "" [@@bs.get]; /* HTMLInputElement */
   external type_ : t_htmlElement => string = "" [@@bs.get]; /* HTMLStyleElement */
   external setType : t_htmlElement => string => unit = "type" [@@bs.set]; /* HTMLStyleElement */
   external rel : t_htmlElement => string = "" [@@bs.get]; /* HTMLLinkElement */

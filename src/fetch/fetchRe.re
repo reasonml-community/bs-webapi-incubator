@@ -224,10 +224,8 @@ module Headers = {
   external append : string => string = "" [@@bs.send.pipe: t];
   external delete : string = "" [@@bs.send.pipe: t];
   /* entries */ /* very experimental */
-  external get : string => Js.null string = "" [@@bs.send.pipe: t];
-  let get : string => t => option string = fun name self => Js.Null.to_opt (get name self);
-  external has : string => Js.boolean = "" [@@bs.send.pipe: t];
-  let has : string => t => bool = fun name self => Js.to_bool (has name self);
+  external get : string => option string = "" [@@bs.send.pipe: t] [@@bs.return {null_to_opt: null_to_opt}];
+  external has : string => bool = "" [@@bs.send.pipe: t];
   /* keys */ /* very experimental */
   external set : string => string => unit = "" [@@bs.send.pipe: t];
   /* values */ /* very experimental */
@@ -249,8 +247,7 @@ module Body = {
     type t_body = Type.t;
 
     external body : t_body => readableStream = "" [@@bs.get];
-    external bodyUsed : t_body => Js.boolean = "" [@@bs.get];
-    let bodyUsed : t_body => bool = fun self => Js.to_bool (bodyUsed self);
+    external bodyUsed : t_body => bool = "" [@@bs.get];
 
     external arrayBuffer : promise arrayBuffer unit = "" [@@bs.send.pipe: t_body];
     external blob : promise blob unit = "" [@@bs.send.pipe: t_body];
@@ -341,8 +338,7 @@ module Request = {
   external redirect : t => string = "" [@@bs.get];
   let redirect : t => requestRedirect = fun self => decodeRequestRedirect (redirect self);
   external integrity : t => string = "" [@@bs.get];
-  external keepalive : t => Js.boolean = "" [@@bs.get];
-  let keepalive : t => bool = fun self => Js.to_bool (keepalive self);
+  external keepalive : t => bool = "" [@@bs.get];
 
   include Body.Impl { type t = body };
 };
@@ -355,10 +351,8 @@ module Response = {
   external redirectWithStatus : string => int /* enum-ish */ => t = "redirect" [@@bs.val];
 
   external headers : t => headers = "" [@@bs.get];
-  external ok : t => Js.boolean = "" [@@bs.get];
-  let ok : t => bool = fun self => Js.to_bool (ok self);
-  external redirected : t => Js.boolean = "" [@@bs.get];
-  let redirected : t => bool = fun self => Js.to_bool (redirected self);
+  external ok : t => bool = "" [@@bs.get];
+  external redirected : t => bool = "" [@@bs.get];
   external status : t => int = "" [@@bs.get];
   external statusText : t => string = "" [@@bs.get];
   external type_ : t => string = "type" [@@bs.get];

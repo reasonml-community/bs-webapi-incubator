@@ -1,6 +1,5 @@
 'use strict';
 
-var WindowRe = require("../../src/dom/windowRe");
 
 var el = document.createElement("strong");
 
@@ -17,11 +16,11 @@ window.crypto;
 
 window.document;
 
-WindowRe.frameElement(window);
+window.frameElement;
 
 window.frames;
 
-WindowRe.fullScreen(window);
++window.fullScreen;
 
 window.history;
 
@@ -29,7 +28,7 @@ window.innerWidth;
 
 window.innerHeight;
 
-WindowRe.isSecureContext(window);
++window.isSecureContext;
 
 window.length;
 
@@ -47,7 +46,7 @@ window.name = "new name";
 
 window.navigator;
 
-WindowRe.opener(window);
+window.opener;
 
 window.outerWidth;
 
@@ -103,7 +102,7 @@ window.cancelIdleCallback(idleId);
 
 window.close();
 
-WindowRe.confirm("is ok?", window);
++window.confirm("is ok?");
 
 window.focus();
 
@@ -119,7 +118,7 @@ window.moveBy(10, -10);
 
 window.moveTo(120, 300);
 
-WindowRe.open_("http://...", "my window", "menubar=yes", window);
+window.open("http://...", "my window", "menubar=yes");
 
 window.postMessage("my message", "*");
 
