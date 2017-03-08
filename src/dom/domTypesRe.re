@@ -28,7 +28,17 @@ type htmlDocument = document_like htmlDocument_tag;
 type shadowRoot_tag;
 type shadowRoot = node_like shadowRoot_tag;
 
-type event;
+type event_like 'a;
+type event = event_like unit;
+type keyboardEvent_tag;
+type keyboardEvent = event_like keyboardEvent_tag;
+type mouseEvent_tag 'a;
+type mouseEvent_like 'a = event_like (mouseEvent_tag 'a);
+type mouseEvent = mouseEvent_like unit;
+type pointerEvent_tag;
+type pointerEvent = mouseEvent_like pointerEvent_tag;
+
+
 type eventTarget;
 type history;
 type htmlCollection;

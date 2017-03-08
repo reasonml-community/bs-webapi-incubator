@@ -2,7 +2,7 @@ open ReasonJs.Dom;
 
 let el = document |> Document.createElement "strong";
 let el2 = document |> Document.createElement "small";
-let event = document |> Document.createEvent "my-event";
+let event = PointerEvent.make "my-event";
 
 let _ = Element.assignedSlot el;
 let _ = Element.attributes el;
@@ -55,7 +55,7 @@ let _ = Element.insertAdjacentText  Element.AfterEnd "text" el;
 let _ = Element.matches "input" el;
 let _ = Element.querySelector "input" el;
 let _ = Element.querySelectorAll "input" el;
-let _ = Element.releasePointerCapture (Event.pointerId event) el;
+let _ = Element.releasePointerCapture (PointerEvent.pointerId event) el;
 let _ = Element.remove el;
 let _ = Element.removeAttribute "href" el;
 let _ = Element.removeAttributeNS "http://..." "foo" el;
@@ -66,4 +66,4 @@ let _ = Element.scrollIntoViewNoAlignToTop el;
 let _ = Element.scrollIntoViewWithOptions { "block": "end", "behvaior": "smooth" } el;
 let _ = Element.setAttribute "href" "http://..." el;
 let _ = Element.setAttributeNS "http://..." "foo" "bar" el;
-let _ = Element.setPointerCapture (Event.pointerId event) el;
+let _ = Element.setPointerCapture (PointerEvent.pointerId event) el;
