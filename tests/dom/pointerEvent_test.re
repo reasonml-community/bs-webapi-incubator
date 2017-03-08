@@ -2,6 +2,7 @@ open ReasonJs.Dom;
 
 let event = PointerEvent.make "my-event";
 
+/* Event */
 let _ = PointerEvent.bubbles event;
 let _ = PointerEvent.cancelable event;
 let _ = PointerEvent.composed event;
@@ -17,6 +18,11 @@ PointerEvent.preventDefault event;
 PointerEvent.stopImmediatePropagation event;
 PointerEvent.stopPropagation event;
 
+/* UIEvent */
+let _ = PointerEvent.detail event;
+let _ = PointerEvent.view event;
+
+/* MouseEvent */
 let _ = PointerEvent.altKey event;
 let _ = PointerEvent.button event;
 let _ = PointerEvent.buttons event;
@@ -40,6 +46,7 @@ let _ = PointerEvent.y event;
 
 let _ = PointerEvent.getModifierState KeyboardEvent.Alt event;
 
+/* PointerEvent */
 let _ = PointerEvent.pointerId event;
 let _ = PointerEvent.width event;
 let _ = PointerEvent.height event;

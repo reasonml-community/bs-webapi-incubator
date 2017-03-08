@@ -29,7 +29,8 @@ module Impl (Type: DomInternalRe.Type) => {
 
 type t = DomTypesRe.mouseEvent;
 include EventRe.Impl { type nonrec t = t };
+include UiEventRe.Impl { type nonrec t = t };
 include Impl { type nonrec t = t };
 
-external make : string => t_mouseEvent = "MouseEvent" [@@bs.new];
-external makeWithOptions : string => Js.t {..} => t_mouseEvent = "MouseEvent" [@@bs.new];
+external make : string => t = "MouseEvent" [@@bs.new];
+external makeWithOptions : string => Js.t {..} => t = "MouseEvent" [@@bs.new];

@@ -2,6 +2,7 @@ type t = DomTypesRe.pointerEvent;
 type pointerId = DomTypesRe.eventPointerId;
 
 include EventRe.Impl { type nonrec t = t };
+include UiEventRe.Impl { type nonrec t = t };
 include MouseEventRe.Impl { type nonrec t = t };
 
 external make : string => t = "PointerEvent" [@@bs.new];

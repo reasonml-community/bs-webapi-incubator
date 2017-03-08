@@ -1,14 +1,18 @@
 
 module CssStyleDeclaration = CssStyleDeclarationRe;
+module ClipboardEvent = ClipboardEventRe;
+module CompositionEvent = CompositionEventRe;
 module Document = DocumentRe;
 module DomTokenList = DomTokenListRe;
 module Element = ElementRe;
 module Event = EventRe;
 module EventTarget = EventTargetRe;
+module FocusEvent = FocusEventRe;
 module History = HistoryRe;
 module HtmlCollection = HtmlCollectionRe;
 module HtmlDocument = HtmlDocumentRe;
 module HtmlElement = HtmlElementRe;
+module InputEvent = InputEventRe;
 module KeyboardEvent = KeyboardEventRe;
 module Location = LocationRe;
 module MouseEvent = MouseEventRe;
@@ -18,6 +22,9 @@ module NodeList = NodeListRe;
 module PointerEvent = PointerEventRe;
 module Range = RangeRe;
 module Selection = SelectionRe;
+module TouchEvent = TouchEventRe;
+module UiEvent = UiEventRe;
+module WheelEvent = WheelEventRe;
 module Window = WindowRe;
 
 include DomTypesRe;

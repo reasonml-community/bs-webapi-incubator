@@ -1,6 +1,7 @@
 open ReasonJs.Dom;
 let event = KeyboardEvent.make "my-event";
 
+/* Event */
 let _ = KeyboardEvent.bubbles event;
 let _ = KeyboardEvent.cancelable event;
 let _ = KeyboardEvent.composed event;
@@ -16,6 +17,11 @@ KeyboardEvent.preventDefault event;
 KeyboardEvent.stopImmediatePropagation event;
 KeyboardEvent.stopPropagation event;
 
+/* UIEvent */
+let _ = KeyboardEvent.detail event;
+let _ = KeyboardEvent.view event;
+
+/* KeyboardEvent */
 let _ = KeyboardEvent.altKey event;
 let _ = KeyboardEvent.code event;
 let _ = KeyboardEvent.ctrlKey event;

@@ -2,6 +2,7 @@ open ReasonJs.Dom;
 
 let event = MouseEvent.make "my-event";
 
+/* Event */
 let _ = MouseEvent.bubbles event;
 let _ = MouseEvent.cancelable event;
 let _ = MouseEvent.composed event;
@@ -17,6 +18,11 @@ MouseEvent.preventDefault event;
 MouseEvent.stopImmediatePropagation event;
 MouseEvent.stopPropagation event;
 
+/* UIEvent */
+let _ = UiEvent.detail event;
+let _ = UiEvent.view event;
+
+/* MouseEvent */
 let _ = MouseEvent.altKey event;
 let _ = MouseEvent.button event;
 let _ = MouseEvent.buttons event;

@@ -1,9 +1,9 @@
 'use strict';
 
 var Curry        = require("bs-platform/lib/js/curry");
-var MouseEventRe = require("../../src/dom/mouseEventRe");
+var TouchEventRe = require("../../src/dom/touchEventRe");
 
-var $$event = new MouseEvent("my-event");
+var $$event = new TouchEvent("my-event");
 
 +$$event.bubbles;
 
@@ -15,7 +15,7 @@ $$event.currentTarget;
 
 +$$event.defaultPrevented;
 
-Curry._1(MouseEventRe.eventPhase, $$event);
+Curry._1(TouchEventRe.eventPhase, $$event);
 
 $$event.target;
 
@@ -37,46 +37,17 @@ $$event.view;
 
 +$$event.altKey;
 
-$$event.button;
-
-$$event.buttons;
-
-$$event.clientX;
-
-$$event.clientY;
+$$event.changedTouches;
 
 +$$event.ctrlKey;
 
 +$$event.metaKey;
 
-$$event.movementX;
-
-$$event.movementY;
-
-$$event.offsetX;
-
-$$event.offsetY;
-
-$$event.pageX;
-
-$$event.pageY;
-
-$$event.region;
-
-$$event.relatedTarget;
-
-$$event.screenX;
-
-$$event.screenY;
-
 +$$event.shiftKey;
 
-$$event.x;
+$$event.targetTouches;
 
-$$event.y;
-
-MouseEventRe.getModifierState(/* Alt */0, $$event);
+$$event.touches;
 
 exports.$$event = $$event;
 /* event Not a pure module */
-

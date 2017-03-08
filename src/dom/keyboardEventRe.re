@@ -1,6 +1,7 @@
 type t = DomTypesRe.keyboardEvent;
 
 include EventRe.Impl { type nonrec t = t };
+include UiEventRe.Impl { type nonrec t = t };
 
 external make : string => t = "KeyboardEvent" [@@bs.new];
 external makeWithOptions : string => Js.t {..} => t = "KeyboardEvent" [@@bs.new];

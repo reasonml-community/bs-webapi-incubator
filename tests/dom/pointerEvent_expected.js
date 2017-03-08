@@ -31,6 +31,10 @@ $$event.stopImmediatePropagation();
 
 $$event.stopPropagation();
 
+$$event.detail;
+
+$$event.view;
+
 +$$event.altKey;
 
 $$event.button;

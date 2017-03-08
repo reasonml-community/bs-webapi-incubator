@@ -46,9 +46,7 @@ AudioProcessingEvent
 BeforeInputEvent
 BeforeUnloadEvent
 BlobEvent
-ClipboardEvent
 CloseEvent
-CompositionEvent
 CSSFontFaceLoadEvent
 CustomEvent
 DeviceLightEvent
@@ -60,19 +58,14 @@ DragEvent
 EditingBeforeInputEvent
 ErrorEvent
 FetchEvent
-FocusEvent
 GamepadEvent
 HashChangeEvent
 IDBVersionChangeEvent
-InputEvent
-KeyboardEvent /* implemented on Event */
 MediaStreamEvent
 MessageEvent
-MouseEvent /* implemented on Event */
 MutationEvent
 OfflineAudioCompletionEvent
 PageTransitionEvent
-PointerEvent /* implemented on Event */
 PopStateEvent
 ProgressEvent
 RelatedEvent
@@ -85,11 +78,8 @@ StorageEvent
 SVGEvent
 SVGZoomEvent
 TimeEvent
-TouchEvent
 TrackEvent
 TransitionEvent
-UIEvent
 UserProximityEvent
 WebGLContextEvent
-WheelEvent
 */
