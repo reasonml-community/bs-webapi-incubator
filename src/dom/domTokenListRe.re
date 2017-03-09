@@ -15,7 +15,7 @@ external removeMany : array string => unit = "remove" [@@bs.send.pipe: t] [@@bs.
 external replace : string => string => unit = "" [@@bs.send.pipe: t]; /* experimental */
 external supports : string => bool = "" [@@bs.send.pipe: t]; /* experimental, Content Management Level 1 */
 external toggle : string => bool = "" [@@bs.send.pipe: t];
-external toggleForced : string => bool => bool = "toggle" [@@bs.send.pipe: t];
-let toggleForced : string => t => bool = fun token self => toggleForced token true self;
+external toggleForced : string => Js.boolean => bool = "toggle" [@@bs.send.pipe: t];
+let toggleForced : string => t => bool = fun token self => toggleForced token Js.true_ self;
 external toString : string = "" [@@bs.send.pipe: t];
 /* values: iterator API, should have language support */
