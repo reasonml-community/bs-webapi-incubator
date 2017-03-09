@@ -1,4 +1,5 @@
 
+module AnimationEvent = AnimationEventRe;
 module CssStyleDeclaration = CssStyleDeclarationRe;
 module ClipboardEvent = ClipboardEventRe;
 module CompositionEvent = CompositionEventRe;
@@ -23,6 +24,7 @@ module PointerEvent = PointerEventRe;
 module Range = RangeRe;
 module Selection = SelectionRe;
 module TouchEvent = TouchEventRe;
+module TransitionEvent = TransitionEventRe;
 module UiEvent = UiEventRe;
 module WheelEvent = WheelEventRe;
 module Window = WindowRe;

@@ -34,6 +34,8 @@ type event = event_like unit;
 type uiEvent_tag 'a;
 type uiEvent_like 'a = event_like (uiEvent_tag 'a);
 type uiEvent = uiEvent_like unit;
+type animationEvent_tag;
+type animationEvent = event_like animationEvent_tag;
 type clipboardEvent_tag;
 type clipboardEvent = event_like clipboardEvent_tag;
 type compositionEvent_tag;
@@ -51,6 +53,8 @@ type pointerEvent_tag;
 type pointerEvent = mouseEvent_like pointerEvent_tag;
 type touchEvent_tag;
 type touchEvent = uiEvent_like touchEvent_tag;
+type transitionEvent_tag;
+type transitionEvent = event_like transitionEvent_tag;
 type wheelEvent_tag;
 type wheelEvent = uiEvent_like wheelEvent_tag;
 
