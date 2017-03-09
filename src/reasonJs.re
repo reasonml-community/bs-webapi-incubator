@@ -1,10 +1,16 @@
-type intervalId;
-external setInterval : (unit => unit) => int => intervalId = "setInterval" [@@bs.val];
-external clearInterval : intervalId => unit = "clearInterval" [@@bs.val];
+type intervalId = Js.Global.intervalId
+[@@ocaml.deprecated "Please use `Js.Global.intervalId` instead"];
+let setInterval = Js.Global.setInterval
+[@@ocaml.deprecated "Please use `Js.Global.setInterval` instead"];
+let clearInterval = Js.Global.clearInterval
+[@@ocaml.deprecated "Please use `Js.Global.clearInterval` instead"];
 
-type timeoutId;
-external setTimeout : (unit => unit) => int => timeoutId = "setTimeout" [@@bs.val];
-external clearTimeout : timeoutId => unit = "clearTimeout" [@@bs.val];
+type timeoutId = Js.Global.timeoutId
+[@@ocaml.deprecated "Please use `Js.Global.timeoutId` instead"];
+let setTimeout = Js.Global.setTimeout
+[@@ocaml.deprecated "Please use `Js.Global.setTimeout` instead"];
+let clearTimeout = Js.Global.clearTimeout
+[@@ocaml.deprecated "Please use `Js.Global.clearTimeout` instead"];
 
 external requestAnimationFrame : (unit => unit) => unit = "requestAnimationFrame" [@@bs.val];
 
