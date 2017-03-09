@@ -1,7 +1,8 @@
 'use strict';
 
+var ReasonJs = require("../src/reasonJs");
 
-setInterval(function () {
+ReasonJs.setInterval(function () {
       console.log("hello!");
       return /* () */0;
     }, 1000);
