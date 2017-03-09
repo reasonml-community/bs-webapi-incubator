@@ -4,7 +4,7 @@
 
 bs-platform@bloomberg/bucklescript:
   version "1.5.1+dev"
-  resolved "https://codeload.github.com/bloomberg/bucklescript/tar.gz/e7d832bdcea5756a939973e5386af5bf2e617d68"
+  resolved "https://codeload.github.com/bloomberg/bucklescript/tar.gz/20acb85f9d8f8a55f1872d7fd5fbb8711080acde"
 
 bs-promise@BuckleTypes/bs-promise:
   version "0.3.0"
