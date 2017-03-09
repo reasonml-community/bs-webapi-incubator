@@ -1,9 +1,9 @@
 'use strict';
 
-var Curry     = require("bs-platform/lib/js/curry");
-var UiEventRe = require("../../src/dom/uiEventRe");
+var Curry        = require("bs-platform/lib/js/curry");
+var FocusEventRe = require("../../../src/dom/event/focusEventRe");
 
-var $$event = new UIEvent("my-event");
+var $$event = new FocusEvent("my-event");
 
 +$$event.bubbles;
 
@@ -15,7 +15,7 @@ $$event.currentTarget;
 
 +$$event.defaultPrevented;
 
-Curry._1(UiEventRe.eventPhase, $$event);
+Curry._1(FocusEventRe.eventPhase, $$event);
 
 $$event.target;
 
@@ -34,6 +34,8 @@ $$event.stopPropagation();
 $$event.detail;
 
 $$event.view;
+
+$$event.relatedTarget;
 
 exports.$$event = $$event;
 /* event Not a pure module */

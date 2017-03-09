@@ -1,7 +1,7 @@
 'use strict';
 
 var Curry          = require("bs-platform/lib/js/curry");
-var PointerEventRe = require("../../src/dom/pointerEventRe");
+var PointerEventRe = require("../../../src/dom/event/pointerEventRe");
 
 var $$event = new PointerEvent("my-event");
 

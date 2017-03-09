@@ -1,9 +1,9 @@
 'use strict';
 
 var Curry        = require("bs-platform/lib/js/curry");
-var FocusEventRe = require("../../src/dom/focusEventRe");
+var TouchEventRe = require("../../../src/dom/event/touchEventRe");
 
-var $$event = new FocusEvent("my-event");
+var $$event = new TouchEvent("my-event");
 
 +$$event.bubbles;
 
@@ -15,7 +15,7 @@ $$event.currentTarget;
 
 +$$event.defaultPrevented;
 
-Curry._1(FocusEventRe.eventPhase, $$event);
+Curry._1(TouchEventRe.eventPhase, $$event);
 
 $$event.target;
 
@@ -35,7 +35,19 @@ $$event.detail;
 
 $$event.view;
 
-$$event.relatedTarget;
++$$event.altKey;
+
+$$event.changedTouches;
+
++$$event.ctrlKey;
+
++$$event.metaKey;
+
++$$event.shiftKey;
+
+$$event.targetTouches;
+
+$$event.touches;
 
 exports.$$event = $$event;
 /* event Not a pure module */

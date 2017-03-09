@@ -1,9 +1,9 @@
 'use strict';
 
-var Curry              = require("bs-platform/lib/js/curry");
-var CompositionEventRe = require("../../src/dom/compositionEventRe");
+var Curry            = require("bs-platform/lib/js/curry");
+var ClipboardEventRe = require("../../../src/dom/event/clipboardEventRe");
 
-var $$event = new CompositionEvent("my-event");
+var $$event = new ClipboardEvent("my-event");
 
 +$$event.bubbles;
 
@@ -15,7 +15,7 @@ $$event.currentTarget;
 
 +$$event.defaultPrevented;
 
-Curry._1(CompositionEventRe.eventPhase, $$event);
+Curry._1(ClipboardEventRe.eventPhase, $$event);
 
 $$event.target;
 
@@ -31,11 +31,7 @@ $$event.stopImmediatePropagation();
 
 $$event.stopPropagation();
 
-$$event.detail;
-
-$$event.view;
-
-$$event.data;
+$$event.clipboardData;
 
 exports.$$event = $$event;
 /* event Not a pure module */

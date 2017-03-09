@@ -1,9 +1,8 @@
 'use strict';
 
-var Curry        = require("bs-platform/lib/js/curry");
-var WheelEventRe = require("../../src/dom/wheelEventRe");
+var EventRe = require("../../../src/dom/event/eventRe");
 
-var $$event = new WheelEvent("my-event");
+var $$event = new Event("my-event");
 
 +$$event.bubbles;
 
@@ -15,7 +14,7 @@ $$event.currentTarget;
 
 +$$event.defaultPrevented;
 
-Curry._1(WheelEventRe.eventPhase, $$event);
+EventRe.eventPhase($$event);
 
 $$event.target;
 
@@ -30,18 +29,6 @@ $$event.preventDefault();
 $$event.stopImmediatePropagation();
 
 $$event.stopPropagation();
-
-$$event.detail;
-
-$$event.view;
-
-$$event.deltaX;
-
-$$event.deltaY;
-
-$$event.deltaZ;
-
-WheelEventRe.deltaMode($$event);
 
 exports.$$event = $$event;
 /* event Not a pure module */

@@ -1,8 +1,9 @@
 'use strict';
 
-var EventRe = require("../../src/dom/eventRe");
+var Curry              = require("bs-platform/lib/js/curry");
+var CompositionEventRe = require("../../../src/dom/event/compositionEventRe");
 
-var $$event = new Event("my-event");
+var $$event = new CompositionEvent("my-event");
 
 +$$event.bubbles;
 
@@ -14,7 +15,7 @@ $$event.currentTarget;
 
 +$$event.defaultPrevented;
 
-EventRe.eventPhase($$event);
+Curry._1(CompositionEventRe.eventPhase, $$event);
 
 $$event.target;
 
@@ -29,6 +30,12 @@ $$event.preventDefault();
 $$event.stopImmediatePropagation();
 
 $$event.stopPropagation();
+
+$$event.detail;
+
+$$event.view;
+
+$$event.data;
 
 exports.$$event = $$event;
 /* event Not a pure module */

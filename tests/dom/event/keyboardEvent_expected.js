@@ -1,7 +1,7 @@
 'use strict';
 
 var Curry           = require("bs-platform/lib/js/curry");
-var KeyboardEventRe = require("../../src/dom/keyboardEventRe");
+var KeyboardEventRe = require("../../../src/dom/event/keyboardEventRe");
 
 var $$event = new KeyboardEvent("my-event");
 
