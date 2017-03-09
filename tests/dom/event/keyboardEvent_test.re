@@ -1,36 +1,37 @@
 open ReasonJs.Dom;
-let event = KeyboardEvent.make "my-event";
+open KeyboardEvent;
+let event = make "my-event";
 
 /* Event */
-let _ = KeyboardEvent.bubbles event;
-let _ = KeyboardEvent.cancelable event;
-let _ = KeyboardEvent.composed event;
-let _ = KeyboardEvent.currentTarget event;
-let _ = KeyboardEvent.defaultPrevented event;
-let _ = KeyboardEvent.eventPhase event;
-let _ = KeyboardEvent.target event;
-let _ = KeyboardEvent.timeStamp event;
-let _ = KeyboardEvent.type_ event;
-let _ = KeyboardEvent.isTrusted event;
+let _ = bubbles event;
+let _ = cancelable event;
+let _ = composed event;
+let _ = currentTarget event;
+let _ = defaultPrevented event;
+let _ = eventPhase event;
+let _ = target event;
+let _ = timeStamp event;
+let _ = type_ event;
+let _ = isTrusted event;
 
-KeyboardEvent.preventDefault event;
-KeyboardEvent.stopImmediatePropagation event;
-KeyboardEvent.stopPropagation event;
+preventDefault event;
+stopImmediatePropagation event;
+stopPropagation event;
 
 /* UIEvent */
-let _ = KeyboardEvent.detail event;
-let _ = KeyboardEvent.view event;
+let _ = detail event;
+let _ = view event;
 
 /* KeyboardEvent */
-let _ = KeyboardEvent.altKey event;
-let _ = KeyboardEvent.code event;
-let _ = KeyboardEvent.ctrlKey event;
-let _ = KeyboardEvent.isComposing event;
-let _ = KeyboardEvent.key event;
-let _ = KeyboardEvent.locale event;
-let _ = KeyboardEvent.location event;
-let _ = KeyboardEvent.metaKey event;
-let _ = KeyboardEvent.repeat event;
-let _ = KeyboardEvent.shiftKey event;
+let _ = altKey event;
+let _ = code event;
+let _ = ctrlKey event;
+let _ = isComposing event;
+let _ = key event;
+let _ = locale event;
+let _ = location event;
+let _ = metaKey event;
+let _ = repeat event;
+let _ = shiftKey event;
 
-let _ = KeyboardEvent.getModifierState KeyboardEvent.Alt event;
+let _ = getModifierState Alt event;

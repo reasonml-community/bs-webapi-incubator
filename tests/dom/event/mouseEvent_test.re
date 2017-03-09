@@ -1,47 +1,48 @@
 open ReasonJs.Dom;
+open MouseEvent;
 
-let event = MouseEvent.make "my-event";
+let event = make "my-event";
 
 /* Event */
-let _ = MouseEvent.bubbles event;
-let _ = MouseEvent.cancelable event;
-let _ = MouseEvent.composed event;
-let _ = MouseEvent.currentTarget event;
-let _ = MouseEvent.defaultPrevented event;
-let _ = MouseEvent.eventPhase event;
-let _ = MouseEvent.target event;
-let _ = MouseEvent.timeStamp event;
-let _ = MouseEvent.type_ event;
-let _ = MouseEvent.isTrusted event;
+let _ = bubbles event;
+let _ = cancelable event;
+let _ = composed event;
+let _ = currentTarget event;
+let _ = defaultPrevented event;
+let _ = eventPhase event;
+let _ = target event;
+let _ = timeStamp event;
+let _ = type_ event;
+let _ = isTrusted event;
 
-MouseEvent.preventDefault event;
-MouseEvent.stopImmediatePropagation event;
-MouseEvent.stopPropagation event;
+preventDefault event;
+stopImmediatePropagation event;
+stopPropagation event;
 
 /* UIEvent */
 let _ = UiEvent.detail event;
 let _ = UiEvent.view event;
 
 /* MouseEvent */
-let _ = MouseEvent.altKey event;
-let _ = MouseEvent.button event;
-let _ = MouseEvent.buttons event;
-let _ = MouseEvent.clientX event;
-let _ = MouseEvent.clientY event;
-let _ = MouseEvent.ctrlKey event;
-let _ = MouseEvent.metaKey event;
-let _ = MouseEvent.movementX event;
-let _ = MouseEvent.movementY event;
-let _ = MouseEvent.offsetX event;
-let _ = MouseEvent.offsetY event;
-let _ = MouseEvent.pageX event;
-let _ = MouseEvent.pageY event;
-let _ = MouseEvent.region event;
-let _ = MouseEvent.relatedTarget event;
-let _ = MouseEvent.screenX event;
-let _ = MouseEvent.screenY event;
-let _ = MouseEvent.shiftKey event;
-let _ = MouseEvent.x event;
-let _ = MouseEvent.y event;
+let _ = altKey event;
+let _ = button event;
+let _ = buttons event;
+let _ = clientX event;
+let _ = clientY event;
+let _ = ctrlKey event;
+let _ = metaKey event;
+let _ = movementX event;
+let _ = movementY event;
+let _ = offsetX event;
+let _ = offsetY event;
+let _ = pageX event;
+let _ = pageY event;
+let _ = region event;
+let _ = relatedTarget event;
+let _ = screenX event;
+let _ = screenY event;
+let _ = shiftKey event;
+let _ = x event;
+let _ = y event;
 
-let _ = MouseEvent.getModifierState KeyboardEvent.Alt event;
+let _ = getModifierState KeyboardEvent.Alt event;

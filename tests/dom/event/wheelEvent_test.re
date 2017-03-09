@@ -1,29 +1,30 @@
 open ReasonJs.Dom;
+open WheelEvent;
 
-let event = WheelEvent.make "my-event";
+let event = make "my-event";
 
 /* Event */
-let _ = WheelEvent.bubbles event;
-let _ = WheelEvent.cancelable event;
-let _ = WheelEvent.composed event;
-let _ = WheelEvent.currentTarget event;
-let _ = WheelEvent.defaultPrevented event;
-let _ = WheelEvent.eventPhase event;
-let _ = WheelEvent.target event;
-let _ = WheelEvent.timeStamp event;
-let _ = WheelEvent.type_ event;
-let _ = WheelEvent.isTrusted event;
+let _ = bubbles event;
+let _ = cancelable event;
+let _ = composed event;
+let _ = currentTarget event;
+let _ = defaultPrevented event;
+let _ = eventPhase event;
+let _ = target event;
+let _ = timeStamp event;
+let _ = type_ event;
+let _ = isTrusted event;
 
-WheelEvent.preventDefault event;
-WheelEvent.stopImmediatePropagation event;
-WheelEvent.stopPropagation event;
+preventDefault event;
+stopImmediatePropagation event;
+stopPropagation event;
 
 /* UIEvent */
-let _ = WheelEvent.detail event;
-let _ = WheelEvent.view event;
+let _ = detail event;
+let _ = view event;
 
 /* WheelEvent */
-let _ = WheelEvent.deltaX event;
-let _ = WheelEvent.deltaY event;
-let _ = WheelEvent.deltaZ event;
-let _ = WheelEvent.deltaMode event;
+let _ = deltaX event;
+let _ = deltaY event;
+let _ = deltaZ event;
+let _ = deltaMode event;

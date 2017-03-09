@@ -41,45 +41,43 @@ external makeWithOptions : string => Js.t {..} => t = "Event" [@@bs.new];
 
 /* Unimplemented Event interfaces
 
-AnimationEvent
-AudioProcessingEvent
-BeforeInputEvent
-BeforeUnloadEvent
-BlobEvent
-CloseEvent
-CSSFontFaceLoadEvent
+AudioProcessingEvent /* deprecated */
+BeforeInputEvent /* experimental? Looks like it might just be an InputEvent */
+BeforeUnloadEvent /* https://www.w3.org/TR/html5/browsers.html#beforeunloadevent */
+BlobEvent /* experimental, MediaStream recording */
+CloseEvent /* https://www.w3.org/TR/websockets/#closeevent */
+CSSFontFaceLoadEvent /* experimental - https://www.w3.org/TR/css-font-loading-3/#dom-cssfontfaceloadevent */
 CustomEvent
-DeviceLightEvent
-DeviceMotionEvent
-DeviceOrientationEvent
-DeviceProximityEvent
-DOMTransactionEvent
+DeviceLightEvent /* experimenta, Ambient Light */
+DeviceMotionEvent /* experimental, Device Orientation */
+DeviceOrientationEvent /* experimental, Device Orientation */
+DeviceProximityEvent /* experimental, Device Orientation */
+DOMTransactionEvent /* very experimental - https://dvcs.w3.org/hg/undomanager/raw-file/tip/undomanager.html#the-domtransactionevent-interface */
 DragEvent
-EditingBeforeInputEvent
+EditingBeforeInputEvent /* deprecated? - https://dvcs.w3.org/hg/editing/raw-file/57abe6d3cb60/editing.html#editingbeforeinputevent */
 ErrorEvent
-FetchEvent
-GamepadEvent
-HashChangeEvent
+FetchEvent /* experimental, Service Workers */
+GamepadEvent /* experimental, Gamepad */
+HashChangeEvent /* https://www.w3.org/TR/html51/browsers.html#the-hashchangeevent-interface */
 IDBVersionChangeEvent
-MediaStreamEvent
-MessageEvent
-MutationEvent
-OfflineAudioCompletionEvent
-PageTransitionEvent
-PopStateEvent
+MediaStreamEvent /* experimental, WebRTC */
+MessageEvent /* experimental, Websocket/WebRTC */
+MutationEvent /* deprecated */
+OfflineAudioCompletionEvent /* experimental, Web Audio */
+PageTransitionEvent /* https://www.w3.org/TR/html51/browsers.html#the-pagetransitionevent-interface */
+PopStateEvent /* https://www.w3.org/TR/html51/browsers.html#the-popstateevent-interface */
 ProgressEvent
-RelatedEvent
-RTCDataChannelEvent
-RTCIdentityErrorEvent
-RTCIdentityEvent
-RTCPeerConnectionIceEvent
-SensorEvent
+RelatedEvent /* https://www.w3.org/TR/html51/interactive-elements.html#the-relatedevent-interfaces */
+RTCDataChannelEvent /* experimental, WebRTC */
+RTCIdentityErrorEventA /* experimental, WebRTC */
+RTCIdentityEvent /* experimental, WebRTC */
+RTCPeerConnectionIceEvent /* experimental, WebRTC */
+SensorEvent /* deprecated? */
 StorageEvent
-SVGEvent
-SVGZoomEvent
-TimeEvent
-TrackEvent
-TransitionEvent
-UserProximityEvent
+SVGEvent /* deprecated */
+SVGZoomEvent /* https://www.w3.org/TR/SVG/script.html#InterfaceSVGZoomEvent */
+TimeEvent /* https://www.w3.org/TR/SVG/animate.html#InterfaceTimeEvent */
+TrackEvent /* https://www.w3.org/TR/html5/embedded-content-0.html#trackevent */
+UserProximityEvent /* experimental, Proximity Events */
 WebGLContextEvent
 */

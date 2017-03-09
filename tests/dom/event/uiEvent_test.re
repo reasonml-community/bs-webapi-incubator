@@ -1,23 +1,24 @@
 open ReasonJs.Dom;
+open UiEvent;
 
-let event = UiEvent.make "my-event";
+let event = make "my-event";
 
 /* Event */
-let _ = UiEvent.bubbles event;
-let _ = UiEvent.cancelable event;
-let _ = UiEvent.composed event;
-let _ = UiEvent.currentTarget event;
-let _ = UiEvent.defaultPrevented event;
-let _ = UiEvent.eventPhase event;
-let _ = UiEvent.target event;
-let _ = UiEvent.timeStamp event;
-let _ = UiEvent.type_ event;
-let _ = UiEvent.isTrusted event;
+let _ = bubbles event;
+let _ = cancelable event;
+let _ = composed event;
+let _ = currentTarget event;
+let _ = defaultPrevented event;
+let _ = eventPhase event;
+let _ = target event;
+let _ = timeStamp event;
+let _ = type_ event;
+let _ = isTrusted event;
 
-UiEvent.preventDefault event;
-UiEvent.stopImmediatePropagation event;
-UiEvent.stopPropagation event;
+preventDefault event;
+stopImmediatePropagation event;
+stopPropagation event;
 
 /* UIEvent */
-let _ = UiEvent.detail event;
-let _ = UiEvent.view event;
+let _ = detail event;
+let _ = view event;

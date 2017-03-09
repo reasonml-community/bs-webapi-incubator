@@ -1,22 +1,23 @@
 open ReasonJs.Dom;
+open ClipboardEvent;
 
-let event = ClipboardEvent.make "my-event";
+let event = make "my-event";
 
 /* Event */
-let _ = ClipboardEvent.bubbles event;
-let _ = ClipboardEvent.cancelable event;
-let _ = ClipboardEvent.composed event;
-let _ = ClipboardEvent.currentTarget event;
-let _ = ClipboardEvent.defaultPrevented event;
-let _ = ClipboardEvent.eventPhase event;
-let _ = ClipboardEvent.target event;
-let _ = ClipboardEvent.timeStamp event;
-let _ = ClipboardEvent.type_ event;
-let _ = ClipboardEvent.isTrusted event;
+let _ = bubbles event;
+let _ = cancelable event;
+let _ = composed event;
+let _ = currentTarget event;
+let _ = defaultPrevented event;
+let _ = eventPhase event;
+let _ = target event;
+let _ = timeStamp event;
+let _ = type_ event;
+let _ = isTrusted event;
 
-ClipboardEvent.preventDefault event;
-ClipboardEvent.stopImmediatePropagation event;
-ClipboardEvent.stopPropagation event;
+preventDefault event;
+stopImmediatePropagation event;
+stopPropagation event;
 
 /* ClipboardEvent */
-let _ = ClipboardEvent.clipboardData event;
+let _ = clipboardData event;

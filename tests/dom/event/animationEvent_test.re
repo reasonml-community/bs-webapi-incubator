@@ -1,22 +1,23 @@
 open ReasonJs.Dom;
+open AnimationEvent;
 
-let event = AnimationEvent.make "my-event";
+let event = make "my-event";
 
-let _ = AnimationEvent.bubbles event;
-let _ = AnimationEvent.cancelable event;
-let _ = AnimationEvent.composed event;
-let _ = AnimationEvent.currentTarget event;
-let _ = AnimationEvent.defaultPrevented event;
-let _ = AnimationEvent.eventPhase event;
-let _ = AnimationEvent.target event;
-let _ = AnimationEvent.timeStamp event;
-let _ = AnimationEvent.type_ event;
-let _ = AnimationEvent.isTrusted event;
+let _ = bubbles event;
+let _ = cancelable event;
+let _ = composed event;
+let _ = currentTarget event;
+let _ = defaultPrevented event;
+let _ = eventPhase event;
+let _ = target event;
+let _ = timeStamp event;
+let _ = type_ event;
+let _ = isTrusted event;
 
-AnimationEvent.preventDefault event;
-AnimationEvent.stopImmediatePropagation event;
-AnimationEvent.stopPropagation event;
+preventDefault event;
+stopImmediatePropagation event;
+stopPropagation event;
 
-let _ = AnimationEvent.animationName event;
-let _ = AnimationEvent.elapsedTime event;
-let _ = AnimationEvent.pseudoElement event;
+let _ = animationName event;
+let _ = elapsedTime event;
+let _ = pseudoElement event;

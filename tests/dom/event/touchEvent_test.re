@@ -1,32 +1,33 @@
 open ReasonJs.Dom;
+open TouchEvent;
 
-let event = TouchEvent.make "my-event";
+let event = make "my-event";
 
 /* Event */
-let _ = TouchEvent.bubbles event;
-let _ = TouchEvent.cancelable event;
-let _ = TouchEvent.composed event;
-let _ = TouchEvent.currentTarget event;
-let _ = TouchEvent.defaultPrevented event;
-let _ = TouchEvent.eventPhase event;
-let _ = TouchEvent.target event;
-let _ = TouchEvent.timeStamp event;
-let _ = TouchEvent.type_ event;
-let _ = TouchEvent.isTrusted event;
+let _ = bubbles event;
+let _ = cancelable event;
+let _ = composed event;
+let _ = currentTarget event;
+let _ = defaultPrevented event;
+let _ = eventPhase event;
+let _ = target event;
+let _ = timeStamp event;
+let _ = type_ event;
+let _ = isTrusted event;
 
-TouchEvent.preventDefault event;
-TouchEvent.stopImmediatePropagation event;
-TouchEvent.stopPropagation event;
+preventDefault event;
+stopImmediatePropagation event;
+stopPropagation event;
 
 /* UIEvent */
-let _ = TouchEvent.detail event;
-let _ = TouchEvent.view event;
+let _ = detail event;
+let _ = view event;
 
 /* TouchEvent */
-let _ = TouchEvent.altKey event;
-let _ = TouchEvent.changedTouches event;
-let _ = TouchEvent.ctrlKey event;
-let _ = TouchEvent.metaKey event;
-let _ = TouchEvent.shiftKey event;
-let _ = TouchEvent.targetTouches event;
-let _ = TouchEvent.touches event;
+let _ = altKey event;
+let _ = changedTouches event;
+let _ = ctrlKey event;
+let _ = metaKey event;
+let _ = shiftKey event;
+let _ = targetTouches event;
+let _ = touches event;

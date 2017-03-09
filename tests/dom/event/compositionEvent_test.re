@@ -1,26 +1,27 @@
 open ReasonJs.Dom;
+open CompositionEvent;
 
-let event = CompositionEvent.make "my-event";
+let event = make "my-event";
 
 /* Event */
-let _ = CompositionEvent.bubbles event;
-let _ = CompositionEvent.cancelable event;
-let _ = CompositionEvent.composed event;
-let _ = CompositionEvent.currentTarget event;
-let _ = CompositionEvent.defaultPrevented event;
-let _ = CompositionEvent.eventPhase event;
-let _ = CompositionEvent.target event;
-let _ = CompositionEvent.timeStamp event;
-let _ = CompositionEvent.type_ event;
-let _ = CompositionEvent.isTrusted event;
+let _ = bubbles event;
+let _ = cancelable event;
+let _ = composed event;
+let _ = currentTarget event;
+let _ = defaultPrevented event;
+let _ = eventPhase event;
+let _ = target event;
+let _ = timeStamp event;
+let _ = type_ event;
+let _ = isTrusted event;
 
-CompositionEvent.preventDefault event;
-CompositionEvent.stopImmediatePropagation event;
-CompositionEvent.stopPropagation event;
+preventDefault event;
+stopImmediatePropagation event;
+stopPropagation event;
 
 /* UIEvent */
-let _ = CompositionEvent.detail event;
-let _ = CompositionEvent.view event;
+let _ = detail event;
+let _ = view event;
 
 /* CompositionEvent */
-let _ = CompositionEvent.data event;
+let _ = data event;
