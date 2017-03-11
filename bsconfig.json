@@ -9,7 +9,7 @@
       "dir": "src",
       "subdirs": [
         "core",
-        "dom",
+        { "dir": "dom", "subdirs": ["event"] },
         "fetch",
         "gl",
         "storage"
@@ -19,7 +19,7 @@
       "type": "dev",
       "subdirs": [
         "core",
-        "dom"
+        { "dir": "dom", "subdirs": ["event"] }
       ]
     }, {
       "dir": "examples",

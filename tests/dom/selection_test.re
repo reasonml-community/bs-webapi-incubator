@@ -1,4 +1,5 @@
 open ReasonJs.Dom;
+open Selection;
 
 let node = document
   |> Document.createElement "strong";
@@ -8,22 +9,22 @@ let sel = document
   |> HtmlDocument.getSelection;
 let range = Range.make ();
 
-let _ = Selection.anchorNode sel;
-let _ = Selection.anchorOffset sel;
-let _ = Selection.focusNode sel;
-let _ = Selection.focusOffset sel;
-let _ = Selection.isCollapsed sel;
-let _ = Selection.rangeCount sel;
+let _ = anchorNode sel;
+let _ = anchorOffset sel;
+let _ = focusNode sel;
+let _ = focusOffset sel;
+let _ = isCollapsed sel;
+let _ = rangeCount sel;
 
-let _ = Selection.getRangeAt 0 sel;
-Selection.collapse node 0 sel;
-Selection.extend node 0 sel;
-Selection.collapseToStart sel;
-Selection.collapseToEnd sel;
-Selection.selectAllChildren node sel;
-Selection.addRange range sel;
-Selection.removeRange range sel;
-Selection.removeAllRanges sel;
-Selection.deleteFromDocument sel;
-let _ = Selection.toString sel;
-let _ = Selection.containsNode node true sel;
+let _ = getRangeAt 0 sel;
+collapse node 0 sel;
+extend node 0 sel;
+collapseToStart sel;
+collapseToEnd sel;
+selectAllChildren node sel;
+addRange range sel;
+removeRange range sel;
+removeAllRanges sel;
+deleteFromDocument sel;
+let _ = toString sel;
+let _ = containsNode node true sel;

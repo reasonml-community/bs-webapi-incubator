@@ -6,7 +6,7 @@ var el = document.createElement("strong");
 
 var el2 = document.createElement("small");
 
-var $$event = document.createEvent("my-event");
+var $$event = new PointerEvent("my-event");
 
 el.assignedSlot;
 

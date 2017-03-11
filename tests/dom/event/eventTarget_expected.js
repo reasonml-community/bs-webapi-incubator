@@ -1,6 +1,6 @@
 'use strict';
 
-var EventTargetRe = require("../../src/dom/eventTargetRe");
+var EventTargetRe = require("../../../src/dom/event/eventTargetRe");
 
 var target = document.createElement("strong");
 

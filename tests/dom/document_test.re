@@ -1,56 +1,57 @@
 open ReasonJs.Dom;
+open Document;
 
-let el = document |> Document.createElement "strong";
+let el = document |> createElement "strong";
 
-let _ = Document.characterSet document;
-let _ = Document.compatMode document;
-let _ = Document.docType document;
-let _ = Document.documentElement document;
-let _ = Document.documentURI document;
-let _ = Document.hidden document;
-let _ = Document.implementation document;
-let _ = Document.lastStyleSheetSet document;
-let _ = Document.pointerLockElement document;
-let _ = Document.preferredStyleSheetSet document;
-let _ = Document.scrollingElement document;
-let _ = Document.selectedStyleSheetSet document;
-let _ = Document.setSelectedStyleSheetSet document"muh-stylesheet";
-let _ = Document.styleSheets document;
-let _ = Document.styleSheetSets document;
-let _ = Document.visibilityState document;
+let _ = characterSet document;
+let _ = compatMode document;
+let _ = docType document;
+let _ = documentElement document;
+let _ = documentURI document;
+let _ = hidden document;
+let _ = implementation document;
+let _ = lastStyleSheetSet document;
+let _ = pointerLockElement document;
+let _ = preferredStyleSheetSet document;
+let _ = scrollingElement document;
+let _ = selectedStyleSheetSet document;
+let _ = setSelectedStyleSheetSet document"muh-stylesheet";
+let _ = styleSheets document;
+let _ = styleSheetSets document;
+let _ = visibilityState document;
 
-let _ = Document.adoptNode el document;
-let _ = Document.createAttribute "data-foo" document;
-let _ = Document.createAttributeNS "http://..." "foo" document;
-let _ = Document.createComment "witty comment" document;
-let _ = Document.createDocumentFragment document;
-let _ = Document.createElement "div" document;
-let _ = Document.createElementWithOptions "div" [%bs.raw "{}"] document; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
-let _ = Document.createElementNS "http://..." "foo" document;
-let _ = Document.createElementNSWithOptions "http://..." "div" [%bs.raw "{}"] document; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
-let _ = Document.createEvent "MyCustomEvent" document;
-let _ = Document.createNodeIterator el document;
-let _ = Document.createNodeIteratorWithWhatToShow el NodeFilter.WhatToShow._All document;
-let _ = Document.createNodeIteratorWithWhatToShowFilter el NodeFilter.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
-let _ = Document.createRange document;
-let _ = Document.createText "Very reasonable!" document;
-let _ = Document.createTreeWalker el document;
-let _ = Document.createTreeWalkerWithWhatToShow el NodeFilter.WhatToShow._All document;
-let _ = Document.createTreeWalkerWithWhatToShowFilter el NodeFilter.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
-let _ = Document.elementFromPoint 0 0 document;
-let _ = Document.elementsFromPoint 0 0 document;
-let _ = Document.enableStyleSheetsForSet "my-stylesheet-set" document;
-let _ = Document.exitPointerLock document;
-let _ = Document.getAnimations document;
-let _ = Document.getElementsByClassName "lstlisting" document;
-let _ = Document.getElementsByTagName "code" document;
-let _ = Document.getElementsByTagNameNS "http://..." "foo" document;
-let _ = Document.importNode el document;
-let _ = Document.importNodeDeep el document;
+let _ = adoptNode el document;
+let _ = createAttribute "data-foo" document;
+let _ = createAttributeNS "http://..." "foo" document;
+let _ = createComment "witty comment" document;
+let _ = createDocumentFragment document;
+let _ = createElement "div" document;
+let _ = createElementWithOptions "div" [%bs.raw "{}"] document; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
+let _ = createElementNS "http://..." "foo" document;
+let _ = createElementNSWithOptions "http://..." "div" [%bs.raw "{}"] document; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
+let _ = createEvent "MyCustomEvent" document;
+let _ = createNodeIterator el document;
+let _ = createNodeIteratorWithWhatToShow el NodeFilter.WhatToShow._All document;
+let _ = createNodeIteratorWithWhatToShowFilter el NodeFilter.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
+let _ = createRange document;
+let _ = createText "Very reasonable!" document;
+let _ = createTreeWalker el document;
+let _ = createTreeWalkerWithWhatToShow el NodeFilter.WhatToShow._All document;
+let _ = createTreeWalkerWithWhatToShowFilter el NodeFilter.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
+let _ = elementFromPoint 0 0 document;
+let _ = elementsFromPoint 0 0 document;
+let _ = enableStyleSheetsForSet "my-stylesheet-set" document;
+let _ = exitPointerLock document;
+let _ = getAnimations document;
+let _ = getElementsByClassName "lstlisting" document;
+let _ = getElementsByTagName "code" document;
+let _ = getElementsByTagNameNS "http://..." "foo" document;
+let _ = importNode el document;
+let _ = importNodeDeep el document;
 /* TODO: These get dead code eliminated
-let _ = Document.registerElement document"my-component";
-let _ = Document.registerElementWithOptions document"my-component" [%bs.raw "{}"];
+let _ = registerElement document"my-component";
+let _ = registerElementWithOptions document"my-component" [%bs.raw "{}"];
 */
-let _ = Document.getElementById "root" document;
-let _ = Document.querySelector ".lstlisting" document;
-let _ = Document.querySelectorAll ".lstlisting" document;
+let _ = getElementById "root" document;
+let _ = querySelector ".lstlisting" document;
+let _ = querySelectorAll ".lstlisting" document;
