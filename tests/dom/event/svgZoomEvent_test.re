@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open SvgZoomEvent;
+
 let event = make "my-event";
 
 /* Event */
@@ -17,3 +18,14 @@ let _ = isTrusted event;
 preventDefault event;
 stopImmediatePropagation event;
 stopPropagation event;
+
+/* UIEvent */
+let _ = detail event;
+let _ = view event;
+
+/* SvgZoomEvent */
+let _ = zoomRectScreen event;
+let _ = previousScale event;
+let _ = previousTranslate event;
+let _ = newScale event;
+let _ = newTranslate event;

@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open TrackEvent;
+
 let event = make "my-event";
 
 /* Event */
@@ -17,3 +18,6 @@ let _ = isTrusted event;
 preventDefault event;
 stopImmediatePropagation event;
 stopPropagation event;
+
+/* TrackEvent */
+let _ = track event;

@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open ProgressEvent;
+
 let event = make "my-event";
 
 /* Event */
@@ -17,3 +18,8 @@ let _ = isTrusted event;
 preventDefault event;
 stopImmediatePropagation event;
 stopPropagation event;
+
+/* ProgressEvent */
+let _ = lengthComputable event;
+let _ = loaded event;
+let _ = total event;

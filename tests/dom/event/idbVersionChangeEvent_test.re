@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open IdbVersionChangeEvent;
+
 let event = make "my-event";
 
 /* Event */
@@ -17,3 +18,7 @@ let _ = isTrusted event;
 preventDefault event;
 stopImmediatePropagation event;
 stopPropagation event;
+
+/* IdbVersionChangeEvent */
+let _ = oldVersion event;
+let _ = newVersion event;

@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open ErrorEvent;
+
 let event = make "my-event";
 
 /* Event */
@@ -17,3 +18,10 @@ let _ = isTrusted event;
 preventDefault event;
 stopImmediatePropagation event;
 stopPropagation event;
+
+/* ErrorEvent */
+let _ = message event;
+let _ = filename event;
+let _ = lineno event;
+let _ = colno event;
+let _ = error event;

@@ -1,5 +1,5 @@
 open ReasonJs.Dom;
-open MouseEvent;
+open DragEvent;
 
 let event = make "my-event";
 
@@ -46,3 +46,6 @@ let _ = x event;
 let _ = y event;
 
 let _ = getModifierState KeyboardEvent.Alt event;
+
+/* DragEvent */
+let _ = dataTransfer event;

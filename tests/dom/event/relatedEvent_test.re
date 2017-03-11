@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open RelatedEvent;
+
 let event = make "my-event";
 
 /* Event */
@@ -17,3 +18,6 @@ let _ = isTrusted event;
 preventDefault event;
 stopImmediatePropagation event;
 stopPropagation event;
+
+/* RelatedEvent */
+let _ = relatedTarget event;

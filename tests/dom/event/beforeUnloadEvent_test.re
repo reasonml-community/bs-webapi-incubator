@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open BeforeUnloadEvent;
+
 let event = make "my-event";
 
 /* Event */
@@ -17,3 +18,6 @@ let _ = isTrusted event;
 preventDefault event;
 stopImmediatePropagation event;
 stopPropagation event;
+
+/* BeforeUnloadEvent */
+let _ = returnValue event;

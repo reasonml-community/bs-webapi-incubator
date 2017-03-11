@@ -5,7 +5,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external view : t_uiEvent => DomTypesRe.window = "" [@@bs.get]; /* technically returns a `WindowProxy` */
 };
 
-type t = DomTypesRe.mouseEvent;
+type t = DomTypesRe.uiEvent;
 include EventRe.Impl { type nonrec t = t };
 include Impl { type nonrec t = t };
 

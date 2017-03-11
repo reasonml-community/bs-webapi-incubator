@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open TimeEvent;
+
 let event = make "my-event";
 
 /* Event */
@@ -17,3 +18,7 @@ let _ = isTrusted event;
 preventDefault event;
 stopImmediatePropagation event;
 stopPropagation event;
+
+/* TimeEvent */
+let _ = detail event;
+let _ = view event;

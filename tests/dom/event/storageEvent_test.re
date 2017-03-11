@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open StorageEvent;
+
 let event = make "my-event";
 
 /* Event */
@@ -17,3 +18,10 @@ let _ = isTrusted event;
 preventDefault event;
 stopImmediatePropagation event;
 stopPropagation event;
+
+/* StorageEvent */
+let _ = key event;
+let _ = newValue event;
+let _ = oldValue event;
+let _ = storageArea event;
+let _ = url event;

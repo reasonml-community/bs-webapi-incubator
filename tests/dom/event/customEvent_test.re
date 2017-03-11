@@ -1,5 +1,6 @@
 open ReasonJs.Dom;
-open Event;
+open CustomEvent;
+
 let event = make "my-event";
 
 /* Event */
