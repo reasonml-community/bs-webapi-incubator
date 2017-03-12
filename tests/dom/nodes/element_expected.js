@@ -36,17 +36,17 @@ el.innerHTML = "<strong>stuff</strong>";
 
 el.localName;
 
-ElementRe.namespaceURI(el);
+el.namespaceURI;
 
-ElementRe.nextElementSibling(el);
+el.nextElementSibling;
 
 el.outerHTML;
 
 el.outerHTML = "<strong>stuff</strong>";
 
-ElementRe.prefix(el);
+el.prefix;
 
-ElementRe.previousElementSibling(el);
+el.previousElementSibling;
 
 el.scrollHeight;
 

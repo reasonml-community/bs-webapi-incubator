@@ -34,14 +34,14 @@
         {
           "dir": "dom",
           "subdirs": [
-            "css",
+            /*"css",*/
             "events",
             "html",
             "nodes",
             "ranges",
             "selection",
             "sets",
-            "traversal"
+            /*"traversal"*/
           ]
         },
         "storage"

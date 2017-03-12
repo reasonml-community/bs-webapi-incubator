@@ -19,3 +19,6 @@ external toggleForced : string => Js.boolean => bool = "toggle" [@@bs.send.pipe:
 let toggleForced : string => t => bool = fun token self => toggleForced token Js.true_ self;
 external toString : string = "" [@@bs.send.pipe: t];
 /* values: iterator API, should have language support */
+
+external value : t => string = "" [@@bs.get]; /* experimental, from being merged with domSettableTokenList */
+external setValue : t => string => unit = "value" [@@bs.set]; /* experimental, from being merged with domSettableTokenList */

@@ -27,8 +27,7 @@ module Impl(Type: DomInternalRe.Type) => {
   | BeforeEnd   => "beforeemd"
   | AfterEnd    => "afterend";
 
-  external assignedSlot : t_element => DomTypesRe.element = "" [@@bs.get]; /* experimental, returns HTMLSlotElement */
-  external attributes : t_element => array DomTypesRe.attr = "" [@@bs.get]; /* return NameNodeMap, not array */
+  external attributes : t_element => DomTypesRe.namedNodeMap = "" [@@bs.get];
   external classList : t_element => DomTypesRe.domTokenList = "" [@@bs.get];
   external className : t_element => string = "" [@@bs.get];
   external setClassName : t_element => string => unit = "className" [@@bs.set];
@@ -41,16 +40,10 @@ module Impl(Type: DomInternalRe.Type) => {
   external innerHTML : t_element => string = "" [@@bs.get];
   external setInnerHTML : t_element => string => unit = "innerHTML" [@@bs.set];
   external localName : t_element => string = "" [@@bs.get];
-  external namespaceURI : t_element => Js.null string = "" [@@bs.get];
-  let namespaceURI : t_element => option string = fun self => Js.Null.to_opt (namespaceURI self);
-  external nextElementSibling : t_element => Js.null DomTypesRe.element = "" [@@bs.get]; /* strictly part of the NonDocumentTypeChildNode interface */
-  let nextElementSibling : t_element => option DomTypesRe.element = fun self => Js.Null.to_opt (nextElementSibling self);
+  external namespaceURI : t_element => option string = "" [@@bs.get] [@@bs.return null_to_opt];
   external outerHTML : t_element => string = "" [@@bs.get]; /* experimental, but widely supported */
   external setOuterHTML : t_element => string => unit = "outerHTML" [@@bs.set]; /* experimental, but widely supported */
-  external prefix : t_element => Js.null string = "" [@@bs.get];
-  let prefix : t_element => option string = fun self => Js.Null.to_opt (prefix self);
-  external previousElementSibling : t_element => Js.null DomTypesRe.element = "" [@@bs.get]; /* strictly part of the NonDocumentTypeChildNode interface */
-  let previousElementSibling : t_element => option DomTypesRe.element = fun self => Js.Null.to_opt (previousElementSibling self);
+  external prefix : t_element => option string = "" [@@bs.get] [@@bs.return null_to_opt];
   external scrollHeight : t_element => int = "" [@@bs.get]; /* experimental, but widely supported */
   external scrollLeft : t_element => int = "" [@@bs.get]; /* experimental */
   external setScrollLeft : t_element => int => unit = "scrollLeft" [@@bs.set]; /* experimental */
@@ -66,8 +59,8 @@ module Impl(Type: DomInternalRe.Type) => {
   external animate : Js.t {..} => Js.t {..} => DomTypesRe.animation = "" [@@bs.send.pipe: t_element]; /* experimental */
   external closest : string => DomTypesRe.element = "" [@@bs.send.pipe: t_element]; /* experimental */
   external createShadowRoot : DomTypesRe.shadowRoot = "" [@@bs.send.pipe: t_element]; /* experimental AND deprecated (?!) */
-  external getAttribute : string => option string = "" [@@bs.send.pipe: t_element] [@@bs.return {null_to_opt: null_to_opt}];
-  external getAttributeNS : string => string => option string = "" [@@bs.send.pipe: t_element] [@@bs.return {null_to_opt: null_to_opt}];
+  external getAttribute : string => option string = "" [@@bs.send.pipe: t_element] [@@bs.return null_to_opt];
+  external getAttributeNS : string => string => option string = "" [@@bs.send.pipe: t_element] [@@bs.return null_to_opt];
   external getBoundingClientRect : DomTypesRe.domRect = "" [@@bs.send.pipe: t_element];
   external getClientRects : array DomTypesRe.domRect = "" [@@bs.send.pipe: t_element];
   external getElementsByClassName : string => DomTypesRe.htmlCollection = "" [@@bs.send.pipe: t_element];
@@ -83,10 +76,7 @@ module Impl(Type: DomInternalRe.Type) => {
   external insertAdjacentText : string /* insertPosition enum */ => string => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
   let insertAdjacentText : insertPosition => string => t_element => unit = fun position text self => insertAdjacentText (encodeInsertPosition position) text self;
   external matches : string => bool = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
-  external querySelector : string => option DomTypesRe.element = "" [@@bs.send.pipe: t_element] [@@bs.return {null_to_opt: null_to_opt}];
-  external querySelectorAll : string => DomTypesRe.nodeList = "" [@@bs.send.pipe: t_element];
   external releasePointerCapture : DomTypesRe.eventPointerId => unit = "" [@@bs.send.pipe: t_element];
-  external remove : unit = "" [@@bs.send.pipe: t_element]; /* experimental */
   external removeAttribute : string => unit = "" [@@bs.send.pipe: t_element];
   external removeAttributeNS : string => string => unit = "" [@@bs.send.pipe: t_element];
   external requestFullscreen : unit = "" [@@bs.send.pipe: t_element]; /* experimental */
@@ -102,7 +92,7 @@ module Impl(Type: DomInternalRe.Type) => {
   /* GlobalEventHandlers interface */
   /* Not sure this should be exposed, since EventTarget seems like a better API */
 
-  external setOnClick : t_element => (DomTypesRe.event => unit) => unit = "onclick" [@@bs.set]; /* should be MouseEvent */
+  external setOnClick : t_element => (DomTypesRe.mouseEvent => unit) => unit = "onclick" [@@bs.set];
 };
 /* TODO: This doesnæt work. Why?
 module Tree (Type: DomInternalRe.Type) => {
@@ -114,6 +104,11 @@ module Tree (Type: DomInternalRe.Type) => {
 include Tree { type t = DomTypesRe.element };
 */
 
-include NodeRe.Impl { type t = DomTypesRe.element };
-include EventTargetRe.Impl { type t = DomTypesRe.element };
-include Impl { type t = DomTypesRe.element };
+type t = DomTypesRe.element;
+include EventTargetRe.Impl { type nonrec t = t };
+include NodeRe.Impl { type nonrec t = t };
+include ParentNodeRe.Impl { type nonrec t = t };
+include NonDocumentTypeChildNodeRe.Impl { type nonrec t = t };
+include ChildNodeRe.Impl { type nonrec t = t };
+include SlotableRe.Impl { type nonrec t = t };
+include Impl { type nonrec t = t };

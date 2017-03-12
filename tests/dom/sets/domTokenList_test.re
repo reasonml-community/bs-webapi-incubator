@@ -20,3 +20,5 @@ let _ = supports "my-class" tlist;
 let _ = toggle "my-class" tlist;
 let _ = toggleForced "my-class" tlist;
 let _ = toString tlist;
+let _ = value tlist;
+let _ = setValue tlist "foo";

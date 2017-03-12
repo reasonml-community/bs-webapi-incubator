@@ -33,5 +33,9 @@ DomTokenListRe.toggleForced("my-class", tlist);
 
 tlist.toString();
 
+tlist.value;
+
+tlist.value = "foo";
+
 exports.tlist = tlist;
 /* tlist Not a pure module */

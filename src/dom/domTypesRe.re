@@ -1,5 +1,11 @@
 type animation; /* Web Animations API */
 
+/* TODO: Should we bother with this indirection?
+/* core */
+type domString = string;
+type domTimestamp = float;
+*/
+
 /* css */
 type cssStyleDeclaration;
 type cssStyleSheet;
@@ -12,23 +18,36 @@ type eventTarget = eventTarget_like unit;
 type node_tag 'a;
 type node_like 'a = eventTarget_like (node_tag 'a);
 type node = node_like unit;
-type element_tag 'a;
-type element_like 'a = node_like (element_tag 'a);
-type element = element_like unit;
+type attr_tag;
+type attr = node_like attr_tag;
+type characterData_tag 'a;
+type characterData_like 'a = node_like (characterData_tag 'a);
+type characterData = characterData_like unit;
+type cdataSection_tag;
+type cdataSection = characterData_like cdataSection_tag;
+type comment_tag;
+type comment = characterData_like comment_tag;
 type document_tag 'a;
 type document_like 'a = node_like (document_tag 'a);
 type document = document_like unit;
-
-type attr;
-type comment;
-type documentFragment;
+type documentFragment_tag;
+type documentFragment = node_like documentFragment_tag;
+type documentType_tag;
+type documentType = node_like documentType_tag;
 type domImplementation;
-type documentType;
+type element_tag 'a;
+type element_like 'a = node_like (element_tag 'a);
+type element = element_like unit;
 type htmlCollection;
+type mutationObserver;
+type mutationRecord;
+type namedNodeMap;
 type nodeList;
+type processingInstruction;
 type shadowRoot_tag;
 type shadowRoot = node_like shadowRoot_tag;
-type textNode;
+type text_tag;
+type text = characterData_like text_tag;
 
 /* geometry */
 type domRect;
@@ -42,8 +61,13 @@ type htmlDocument = document_like htmlDocument_tag;
 type htmlElement_tag 'a;
 type htmlElement_like 'a = element_like (htmlElement_tag 'a);
 type htmlElement = htmlElement_like unit;
+type htmlSlotElement_tag;
+type htmlSlotElement = htmlElement_like htmlSlotElement_tag;
 type location;
 type window;
+type xmlDocument_tag;
+type xmlDocument = document_like xmlDocument_tag;
+
 
 /* events */
 type event_like 'a;

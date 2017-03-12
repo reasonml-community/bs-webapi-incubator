@@ -36,23 +36,23 @@ module Impl (Type: DomInternalRe.Type) => {
 
   /* baseURI */
   external childNodes : t_node => DomTypesRe.nodeList  = "" [@@bs.get];
-  external firstChild : t_node => option DomTypesRe.node = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external firstChild : t_node => option DomTypesRe.node = "" [@@bs.get] [@@bs.return null_to_opt];
   external innerText : t_node => string = "" [@@bs.get];
   external setInnerText : t_node => string => unit = "innerText" [@@bs.set];
   external lastChild : t_node => option DomTypesRe.node = "" [@@bs.get];
-  external nextSibling : t_node => option DomTypesRe.node = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external nextSibling : t_node => option DomTypesRe.node = "" [@@bs.get] [@@bs.return null_to_opt];
   external nodeName : t_node => string = "" [@@bs.get];
   /* nodePrincipal */
   external nodeType : t_node => int /* nodeType enum */ = "" [@@bs.get];
   let nodeType : t_node => nodeType = fun self => decodeNodeType (nodeType self);
-  external nodeValue : t_node => option string = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external nodeValue : t_node => option string = "" [@@bs.get] [@@bs.return null_to_opt];
   external setNodeValue : t_node => Js.null string => unit = "nodeValue" [@@bs.set];
   let setNodeValue : t_node => option string => unit = fun self value => setNodeValue self (Js.Null.from_opt value);
   /* outerText */
   external ownerDocument : t_node => DomTypesRe.document = "" [@@bs.get];
-  external parentElement : t_node => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
-  external parentNode : t_node => option DomTypesRe.node = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
-  external previousSibling : t_node => option DomTypesRe.node = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external parentElement : t_node => option DomTypesRe.element = "" [@@bs.get] [@@bs.return null_to_opt];
+  external parentNode : t_node => option DomTypesRe.node = "" [@@bs.get] [@@bs.return null_to_opt];
+  external previousSibling : t_node => option DomTypesRe.node = "" [@@bs.get] [@@bs.return null_to_opt];
   external rootNode : t_node => DomTypesRe.node = "" [@@bs.get];
   external textContent : t_node => string = "" [@@bs.get];
   external setTextContent : t_node => string => unit = "textContent" [@@bs.set];
@@ -72,7 +72,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external isDefaultNamespace : string => bool = "" [@@bs.send.pipe: t_node];
   external isEqualNode : DomTypesRe.node_like 'a => bool = "" [@@bs.send.pipe: t_node];
   external isSameNode : DomTypesRe.node_like 'a => bool = "" [@@bs.send.pipe: t_node];
-  external lookupNamespaceURI : Js.null string => option string = "" [@@bs.send.pipe: t_node] [@@bs.return {null_to_opt: null_to_opt}];
+  external lookupNamespaceURI : Js.null string => option string = "" [@@bs.send.pipe: t_node] [@@bs.return null_to_opt];
   let lookupNamespaceURI: option string => t_node => option string = fun prefix self => lookupNamespaceURI (Js.Null.from_opt prefix) self;
   external lookupPrefix : string = "lookupPrefix" [@@bs.send.pipe: t_node];
   external normalize : unit = "" [@@bs.send.pipe: t_node];
@@ -80,4 +80,6 @@ module Impl (Type: DomInternalRe.Type) => {
   /* replacChild */
 };
 
-include Impl { type t = DomTypesRe.node };
+type t = DomTypesRe.node;
+include EventTargetRe.Impl { type nonrec t = t };
+include Impl { type nonrec t = t };

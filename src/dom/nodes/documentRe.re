@@ -44,10 +44,10 @@ module Impl (Type: DomInternalRe.Type) => {
   external hidden : t_document => bool = "" [@@bs.get];
   external implementation : t_document => DomTypesRe.domImplementation = "" [@@bs.get];
   external lastStyleSheetSet : t_document => string = "" [@@bs.get];
-  external pointerLockElement : t_document => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}]; /* experimental */
+  external pointerLockElement : t_document => option DomTypesRe.element = "" [@@bs.get] [@@bs.return null_to_opt]; /* experimental */
 
   external preferredStyleSheetSet : t_document => string = "" [@@bs.get];
-  external scrollingElement : t_document => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external scrollingElement : t_document => option DomTypesRe.element = "" [@@bs.get] [@@bs.return null_to_opt];
   external selectedStyleSheetSet : t_document => string = "" [@@bs.get];
   external setSelectedStyleSheetSet : t_document => string => unit = "selectedStyleSheetSet" [@@bs.set];
   external styleSheets : t_document => array DomTypesRe.cssStyleSheet = "" [@@bs.get]; /* return StyleSheetList, not array */
@@ -70,7 +70,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external createNodeIteratorWithWhatToShowFilter : DomTypesRe.node_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.nodeFilter => DomTypesRe.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t_document];
   /* createProcessingInstruction */
   external createRange : DomTypesRe.range = "" [@@bs.send.pipe: t_document];
-  external createText : string => DomTypesRe.textNode = "" [@@bs.send.pipe: t_document];
+  external createText : string => DomTypesRe.text = "" [@@bs.send.pipe: t_document];
   external createTreeWalker : DomTypesRe.element_like 'a => DomTypesRe.treeWalker = "" [@@bs.send.pipe: t_document];
   external createTreeWalkerWithWhatToShow : DomTypesRe.element_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
   external createTreeWalkerWithWhatToShowFilter : DomTypesRe.element_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.nodeFilter => DomTypesRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
@@ -87,9 +87,6 @@ module Impl (Type: DomInternalRe.Type) => {
   let importNodeDeep : DomTypesRe.element_like 'a => t_document => DomTypesRe.element_like 'a = fun element self => importNodeDeep element Js.true_ self;
   external registerElement : string => (unit => DomTypesRe.element) = "" [@@bs.send.pipe: t_document]; /* experimental and deprecated in favor of customElements.define() */
   external registerElementWithOptions : string => Js.t {..} => (unit => DomTypesRe.element) = "registerElement" [@@bs.send.pipe: t_document]; /* experimental and deprecated in favor of customElements.define() */
-  external getElementById : string => option DomTypesRe.element = "" [@@bs.send.pipe: t_document] [@@bs.return {null_to_opt: null_to_opt}];
-  external querySelector : string => option DomTypesRe.element = "" [@@bs.send.pipe: t_document] [@@bs.return {null_to_opt: null_to_opt}];
-  external querySelectorAll : string => DomTypesRe.nodeList = "" [@@bs.send.pipe: t_document];
 
   /** XPath stuff */
   /* createExpression */
@@ -99,6 +96,10 @@ module Impl (Type: DomInternalRe.Type) => {
   /* GlobalEventHandlers interface */
 };
 
-include NodeRe.Impl { type t = DomTypesRe.document };
-include EventTargetRe.Impl { type t = DomTypesRe.document };
-include Impl { type t = DomTypesRe.document };
+type t = DomTypesRe.document;
+include EventTargetRe.Impl { type nonrec t = t };
+include NodeRe.Impl { type nonrec t = t };
+include NonElementParentNodeRe.Impl { type nonrec t = t };
+include DocumentOrShadowRootRe.Impl { type nonrec t = t };
+include ParentNodeRe.Impl { type nonrec t = t };
+include Impl { type nonrec t = t };

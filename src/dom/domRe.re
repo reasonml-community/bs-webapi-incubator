@@ -1,12 +1,19 @@
 
 module AnimationEvent = AnimationEventRe;
+module Attr = AttrRe;
 module BeforeUnloadEvent = BeforeUnloadEventRe;
+module CdataSection = CdataSectionRe;
+module CharacterData = CharacterDataRe;
+module Comment = CommentRe;
 module CssStyleDeclaration = CssStyleDeclarationRe;
 module ClipboardEvent = ClipboardEventRe;
 module CloseEvent = CloseEventRe;
 module CompositionEvent = CompositionEventRe;
 module CustomEvent = CustomEventRe;
 module Document = DocumentRe;
+module DocumentFragment = DocumentFragmentRe;
+module DocumentType = DocumentTypeRe;
+module DomImplementation = DomImplementationRe;
 module DomTokenList = DomTokenListRe;
 module DragEvent = DragEventRe;
 module Element = ElementRe;
@@ -23,6 +30,8 @@ module InputEvent = InputEventRe;
 module KeyboardEvent = KeyboardEventRe;
 module Location = LocationRe;
 module MouseEvent = MouseEventRe;
+module MutationObserver = MutationObserverRe;
+module MutationRecord = MutationRecordRe;
 module Node = NodeRe;
 module NodeFilter = NodeFilterRe;
 module NodeList = NodeListRe;
@@ -33,8 +42,10 @@ module ProgressEvent = ProgressEventRe;
 module Range = RangeRe;
 module RelatedEvent = RelatedEventRe;
 module Selection = SelectionRe;
+module ShadowRoot = ShadowRootRe;
 module StorageEvent = StorageEventRe;
 module SvgZoomEvent = SvgZoomEventRe;
+module Text = TextRe;
 module TimeEvent = TimeEventRe;
 module TouchEvent = TouchEventRe;
 module TrackEvent = TrackEventRe;
@@ -58,15 +69,13 @@ Attr
 CharacterData
 ChildNode /* experimental */
 Comment
-CustomEvent
 DocumentFragment
 DocumentType
 DOMError
 DOMException
 DOMImplementation
-DOMString
 DOMTimeStamp
-DOMSettableTokenList
+DOMSettableTokenList /* deprecated, merged with DOMTokenList */
 DOMStringList
 MutationObserver
 MutationRecord
