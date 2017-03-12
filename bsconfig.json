@@ -19,7 +19,8 @@
       "type": "dev",
       "subdirs": [
         "core",
-        { "dir": "dom", "subdirs": ["event"] }
+        { "dir": "dom", "subdirs": ["event"] },
+        "storage"
       ]
     }, {
       "dir": "examples",

@@ -76,8 +76,7 @@ module Float32Array = Float32ArrayRe;
 module Gl = GlRe;
 module Uint16Array = Uint16ArrayRe;
 
-module LocalStorage = LocalStorageRe;
-module SessionStorage = SessionStorageRe;
+module Storage = StorageRe;
 
 module CanvasElement = {
   external getContext : DomRe.element => string => Gl.glT = "getContext" [@@bs.send];
