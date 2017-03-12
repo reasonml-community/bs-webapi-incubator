@@ -1,34 +1,51 @@
-type animation;
-type attr;
-type comment;
+type animation; /* Web Animations API */
+
+/* css */
 type cssStyleDeclaration;
 type cssStyleSheet;
-type dataTransfer; /* Drag and Drop API */
-type documentFragment;
-type documentImplementation;
-type documentType;
-type domRect;
-type domSettableTokenList;
-type domStringMap;
-type domTokenList;
 
-type node_like 'a;
+/* events (early) */
+type eventTarget_like 'a;
+type eventTarget = eventTarget_like unit; 
+
+/* nodes */
+type node_tag 'a;
+type node_like 'a = eventTarget_like (node_tag 'a);
 type node = node_like unit;
 type element_tag 'a;
 type element_like 'a = node_like (element_tag 'a);
 type element = element_like unit;
-type htmlElement_tag 'a;
-type htmlElement_like 'a = element_like (htmlElement_tag 'a);
-type htmlElement = htmlElement_like unit;
 type document_tag 'a;
 type document_like 'a = node_like (document_tag 'a);
 type document = document_like unit;
-type htmlDocument_tag;
-type htmlDocument = document_like htmlDocument_tag;
 
+type attr;
+type comment;
+type documentFragment;
+type domImplementation;
+type documentType;
+type htmlCollection;
+type nodeList;
 type shadowRoot_tag;
 type shadowRoot = node_like shadowRoot_tag;
+type textNode;
 
+/* geometry */
+type domRect;
+
+/* html */
+type dataTransfer; /* Drag and Drop API */
+type domStringMap;
+type history;
+type htmlDocument_tag;
+type htmlDocument = document_like htmlDocument_tag;
+type htmlElement_tag 'a;
+type htmlElement_like 'a = element_like (htmlElement_tag 'a);
+type htmlElement = htmlElement_like unit;
+type location;
+type window;
+
+/* events */
 type event_like 'a;
 type event = event_like unit;
 type uiEvent_tag 'a;
@@ -88,21 +105,22 @@ type webGlContextEvent = event_like webGlContextEvent_tag;
 type wheelEvent_tag;
 type wheelEvent = uiEvent_like wheelEvent_tag;
 
+/* ranges */
+type range;
 
-type eventTarget;
-type history;
-type htmlCollection;
-type location;
+/* selection (TODO: move out of dom?) */
+type selection;
+
+/* sets */
+type domTokenList;
+type domSettableTokenList;
+
+/* traversal */
 type nodeFilter = {
   acceptNode: element => int /* return type should be NodeFilter.action, but that would create a cycle */
 };
 type nodeIterator;
-type nodeList;
-type range;
-type selection;
-type textNode;
 type treeWalker;
-type window;
 
 /* SVG */
 type svgRect;

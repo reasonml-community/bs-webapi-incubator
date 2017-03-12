@@ -9,7 +9,19 @@
       "dir": "src",
       "subdirs": [
         "core",
-        { "dir": "dom", "subdirs": ["event"] },
+        {
+          "dir": "dom",
+          "subdirs": [
+            "css",
+            "events",
+            "html",
+            "nodes",
+            "ranges",
+            "selection",
+            "sets",
+            "traversal"
+          ]
+        },
         "fetch",
         "gl",
         "storage"
@@ -19,7 +31,19 @@
       "type": "dev",
       "subdirs": [
         "core",
-        { "dir": "dom", "subdirs": ["event"] },
+        {
+          "dir": "dom",
+          "subdirs": [
+            "css",
+            "events",
+            "html",
+            "nodes",
+            "ranges",
+            "selection",
+            "sets",
+            "traversal"
+          ]
+        },
         "storage"
       ]
     }, {
