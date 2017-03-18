@@ -20,7 +20,7 @@
     "bs-promise": "BuckleTypes/bs-promise"
   },
   "devDependencies": {
-    "bs-platform": "^1.5.2"
+    "bs-platform": "bloomberg/bucklescript"
   },
   "rebel": {}
 }
