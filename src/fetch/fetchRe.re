@@ -364,6 +364,6 @@ module Response = {
 };
 
 external fetch : string => promise response unit = "" [@@bs.val];
-external fetchWithInit : string => requestInit => promise response unit = "" [@@bs.val];
-external fetchWithRequest : request => promise response unit = "" [@@bs.val];
-external fetchWithRequestInit : request => requestInit => promise response unit = "" [@@bs.val];
+external fetchWithInit : string => requestInit => promise response unit = "fetch" [@@bs.val];
+external fetchWithRequest : request => promise response unit = "fetch" [@@bs.val];
+external fetchWithRequestInit : request => requestInit => promise response unit = "fetch" [@@bs.val];
