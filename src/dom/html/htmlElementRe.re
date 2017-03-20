@@ -4,29 +4,13 @@ module Impl (Type: DomInternalRe.Type) => {
   let ofElement element: (option t_htmlElement) =>
     (ElementRe.tagName element) == "html" ? Some (DomInternalRe.cast element) : None;
 
-  type contentEditable =
-  | True
-  | False
-  | Inherit
-  | Unknown;
-  let encodeContentEditable = fun /* internal */
-  | True    => "true"
-  | False   => "false"
-  | Inherit => "inherit"
-  | Unknown => "";
-  let decodeContentEditable = fun /* internal */
-  | "true"    => True
-  | "false"   => False
-  | "inherit" => Inherit
-  | _         => Unknown;
-
   external accessKey : t_htmlElement => string = "" [@@bs.get];
   external setAccessKey : t_htmlElement => string => unit = "accessKey" [@@bs.set];
   external accessKeyLabel : t_htmlElement => string = "" [@@bs.get];
   external contentEditable : t_htmlElement => string /* enum */ = "" [@@bs.get];
-  let contentEditable : t_htmlElement => contentEditable = fun self => decodeContentEditable (contentEditable self);
+  let contentEditable : t_htmlElement => DomTypesRe.contentEditable = fun self => DomTypesRe.decodeContentEditable (contentEditable self);
   external setContentEditable : t_htmlElement => string /* enum */ => unit = "contentEditable" [@@bs.set];
-  let setContentEditable : t_htmlElement => contentEditable => unit = fun  self value => setContentEditable self (encodeContentEditable value);
+  let setContentEditable : t_htmlElement => DomTypesRe.contentEditable => unit = fun  self value => setContentEditable self (DomTypesRe.encodeContentEditable value);
   external isContentEditable : t_htmlElement => bool = "" [@@bs.get];
   external contextMenu : t_htmlElement => DomTypesRe.htmlElement = "" [@@bs.get]; /* returns HTMLMenuElement */
   external setContextMenu : t_htmlElement => DomTypesRe.htmlElement => unit = "contextMenu" [@@bs.set]; /* accepts and returns HTMLMenuElement */

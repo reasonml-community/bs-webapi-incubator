@@ -13,31 +13,9 @@ module Impl (Type: DomInternalRe.Type) => {
   let ofNode node: option (t_document) =>
     (NodeRe.nodeType node) == Document ? Some (DomInternalRe.cast node) : None;
 
-  type compatMode =
-  | BackCompat
-  | CSS1Compat
-  | Unknown;
-  let decodeCompatMode = fun /* internal */
-  | "BackCompat" => BackCompat
-  | "CSS1Compat" => CSS1Compat
-  | _            => Unknown;
-
-  type visibilityState =
-  | Visible
-  | Hidden
-  | Prerender
-  | Unloaded
-  | Unknown;
-  let decodeVisibilityState = fun /* internal */
-  | "visible"   => Visible
-  | "hidden"    => Hidden
-  | "prerender" => Prerender
-  | "unloaded"  => Unloaded
-  | _           => Unknown;
-
   external characterSet : t_document => string = "" [@@bs.get];
   external compatMode : t_document => string /* compatMode enum */ = "" [@@bs.get]; /* experimental */
-  let compatMode : t_document => compatMode = fun self => decodeCompatMode (compatMode self);
+  let compatMode : t_document => DomTypesRe.compatMode = fun self => DomTypesRe.decodeCompatMode (compatMode self);
   external docType : t_document => DomTypesRe.documentType = "" [@@bs.get];
   external documentElement : t_document => DomTypesRe.element = "" [@@bs.get];
   external documentURI : t_document => string = "" [@@bs.get];
@@ -53,7 +31,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external styleSheets : t_document => array DomTypesRe.cssStyleSheet = "" [@@bs.get]; /* return StyleSheetList, not array */
   external styleSheetSets : t_document => array string = "" [@@bs.get];
   external visibilityState : t_document => string /* visibilityState enum */ = "" [@@bs.get];
-  let visibilityState : t_document => visibilityState = fun self => decodeVisibilityState (visibilityState self);
+  let visibilityState : t_document => DomTypesRe.visibilityState = fun self => DomTypesRe.decodeVisibilityState (visibilityState self);
 
   external adoptNode : DomTypesRe.element_like 'a => DomTypesRe.element_like 'a = "" [@@bs.send.pipe: t_document];
   external createAttribute : string => DomTypesRe.attr = "" [@@bs.send.pipe: t_document];
@@ -66,14 +44,14 @@ module Impl (Type: DomInternalRe.Type) => {
   external createElementNSWithOptions : string => string => Js.t {..} => DomTypesRe.element = "createEementNS" [@@bs.send.pipe: t_document]; /* not widely supported */
   external createEvent : string /* large enum */ => DomTypesRe.event = "" [@@bs.send.pipe: t_document]; /* discouraged (but not deprecated) in favor of Event constructors */
   external createNodeIterator : DomTypesRe.node_like 'a => DomTypesRe.nodeIterator = "" [@@bs.send.pipe: t_document];
-  external createNodeIteratorWithWhatToShow : DomTypesRe.node_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t_document];
-  external createNodeIteratorWithWhatToShowFilter : DomTypesRe.node_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.nodeFilter => DomTypesRe.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t_document];
+  external createNodeIteratorWithWhatToShow : DomTypesRe.node_like 'a => DomTypesRe.WhatToShow.t => DomTypesRe.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t_document];
+  external createNodeIteratorWithWhatToShowFilter : DomTypesRe.node_like 'a => DomTypesRe.WhatToShow.t => DomTypesRe.nodeFilter => DomTypesRe.nodeIterator = "createNodeIterator" [@@bs.send.pipe: t_document];
   /* createProcessingInstruction */
   external createRange : DomTypesRe.range = "" [@@bs.send.pipe: t_document];
   external createText : string => DomTypesRe.text = "" [@@bs.send.pipe: t_document];
   external createTreeWalker : DomTypesRe.element_like 'a => DomTypesRe.treeWalker = "" [@@bs.send.pipe: t_document];
-  external createTreeWalkerWithWhatToShow : DomTypesRe.element_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
-  external createTreeWalkerWithWhatToShowFilter : DomTypesRe.element_like 'a => NodeFilterRe.WhatToShow.t => DomTypesRe.nodeFilter => DomTypesRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
+  external createTreeWalkerWithWhatToShow : DomTypesRe.element_like 'a => DomTypesRe.WhatToShow.t => DomTypesRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
+  external createTreeWalkerWithWhatToShowFilter : DomTypesRe.element_like 'a => DomTypesRe.WhatToShow.t => DomTypesRe.nodeFilter => DomTypesRe.treeWalker = "createTreeWalker" [@@bs.send.pipe: t_document];
   external elementFromPoint : int => int => DomTypesRe.element = "" [@@bs.send.pipe: t_document]; /* experimental, but widely supported */
   external elementsFromPoint : int => int => array DomTypesRe.element = "" [@@bs.send.pipe: t_document]; /* experimental */
   external enableStyleSheetsForSet : string => unit = "" [@@bs.send.pipe: t_document];

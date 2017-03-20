@@ -1,35 +1,6 @@
 module Impl (Type: DomInternalRe.Type) => {
   type t_node = Type.t;
 
-  type nodeType =
-  | Element
-  | Attribute /* deprecated */
-  | Text
-  | CDATASection /* deprecated */
-  | EntityReference /* deprecated */
-  | Entity /* deprecated */
-  | ProcessingInstruction
-  | Comment
-  | Document
-  | DocumentType
-  | DocumentFragment
-  | Notation /* deprecated */
-  | Unknown;
-  let decodeNodeType = fun /* internal */
-  |  1 => Element
-  |  2 => Attribute
-  |  3 => Text
-  |  4 => CDATASection
-  |  5 => EntityReference
-  |  6 => Entity
-  |  7 => ProcessingInstruction
-  |  8 => Comment
-  |  9 => Document
-  | 10 => DocumentType
-  | 11 => DocumentFragment
-  | 12 => Notation
-  |  _ => Unknown;
-
   /* Shouldn't be needed anymore
   external asNode : t_node => DomTypesRe.node = "%identity";
   */
@@ -44,7 +15,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external nodeName : t_node => string = "" [@@bs.get];
   /* nodePrincipal */
   external nodeType : t_node => int /* nodeType enum */ = "" [@@bs.get];
-  let nodeType : t_node => nodeType = fun self => decodeNodeType (nodeType self);
+  let nodeType : t_node => DomTypesRe.nodeType = fun self => DomTypesRe.decodeNodeType (nodeType self);
   external nodeValue : t_node => option string = "" [@@bs.get] [@@bs.return null_to_opt];
   external setNodeValue : t_node => Js.null string => unit = "nodeValue" [@@bs.set];
   let setNodeValue : t_node => option string => unit = fun self value => setNodeValue self (Js.Null.from_opt value);

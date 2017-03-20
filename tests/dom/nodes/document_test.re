@@ -31,13 +31,13 @@ let _ = createElementNS "http://..." "foo" document;
 let _ = createElementNSWithOptions "http://..." "div" [%bs.raw "{}"] document; /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
 let _ = createEvent "MyCustomEvent" document;
 let _ = createNodeIterator el document;
-let _ = createNodeIteratorWithWhatToShow el NodeFilter.WhatToShow._All document;
-let _ = createNodeIteratorWithWhatToShowFilter el NodeFilter.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
+let _ = createNodeIteratorWithWhatToShow el DomRe.WhatToShow._All document;
+let _ = createNodeIteratorWithWhatToShowFilter el DomRe.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
 let _ = createRange document;
 let _ = createText "Very reasonable!" document;
 let _ = createTreeWalker el document;
-let _ = createTreeWalkerWithWhatToShow el NodeFilter.WhatToShow._All document;
-let _ = createTreeWalkerWithWhatToShowFilter el NodeFilter.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
+let _ = createTreeWalkerWithWhatToShow el DomRe.WhatToShow._All document;
+let _ = createTreeWalkerWithWhatToShowFilter el DomRe.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
 let _ = elementFromPoint 0 0 document;
 let _ = elementsFromPoint 0 0 document;
 let _ = enableStyleSheetsForSet "my-stylesheet-set" document;
