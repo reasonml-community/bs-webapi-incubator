@@ -16,17 +16,6 @@ module Impl(Type: DomInternalRe.Type) => {
   let ofNode node: option (t_element) =>
     (NodeRe.nodeType node) == Element ? Some (DomInternalRe.cast node) : None;
 
-  type insertPosition =
-  | BeforeBegin
-  | AfterBegin
-  | BeforeEnd
-  | AfterEnd;
-  let encodeInsertPosition = fun /* internal */
-  | BeforeBegin => "beforebegin"
-  | AfterBegin  => "afterbegin"
-  | BeforeEnd   => "beforeemd"
-  | AfterEnd    => "afterend";
-
   external attributes : t_element => DomTypesRe.namedNodeMap = "" [@@bs.get];
   external classList : t_element => DomTypesRe.domTokenList = "" [@@bs.get];
   external className : t_element => string = "" [@@bs.get];
@@ -70,11 +59,11 @@ module Impl(Type: DomInternalRe.Type) => {
   external hasAttributeNS : string => string => bool = "" [@@bs.send.pipe: t_element];
   external hasAttributes : bool = "" [@@bs.send.pipe: t_element];
   external insertAdjacentElement : string /* insertPosition enum */ => DomTypesRe.element_like 'a => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
-  let insertAdjacentElement : insertPosition => DomTypesRe.element_like 'a => t_element => unit = fun position element self => insertAdjacentElement (encodeInsertPosition position) element self;
+  let insertAdjacentElement : DomTypesRe.insertPosition => DomTypesRe.element_like 'a => t_element => unit = fun position element self => insertAdjacentElement (DomTypesRe.encodeInsertPosition position) element self;
   external insertAdjacentHTML : string /* insertPosition enum */ => string => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
-  let insertAdjacentHTML : insertPosition => string => t_element => unit = fun position text self => insertAdjacentHTML (encodeInsertPosition position) text self;
+  let insertAdjacentHTML : DomTypesRe.insertPosition => string => t_element => unit = fun position text self => insertAdjacentHTML (DomTypesRe.encodeInsertPosition position) text self;
   external insertAdjacentText : string /* insertPosition enum */ => string => unit = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
-  let insertAdjacentText : insertPosition => string => t_element => unit = fun position text self => insertAdjacentText (encodeInsertPosition position) text self;
+  let insertAdjacentText : DomTypesRe.insertPosition => string => t_element => unit = fun position text self => insertAdjacentText (DomTypesRe.encodeInsertPosition position) text self;
   external matches : string => bool = "" [@@bs.send.pipe: t_element]; /* experimental, but widely supported */
   external releasePointerCapture : DomTypesRe.eventPointerId => unit = "" [@@bs.send.pipe: t_element];
   external removeAttribute : string => unit = "" [@@bs.send.pipe: t_element];

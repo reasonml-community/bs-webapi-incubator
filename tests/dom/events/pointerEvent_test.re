@@ -44,7 +44,7 @@ let _ = shiftKey event;
 let _ = x event;
 let _ = y event;
 
-let _ = getModifierState KeyboardEvent.Alt event;
+let _ = getModifierState Alt event;
 
 /* PointerEvent */
 let _ = pointerId event;

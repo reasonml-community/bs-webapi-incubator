@@ -1,30 +1,6 @@
 module Impl (Type: DomInternalRe.Type) => {
   type t_htmlDocument = Type.t;
 
-  type designMode =
-  | On
-  | Off
-  | Unknown;
-  let encodeDesignMode = fun /* internal */
-  | On      => "on"
-  | Off     => "off"
-  | Unknown => "";
-  let decodeDesignMode = fun /* internal */
-  | "on"  => On
-  | "off" => Off
-  | _     => Unknown;
-
-  type readyState =
-  | Loading
-  | Interactive
-  | Complete
-  | Unknown;
-  let decodeReadyState = fun /* internal */
-  | "loading"     => Loading
-  | "interactive" => Interactive
-  | "complete"    => Complete
-  | _             => Unknown;
-
   external activeElement : t_htmlDocument => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
   external body : t_htmlDocument => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}]; /* returns option HTMLBodyElement */
   external setBody : t_htmlDocument => DomTypesRe.element => unit = "body" [@@bs.set]; /* accepth HTMLBodyElement */
@@ -32,9 +8,9 @@ module Impl (Type: DomInternalRe.Type) => {
   external setCookie : t_htmlDocument => string => unit = "cookie" [@@bs.set];
   external defaultView : t_htmlDocument => option DomTypesRe.window = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
   external designMode : t_htmlDocument => string /* designMode enum */ = "" [@@bs.get];
-  let designMode : t_htmlDocument => designMode = fun self => decodeDesignMode (designMode self);
+  let designMode : t_htmlDocument => DomTypesRe.designMode = fun self => DomTypesRe.decodeDesignMode (designMode self);
   external setDesignMode : t_htmlDocument => string /* designMode enum */ => unit = "designMode" [@@bs.set];
-  let setDesignMode : t_htmlDocument => designMode => unit = fun self value => setDesignMode self (encodeDesignMode value);
+  let setDesignMode : t_htmlDocument => DomTypesRe.designMode => unit = fun self value => setDesignMode self (DomTypesRe.encodeDesignMode value);
   external dir : t_htmlDocument => string /* dir enum */ = "" [@@bs.get];
   let dir : t_htmlDocument => DomTypesRe.dir = fun self => DomTypesRe.decodeDir (dir self);
   external setDir : t_htmlDocument => string /* dir enum */ => unit = "dir" [@@bs.set];
@@ -51,7 +27,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external setLocation : t_htmlDocument => string => unit = "location" [@@bs.set];
   external plugins : t_htmlDocument => DomTypesRe.htmlCollection = "" [@@bs.get];
   external readyState : t_htmlDocument => string /* enum */ = "" [@@bs.get];
-  let readyState : t_htmlDocument => readyState = fun self => decodeReadyState (readyState self);
+  let readyState : t_htmlDocument => DomTypesRe.readyState = fun self => DomTypesRe.decodeReadyState (readyState self);
   external referrer : t_htmlDocument => string = "" [@@bs.get];
   external scripts : t_htmlDocument => DomTypesRe.htmlCollection = "" [@@bs.get];
   external title : t_htmlDocument => string = "" [@@bs.get];

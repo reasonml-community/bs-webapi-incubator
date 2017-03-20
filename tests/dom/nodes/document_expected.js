@@ -2,6 +2,7 @@
 
 var Curry        = require("bs-platform/lib/js/curry");
 var DocumentRe   = require("../../../src/dom/nodes/documentRe");
+var DomTypesRe   = require("../../../src/dom/domTypesRe");
 var NodeFilterRe = require("../../../src/dom/traversal/nodeFilterRe");
 
 var el = document.createElement("strong");
@@ -60,12 +61,12 @@ document.createEvent("MyCustomEvent");
 
 document.createNodeIterator(el);
 
-document.createNodeIterator(el, NodeFilterRe.WhatToShow[/* _All */0]);
+document.createNodeIterator(el, DomTypesRe.WhatToShow[/* _All */0]);
 
-document.createNodeIterator(el, Curry._1(NodeFilterRe.WhatToShow[/* many */13], /* :: */[
-          NodeFilterRe.WhatToShow[/* _Element */1],
+document.createNodeIterator(el, Curry._1(DomTypesRe.WhatToShow[/* many */13], /* :: */[
+          DomTypesRe.WhatToShow[/* _Element */1],
           /* :: */[
-            NodeFilterRe.WhatToShow[/* _Attribute */2],
+            DomTypesRe.WhatToShow[/* _Attribute */2],
             /* [] */0
           ]
         ]), NodeFilterRe.make(function () {
@@ -78,12 +79,12 @@ document.createText("Very reasonable!");
 
 document.createTreeWalker(el);
 
-document.createTreeWalker(el, NodeFilterRe.WhatToShow[/* _All */0]);
+document.createTreeWalker(el, DomTypesRe.WhatToShow[/* _All */0]);
 
-document.createTreeWalker(el, Curry._1(NodeFilterRe.WhatToShow[/* many */13], /* :: */[
-          NodeFilterRe.WhatToShow[/* _Element */1],
+document.createTreeWalker(el, Curry._1(DomTypesRe.WhatToShow[/* many */13], /* :: */[
+          DomTypesRe.WhatToShow[/* _Element */1],
           /* :: */[
-            NodeFilterRe.WhatToShow[/* _Attribute */2],
+            DomTypesRe.WhatToShow[/* _Attribute */2],
             /* [] */0
           ]
         ]), NodeFilterRe.make(function () {

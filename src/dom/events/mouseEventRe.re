@@ -24,7 +24,7 @@ module Impl (Type: DomInternalRe.Type) => {
   external y : t_mouseEvent => int = "" [@@bs.get]; /* experimental */
 
   external getModifierState : string /* modifierKey enum */ => bool = "" [@@bs.send.pipe: t_mouseEvent];
-  let getModifierState : KeyboardEventRe.modifierKey => t_mouseEvent => bool = fun key self => getModifierState (KeyboardEventRe.encodeModifierKey key) self;
+  let getModifierState : DomTypesRe.modifierKey => t_mouseEvent => bool = fun key self => getModifierState (DomTypesRe.encodeModifierKey key) self;
 };
 
 type t = DomTypesRe.mouseEvent;
