@@ -50,5 +50,5 @@
       "type": "dev",
     }
   ],
-  "bs-dependencies": ["bs-promise", "bs-fetch"]
+  "bs-dependencies": ["bs-fetch"]
 }
