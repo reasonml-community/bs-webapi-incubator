@@ -80,8 +80,8 @@ external cullFace : glT => int => unit = "cullFace" [@@bs.send];
 external createBuffer : glT => bufferT = "createBuffer" [@@bs.send];
 external deleteBuffer : glT => bufferT => unit = "createBuffer" [@@bs.send];
 external bindBuffer : glT => int => bufferT => unit = "bindBuffer" [@@bs.send];
-external bufferData : glT => int => Uint16ArrayRe.t => int => unit = "bufferData" [@@bs.send];
-external bufferFloatData : glT => int => Float32ArrayRe.t => int => unit =
+external bufferData : glT => int => Js.Typed_array.Uint16Array.t => int => unit = "bufferData" [@@bs.send];
+external bufferFloatData : glT => int => Js.Typed_array.Float32Array.t => int => unit =
   "bufferData" [@@bs.send];
 external createProgram : glT => programT = "createProgram" [@@bs.send];
 external linkProgram : glT => programT => unit = "linkProgram" [@@bs.send];
