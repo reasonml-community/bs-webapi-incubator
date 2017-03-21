@@ -1,8 +1,8 @@
 module Impl (T: { type t; }) => {
   type t_htmlElement = T.t;
 
-  let ofElement element: (option t_htmlElement) =>
-    (ElementRe.tagName element) == "html" ? Some (DomInternalRe.cast element) : None;
+  let ofElement (element: DomTypesRe.element): (option t_htmlElement) =>
+    (ElementRe.tagName element) == "html" ? Some (Obj.magic element) : None;
 
   external accessKey : t_htmlElement => string = "" [@@bs.get];
   external setAccessKey : t_htmlElement => string => unit = "accessKey" [@@bs.set];

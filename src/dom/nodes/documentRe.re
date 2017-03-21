@@ -8,8 +8,8 @@ module Impl (T: { type t; }) => {
   |}];
   let asHtmlDocument : T.t => option DomTypesRe.htmlDocument = fun self => Js.Null.to_opt (asHtmlDocument self);
 
-  let ofNode node: option (T.t) =>
-    (NodeRe.nodeType node) == Document ? Some (DomInternalRe.cast node) : None;
+  let ofNode (node: DomTypesRe.node): option (T.t) =>
+    (NodeRe.nodeType node) == Document ? Some (Obj.magic node) : None;
 
   external characterSet : T.t => string = "" [@@bs.get];
   external compatMode : T.t => string /* compatMode enum */ = "" [@@bs.get]; /* experimental */

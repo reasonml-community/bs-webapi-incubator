@@ -1,6 +1,6 @@
 /* internal, moved out of Impl to reduce unnecessary code duplication */
-let ofNode node: option 'a =>
-  (NodeRe.nodeType node) == Element ? Some (DomInternalRe.cast node) : None;
+let ofNode (node: DomTypesRe.node): option 'a =>
+  (NodeRe.nodeType node) == Element ? Some (Obj.magic node) : None;
 
 module Impl(T: { type t; }) => {
   let asHtmlElement : T.t => Js.null DomTypesRe.htmlElement = [%bs.raw {|
