@@ -1,8 +1,8 @@
-module Impl(T: { type t; }) => {
-  /* Shouldn't be needed anymore
-  external asElement : T.t => DomTypesRe.element = "%identity";
-  */
+/* internal, moved out of Impl to reduce unnecessary code duplication */
+let ofNode node: option 'a =>
+  (NodeRe.nodeType node) == Element ? Some (DomInternalRe.cast node) : None;
 
+module Impl(T: { type t; }) => {
   let asHtmlElement : T.t => Js.null DomTypesRe.htmlElement = [%bs.raw {|
     function (element) {
       // BEWARE: Assumes "contentEditable" uniquely identifies an HTMLELement
@@ -11,8 +11,7 @@ module Impl(T: { type t; }) => {
   |}];
   let asHtmlElement : T.t => option DomTypesRe.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self);
 
-  let ofNode node: option (T.t) =>
-    (NodeRe.nodeType node) == Element ? Some (DomInternalRe.cast node) : None;
+  let ofNode : DomTypesRe.node => option T.t = ofNode;
 
   external attributes : T.t => DomTypesRe.namedNodeMap = "" [@@bs.get];
   external classList : T.t => DomTypesRe.domTokenList = "" [@@bs.get];
@@ -70,7 +69,7 @@ module Impl(T: { type t; }) => {
   external requestPointerLock : unit = "" [@@bs.send.pipe: T.t]; /* experimental */
   external scrollIntoView : unit = "" [@@bs.send.pipe: T.t]; /* experimental, but widely supported */
   external scrollIntoViewNoAlignToTop : Js.boolean => unit = "scrollIntoView" [@@bs.send.pipe: T.t]; /* experimental, but widely supported */
-  let scrollIntoViewNoAlignToTop : T.t => unit = fun self => scrollIntoViewNoAlignToTop Js.true_ self;
+  /* let scrollIntoViewNoAlignToTop : T.t => unit = fun self => scrollIntoViewNoAlignToTop Js.true_ self; */ /* temporarily removed to reduce codegen size */
   external scrollIntoViewWithOptions : Js.t {..} => unit = "scrollIntoView" [@@bs.send.pipe: T.t]; /* experimental */
   external setAttribute : string => string => unit = "" [@@bs.send.pipe: T.t];
   external setAttributeNS : string => string => string => unit = "" [@@bs.send.pipe: T.t];

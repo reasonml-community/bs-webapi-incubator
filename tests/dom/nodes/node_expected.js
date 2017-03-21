@@ -20,7 +20,7 @@ NodeRe.nodeType(node);
 
 node.nodeValue;
 
-NodeRe.setNodeValue(node, /* None */0);
+node.nodeValue = null;
 
 node.ownerDocument;
 
@@ -40,7 +40,7 @@ node.appendChild(node2);
 
 node.cloneNode();
 
-NodeRe.cloneNodeDeep(node);
+node.cloneNode(true);
 
 node.compareDocumentPosition(node2);
 
@@ -48,7 +48,7 @@ node.compareDocumentPosition(node2);
 
 node.getRootNode();
 
-NodeRe.getRootNodeComposed(node);
+node.getRootNode(true);
 
 +node.hasChildNodes();
 

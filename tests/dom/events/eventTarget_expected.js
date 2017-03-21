@@ -1,6 +1,5 @@
 'use strict';
 
-var EventTargetRe = require("../../../src/dom/events/eventTargetRe");
 
 var target = document.createElement("strong");
 
@@ -17,7 +16,7 @@ target.addEventListener("click", handleClick, {
       passive: /* true */1
     });
 
-EventTargetRe.addEventListenerUseCapture("click", handleClick, target);
+target.addEventListener("click", handleClick, true);
 
 target.removeEventListener("click", handleClick);
 
@@ -25,7 +24,7 @@ target.removeEventListener("click", handleClick, {
       passive: /* true */1
     });
 
-EventTargetRe.removeEventListenerUseCapture("click", handleClick, target);
+target.removeEventListener("click", handleClick, true);
 
 +target.dispatchEvent($$event);
 

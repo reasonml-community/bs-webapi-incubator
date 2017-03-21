@@ -128,7 +128,7 @@ el.requestPointerLock();
 
 el.scrollIntoView();
 
-ElementRe.scrollIntoViewNoAlignToTop(el);
+el.scrollIntoView(true);
 
 el.scrollIntoView({
       block: "end",
