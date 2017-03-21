@@ -263,49 +263,44 @@ module RequestInit = {
   let map f => fun /* internal */
   | Some v => Some (f v)
   | None => None;
-  /*
   external make :
-    method_::requestMethod? =>
+    method_::string? =>
     headers::headersInit? =>
     body::bodyInit? =>
     referrer::string?  =>
-    referrerPolicy::referrerPolicy? =>
-    mode::requestMode? =>
-    credentials::requestCredentials?  =>
-    cache::requestCache?  =>
-    redirect::requestRedirect? =>
+    referrerPolicy::string? =>
+    mode::string? =>
+    credentials::string?  =>
+    cache::string?  =>
+    redirect::string? =>
     integrity::string? =>
     keepalive::Js.boolean? =>
     unit =>
-    /* window */
     requestInit = "" [@@bs.obj];
-  */
-  external make : Js.t {..} => t = "%identity";
   let make
     method_::(method_: option requestMethod)=?
     headers::(headers: option headersInit)=?
     body::(body: option bodyInit)=?
     referrer::(referrer: option string)=?
-    referrerPolicy::(referrerPolicy: option referrerPolicy)=?
+    referrerPolicy::(referrerPolicy: referrerPolicy)=None
     mode::(mode: option requestMode)=?
     credentials::(credentials: option requestCredentials)=?
     cache::(cache: option requestCache)=?
     redirect::(redirect: option requestRedirect)=?
-    integrity::(integrity: option string)=?
-    keepalive::(keepalive: option bool)=? () =>
-    make {
-      "method": Js.Null_undefined.from_opt (map encodeRequestMethod method_),
-      "headers": Js.Null_undefined.from_opt headers,
-      "body": Js.Null_undefined.from_opt body,
-      "referrer": Js.Null_undefined.from_opt referrer,
-      "referrerPolicy": Js.Null_undefined.from_opt (map encodeReferrerPolicy referrerPolicy),
-      "mode": Js.Null_undefined.from_opt (map encodeRequestMode mode),
-      "credentials": Js.Null_undefined.from_opt (map encodeRequestCredentials credentials),
-      "cache": Js.Null_undefined.from_opt (map encodeRequestCache cache),
-      "redirect": Js.Null_undefined.from_opt (map encodeRequestRedirect redirect),
-      "integrity": Js.Null_undefined.from_opt integrity,
-      "keepalive": Js.Null_undefined.from_opt (map Js.Boolean.to_js_boolean keepalive)
-    };
+    integrity::(integrity: string)=""
+    keepalive::(keepalive: option bool)=? =>
+    make
+      method_::?(map encodeRequestMethod method_)
+      headers::?headers
+      body::?body
+      referrer::?referrer
+      referrerPolicy::(encodeReferrerPolicy referrerPolicy)
+      mode::?(map encodeRequestMode mode)
+      credentials::?(map encodeRequestCredentials credentials)
+      cache::?(map encodeRequestCache cache)
+      redirect::?(map encodeRequestRedirect redirect)
+      integrity::integrity
+      keepalive::?(map Js.Boolean.to_js_boolean keepalive);
 };
 
 module Request = {
