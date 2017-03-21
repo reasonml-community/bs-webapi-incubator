@@ -17,8 +17,8 @@ type transferable;
 
 type idleCallbackId; /* used by requestIdleCallback and cancelIdleCallback */
 
-module Impl (Type: DomInternalRe.Type) => {
-  type t_window = Type.t;
+module Impl (T: { type t; }) => {
+  type t_window = T.t;
 
   /* A lot of this isn't really "dom", but rather global exports */
 

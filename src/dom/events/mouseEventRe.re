@@ -1,30 +1,28 @@
 
-module Impl (Type: DomInternalRe.Type) => {
-  type t_mouseEvent = Type.t;
+module Impl (T: { type t; }) => {
+  external altKey : T.t => bool = "" [@@bs.get];
+  external button : T.t => int = "" [@@bs.get];
+  external buttons : T.t => int /* bitmask */ = "" [@@bs.get];
+  external clientX : T.t => int = "" [@@bs.get];
+  external clientY : T.t => int = "" [@@bs.get];
+  external ctrlKey : T.t => bool = "" [@@bs.get];
+  external metaKey : T.t => bool = "" [@@bs.get];
+  external movementX : T.t => int = "" [@@bs.get];
+  external movementY : T.t => int = "" [@@bs.get];
+  external offsetX : T.t => int = "" [@@bs.get]; /* experimental, but widely supported */
+  external offsetY : T.t => int = "" [@@bs.get]; /* experimental, but widely supported */
+  external pageX : T.t => int = "" [@@bs.get]; /* experimental, but widely supported */
+  external pageY : T.t => int = "" [@@bs.get]; /* experimental, but widely supported */
+  external region : T.t => option string = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external relatedTarget : T.t => option DomTypesRe.eventTarget = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external screenX : T.t => int = "" [@@bs.get];
+  external screenY : T.t => int = "" [@@bs.get];
+  external shiftKey : T.t => bool = "" [@@bs.get];
+  external x : T.t => int = "" [@@bs.get]; /* experimental */
+  external y : T.t => int = "" [@@bs.get]; /* experimental */
 
-  external altKey : t_mouseEvent => bool = "" [@@bs.get];
-  external button : t_mouseEvent => int = "" [@@bs.get];
-  external buttons : t_mouseEvent => int /* bitmask */ = "" [@@bs.get];
-  external clientX : t_mouseEvent => int = "" [@@bs.get];
-  external clientY : t_mouseEvent => int = "" [@@bs.get];
-  external ctrlKey : t_mouseEvent => bool = "" [@@bs.get];
-  external metaKey : t_mouseEvent => bool = "" [@@bs.get];
-  external movementX : t_mouseEvent => int = "" [@@bs.get];
-  external movementY : t_mouseEvent => int = "" [@@bs.get];
-  external offsetX : t_mouseEvent => int = "" [@@bs.get]; /* experimental, but widely supported */
-  external offsetY : t_mouseEvent => int = "" [@@bs.get]; /* experimental, but widely supported */
-  external pageX : t_mouseEvent => int = "" [@@bs.get]; /* experimental, but widely supported */
-  external pageY : t_mouseEvent => int = "" [@@bs.get]; /* experimental, but widely supported */
-  external region : t_mouseEvent => option string = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
-  external relatedTarget : t_mouseEvent => option DomTypesRe.eventTarget = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
-  external screenX : t_mouseEvent => int = "" [@@bs.get];
-  external screenY : t_mouseEvent => int = "" [@@bs.get];
-  external shiftKey : t_mouseEvent => bool = "" [@@bs.get];
-  external x : t_mouseEvent => int = "" [@@bs.get]; /* experimental */
-  external y : t_mouseEvent => int = "" [@@bs.get]; /* experimental */
-
-  external getModifierState : string /* modifierKey enum */ => bool = "" [@@bs.send.pipe: t_mouseEvent];
-  let getModifierState : DomTypesRe.modifierKey => t_mouseEvent => bool = fun key self => getModifierState (DomTypesRe.encodeModifierKey key) self;
+  external getModifierState : string /* modifierKey enum */ => bool = "" [@@bs.send.pipe: T.t];
+  let getModifierState : DomTypesRe.modifierKey => T.t => bool = fun key self => getModifierState (DomTypesRe.encodeModifierKey key) self;
 };
 
 type t = DomTypesRe.mouseEvent;

@@ -1,21 +1,19 @@
-module Impl(Type: DomInternalRe.Type) => {
-  type t_event = Type.t;
+module Impl(T: { type t; }) => {
+  external bubbles : T.t => bool = "" [@@bs.get];
+  external cancelable : T.t => bool = "" [@@bs.get];
+  external composed : T.t => bool = "" [@@bs.get];
+  external currentTarget : T.t => DomTypesRe.eventTarget = "" [@@bs.get];
+  external defaultPrevented : T.t => bool = "" [@@bs.get];
+  external eventPhase : T.t => int /* eventPhase enum */ = "" [@@bs.get];
+  let eventPhase : T.t => DomTypesRe.eventPhase = fun self => DomTypesRe.decodeEventPhase (eventPhase self);
+  external target : T.t => DomTypesRe.eventTarget = "" [@@bs.get];
+  external timeStamp : T.t => float = "" [@@bs.get];
+  external type_ : T.t => string = "type" [@@bs.get];
+  external isTrusted : T.t => bool = "" [@@bs.get];
 
-  external bubbles : t_event => bool = "" [@@bs.get];
-  external cancelable : t_event => bool = "" [@@bs.get];
-  external composed : t_event => bool = "" [@@bs.get];
-  external currentTarget : t_event => DomTypesRe.eventTarget = "" [@@bs.get];
-  external defaultPrevented : t_event => bool = "" [@@bs.get];
-  external eventPhase : t_event => int /* eventPhase enum */ = "" [@@bs.get];
-  let eventPhase : t_event => DomTypesRe.eventPhase = fun self => DomTypesRe.decodeEventPhase (eventPhase self);
-  external target : t_event => DomTypesRe.eventTarget = "" [@@bs.get];
-  external timeStamp : t_event => float = "" [@@bs.get];
-  external type_ : t_event => string = "type" [@@bs.get];
-  external isTrusted : t_event => bool = "" [@@bs.get];
-
-  external preventDefault : unit = "" [@@bs.send.pipe: t_event];
-  external stopImmediatePropagation : unit = "" [@@bs.send.pipe: t_event];
-  external stopPropagation : unit = "" [@@bs.send.pipe: t_event];
+  external preventDefault : unit = "" [@@bs.send.pipe: T.t];
+  external stopImmediatePropagation : unit = "" [@@bs.send.pipe: T.t];
+  external stopPropagation : unit = "" [@@bs.send.pipe: T.t];
 };
 
 type t = DomTypesRe.event;

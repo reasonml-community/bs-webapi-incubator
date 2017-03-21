@@ -243,17 +243,15 @@ module BodyInit = {
 };
 
 module Body = {
-  module Impl (Type: Type) => {
-    type t_body = Type.t;
+  module Impl (T: { type t; }) => {
+    external body : T.t => readableStream = "" [@@bs.get];
+    external bodyUsed : T.t => bool = "" [@@bs.get];
 
-    external body : t_body => readableStream = "" [@@bs.get];
-    external bodyUsed : t_body => bool = "" [@@bs.get];
-
-    external arrayBuffer : promise arrayBuffer unit = "" [@@bs.send.pipe: t_body];
-    external blob : promise blob unit = "" [@@bs.send.pipe: t_body];
-    external formData : promise formData unit = "" [@@bs.send.pipe: t_body];
-    external json : promise (Js.t {..}) unit = "" [@@bs.send.pipe: t_body];
-    external text : promise string unit = "" [@@bs.send.pipe: t_body];
+    external arrayBuffer : promise arrayBuffer unit = "" [@@bs.send.pipe: T.t];
+    external blob : promise blob unit = "" [@@bs.send.pipe: T.t];
+    external formData : promise formData unit = "" [@@bs.send.pipe: T.t];
+    external json : promise (Js.t {..}) unit = "" [@@bs.send.pipe: T.t];
+    external text : promise string unit = "" [@@bs.send.pipe: T.t];
   };
 
   include Impl { type t = body };

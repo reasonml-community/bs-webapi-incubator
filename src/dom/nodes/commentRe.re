@@ -1,4 +1,5 @@
 type t = DomTypesRe.comment;
+
 include EventTargetRe.Impl { type nonrec t = t };
 include NodeRe.Impl { type nonrec t = t };
 include CharacterDataRe.Impl { type nonrec t = t };

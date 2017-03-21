@@ -1,6 +1,6 @@
 
 /* Mixin */
 
-module Impl(Type: DomInternalRe.Type) => {
+module Impl(T: { type t; }) => {
   /* TODO: Implemented in Shadow DOM spec */
 };

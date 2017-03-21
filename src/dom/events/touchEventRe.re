@@ -1,15 +1,13 @@
 type touchList; /* TODO, Touch Events */
 
-module Impl (Type: DomInternalRe.Type) => {
-  type t_touchEvent = Type.t;
-
-  external altKey : t_touchEvent => bool = "" [@@bs.get];
-  external changedTouches : t_touchEvent => touchList = "" [@@bs.get];
-  external ctrlKey : t_touchEvent => bool = "" [@@bs.get];
-  external metaKey : t_touchEvent => bool = "" [@@bs.get];
-  external shiftKey : t_touchEvent => bool = "" [@@bs.get];
-  external targetTouches : t_touchEvent => touchList = "" [@@bs.get];
-  external touches : t_touchEvent => touchList = "" [@@bs.get];
+module Impl (T: { type t; }) => {
+  external altKey : T.t => bool = "" [@@bs.get];
+  external changedTouches : T.t => touchList = "" [@@bs.get];
+  external ctrlKey : T.t => bool = "" [@@bs.get];
+  external metaKey : T.t => bool = "" [@@bs.get];
+  external shiftKey : T.t => bool = "" [@@bs.get];
+  external targetTouches : T.t => touchList = "" [@@bs.get];
+  external touches : T.t => touchList = "" [@@bs.get];
 };
 
 type t = DomTypesRe.touchEvent;

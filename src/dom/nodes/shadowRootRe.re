@@ -1,5 +1,5 @@
-
 type t = DomTypesRe.shadowRoot;
+
 include EventTargetRe.Impl { type nonrec t = t };
 include NodeRe.Impl { type nonrec t = t };
 include NonElementParentNodeRe.Impl { type nonrec t = t };

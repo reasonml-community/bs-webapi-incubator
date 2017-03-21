@@ -1,6 +1,6 @@
 
 /* Mixin */
 
-module Impl(Type: DomInternalRe.Type) => {
-  external remove : unit = "" [@@bs.send.pipe: Type.t];
+module Impl(T: { type t; }) => {
+  external remove : unit = "" [@@bs.send.pipe: T.t];
 };

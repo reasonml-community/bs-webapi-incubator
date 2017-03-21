@@ -1,6 +1,6 @@
 
 /* Mixin */
 
-module Impl(Type: DomInternalRe.Type) => {
-  external getElementById : string => option DomTypesRe.element = "" [@@bs.send.pipe: Type.t] [@@bs.return null_to_opt];
+module Impl(T: { type t; }) => {
+  external getElementById : string => option DomTypesRe.element = "" [@@bs.send.pipe: T.t] [@@bs.return null_to_opt];
 };

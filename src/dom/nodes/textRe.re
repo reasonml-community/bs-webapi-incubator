@@ -1,6 +1,6 @@
-module Impl (Type : DomInternalRe.Type) => {
-  external splitText : offset::int => unit => DomTypesRe.text = "" [@@bs.send.pipe: Type.t];
-  external wholeText : Type.t => string = "" [@@bs.get];
+module Impl (T: { type t; }) => {
+  external splitText : offset::int => unit => DomTypesRe.text = "" [@@bs.send.pipe: T.t];
+  external wholeText : T.t => string = "" [@@bs.get];
 };
 
 type t = DomTypesRe.text;

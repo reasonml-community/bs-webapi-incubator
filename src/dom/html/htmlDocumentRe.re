@@ -1,5 +1,5 @@
-module Impl (Type: DomInternalRe.Type) => {
-  type t_htmlDocument = Type.t;
+module Impl (T: { type t; }) => {
+  type t_htmlDocument = T.t;
 
   external activeElement : t_htmlDocument => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
   external body : t_htmlDocument => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}]; /* returns option HTMLBodyElement */

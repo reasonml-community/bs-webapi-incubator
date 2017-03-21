@@ -1,5 +1,5 @@
-module Impl (Type: DomInternalRe.Type) => {
-  type t_htmlElement = Type.t;
+module Impl (T: { type t; }) => {
+  type t_htmlElement = T.t;
 
   let ofElement element: (option t_htmlElement) =>
     (ElementRe.tagName element) == "html" ? Some (DomInternalRe.cast element) : None;
@@ -75,7 +75,7 @@ module Impl (Type: DomInternalRe.Type) => {
 };
 
 /* TODO
-module Tree (Type: DomInternalRe.Type) => {
+module Tree (T: { type t; }) => {
   include ElementRe.Tree { type t = Type };
   include Impl { type t = Type };
 };

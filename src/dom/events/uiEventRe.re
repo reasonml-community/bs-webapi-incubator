@@ -1,8 +1,6 @@
-module Impl (Type: DomInternalRe.Type) => {
-  type t_uiEvent = Type.t;
-
-  external detail : t_uiEvent => int = "" [@@bs.get];
-  external view : t_uiEvent => DomTypesRe.window = "" [@@bs.get]; /* technically returns a `WindowProxy` */
+module Impl (T: { type t; }) => {
+  external detail : T.t => int = "" [@@bs.get];
+  external view : T.t => DomTypesRe.window = "" [@@bs.get]; /* technically returns a `WindowProxy` */
 };
 
 type t = DomTypesRe.uiEvent;
