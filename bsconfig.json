@@ -22,7 +22,6 @@
             "traversal"
           ]
         },
-        "fetch",
         "gl",
         "storage"
       ]
@@ -51,5 +50,5 @@
       "type": "dev",
     }
   ],
-  "bs-dependencies": ["bs-promise"]
+  "bs-dependencies": ["bs-promise", "bs-fetch"]
 }

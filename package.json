@@ -17,7 +17,8 @@
   "author": "chenglou",
   "license": "MIT",
   "dependencies": {
-    "bs-promise": "BuckleTypes/bs-promise"
+    "bs-promise": "BuckleTypes/bs-promise",
+    "bs-fetch": "BuckleTypes/bs-fetch"
   },
   "devDependencies": {
     "bs-platform": "bloomberg/bucklescript"

@@ -7,7 +7,8 @@ module Object = ObjectRe;
 
 module Dom = DomRe;
 
-module Fetch = FetchRe;
+module Fetch = Bs_fetch
+[@@ocaml.deprecated "Use the `bs-fetch` package directly instead"];
 
 module Float32Array = Float32ArrayRe;
 module Gl = GlRe;
