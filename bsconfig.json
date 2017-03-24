@@ -49,6 +49,5 @@
       "dir": "examples",
       "type": "dev",
     }
-  ],
-  "bs-dependencies": ["bs-fetch"]
+  ]
 }
