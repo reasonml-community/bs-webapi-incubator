@@ -1,4 +1,4 @@
-type t = DomTypesRe.processingInstruction;
+type t = Dom.processingInstruction;
 
 include EventTargetRe.Impl { type nonrec t = t };
 include NodeRe.Impl { type nonrec t = t };

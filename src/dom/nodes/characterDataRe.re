@@ -8,7 +8,7 @@ module Impl (T: { type t; }) => {
     external replaceData : offset::int => count::int => string => unit = "" [@@bs.send.pipe: T.t];
 };
 
-type t = DomTypesRe.characterData;
+type t = Dom.characterData;
 include EventTargetRe.Impl { type nonrec t = t };
 include NodeRe.Impl { type nonrec t = t };
 include NonDocumentTypeChildNodeRe.Impl { type nonrec t = t };

@@ -1,4 +1,4 @@
-type t = DomTypesRe.animationEvent;
+type t = Dom.animationEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

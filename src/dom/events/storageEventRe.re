@@ -1,4 +1,4 @@
-type t = DomTypesRe.storageEvent;
+type t = Dom.storageEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

@@ -57,10 +57,10 @@ module Window = WindowRe;
 
 include DomTypesRe;
 
-external window : window = "window" [@@bs.val];
-external document : document = "document" [@@bs.val];
-external history : history = "document.history" [@@bs.val];
-external location : location = "document.location" [@@bs.val];
+external window : Dom.window = "window" [@@bs.val];
+external document : Dom.document = "document" [@@bs.val];
+external history : Dom.history = "document.history" [@@bs.val];
+external location : Dom.location = "document.location" [@@bs.val];
 
 
 /* Unimplemented interfaces (aka. "The TODO list")

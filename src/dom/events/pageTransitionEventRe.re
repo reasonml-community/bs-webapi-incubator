@@ -1,5 +1,5 @@
 
-type t = DomTypesRe.pageTransitionEvent;
+type t = Dom.pageTransitionEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

@@ -1,4 +1,4 @@
-type t = DomTypesRe.compositionEvent;
+type t = Dom.compositionEvent;
 
 include EventRe.Impl { type nonrec t = t };
 include UiEventRe.Impl { type nonrec t = t };

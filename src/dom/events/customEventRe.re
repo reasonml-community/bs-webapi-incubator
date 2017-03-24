@@ -1,4 +1,4 @@
-type t = DomTypesRe.customEvent;
+type t = Dom.customEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

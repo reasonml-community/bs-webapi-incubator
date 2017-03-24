@@ -1,4 +1,4 @@
-type t = DomTypesRe.beforeUnloadEvent;
+type t = Dom.beforeUnloadEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

@@ -1,4 +1,4 @@
-type t = DomTypesRe.trackEvent;
+type t = Dom.trackEvent;
 type track; /* TODO: VideoTrack or AudioTrack or TextTrack */
 
 include EventRe.Impl { type nonrec t = t };

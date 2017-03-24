@@ -1,4 +1,4 @@
-type t = DomTypesRe.cssStyleDeclaration;
+type t = Dom.cssStyleDeclaration;
 type cssRule; /* TODO: Move to DomRe */
 
 external cssText : t => string = "" [@@bs.get];

@@ -1,12 +1,12 @@
 module Impl (T: { type t; }) => {
   type t_htmlDocument = T.t;
 
-  external activeElement : t_htmlDocument => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
-  external body : t_htmlDocument => option DomTypesRe.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}]; /* returns option HTMLBodyElement */
-  external setBody : t_htmlDocument => DomTypesRe.element => unit = "body" [@@bs.set]; /* accepth HTMLBodyElement */
+  external activeElement : t_htmlDocument => option Dom.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external body : t_htmlDocument => option Dom.element = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}]; /* returns option HTMLBodyElement */
+  external setBody : t_htmlDocument => Dom.element => unit = "body" [@@bs.set]; /* accepth HTMLBodyElement */
   external cookie : t_htmlDocument => string = "" [@@bs.get];
   external setCookie : t_htmlDocument => string => unit = "cookie" [@@bs.set];
-  external defaultView : t_htmlDocument => option DomTypesRe.window = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external defaultView : t_htmlDocument => option Dom.window = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
   external designMode : t_htmlDocument => string /* designMode enum */ = "" [@@bs.get];
   let designMode : t_htmlDocument => DomTypesRe.designMode = fun self => DomTypesRe.decodeDesignMode (designMode self);
   external setDesignMode : t_htmlDocument => string /* designMode enum */ => unit = "designMode" [@@bs.set];
@@ -17,19 +17,19 @@ module Impl (T: { type t; }) => {
   let setDir : t_htmlDocument => DomTypesRe.dir => unit = fun self value => setDir self (DomTypesRe.encodeDir value);
   external domain : t_htmlDocument => option string = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
   external setDomain : t_htmlDocument => string => unit = "domain" [@@bs.set];
-  external embeds : t_htmlDocument => DomTypesRe.nodeList = "" [@@bs.get];
-  external forms : t_htmlDocument => DomTypesRe.htmlCollection = "" [@@bs.get];
-  external head : t_htmlDocument => DomTypesRe.element = "" [@@bs.get]; /* returns HTMLHeadElement */
-  external images : t_htmlDocument => DomTypesRe.htmlCollection = "" [@@bs.get];
+  external embeds : t_htmlDocument => Dom.nodeList = "" [@@bs.get];
+  external forms : t_htmlDocument => Dom.htmlCollection = "" [@@bs.get];
+  external head : t_htmlDocument => Dom.element = "" [@@bs.get]; /* returns HTMLHeadElement */
+  external images : t_htmlDocument => Dom.htmlCollection = "" [@@bs.get];
   external lastModified : t_htmlDocument => string = "" [@@bs.get];
-  external links : t_htmlDocument => DomTypesRe.nodeList = "" [@@bs.get];
-  external location : t_htmlDocument => DomTypesRe.location = "" [@@bs.get];
+  external links : t_htmlDocument => Dom.nodeList = "" [@@bs.get];
+  external location : t_htmlDocument => Dom.location = "" [@@bs.get];
   external setLocation : t_htmlDocument => string => unit = "location" [@@bs.set];
-  external plugins : t_htmlDocument => DomTypesRe.htmlCollection = "" [@@bs.get];
+  external plugins : t_htmlDocument => Dom.htmlCollection = "" [@@bs.get];
   external readyState : t_htmlDocument => string /* enum */ = "" [@@bs.get];
   let readyState : t_htmlDocument => DomTypesRe.readyState = fun self => DomTypesRe.decodeReadyState (readyState self);
   external referrer : t_htmlDocument => string = "" [@@bs.get];
-  external scripts : t_htmlDocument => DomTypesRe.htmlCollection = "" [@@bs.get];
+  external scripts : t_htmlDocument => Dom.htmlCollection = "" [@@bs.get];
   external title : t_htmlDocument => string = "" [@@bs.get];
   external setTitle : t_htmlDocument => string => unit = "title" [@@bs.set];
   external url : t_htmlDocument => string = "URL" [@@bs.get];
@@ -37,8 +37,8 @@ module Impl (T: { type t; }) => {
   external close : unit = "" [@@bs.send.pipe: t_htmlDocument];
   external execCommand : string => Js.boolean => Js.null string => bool = "" [@@bs.send.pipe: t_htmlDocument];
   let execCommand : string => bool => option string => t_htmlDocument => bool = fun command show value self => execCommand command (Js.Boolean.to_js_boolean show) (Js.Null.from_opt value) self;
-  external getElementsByName : string => DomTypesRe.nodeList = "" [@@bs.send.pipe: t_htmlDocument];
-  external getSelection : DomTypesRe.selection = "" [@@bs.send.pipe: t_htmlDocument];
+  external getElementsByName : string => Dom.nodeList = "" [@@bs.send.pipe: t_htmlDocument];
+  external getSelection : Dom.selection = "" [@@bs.send.pipe: t_htmlDocument];
   external hasFocus : bool = "" [@@bs.send.pipe: t_htmlDocument];
   external open_ : unit = "open" [@@bs.send.pipe: t_htmlDocument];
   external queryCommandEnabled : string => bool = "" [@@bs.send.pipe: t_htmlDocument];
@@ -49,7 +49,7 @@ module Impl (T: { type t; }) => {
   external writeln : string => unit = "" [@@bs.send.pipe: t_htmlDocument];
 };
 
-include NodeRe.Impl { type t = DomTypesRe.htmlDocument };
-include EventTargetRe.Impl { type t = DomTypesRe.htmlDocument };
-include DocumentRe.Impl { type t = DomTypesRe.htmlDocument };
-include Impl { type t = DomTypesRe.htmlDocument };
+include NodeRe.Impl { type t = Dom.htmlDocument };
+include EventTargetRe.Impl { type t = Dom.htmlDocument };
+include DocumentRe.Impl { type t = Dom.htmlDocument };
+include Impl { type t = Dom.htmlDocument };

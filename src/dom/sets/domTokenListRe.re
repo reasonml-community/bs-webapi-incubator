@@ -1,4 +1,4 @@
-type t = DomTypesRe.domTokenList;
+type t = Dom.domTokenList;
 
 external length : t => int = "" [@@bs.get];
 

@@ -1,4 +1,4 @@
-type t = DomTypesRe.transitionEvent;
+type t = Dom.transitionEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

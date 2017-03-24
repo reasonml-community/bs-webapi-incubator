@@ -1,4 +1,4 @@
-type t = DomTypesRe.keyboardEvent;
+type t = Dom.keyboardEvent;
 
 include EventRe.Impl { type nonrec t = t };
 include UiEventRe.Impl { type nonrec t = t };

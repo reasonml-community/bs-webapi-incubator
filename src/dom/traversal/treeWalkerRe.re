@@ -1,15 +1,15 @@
-type t = DomTypesRe.treeWalker;
+type t = Dom.treeWalker;
 
-external root : t => DomTypesRe.node = "" [@@bs.get];
+external root : t => Dom.node = "" [@@bs.get];
 external whatToShow : t => DomTypesRe.WhatToShow.t = "" [@@bs.get];
-external filter : t => option DomTypesRe.nodeFilter = "" [@@bs.get] [@@bs.return null_to_opt];
-external currentNode : t => DomTypesRe.node = "" [@@bs.get];
-external setCurrentNode : t => DomTypesRe.node => unit = "" [@@bs.set];
+external filter : t => option Dom.nodeFilter = "" [@@bs.get] [@@bs.return null_to_opt];
+external currentNode : t => Dom.node = "" [@@bs.get];
+external setCurrentNode : t => Dom.node => unit = "" [@@bs.set];
 
-external parentNode : option DomTypesRe.node = "" [@@bs.send.pipe: t];
-external firstChild : option DomTypesRe.node = "" [@@bs.send.pipe: t];
-external lastChild : option DomTypesRe.node = "" [@@bs.send.pipe: t];
-external previousSibling : option DomTypesRe.node = "" [@@bs.send.pipe: t];
-external nextSibling : option DomTypesRe.node = "" [@@bs.send.pipe: t];
-external previousNode : option DomTypesRe.node = "" [@@bs.send.pipe: t];
-external nextNode : option DomTypesRe.node = "" [@@bs.send.pipe: t];
+external parentNode : option Dom.node = "" [@@bs.send.pipe: t];
+external firstChild : option Dom.node = "" [@@bs.send.pipe: t];
+external lastChild : option Dom.node = "" [@@bs.send.pipe: t];
+external previousSibling : option Dom.node = "" [@@bs.send.pipe: t];
+external nextSibling : option Dom.node = "" [@@bs.send.pipe: t];
+external previousNode : option Dom.node = "" [@@bs.send.pipe: t];
+external nextNode : option Dom.node = "" [@@bs.send.pipe: t];

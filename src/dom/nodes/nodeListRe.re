@@ -1,6 +1,6 @@
-type t = DomTypesRe.nodeList;
+type t = Dom.nodeList;
 
-external toArray : t => array DomTypesRe.node = "Array.prototype.slice.call" [@@bs.val];
+external toArray : t => array Dom.node = "Array.prototype.slice.call" [@@bs.val];
 
 external length : t => int = "" [@@bs.get];
-external item : int => option DomTypesRe.node = "" [@@bs.send.pipe: t];
+external item : int => option Dom.node = "" [@@bs.send.pipe: t];
