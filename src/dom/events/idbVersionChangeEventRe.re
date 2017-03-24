@@ -1,4 +1,4 @@
-type t = DomTypesRe.idbVersionChangeEvent;
+type t = Dom.idbVersionChangeEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

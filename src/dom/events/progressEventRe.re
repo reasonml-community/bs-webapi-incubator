@@ -1,4 +1,4 @@
-type t = DomTypesRe.progressEvent;
+type t = Dom.progressEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

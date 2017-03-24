@@ -14,7 +14,7 @@ module Impl (T: { type t; }) => {
   external pageX : T.t => int = "" [@@bs.get]; /* experimental, but widely supported */
   external pageY : T.t => int = "" [@@bs.get]; /* experimental, but widely supported */
   external region : T.t => option string = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
-  external relatedTarget : T.t => option DomTypesRe.eventTarget = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
+  external relatedTarget : T.t => option Dom.eventTarget = "" [@@bs.get] [@@bs.return {null_to_opt: null_to_opt}];
   external screenX : T.t => int = "" [@@bs.get];
   external screenY : T.t => int = "" [@@bs.get];
   external shiftKey : T.t => bool = "" [@@bs.get];
@@ -25,7 +25,7 @@ module Impl (T: { type t; }) => {
   let getModifierState : DomTypesRe.modifierKey => T.t => bool = fun key self => getModifierState (DomTypesRe.encodeModifierKey key) self;
 };
 
-type t = DomTypesRe.mouseEvent;
+type t = Dom.mouseEvent;
 include EventRe.Impl { type nonrec t = t };
 include UiEventRe.Impl { type nonrec t = t };
 include Impl { type nonrec t = t };

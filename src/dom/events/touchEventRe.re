@@ -10,7 +10,7 @@ module Impl (T: { type t; }) => {
   external touches : T.t => touchList = "" [@@bs.get];
 };
 
-type t = DomTypesRe.touchEvent;
+type t = Dom.touchEvent;
 include EventRe.Impl { type nonrec t = t };
 include UiEventRe.Impl { type nonrec t = t };
 include Impl { type nonrec t = t };

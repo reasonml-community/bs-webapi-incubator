@@ -5,8 +5,6 @@ module Date = Js.Date;
 module Json = JsonRe;
 module Object = ObjectRe;
 
-module Dom = DomRe;
-
 module Fetch = Bs_fetch
 [@@ocaml.deprecated "Use the `bs-fetch` package directly instead"];
 
@@ -17,5 +15,7 @@ module Uint16Array = Uint16ArrayRe;
 module Storage = StorageRe;
 
 module CanvasElement = {
-  external getContext : DomRe.element => string => Gl.glT = "" [@@bs.send];
+  external getContext : Dom.element => string => Gl.glT = "" [@@bs.send];
 };
+
+module Dom = DomRe;

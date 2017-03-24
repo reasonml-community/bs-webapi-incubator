@@ -1,4 +1,4 @@
-type t = DomTypesRe.closeEvent;
+type t = Dom.closeEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

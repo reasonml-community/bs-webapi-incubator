@@ -2,11 +2,11 @@ module Impl(T: { type t; }) => {
   external bubbles : T.t => bool = "" [@@bs.get];
   external cancelable : T.t => bool = "" [@@bs.get];
   external composed : T.t => bool = "" [@@bs.get];
-  external currentTarget : T.t => DomTypesRe.eventTarget = "" [@@bs.get];
+  external currentTarget : T.t => Dom.eventTarget = "" [@@bs.get];
   external defaultPrevented : T.t => bool = "" [@@bs.get];
   external eventPhase : T.t => int /* eventPhase enum */ = "" [@@bs.get];
   let eventPhase : T.t => DomTypesRe.eventPhase = fun self => DomTypesRe.decodeEventPhase (eventPhase self);
-  external target : T.t => DomTypesRe.eventTarget = "" [@@bs.get];
+  external target : T.t => Dom.eventTarget = "" [@@bs.get];
   external timeStamp : T.t => float = "" [@@bs.get];
   external type_ : T.t => string = "type" [@@bs.get];
   external isTrusted : T.t => bool = "" [@@bs.get];
@@ -16,7 +16,7 @@ module Impl(T: { type t; }) => {
   external stopPropagation : unit = "" [@@bs.send.pipe: T.t];
 };
 
-type t = DomTypesRe.event;
+type t = Dom.event;
 include Impl { type nonrec t = t };
 
 external make : string => t = "Event" [@@bs.new];

@@ -1,4 +1,4 @@
-type t = DomTypesRe.errorEvent;
+type t = Dom.errorEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

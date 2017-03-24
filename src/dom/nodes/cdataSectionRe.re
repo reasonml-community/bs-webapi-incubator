@@ -1,4 +1,4 @@
-type t = DomTypesRe.cdataSection;
+type t = Dom.cdataSection;
 
 include EventTargetRe.Impl { type nonrec t = t };
 include NodeRe.Impl { type nonrec t = t };

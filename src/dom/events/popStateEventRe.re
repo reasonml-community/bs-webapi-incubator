@@ -1,4 +1,4 @@
-type t = DomTypesRe.popStateEvent;
+type t = Dom.popStateEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

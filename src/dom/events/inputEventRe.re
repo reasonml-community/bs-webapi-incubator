@@ -1,4 +1,4 @@
-type t = DomTypesRe.inputEvent;
+type t = Dom.inputEvent;
 
 include EventRe.Impl { type nonrec t = t };
 include UiEventRe.Impl { type nonrec t = t };

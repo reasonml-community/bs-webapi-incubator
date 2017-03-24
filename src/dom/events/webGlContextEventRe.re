@@ -1,4 +1,4 @@
-type t = DomTypesRe.webGlContextEvent;
+type t = Dom.webGlContextEvent;
 
 include EventRe.Impl { type nonrec t = t };
 

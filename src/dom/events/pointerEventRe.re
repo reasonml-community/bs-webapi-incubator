@@ -1,5 +1,5 @@
-type t = DomTypesRe.pointerEvent;
-type pointerId = DomTypesRe.eventPointerId;
+type t = Dom.pointerEvent;
+type pointerId = Dom.eventPointerId;
 
 include EventRe.Impl { type nonrec t = t };
 include UiEventRe.Impl { type nonrec t = t };

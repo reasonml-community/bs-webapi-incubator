@@ -1,4 +1,4 @@
-type t = DomTypesRe.wheelEvent;
+type t = Dom.wheelEvent;
 include EventRe.Impl { type nonrec t = t };
 include UiEventRe.Impl { type nonrec t = t };
 

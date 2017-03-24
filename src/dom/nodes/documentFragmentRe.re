@@ -1,4 +1,4 @@
-type t = DomTypesRe.documentFragment;
+type t = Dom.documentFragment;
 
 include EventTargetRe.Impl { type nonrec t = t };
 include NodeRe.Impl { type nonrec t = t };
