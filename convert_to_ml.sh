@@ -8,8 +8,13 @@ done
 
 node ./sed.js `find src/**/*.ml`
 
+mkdir srcsrc
+
 ./node_modules/bs-platform/bin/bspack.exe \
+-I src \
 -I src/storage \
+-I src/core \
+-I src/gl \
 -I src/dom \
 -I src/dom/css \
 -I src/dom/events \
@@ -19,7 +24,7 @@ node ./sed.js `find src/**/*.ml`
 -I src/dom/selection \
 -I src/dom/sets \
 -I src/dom/traversal \
--bs-main DomRe \
--o test_dom.ml
+-bs-main ReasonJs \
+-o ./srcsrc/reasonJs.ml
 
-./node_modules/bs-platform/bin/bsc.exe test_dom.ml
+./node_modules/bs-platform/bin/bsc.exe srcsrc/reasonJs.ml
