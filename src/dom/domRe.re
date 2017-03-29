@@ -14,6 +14,7 @@ module Document = DocumentRe;
 module DocumentFragment = DocumentFragmentRe;
 module DocumentType = DocumentTypeRe;
 module DomImplementation = DomImplementationRe;
+module DomRect = DomRectRe;
 module DomTokenList = DomTokenListRe;
 module DragEvent = DragEventRe;
 module Element = ElementRe;
@@ -324,3 +325,43 @@ SVGZoomAndPan
 
 /* obsolete interfaces skipped */
 */
+   /* Animated type */
+   SVGAnimatedAngle
+   SVGAnimatedBoolean
+   SVGAnimatedEnumeration
+   SVGAnimatedInteger
+   SVGAnimatedLength
+   SVGAnimatedLengthList
+   SVGAnimatedNumber
+   SVGAnimatedNumberList
+   SVGAnimatedPreserveAspectRatio
+   SVGAnimatedRect
+   SVGAnimatedString
+   SVGAnimatedTransformList
+
+   /* SIML related interfaces */
+   ElementTimeControl
+   TimeEvent
+
+   /* Other SVG interfaces */
+   SVGAnimatedPathData
+   SVGAnimatedPoints
+   SVGColorProfileRule
+   SVGCSSRule
+   SVGExternalResourcesRequired
+   SVGFitToViewBox
+   SVGLangSpace
+   SVGLocatable
+   SVGRenderingIntent
+   SVGStylable
+   SVGTests
+   SVGTextContentElement
+   SVGTextPositioningElement
+   SVGTransformable
+   SVGUnitTypes
+   SVGURIReference
+   SVGViewSpec
+   SVGZoomAndPan
+
+   /* obsolete interfaces skipped */
+   */
