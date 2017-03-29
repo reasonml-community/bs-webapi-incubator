@@ -324,3 +324,4 @@ SVGViewSpec
 SVGZoomAndPan
 
 /* obsolete interfaces skipped */
+*/
