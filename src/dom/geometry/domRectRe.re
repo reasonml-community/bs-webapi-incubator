@@ -1,15 +1,19 @@
-external top : Dom.domRect => int = "" [@@bs.get];
+type t = Dom.domRect;
 
-external bottom : Dom.domRect => int = "" [@@bs.get];
+external make : int => int => int => int => t = "DOMRect" [@@bs.new]; /* experimental */
 
-external left : Dom.domRect => int = "" [@@bs.get];
+external top : t => int = "" [@@bs.get];
 
-external right : Dom.domRect => int = "" [@@bs.get];
+external bottom : t => int = "" [@@bs.get];
 
-external height : Dom.domRect => int = "" [@@bs.get];
+external left : t => int = "" [@@bs.get];
 
-external width : Dom.domRect => int = "" [@@bs.get];
+external right : t => int = "" [@@bs.get];
 
-external x : Dom.domRect => int = "" [@@bs.get];
+external height : t => int = "" [@@bs.get];
 
-external y : Dom.domRect => int = "" [@@bs.get];
+external width : t => int = "" [@@bs.get];
+
+external x : t => int = "" [@@bs.get];
+
+external y : t => int = "" [@@bs.get];
