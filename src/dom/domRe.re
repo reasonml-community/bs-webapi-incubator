@@ -14,6 +14,7 @@ module Document = DocumentRe;
 module DocumentFragment = DocumentFragmentRe;
 module DocumentType = DocumentTypeRe;
 module DomImplementation = DomImplementationRe;
+module DomRect = DomRectRe;
 module DomTokenList = DomTokenListRe;
 module DragEvent = DragEventRe;
 module Element = ElementRe;
