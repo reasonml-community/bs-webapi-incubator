@@ -1,6 +1,7 @@
 type t = Dom.domRect;
 
-external make : int => int => int => int => t = "DOMRect" [@@bs.new]; /* experimental */
+external make : x::int => y::int => width::int => height::int => t =
+"DOMRect" [@@bs.new]; /* experimental */
 
 external top : t => int = "" [@@bs.get];
 
