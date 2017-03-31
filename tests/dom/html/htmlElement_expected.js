@@ -34,17 +34,17 @@ HtmlElementRe.setDir(el, /* Rtl */1);
 
 +el.draggable;
 
-HtmlElementRe.setDraggable(el, /* true */1);
+el.draggable = true;
 
 el.dropzone;
 
 +el.hidden;
 
-HtmlElementRe.setHidden(el, /* true */1);
+el.hidden = true;
 
 +el.itemScope;
 
-HtmlElementRe.setItemScope(el, /* true */1);
+el.itemScope = true;
 
 el.itemType;
 
@@ -76,7 +76,7 @@ el.offsetWidth;
 
 +el.spellcheck;
 
-HtmlElementRe.setSpellcheck(el, /* true */1);
+el.spellcheck = true;
 
 el.style;
 
@@ -90,7 +90,7 @@ el.title = "hovertext!";
 
 +el.translate;
 
-HtmlElementRe.setTranslate(el, /* true */1);
+el.translate = true;
 
 el.blur();
 
