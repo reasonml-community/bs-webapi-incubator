@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry            = require("bs-platform/lib/js/curry");
-var ClipboardEventRe = require("../../../src/dom/events/clipboardEventRe");
+var Curry            = require("bs-platform/lib/js/curry.js");
+var ClipboardEventRe = require("../../../src/dom/events/clipboardEventRe.js");
 
 var $$event = new ClipboardEvent("my-event");
 

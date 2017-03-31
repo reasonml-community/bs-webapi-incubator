@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry        = require("bs-platform/lib/js/curry");
-var MouseEventRe = require("../../../src/dom/events/mouseEventRe");
+var Curry        = require("bs-platform/lib/js/curry.js");
+var MouseEventRe = require("../../../src/dom/events/mouseEventRe.js");
 
 var $$event = new MouseEvent("my-event");
 

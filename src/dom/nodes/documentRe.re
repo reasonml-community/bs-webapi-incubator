@@ -59,8 +59,7 @@ module Impl (T: { type t; }) => {
   external getElementsByTagName : string => Dom.htmlCollection = "" [@@bs.send.pipe: T.t];
   external getElementsByTagNameNS : string => string => Dom.htmlCollection = "" [@@bs.send.pipe: T.t];
   external importNode : Dom.element_like 'a => Dom.element_like 'a = "" [@@bs.send.pipe: T.t];
-  external importNodeDeep : Dom.element_like 'a => Js.boolean => Dom.element_like 'a = "importNode" [@@bs.send.pipe: T.t];
-  let importNodeDeep : Dom.element_like 'a => T.t => Dom.element_like 'a = fun element self => importNodeDeep element Js.true_ self;
+  external importNodeDeep : Dom.element_like 'a => _ [@bs.as {json|true|json}] => Dom.element_like 'a = "importNode" [@@bs.send.pipe: T.t];
   external registerElement : string => (unit => Dom.element) = "" [@@bs.send.pipe: T.t]; /* experimental and deprecated in favor of customElements.define() */
   external registerElementWithOptions : string => Js.t {..} => (unit => Dom.element) = "registerElement" [@@bs.send.pipe: T.t]; /* experimental and deprecated in favor of customElements.define() */
 

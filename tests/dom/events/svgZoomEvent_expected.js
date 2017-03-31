@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry          = require("bs-platform/lib/js/curry");
-var SvgZoomEventRe = require("../../../src/dom/events/svgZoomEventRe");
+var Curry          = require("bs-platform/lib/js/curry.js");
+var SvgZoomEventRe = require("../../../src/dom/events/svgZoomEventRe.js");
 
 var $$event = new SVGZoomEvent("my-event");
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var ElementRe = require("../../../src/dom/nodes/elementRe");
+var ElementRe = require("../../../src/dom/nodes/elementRe.js");
 
 var el = document.createElement("strong");
 
@@ -72,6 +72,10 @@ el.attachShadow({
       mode: "open"
     });
 
+el.attachShadow(({ "mode": "open" }));
+
+el.attachShadow(({ "mode": "closed" }));
+
 el.animate({
       transform: "translateT(0px)"
     }, {
@@ -132,7 +136,7 @@ el.scrollIntoView(true);
 
 el.scrollIntoView({
       block: "end",
-      behvaior: "smooth"
+      behavior: "smooth"
     });
 
 el.setAttribute("href", "http://...");

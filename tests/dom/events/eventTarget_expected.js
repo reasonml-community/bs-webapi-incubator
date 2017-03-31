@@ -13,7 +13,9 @@ function handleClick() {
 target.addEventListener("click", handleClick);
 
 target.addEventListener("click", handleClick, {
-      passive: /* true */1
+      passive: true,
+      once: true,
+      capture: false
     });
 
 target.addEventListener("click", handleClick, true);
@@ -21,7 +23,8 @@ target.addEventListener("click", handleClick, true);
 target.removeEventListener("click", handleClick);
 
 target.removeEventListener("click", handleClick, {
-      passive: /* true */1
+      passive: true,
+      capture: false
     });
 
 target.removeEventListener("click", handleClick, true);

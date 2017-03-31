@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry          = require("bs-platform/lib/js/curry");
-var StorageEventRe = require("../../../src/dom/events/storageEventRe");
+var Curry          = require("bs-platform/lib/js/curry.js");
+var StorageEventRe = require("../../../src/dom/events/storageEventRe.js");
 
 var $$event = new StorageEvent("my-event");
 

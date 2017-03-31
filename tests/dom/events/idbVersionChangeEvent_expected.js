@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry                   = require("bs-platform/lib/js/curry");
-var IdbVersionChangeEventRe = require("../../../src/dom/events/idbVersionChangeEventRe");
+var Curry                   = require("bs-platform/lib/js/curry.js");
+var IdbVersionChangeEventRe = require("../../../src/dom/events/idbVersionChangeEventRe.js");
 
 var $$event = new IDBVersionChangeEvent("my-event");
 

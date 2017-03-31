@@ -18,5 +18,5 @@ external removeRange : Dom.range => unit = "" [@@bs.send.pipe: t];
 external removeAllRanges : unit = "" [@@bs.send.pipe: t];
 external deleteFromDocument : unit = "" [@@bs.send.pipe: t];
 external toString : string = "" [@@bs.send.pipe: t];
-external containsNode : Dom.node_like _ => Js.boolean => bool= "" [@@bs.send.pipe: t];
-let containsNode : Dom.node_like _ => bool => t => bool = fun node partlyContained self => containsNode node (Js.Boolean.to_js_boolean partlyContained) self;
+external containsNode : Dom.node_like _ => _ [@bs.as {json|false|json}] => bool= "" [@@bs.send.pipe: t];
+external containsNodePartly : Dom.node_like _ => _ [@bs.as {json|true|json}] => bool= "containsNode" [@@bs.send.pipe: t];

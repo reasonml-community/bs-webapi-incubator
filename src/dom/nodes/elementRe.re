@@ -41,7 +41,9 @@ module Impl(T: { type t; }) => {
   external setSlot : T.t => string => unit = "slot" [@@bs.set]; /* experimental */
   external tagName : T.t => string = "" [@@bs.get];
 
-  external attachShadow : Js.t {..} => Dom.shadowRoot  = "" [@@bs.send.pipe: T.t]; /* experimental */
+  external attachShadow : Js.t {. mode: string } => Dom.shadowRoot  = "" [@@bs.send.pipe: T.t]; /* experimental */
+  external attachShadowOpen : _ [@bs.as {json|{ "mode": "open" }|json}] => Dom.shadowRoot  = "attachShadow" [@@bs.send.pipe: T.t]; /* experimental */
+  external attachShadowClosed : _ [@bs.as {json|{ "mode": "closed" }|json}] => Dom.shadowRoot  = "attachShadow" [@@bs.send.pipe: T.t]; /* experimental */
   external animate : Js.t {..} => Js.t {..} => Dom.animation = "" [@@bs.send.pipe: T.t]; /* experimental */
   external closest : string => Dom.element = "" [@@bs.send.pipe: T.t]; /* experimental */
   external createShadowRoot : Dom.shadowRoot = "" [@@bs.send.pipe: T.t]; /* experimental AND deprecated (?!) */
@@ -68,9 +70,8 @@ module Impl(T: { type t; }) => {
   external requestFullscreen : unit = "" [@@bs.send.pipe: T.t]; /* experimental */
   external requestPointerLock : unit = "" [@@bs.send.pipe: T.t]; /* experimental */
   external scrollIntoView : unit = "" [@@bs.send.pipe: T.t]; /* experimental, but widely supported */
-  external scrollIntoViewNoAlignToTop : Js.boolean => unit = "scrollIntoView" [@@bs.send.pipe: T.t]; /* experimental, but widely supported */
-  /* let scrollIntoViewNoAlignToTop : T.t => unit = fun self => scrollIntoViewNoAlignToTop Js.true_ self; */ /* temporarily removed to reduce codegen size */
-  external scrollIntoViewWithOptions : Js.t {..} => unit = "scrollIntoView" [@@bs.send.pipe: T.t]; /* experimental */
+  external scrollIntoViewNoAlignToTop : _ [@bs.as {json|true|json}] => unit = "scrollIntoView" [@@bs.send.pipe: T.t]; /* experimental, but widely supported */
+  external scrollIntoViewWithOptions : Js.t {. behavior: string, block: string } => unit = "scrollIntoView" [@@bs.send.pipe: T.t]; /* experimental */
   external setAttribute : string => string => unit = "" [@@bs.send.pipe: T.t];
   external setAttributeNS : string => string => string => unit = "" [@@bs.send.pipe: T.t];
   external setPointerCapture : Dom.eventPointerId => unit = "" [@@bs.send.pipe: T.t];

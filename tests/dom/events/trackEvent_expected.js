@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry        = require("bs-platform/lib/js/curry");
-var TrackEventRe = require("../../../src/dom/events/trackEventRe");
+var Curry        = require("bs-platform/lib/js/curry.js");
+var TrackEventRe = require("../../../src/dom/events/trackEventRe.js");
 
 var $$event = new TrackEvent("my-event");
 

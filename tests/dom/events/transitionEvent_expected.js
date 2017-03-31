@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry             = require("bs-platform/lib/js/curry");
-var TransitionEventRe = require("../../../src/dom/events/transitionEventRe");
+var Curry             = require("bs-platform/lib/js/curry.js");
+var TransitionEventRe = require("../../../src/dom/events/transitionEventRe.js");
 
 var $$event = new TransitionEvent("my-event");
 

@@ -1,8 +1,8 @@
 'use strict';
 
-var DocumentRe     = require("../../../src/dom/nodes/documentRe");
-var TestHelpers    = require("../../testHelpers");
-var HtmlDocumentRe = require("../../../src/dom/html/htmlDocumentRe");
+var DocumentRe     = require("../../../src/dom/nodes/documentRe.js");
+var TestHelpers    = require("../../testHelpers.js");
+var HtmlDocumentRe = require("../../../src/dom/html/htmlDocumentRe.js");
 
 var el = document.createElement("strong");
 

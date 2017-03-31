@@ -1,6 +1,5 @@
 'use strict';
 
-var DomTokenListRe = require("../../../src/dom/sets/domTokenListRe");
 
 var tlist = document.createElement("div").classList;
 
@@ -29,7 +28,7 @@ tlist.replace("my-class", "my-other-class");
 
 +tlist.toggle("my-class");
 
-DomTokenListRe.toggleForced("my-class", tlist);
++tlist.toggle("my-class", true);
 
 tlist.toString();
 
