@@ -1,6 +1,6 @@
 'use strict';
 
-var EventRe = require("../../../src/dom/events/eventRe");
+var EventRe = require("../../../src/dom/events/eventRe.js");
 
 var $$event = new Event("my-event");
 

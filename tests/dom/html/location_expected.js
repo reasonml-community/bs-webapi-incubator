@@ -1,6 +1,5 @@
 'use strict';
 
-var LocationRe = require("../../../src/dom/html/locationRe");
 
 document.location.href;
 
@@ -48,7 +47,7 @@ document.location.assign("http://reason.ml");
 
 document.location.reload();
 
-LocationRe.reloadWithForce(document.location);
+document.location.reload(true);
 
 document.location.replace("http://reason.ml");
 

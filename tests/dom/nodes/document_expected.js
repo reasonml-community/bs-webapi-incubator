@@ -1,9 +1,9 @@
 'use strict';
 
-var Curry        = require("bs-platform/lib/js/curry");
-var DocumentRe   = require("../../../src/dom/nodes/documentRe");
-var DomTypesRe   = require("../../../src/dom/domTypesRe");
-var NodeFilterRe = require("../../../src/dom/traversal/nodeFilterRe");
+var Curry        = require("bs-platform/lib/js/curry.js");
+var DocumentRe   = require("../../../src/dom/nodes/documentRe.js");
+var DomTypesRe   = require("../../../src/dom/domTypesRe.js");
+var NodeFilterRe = require("../../../src/dom/traversal/nodeFilterRe.js");
 
 var el = document.createElement("strong");
 
@@ -109,7 +109,7 @@ document.getElementsByTagNameNS("http://...", "foo");
 
 document.importNode(el);
 
-DocumentRe.importNodeDeep(el, document);
+document.importNode(el, true);
 
 document.getElementById("root");
 

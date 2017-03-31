@@ -1,8 +1,7 @@
 'use strict';
 
-var DocumentRe  = require("../../../src/dom/nodes/documentRe");
-var SelectionRe = require("../../../src/dom/selection/selectionRe");
-var TestHelpers = require("../../testHelpers");
+var DocumentRe  = require("../../../src/dom/nodes/documentRe.js");
+var TestHelpers = require("../../testHelpers.js");
 
 var node = document.createElement("strong");
 
@@ -44,7 +43,9 @@ sel.deleteFromDocument();
 
 sel.toString();
 
-SelectionRe.containsNode(node, /* true */1, sel);
++sel.containsNode(node, false);
+
++sel.containsNode(node, true);
 
 exports.node  = node;
 exports.sel   = sel;

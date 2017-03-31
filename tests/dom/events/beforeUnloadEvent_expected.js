@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry               = require("bs-platform/lib/js/curry");
-var BeforeUnloadEventRe = require("../../../src/dom/events/beforeUnloadEventRe");
+var Curry               = require("bs-platform/lib/js/curry.js");
+var BeforeUnloadEventRe = require("../../../src/dom/events/beforeUnloadEventRe.js");
 
 var $$event = new BeforeUnloadEvent("my-event");
 

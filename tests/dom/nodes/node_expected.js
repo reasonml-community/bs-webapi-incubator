@@ -1,10 +1,12 @@
 'use strict';
 
-var NodeRe = require("../../../src/dom/nodes/nodeRe");
+var NodeRe = require("../../../src/dom/nodes/nodeRe.js");
 
 var node = document.createElement("strong").rootNode;
 
 var node2 = document.createElement("small").rootNode;
+
+var node3 = document.createElement("small").rootNode;
 
 node.childNodes;
 
@@ -20,7 +22,7 @@ NodeRe.nodeType(node);
 
 node.nodeValue;
 
-node.nodeValue = null;
+node.nodeValue = "foo";
 
 node.ownerDocument;
 
@@ -48,11 +50,11 @@ node.compareDocumentPosition(node2);
 
 node.getRootNode();
 
-node.getRootNode(true);
+node.getRootNode(({ "composed": true }));
 
 +node.hasChildNodes();
 
-NodeRe.insertBefore(node2, /* None */0, node);
+node.insertBefore(node2, node3);
 
 +node.isDefaultNamespace("http://...");
 
@@ -62,10 +64,15 @@ NodeRe.insertBefore(node2, /* None */0, node);
 
 node.lookupPrefix();
 
+node.lookupNamespaceURI("https://...");
+
+node.lookupNamespaceURI((null));
+
 node.normalize();
 
 node.removeChild(node2);
 
 exports.node  = node;
 exports.node2 = node2;
+exports.node3 = node3;
 /* node Not a pure module */

@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry        = require("bs-platform/lib/js/curry");
-var WheelEventRe = require("../../../src/dom/events/wheelEventRe");
+var Curry        = require("bs-platform/lib/js/curry.js");
+var WheelEventRe = require("../../../src/dom/events/wheelEventRe.js");
 
 var $$event = new WheelEvent("my-event");
 

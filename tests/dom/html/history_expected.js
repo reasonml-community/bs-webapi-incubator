@@ -1,6 +1,6 @@
 'use strict';
 
-var HistoryRe = require("../../../src/dom/html/historyRe");
+var HistoryRe = require("../../../src/dom/html/historyRe.js");
 
 document.history.length;
 

@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry       = require("bs-platform/lib/js/curry");
-var DragEventRe = require("../../../src/dom/events/dragEventRe");
+var Curry       = require("bs-platform/lib/js/curry.js");
+var DragEventRe = require("../../../src/dom/events/dragEventRe.js");
 
 var $$event = new DragEvent("my-event");
 

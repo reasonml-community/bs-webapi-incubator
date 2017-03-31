@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry              = require("bs-platform/lib/js/curry");
-var CompositionEventRe = require("../../../src/dom/events/compositionEventRe");
+var Curry              = require("bs-platform/lib/js/curry.js");
+var CompositionEventRe = require("../../../src/dom/events/compositionEventRe.js");
 
 var $$event = new CompositionEvent("my-event");
 

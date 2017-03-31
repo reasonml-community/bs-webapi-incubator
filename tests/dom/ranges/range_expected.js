@@ -1,6 +1,6 @@
 'use strict';
 
-var RangeRe = require("../../../src/dom/ranges/rangeRe");
+var RangeRe = require("../../../src/dom/ranges/rangeRe.js");
 
 var node = document.createElement("strong");
 
@@ -36,7 +36,7 @@ range.selectNodeContents(node);
 
 range.collapse();
 
-RangeRe.collapseToStart(range);
+range.collapse(true);
 
 range.cloneContents();
 

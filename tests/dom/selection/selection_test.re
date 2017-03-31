@@ -27,4 +27,5 @@ removeRange range sel;
 removeAllRanges sel;
 deleteFromDocument sel;
 let _ = toString sel;
-let _ = containsNode node true sel;
+let _ = containsNode node sel;
+let _ = containsNodePartly node sel;

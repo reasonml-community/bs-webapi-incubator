@@ -1,8 +1,8 @@
 'use strict';
 
-var ElementRe     = require("../../../src/dom/nodes/elementRe");
-var TestHelpers   = require("../../testHelpers");
-var HtmlElementRe = require("../../../src/dom/html/htmlElementRe");
+var ElementRe     = require("../../../src/dom/nodes/elementRe.js");
+var TestHelpers   = require("../../testHelpers.js");
+var HtmlElementRe = require("../../../src/dom/html/htmlElementRe.js");
 
 var el = TestHelpers.unsafelyUnwrapOption(ElementRe.asHtmlElement(document.createElement("strong")));
 

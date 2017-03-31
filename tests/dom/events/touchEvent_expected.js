@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry        = require("bs-platform/lib/js/curry");
-var TouchEventRe = require("../../../src/dom/events/touchEventRe");
+var Curry        = require("bs-platform/lib/js/curry.js");
+var TouchEventRe = require("../../../src/dom/events/touchEventRe.js");
 
 var $$event = new TouchEvent("my-event");
 

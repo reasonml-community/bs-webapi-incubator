@@ -1,7 +1,7 @@
 'use strict';
 
-var Curry           = require("bs-platform/lib/js/curry");
-var ProgressEventRe = require("../../../src/dom/events/progressEventRe");
+var Curry           = require("bs-platform/lib/js/curry.js");
+var ProgressEventRe = require("../../../src/dom/events/progressEventRe.js");
 
 var $$event = new ProgressEvent("my-event");
 
