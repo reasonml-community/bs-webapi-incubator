@@ -78,7 +78,7 @@ external blendFunc : glT => int => int => unit = "blendFunc" [@@bs.send];
 /* void cullFace(GLenum mode); */
 external cullFace : glT => int => unit = "cullFace" [@@bs.send];
 external createBuffer : glT => bufferT = "createBuffer" [@@bs.send];
-external deleteBuffer : glT => bufferT => unit = "createBuffer" [@@bs.send];
+external deleteBuffer : glT => bufferT => unit = "deleteBuffer" [@@bs.send];
 external bindBuffer : glT => int => bufferT => unit = "bindBuffer" [@@bs.send];
 external bufferData : glT => int => Js.Typed_array.Uint16Array.t => int => unit = "bufferData" [@@bs.send];
 external bufferFloatData : glT => int => Js.Typed_array.Float32Array.t => int => unit =
