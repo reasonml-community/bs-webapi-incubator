@@ -12,5 +12,5 @@ npm install reason-js
 
 ```re
 /* Looks almost identical to JavaScript, but fully typed! */
-let myInterval = ReasonJs.setInterval (fun () => Js.log "hello!") 1000;
+let myInterval = Js.Global.setInterval (fun () => Js.log "hello!") 1000;
 ```
