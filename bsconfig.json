@@ -3,7 +3,7 @@
   comma. If this screws with your editor highlighting, please tell us by filing
   an issue! */
 {
-  "name" : "reason-js",
+  "name" : "bs-webapi",
   "bsc-flags": ["-bs-no-version-header"],
   "sources": [{
       "dir": "src",

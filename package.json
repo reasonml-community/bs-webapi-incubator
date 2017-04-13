@@ -1,12 +1,12 @@
 {
-  "name": "reason-js",
+  "name": "bs-webapi",
   "version": "0.3.0",
   "description": "Reason + BuckleScript bindings to DOM",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BuckleTypes/reason-js.git"
+    "url": "git+https://github.com/BuckleTypes/bs-webapi-incubator.git"
   },
-  "homepage": "https://github.com/BuckleTypes/reason-js#readme",
+  "homepage": "https://github.com/BuckleTypes/bs-webapi-incubator#readme",
   "main": "index.js",
   "scripts": {
     "test": "bsb -make-world && tests/run.sh",
