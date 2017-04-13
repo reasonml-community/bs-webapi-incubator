@@ -1,6 +1,6 @@
 # Web APIs Bindings
 
-Experimental bindings to DOM and others.
+Experimental bindings to the DOM and other Web APIs.
 
 ```
 npm install reason-js
