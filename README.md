@@ -2,8 +2,17 @@
 
 Experimental bindings to the DOM and other Web APIs.
 
+## Installation
 ```
-npm install reason-js
+npm install bs-webapi-incubator
+```
+Then add `bs-webapi` to `bs-dependencies` in your `bsconfig.json`. A minimal example:
+```
+{
+  "name": "my-thing",
+  "sources": "src",
+  "bs-dependencies": ["bs-webapi"]
+}
 ```
 
 ## Usage
