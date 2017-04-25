@@ -9,7 +9,7 @@
   "homepage": "https://github.com/BuckleTypes/bs-webapi-incubator#readme",
   "main": "index.js",
   "scripts": {
-    "test": "bsb -make-world && tests/run.sh",
+    "test": "bsb -make-world",
     "start": "bsb -make-world -w",
     "build": "bsb -make-world",
     "clean": "bsb -clean-world"
