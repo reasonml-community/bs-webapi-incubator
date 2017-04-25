@@ -1,10 +1,10 @@
-# Web APIs Bindings
+# bs-webapi
 
 Experimental bindings to the DOM and other Web APIs.
 
 ## Installation
 ```
-npm install bs-webapi-incubator
+npm install bs-webapi
 ```
 Then add `bs-webapi` to `bs-dependencies` in your `bsconfig.json`. A minimal example:
 ```
