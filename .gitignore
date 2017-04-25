@@ -1,8 +1,9 @@
 .DS_Store
 .merlin
-/node_modules/
-/lib/
-*.cm*
-*.js
-!*_expected.js
+node_modules/
+lib/*
+!lib/js
+lib/js/*
+!lib/js/tests
+lib/js/tests/testHelpers.js
 npm-debug.log
