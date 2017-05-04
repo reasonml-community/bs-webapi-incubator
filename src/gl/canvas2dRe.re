@@ -9,8 +9,8 @@ external restore : unit = "" [@@bs.send.pipe: t];
 external scale : float => float => unit = "" [@@bs.send.pipe: t];
 external rotate : float => unit = "" [@@bs.send.pipe: t];
 external translate : float => float => unit = "" [@@bs.send.pipe: t];
-external transform : float => float => float => float => float => float => unit = "" [@@bs.send.pipe: t];
-external setTransform : float => float => float => float => float => float => unit = "" [@@bs.send.pipe: t];
+external transform : m11::float => m12::float => m21::float => m22::float => dx::float => dy::float => unit = "" [@@bs.send.pipe: t];
+external setTransform : m11::float => m12::float => m21::float => m22::float => dx::float => dy::float => unit = "" [@@bs.send.pipe: t];
 
 /* Compositing */
 external globalAlpha : t => float => unit = "" [@@bs.set];
@@ -46,25 +46,25 @@ external stroke : unit = "" [@@bs.send.pipe: t];
 external clip : unit = "" [@@bs.send.pipe: t];
 external moveTo : float => float => unit = "" [@@bs.send.pipe: t];
 external lineTo : float => float => unit = "" [@@bs.send.pipe: t];
-external quadraticCurveTo : float => float => float => float => unit = "" [@@bs.send.pipe: t];
-external bezierCurveTo : float => float => float => float => float => float => unit = "" [@@bs.send.pipe: t];
-external arcTo : float => float => float => float => float => unit = "" [@@bs.send.pipe: t];
-external arc : float => float => float => float => float => bool => unit = "" [@@bs.send.pipe: t];
-external rect : float => float => float => float => unit = "" [@@bs.send.pipe: t];
+external quadraticCurveTo : cp1x::float => cp1x::float => x::float => y::float => unit = "" [@@bs.send.pipe: t];
+external bezierCurveTo : cp1x::float => cp1y::float => cp2x::float => cp2y::float => x::float => y::float => unit = "" [@@bs.send.pipe: t];
+external arcTo : x1::float => y1::float => x2::float => y2::float => r::float => unit = "" [@@bs.send.pipe: t];
+external arc : x::float => y::float => r::float => startAngle::float => endAngle::float => anticw::bool => unit = "" [@@bs.send.pipe: t];
+external rect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
 external isPointInPath : float => float => bool = "" [@@bs.send.pipe: t];
 
 /* Text */
 external font : t => string => unit = "" [@@bs.set];
 external textAlign : t => string => unit = "" [@@bs.set];
 external textBaseline : t => string => unit = "" [@@bs.set];
-external fillText : string => float => float => unit = "" [@@bs.send.pipe: t];
-external strokeText : string => float => float => unit = "" [@@bs.send.pipe: t];
+external fillText : string => x::float => y::float => unit = "" [@@bs.send.pipe: t];
+external strokeText : string => x::float => y::float => unit = "" [@@bs.send.pipe: t];
 /* TODO: measureText(); optional maxwidth arg for fillText/strokeText */
 
 /* Rectangles */
-external fillRect : float => float => float => float => unit = "" [@@bs.send.pipe: t];
-external strokeRect : float => float => float => float => unit = "" [@@bs.send.pipe: t];
-external clearRect : float => float => float => float => unit = "" [@@bs.send.pipe: t];
+external fillRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
+external strokeRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
+external clearRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
 
 /* TODO
  * createImageData
