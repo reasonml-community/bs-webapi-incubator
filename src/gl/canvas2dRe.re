@@ -6,20 +6,43 @@ external save : unit = "" [@@bs.send.pipe: t];
 external restore : unit = "" [@@bs.send.pipe: t];
 
 /* Transformation */
-external scale : float => float => unit = "" [@@bs.send.pipe: t];
+external scale : x::float => y::float => unit = "" [@@bs.send.pipe: t];
 external rotate : float => unit = "" [@@bs.send.pipe: t];
-external translate : float => float => unit = "" [@@bs.send.pipe: t];
+external translate : x::float => y::float => unit = "" [@@bs.send.pipe: t];
 external transform : m11::float => m12::float => m21::float => m22::float => dx::float => dy::float => unit = "" [@@bs.send.pipe: t];
 external setTransform : m11::float => m12::float => m21::float => m22::float => dx::float => dy::float => unit = "" [@@bs.send.pipe: t];
 
 /* Compositing */
 external globalAlpha : t => float => unit = "" [@@bs.set];
 external globalCompositeOperation : t => string => unit = "" [@@bs.set];
+/* Note: globalCompositeOperation's string param is an enum with the following possible values:
+source-over
+source-in
+source-out
+source-atop
+destination-over
+destination-in
+destination-out
+destination-atop
+lighter
+copy
+xor
+*/
 
 /* Line Styles */
 external lineWidth : t => float => unit = "" [@@bs.set];
 external lineCap : t => string => unit = "" [@@bs.set];
+/* Note: lineCap's string param is an enum with the following possible values:
+butt
+round
+square
+*/
 external lineJoin : t => string => unit = "" [@@bs.set];
+/* Note: lineJoin's string param is an enum with the following possible values:
+round
+bevel
+miter
+*/
 external miterLimit : t => float => unit = "" [@@bs.set];
 
 /* Colors, Styles, and Shadows */
@@ -44,8 +67,8 @@ external closePath : unit = "" [@@bs.send.pipe: t];
 external fill : unit = "" [@@bs.send.pipe: t];
 external stroke : unit = "" [@@bs.send.pipe: t];
 external clip : unit = "" [@@bs.send.pipe: t];
-external moveTo : float => float => unit = "" [@@bs.send.pipe: t];
-external lineTo : float => float => unit = "" [@@bs.send.pipe: t];
+external moveTo : x::float => y::float => unit = "" [@@bs.send.pipe: t];
+external lineTo : x::float => y::float => unit = "" [@@bs.send.pipe: t];
 external quadraticCurveTo : cp1x::float => cp1y::float => x::float => y::float => unit = "" [@@bs.send.pipe: t];
 external bezierCurveTo : cp1x::float => cp1y::float => cp2x::float => cp2y::float => x::float => y::float => unit = "" [@@bs.send.pipe: t];
 external arcTo : x1::float => y1::float => x2::float => y2::float => r::float => unit = "" [@@bs.send.pipe: t];

@@ -1,11 +1,8 @@
-
-/* TODO: make canvas tests here */
 open ReasonJs.Canvas2d;
 open ReasonJs.CanvasElement;
 open ReasonJs.Dom;
 
-/*let canvasEl = DocumentRe.querySelector "canvas" document;*/
-let canvasEl = DocumentRe.createElement "canvas" document;
+let canvasEl = Document.createElement "canvas" document;
 let ctx = getContext2d canvasEl;
 
 ctx |> save;
