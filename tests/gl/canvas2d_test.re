@@ -8,9 +8,9 @@ let ctx = getContext2d canvasEl;
 ctx |> save;
 ctx |> restore;
 
-ctx |> scale 1. 2.;
+ctx |> scale x::1. y::2.;
 ctx |> rotate 2.;
-ctx |> translate 2. 3.;
+ctx |> translate x::2. y::3.;
 ctx |> transform m11::1. m12::2. m21::1. m22::1. dx::1. dy::1.;
 
 globalAlpha ctx 0.9;
@@ -33,8 +33,8 @@ ctx |> closePath;
 ctx |> fill;
 ctx |> stroke;
 ctx |> clip;
-ctx |> moveTo 1. 1.;
-ctx |> lineTo 1. 1.;
+ctx |> moveTo x::1. y::1.;
+ctx |> lineTo x::1. y::2.;
 ctx |> quadraticCurveTo cp1x::1. cp1y::1. x::1. y::1.;
 ctx |> bezierCurveTo cp1x::1. cp1y::1. cp2x::2. cp2y::2. x::4. y::4.;
 ctx |> arcTo x1::1. y1::1. x2::2. y2::2. r::4.;
