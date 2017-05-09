@@ -1,5 +1,21 @@
 type t;
 
+module Composite = {
+  type t = string;
+
+  let sourceOver : t = "source-over";
+  let sourceIn : t = "source-in";
+  let sourceOut : t = "source-out";
+  let sourceAtop : t = "source-atop";
+  let destinationOver : t = "destination-over";
+  let destinationIn : t = "destination-in";
+  let destinationOut : t = "destination-out";
+  let destinationAtop : t = "destination-atop";
+  let lighter : t = "lighter";
+  let copy : t = "copy";
+  let xor : t = "xor";
+};
+
 /* Canvas API, following https://simon.html5.org/dump/html5-canvas-cheat-sheet.html */
 
 external save : unit = "" [@@bs.send.pipe: t];
@@ -14,20 +30,7 @@ external setTransform : m11::float => m12::float => m21::float => m22::float => 
 
 /* Compositing */
 external globalAlpha : t => float => unit = "" [@@bs.set];
-external globalCompositeOperation : t => string => unit = "" [@@bs.set];
-/* Note: globalCompositeOperation's string param is an enum with the following possible values:
-source-over
-source-in
-source-out
-source-atop
-destination-over
-destination-in
-destination-out
-destination-atop
-lighter
-copy
-xor
-*/
+external globalCompositeOperation : t => Composite.t => unit = "" [@@bs.set];
 
 /* Line Styles */
 external lineWidth : t => float => unit = "" [@@bs.set];

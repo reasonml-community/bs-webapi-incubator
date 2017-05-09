@@ -14,7 +14,7 @@ ctx |> translate x::2. y::3.;
 ctx |> transform m11::1. m12::2. m21::1. m22::1. dx::1. dy::1.;
 
 globalAlpha ctx 0.9;
-globalCompositeOperation ctx "source-over";
+globalCompositeOperation ctx Composite.sourceOver;
 
 lineWidth ctx 1.;
 lineCap ctx "round";
