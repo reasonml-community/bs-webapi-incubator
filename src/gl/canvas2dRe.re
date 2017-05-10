@@ -1,5 +1,6 @@
 type t;
 
+/* Sub-modules for string enum arguments: */
 module Composite = {
   type t = string;
 
@@ -15,6 +16,23 @@ module Composite = {
   let copy : t = "copy";
   let xor : t = "xor";
 };
+
+module LineCap = {
+  type t = string;
+
+  let butt : t = "butt";
+  let round : t = "round";
+  let square : t = "square";
+};
+
+module LineJoin = {
+  type t = string;
+
+  let round : t = "round";
+  let bevel : t = "bevel";
+  let miter : t = "miter";
+};
+
 
 /* Canvas API, following https://simon.html5.org/dump/html5-canvas-cheat-sheet.html */
 
@@ -34,18 +52,8 @@ external globalCompositeOperation : t => Composite.t => unit = "" [@@bs.set];
 
 /* Line Styles */
 external lineWidth : t => float => unit = "" [@@bs.set];
-external lineCap : t => string => unit = "" [@@bs.set];
-/* Note: lineCap's string param is an enum with the following possible values:
-butt
-round
-square
-*/
-external lineJoin : t => string => unit = "" [@@bs.set];
-/* Note: lineJoin's string param is an enum with the following possible values:
-round
-bevel
-miter
-*/
+external lineCap : t => LineCap.t => unit = "" [@@bs.set];
+external lineJoin : t => LineJoin.t => unit = "" [@@bs.set];
 external miterLimit : t => float => unit = "" [@@bs.set];
 
 /* Colors, Styles, and Shadows */
