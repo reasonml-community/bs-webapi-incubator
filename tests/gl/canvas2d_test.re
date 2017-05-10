@@ -17,7 +17,7 @@ globalAlpha ctx 0.9;
 globalCompositeOperation ctx Composite.sourceOver;
 
 lineWidth ctx 1.;
-lineCap ctx LineCap.round;
+lineCap ctx LineCap.butt;
 lineJoin ctx LineJoin.round;
 miterLimit ctx 10.;
 

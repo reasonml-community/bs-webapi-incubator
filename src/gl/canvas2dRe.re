@@ -1,6 +1,22 @@
-type t;
+type t;     /* Main type, representing the 2d canvas rendering context object */
 
-/* Sub-modules for string enum arguments: */
+/* Sub-modules (and their interfaces) for string enum arguments: */
+module type CompositeType = {
+  type t;
+
+  let sourceOver : t;
+  let sourceIn : t;
+  let sourceOut : t;
+  let sourceAtop : t;
+  let destinationOver : t;
+  let destinationIn : t;
+  let destinationOut : t;
+  let destinationAtop : t;
+  let lighter : t;
+  let copy : t;
+  let xor : t;
+};
+
 module Composite = {
   type t = string;
 
@@ -17,7 +33,14 @@ module Composite = {
   let xor : t = "xor";
 };
 
-module LineCap = {
+module type LineCapType = {
+  type t;
+  let butt : t;
+  let round : t;
+  let square : t;
+};
+
+module LineCap: LineCapType = {
   type t = string;
 
   let butt : t = "butt";
@@ -25,7 +48,14 @@ module LineCap = {
   let square : t = "square";
 };
 
-module LineJoin = {
+module type LineJoinType = {
+  type t;
+  let round : t;
+  let bevel : t;
+  let miter : t;
+};
+
+module LineJoin: LineJoinType = {
   type t = string;
 
   let round : t = "round";
@@ -34,8 +64,8 @@ module LineJoin = {
 };
 
 
-/* Canvas API, following https://simon.html5.org/dump/html5-canvas-cheat-sheet.html */
 
+/* 2d Canvas API, following https://simon.html5.org/dump/html5-canvas-cheat-sheet.html */
 external save : unit = "" [@@bs.send.pipe: t];
 external restore : unit = "" [@@bs.send.pipe: t];
 
