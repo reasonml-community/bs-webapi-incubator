@@ -17,7 +17,7 @@ module type CompositeType = {
   let xor : t;
 };
 
-module Composite = {
+module Composite: CompositeType = {
   type t = string;
 
   let sourceOver : t = "source-over";
