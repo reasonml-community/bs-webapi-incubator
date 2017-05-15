@@ -2,7 +2,7 @@ type t;     /* Main type, representing the 2d canvas rendering context object */
 
 /* Sub-modules (and their interfaces) for string enum arguments: */
 module type CompositeType = {
-  type t;
+  type t = pri string;
 
   let sourceOver : t;
   let sourceIn : t;
@@ -34,7 +34,7 @@ module Composite: CompositeType = {
 };
 
 module type LineCapType = {
-  type t;
+  type t = pri string;
   let butt : t;
   let round : t;
   let square : t;
@@ -49,7 +49,8 @@ module LineCap: LineCapType = {
 };
 
 module type LineJoinType = {
-  type t;
+  type t = pri string;
+
   let round : t;
   let bevel : t;
   let miter : t;
