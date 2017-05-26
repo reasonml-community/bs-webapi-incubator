@@ -21,8 +21,8 @@ lineCap ctx LineCap.butt;
 lineJoin ctx LineJoin.round;
 miterLimit ctx 10.;
 
-strokeStyle ctx "red";
-fillStyle ctx "red";
+strokeStyle ctx (String "red");
+fillStyle ctx (String "red");
 shadowOffsetX ctx 1.;
 shadowOffsetY ctx 1.;
 shadowBlur ctx 1.;
@@ -41,6 +41,10 @@ ctx |> arcTo x1::1. y1::1. x2::2. y2::2. r::4.;
 ctx |> arc x::1. y::1. r::4. startAngle::1. endAngle::3. anticw::Js.true_;
 ctx |> rect x::0. y::0. w::10. h::10.;
 let _ = ctx |> isPointInPath x::0. y::0.;
+
+let linearGradient = ctx |> createLinearGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0;
+let _ = ctx |> createRadialGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0 r1::0.0;
+linearGradient |> addColorStop 0.0 "red";
 
 font ctx "10px Courier";
 textAlign ctx "left";
