@@ -43,7 +43,7 @@ ctx |> rect x::0. y::0. w::10. h::10.;
 let _ = ctx |> isPointInPath x::0. y::0.;
 
 let linearGradient = ctx |> createLinearGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0;
-let _ = ctx |> createRadialGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0 r1::0.0;
+let _ = ctx |> createRadialGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0 r0::0.0 r1::0.0;
 linearGradient |> addColorStop 0.0 "red";
 
 font ctx "10px Courier";

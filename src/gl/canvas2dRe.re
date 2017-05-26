@@ -101,7 +101,7 @@ external shadowColor : t => string => unit = "" [@@bs.set];
 
 /* Gradients */
 external createLinearGradient : x0::float => y0::float => x1::float => y1::float => gradientT = "" [@@bs.send.pipe: t];
-external createRadialGradient : x0::float => y0::float => x1::float => y1::float => r1::float => gradientT = "" [@@bs.send.pipe: t];
+external createRadialGradient : x0::float => y0::float => x1::float => y1::float => r0::float => r1::float => gradientT = "" [@@bs.send.pipe: t];
 external addColorStop: float => string => unit = "" [@@bs.send.pipe: gradientT];
 /* TODO
  * createPattern
