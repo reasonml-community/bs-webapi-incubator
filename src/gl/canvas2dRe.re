@@ -1,5 +1,5 @@
 type t;     /* Main type, representing the 2d canvas rendering context object */
-type gradientT;
+type gradient;
 
 
 /* Sub-modules (and their interfaces) for string enum arguments: */
@@ -68,7 +68,7 @@ module LineJoin: LineJoinType = {
 
 type style 'a =
   | String: style string
-  | Gradient: style gradientT;
+  | Gradient: style gradient;
 
 /* 2d Canvas API, following https://simon.html5.org/dump/html5-canvas-cheat-sheet.html */
 external save : unit = "" [@@bs.send.pipe: t];
@@ -103,9 +103,9 @@ external shadowBlur : t => float => unit = "" [@@bs.set];
 external shadowColor : t => string => unit = "" [@@bs.set];
 
 /* Gradients */
-external createLinearGradient : x0::float => y0::float => x1::float => y1::float => gradientT = "" [@@bs.send.pipe: t];
-external createRadialGradient : x0::float => y0::float => x1::float => y1::float => r0::float => r1::float => gradientT = "" [@@bs.send.pipe: t];
-external addColorStop: float => string => unit = "" [@@bs.send.pipe: gradientT];
+external createLinearGradient : x0::float => y0::float => x1::float => y1::float => gradient = "" [@@bs.send.pipe: t];
+external createRadialGradient : x0::float => y0::float => x1::float => y1::float => r0::float => r1::float => gradient = "" [@@bs.send.pipe: t];
+external addColorStop: float => string => unit = "" [@@bs.send.pipe: gradient];
 /* TODO
  * createPattern
  */
