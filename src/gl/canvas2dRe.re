@@ -66,9 +66,9 @@ module LineJoin: LineJoinType = {
   let miter : t = "miter";
 };
 
-type style =
-  | String string
-  | Gradient gradientT;
+type style 'a =
+  | String: style string
+  | Gradient: style gradientT;
 
 /* 2d Canvas API, following https://simon.html5.org/dump/html5-canvas-cheat-sheet.html */
 external save : unit = "" [@@bs.send.pipe: t];
@@ -92,8 +92,11 @@ external lineJoin : t => LineJoin.t => unit = "" [@@bs.set];
 external miterLimit : t => float => unit = "" [@@bs.set];
 
 /* Colors, Styles, and Shadows */
-external strokeStyle : t => style => unit = "" [@@bs.set];
-external fillStyle : t => style => unit = "" [@@bs.set];
+external fillStyle : t => 'a => unit = "" [@@bs.set];
+external strokeStyle: t => 'a => unit = "" [@@bs.set];
+let setStrokeStyle (ctx: t) (s: style 'a) (v: 'a) => strokeStyle ctx v;
+let setFillStyle (ctx: t) (s: style 'a) (v: 'a) => fillStyle ctx v;
+
 external shadowOffsetX : t => float => unit = "" [@@bs.set];
 external shadowOffsetY : t => float => unit = "" [@@bs.set];
 external shadowBlur : t => float => unit = "" [@@bs.set];
