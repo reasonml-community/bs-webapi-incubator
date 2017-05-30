@@ -27,6 +27,7 @@ module HtmlCollection = HtmlCollectionRe;
 module HtmlDocument = HtmlDocumentRe;
 module HtmlElement = HtmlElementRe;
 module IdbVersionChangeEvent = IdbVersionChangeEventRe;
+module Image = ImageRe;
 module InputEvent = InputEventRe;
 module KeyboardEvent = KeyboardEventRe;
 module Location = LocationRe;

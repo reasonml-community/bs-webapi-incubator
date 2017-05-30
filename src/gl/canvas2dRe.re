@@ -68,6 +68,10 @@ module LineJoin: LineJoinType = {
   let miter : t = "miter";
 };
 
+type image 'a =
+  | Number: image float
+  | ImageData: image ImageRe.t;
+
 type style 'a =
   | String: style string
   | Gradient: style gradient;
@@ -140,6 +144,7 @@ external fillRect : x::float => y::float => w::float => h::float => unit = "" [@
 external strokeRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
 external clearRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
 
+external createImageData : t => image 'a => 'a => sh::float? => ImageRe.t = "" [@@bs.val];
 /* TODO
  * createImageData
  * getImageData
