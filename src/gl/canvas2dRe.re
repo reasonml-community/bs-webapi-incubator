@@ -144,11 +144,10 @@ external fillRect : x::float => y::float => w::float => h::float => unit = "" [@
 external strokeRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
 external clearRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
 
-external createImageData : t => image 'a => 'a => sh::float? => ImageRe.t = "" [@@bs.val];
+external createImageDataCoords : t => width::float => height::float => ImageRe.t = "createImageData" [@@bs.send];
+external createImageDataFromImage : t => ImageRe.t => ImageRe.t = "createImageData" [@@bs.send];
 /* TODO
- * createImageData
  * getImageData
  * putImageData
- * ImageData interface: width/height/data
  * CanvasPixelArray interface: length
  */

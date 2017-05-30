@@ -52,6 +52,10 @@ let measureText = ctx |> measureText "foo";
 let width = width measureText;
 ctx |> fillText "foo!" x::0.0 y::0.0 maxWidth::width;
 ctx |> strokeText "foo!" x::0.0 y::0.0 maxWidth::width;
+let imageData = createImageDataCoords ctx width::0.0 height::0.0;
+let _ = createImageDataFromImage ctx imageData;
+ImageRe.width imageData;
+ImageRe.height imageData;
 
 font ctx "10px Courier";
 textAlign ctx "left";
