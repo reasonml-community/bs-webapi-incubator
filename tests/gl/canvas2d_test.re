@@ -46,6 +46,7 @@ let linearGradient = ctx |> createLinearGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0
 setStrokeStyle ctx Gradient linearGradient;
 let _ = ctx |> createRadialGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0 r0::0.0 r1::0.0;
 linearGradient |> addColorStop 0.0 "red";
+let _ = List.map (createPattern ctx (Document.createElement "img" document)) [`noRepeat, `repeat, `repeatX, `repeatY];
 
 font ctx "10px Courier";
 textAlign ctx "left";
