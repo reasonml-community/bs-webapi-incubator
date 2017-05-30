@@ -48,6 +48,11 @@ let _ = ctx |> createRadialGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0 r0::0.0 r1::
 linearGradient |> addColorStop 0.0 "red";
 let _ = List.map (createPattern ctx (Document.createElement "img" document)) [`noRepeat, `repeat, `repeatX, `repeatY];
 
+let measureText = ctx |> measureText "foo";
+let width = width measureText;
+ctx |> fillText "foo!" x::0.0 y::0.0 maxWidth::width;
+ctx |> strokeText "foo!" x::0.0 y::0.0 maxWidth::width;
+
 font ctx "10px Courier";
 textAlign ctx "left";
 textBaseline ctx "top";

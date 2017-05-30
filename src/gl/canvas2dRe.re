@@ -1,6 +1,7 @@
 type t;     /* Main type, representing the 2d canvas rendering context object */
 type gradient;
 type pattern;
+type measureText;
 
 
 /* Sub-modules (and their interfaces) for string enum arguments: */
@@ -129,9 +130,10 @@ external isPointInPath : x::float => y::float => Js.boolean = "" [@@bs.send.pipe
 external font : t => string => unit = "" [@@bs.set];
 external textAlign : t => string => unit = "" [@@bs.set];
 external textBaseline : t => string => unit = "" [@@bs.set];
-external fillText : string => x::float => y::float => unit = "" [@@bs.send.pipe: t];
-external strokeText : string => x::float => y::float => unit = "" [@@bs.send.pipe: t];
-/* TODO: measureText(); optional maxwidth arg for fillText/strokeText */
+external fillText : string => x::float => y::float => maxWidth::float? => unit = "" [@@bs.send.pipe: t];
+external strokeText : string => x::float => y::float => maxWidth::float? => unit = "" [@@bs.send.pipe: t];
+external measureText : string => measureText = "" [@@bs.send.pipe: t];
+external width : measureText => float = "" [@@bs.get];
 
 /* Rectangles */
 external fillRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
