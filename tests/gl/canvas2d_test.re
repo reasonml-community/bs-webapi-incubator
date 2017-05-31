@@ -21,8 +21,21 @@ lineCap ctx LineCap.butt;
 lineJoin ctx LineJoin.round;
 miterLimit ctx 10.;
 
-setStrokeStyle ctx String "red";
-setFillStyle ctx String "red";
+setStrokeStyle ctx (String "red");
+setFillStyle ctx (String "red");
+
+switch (fillStyle ctx) {
+| (Gradient g) => g |> addColorStop 0.0 "red"
+| (String _) => ()
+| (Pattern _) => ()
+};
+
+switch (strokeStyle ctx) {
+| (Gradient g) => g |> addColorStop 1.2 "blue"
+| (String s) => Js.log s
+| (Pattern _) => ()
+};
+
 shadowOffsetX ctx 1.;
 shadowOffsetY ctx 1.;
 shadowBlur ctx 1.;
@@ -43,9 +56,23 @@ ctx |> rect x::0. y::0. w::10. h::10.;
 let _ = ctx |> isPointInPath x::0. y::0.;
 
 let linearGradient = ctx |> createLinearGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0;
-setStrokeStyle ctx Gradient linearGradient;
+setStrokeStyle ctx (Gradient linearGradient);
 let _ = ctx |> createRadialGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0 r0::0.0 r1::0.0;
 linearGradient |> addColorStop 0.0 "red";
+let _ = List.map (createPattern ctx (Document.createElement "img" document)) [`noRepeat, `repeat, `repeatX, `repeatY];
+
+let measureText = ctx |> measureText "foo";
+let width = width measureText;
+ctx |> fillText "foo!" x::0.0 y::0.0 maxWidth::width;
+ctx |> strokeText "foo!" x::0.0 y::0.0 maxWidth::width;
+let imageData = createImageDataCoords ctx width::0.0 height::0.0;
+createImageDataFromImage ctx imageData;
+ImageRe.width imageData;
+ImageRe.height imageData;
+
+getImageData ctx sx::0.0 sy::0.0 sw::0.0 sh::0.0;
+let _: unit = putImageData ctx imageData::imageData dx::0.0 dy::0.0 ();
+let _: unit = putImageData ctx imageData::imageData dx::0.0 dy::0.0 dirtyX::0.0 dirtyY::0.0 dirtyWidth::0.0 dirtyHeight::0.0 ();
 
 font ctx "10px Courier";
 textAlign ctx "left";

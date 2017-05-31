@@ -1,5 +1,7 @@
 type t;     /* Main type, representing the 2d canvas rendering context object */
 type gradient;
+type pattern;
+type measureText;
 
 
 /* Sub-modules (and their interfaces) for string enum arguments: */
@@ -66,9 +68,14 @@ module LineJoin: LineJoinType = {
   let miter : t = "miter";
 };
 
-type style 'a =
-  | String: style string
-  | Gradient: style gradient;
+type image 'a =
+  | Number: image float
+  | ImageData: image ImageRe.t;
+
+type style _ =
+  | String string: style string
+  | Gradient gradient: style gradient
+  | Pattern pattern: style pattern;
 
 /* 2d Canvas API, following https://simon.html5.org/dump/html5-canvas-cheat-sheet.html */
 external save : unit = "" [@@bs.send.pipe: t];
@@ -92,10 +99,36 @@ external lineJoin : t => LineJoin.t => unit = "" [@@bs.set];
 external miterLimit : t => float => unit = "" [@@bs.set];
 
 /* Colors, Styles, and Shadows */
-external fillStyle : t => 'a => unit = "" [@@bs.set];
-external strokeStyle: t => 'a => unit = "" [@@bs.set];
-let setStrokeStyle (ctx: t) (s: style 'a) (v: 'a) => strokeStyle ctx v;
-let setFillStyle (ctx: t) (s: style 'a) (v: 'a) => fillStyle ctx v;
+external setFillStyle : t => 'a => unit = "" [@@bs.set];
+external setStrokeStyle: t => 'a => unit = "" [@@bs.set];
+
+let setStrokeStyle (type a) (ctx: t) (s: style a) => switch (s) {
+  | (Gradient v) => setStrokeStyle ctx v
+  | (String v) => setStrokeStyle ctx v
+  | (Pattern v) => setStrokeStyle ctx v
+};
+
+let setFillStyle (type a) (ctx: t) (s: style a) => switch (s) {
+  | (Gradient v) => setFillStyle ctx v
+  | (String v) => setFillStyle ctx v
+  | (Pattern v) => setFillStyle ctx v
+};
+
+let reifyStyle x => {
+  if (Js.typeof x == "string") {
+    String (Obj.magic x)
+  } else {
+    (Obj.magic (Gradient (Obj.magic x)))
+  };
+};
+
+external fillStyle : t => 'a = "" [@@bs.get];
+external strokeStyle : t => 'a = "" [@@bs.get];
+
+let fillStyle (ctx: t): style 'a =>
+  ctx |> fillStyle |> reifyStyle;
+let strokeStyle (ctx: t): style 'a =>
+  ctx |> strokeStyle |> reifyStyle;
 
 external shadowOffsetX : t => float => unit = "" [@@bs.set];
 external shadowOffsetY : t => float => unit = "" [@@bs.set];
@@ -106,9 +139,8 @@ external shadowColor : t => string => unit = "" [@@bs.set];
 external createLinearGradient : x0::float => y0::float => x1::float => y1::float => gradient = "" [@@bs.send.pipe: t];
 external createRadialGradient : x0::float => y0::float => x1::float => y1::float => r0::float => r1::float => gradient = "" [@@bs.send.pipe: t];
 external addColorStop: float => string => unit = "" [@@bs.send.pipe: gradient];
-/* TODO
- * createPattern
- */
+external createPattern : t => Dom.element => [ | `repeat | `repeatX [@bs.as "repeat-x"] | `repeatY [@bs.as "repeat-y"] | `noRepeat [@bs.as "no-repeat"]] [@bs.string] => pattern =
+  "" [@@bs.val];
 
 /* Paths */
 external beginPath : unit = "" [@@bs.send.pipe: t];
@@ -129,19 +161,17 @@ external isPointInPath : x::float => y::float => Js.boolean = "" [@@bs.send.pipe
 external font : t => string => unit = "" [@@bs.set];
 external textAlign : t => string => unit = "" [@@bs.set];
 external textBaseline : t => string => unit = "" [@@bs.set];
-external fillText : string => x::float => y::float => unit = "" [@@bs.send.pipe: t];
-external strokeText : string => x::float => y::float => unit = "" [@@bs.send.pipe: t];
-/* TODO: measureText(); optional maxwidth arg for fillText/strokeText */
+external fillText : string => x::float => y::float => maxWidth::float? => unit = "" [@@bs.send.pipe: t];
+external strokeText : string => x::float => y::float => maxWidth::float? => unit = "" [@@bs.send.pipe: t];
+external measureText : string => measureText = "" [@@bs.send.pipe: t];
+external width : measureText => float = "" [@@bs.get];
 
 /* Rectangles */
 external fillRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
 external strokeRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
 external clearRect : x::float => y::float => w::float => h::float => unit = "" [@@bs.send.pipe: t];
 
-/* TODO
- * createImageData
- * getImageData
- * putImageData
- * ImageData interface: width/height/data
- * CanvasPixelArray interface: length
- */
+external createImageDataCoords : t => width::float => height::float => ImageRe.t = "createImageData" [@@bs.send];
+external createImageDataFromImage : t => ImageRe.t => ImageRe.t = "createImageData" [@@bs.send];
+external getImageData : t => sx::float => sy::float => sw::float => sh::float => ImageRe.t = "" [@@bs.send];
+external putImageData : t => imageData::ImageRe.t => dx::float => dy::float => dirtyX::float? => dirtyY::float? => dirtyWidth::float? => dirtyHeight::float? => unit => unit = "" [@@bs.send];
