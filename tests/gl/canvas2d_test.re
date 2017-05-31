@@ -21,8 +21,19 @@ lineCap ctx LineCap.butt;
 lineJoin ctx LineJoin.round;
 miterLimit ctx 10.;
 
-setStrokeStyle ctx String "red";
-setFillStyle ctx String "red";
+setStrokeStyle ctx (String "red");
+setFillStyle ctx (String "red");
+
+switch (fillStyle ctx) {
+| (Gradient g) => g |> addColorStop 0.0 "red"
+| (String _) => ()
+};
+
+switch (strokeStyle ctx) {
+| (Gradient g) => g |> addColorStop 1.2 "blue"
+| (String s) => Js.log s
+};
+
 shadowOffsetX ctx 1.;
 shadowOffsetY ctx 1.;
 shadowBlur ctx 1.;
@@ -43,7 +54,7 @@ ctx |> rect x::0. y::0. w::10. h::10.;
 let _ = ctx |> isPointInPath x::0. y::0.;
 
 let linearGradient = ctx |> createLinearGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0;
-setStrokeStyle ctx Gradient linearGradient;
+setStrokeStyle ctx (Gradient linearGradient);
 let _ = ctx |> createRadialGradient x0::0.0 y0::0.0 x1::0.0 y1::0.0 r0::0.0 r1::0.0;
 linearGradient |> addColorStop 0.0 "red";
 

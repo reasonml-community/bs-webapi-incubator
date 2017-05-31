@@ -66,9 +66,9 @@ module LineJoin: LineJoinType = {
   let miter : t = "miter";
 };
 
-type style 'a =
-  | String: style string
-  | Gradient: style gradient;
+type style _ =
+  | String string: style string
+  | Gradient gradient: style gradient;
 
 /* 2d Canvas API, following https://simon.html5.org/dump/html5-canvas-cheat-sheet.html */
 external save : unit = "" [@@bs.send.pipe: t];
@@ -92,10 +92,34 @@ external lineJoin : t => LineJoin.t => unit = "" [@@bs.set];
 external miterLimit : t => float => unit = "" [@@bs.set];
 
 /* Colors, Styles, and Shadows */
-external fillStyle : t => 'a => unit = "" [@@bs.set];
-external strokeStyle: t => 'a => unit = "" [@@bs.set];
-let setStrokeStyle (ctx: t) (s: style 'a) (v: 'a) => strokeStyle ctx v;
-let setFillStyle (ctx: t) (s: style 'a) (v: 'a) => fillStyle ctx v;
+external setFillStyle : t => 'a => unit = "" [@@bs.set];
+external setStrokeStyle: t => 'a => unit = "" [@@bs.set];
+
+let setStrokeStyle (type a) (ctx: t) (s: style a) => switch (s) {
+  | (Gradient v) => setStrokeStyle ctx v
+  | (String v) => setStrokeStyle ctx v
+};
+
+let setFillStyle (type a) (ctx: t) (s: style a) => switch (s) {
+  | (Gradient v) => setFillStyle ctx v
+  | (String v) => setFillStyle ctx v
+};
+
+let reifyStyle x => {
+  if (Js.typeof x == "string") {
+    String (Obj.magic x)
+  } else {
+    (Obj.magic (Gradient (Obj.magic x)))
+  };
+};
+
+external fillStyle : t => 'a = "" [@@bs.get];
+external strokeStyle : t => 'a = "" [@@bs.get];
+
+let fillStyle (ctx: t): style 'a =>
+  ctx |> fillStyle |> reifyStyle;
+let strokeStyle (ctx: t): style 'a =>
+  ctx |> strokeStyle |> reifyStyle;
 
 external shadowOffsetX : t => float => unit = "" [@@bs.set];
 external shadowOffsetY : t => float => unit = "" [@@bs.set];
