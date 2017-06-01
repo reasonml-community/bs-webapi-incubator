@@ -113,12 +113,13 @@ let setStrokeStyle (type a) (ctx: t) (s: style a) (v: a) =>
 let setFillStyle (type a) (ctx: t) (s: style a) (v: a) =>
   setFillStyle ctx v;
 
-let instanceOf a name => [%bs.raw{|function(x,y) {return x instanceof y}|}] a name;
+external canvasGradient : 'a = "CanvasGradient" [@@bs.val];
+let instanceOf a cxr => [%bs.raw{|function(x,y) {return x instanceof y}|}] a cxr;
 
 let reifyStyle (type a) (x: 'a): (style a, a) =>
   (if (Js.typeof x == "string") {
     Obj.magic String
-  } else if (instanceOf x "CanvasGradient") {
+  } else if (instanceOf x canvasGradient) {
     Obj.magic Gradient
   } else {
     Obj.magic Pattern
