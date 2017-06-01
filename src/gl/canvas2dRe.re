@@ -73,9 +73,9 @@ type image 'a =
   | ImageData: image ImageRe.t;
 
 type style _ =
-  | String string: style string
-  | Gradient gradient: style gradient
-  | Pattern pattern: style pattern;
+  | String: style string
+  | Gradient: style gradient
+  | Pattern: style pattern;
 
 /* 2d Canvas API, following https://simon.html5.org/dump/html5-canvas-cheat-sheet.html */
 external save : unit = "" [@@bs.send.pipe: t];
@@ -102,32 +102,25 @@ external miterLimit : t => float => unit = "" [@@bs.set];
 external setFillStyle : t => 'a => unit = "" [@@bs.set];
 external setStrokeStyle: t => 'a => unit = "" [@@bs.set];
 
-let setStrokeStyle (type a) (ctx: t) (s: style a) => switch (s) {
-  | (Gradient v) => setStrokeStyle ctx v
-  | (String v) => setStrokeStyle ctx v
-  | (Pattern v) => setStrokeStyle ctx v
-};
+let setStrokeStyle (type a) (ctx: t) (s: style a) (v: a) =>
+  setStrokeStyle ctx v;
 
-let setFillStyle (type a) (ctx: t) (s: style a) => switch (s) {
-  | (Gradient v) => setFillStyle ctx v
-  | (String v) => setFillStyle ctx v
-  | (Pattern v) => setFillStyle ctx v
-};
+let setFillStyle (type a) (ctx: t) (s: style a) (v: a) =>
+  setFillStyle ctx v;
 
-let reifyStyle x => {
-  if (Js.typeof x == "string") {
-    String (Obj.magic x)
+let reifyStyle (type a) (x: 'a): (style a, a) =>
+  (if (Js.typeof x == "string") {
+    Obj.magic String
   } else {
-    (Obj.magic (Gradient (Obj.magic x)))
-  };
-};
+    Obj.magic Gradient
+  }, Obj.magic x);
 
 external fillStyle : t => 'a = "" [@@bs.get];
 external strokeStyle : t => 'a = "" [@@bs.get];
 
-let fillStyle (ctx: t): style 'a =>
+let fillStyle (ctx: t) =>
   ctx |> fillStyle |> reifyStyle;
-let strokeStyle (ctx: t): style 'a =>
+let strokeStyle (ctx: t) =>
   ctx |> strokeStyle |> reifyStyle;
 
 external shadowOffsetX : t => float => unit = "" [@@bs.set];
