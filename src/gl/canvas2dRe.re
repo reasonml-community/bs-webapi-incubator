@@ -1,3 +1,5 @@
+/* don't refmt this file until refmt stops stripping bs.as. i don't know the issue number,
+  but have been told it's fixed-but-unreleased */
 type t;     /* Main type, representing the 2d canvas rendering context object */
 type gradient;
 type pattern;
@@ -102,6 +104,9 @@ external miterLimit : t => float => unit = "" [@@bs.set];
 external setFillStyle : t => 'a => unit = "" [@@bs.set];
 external setStrokeStyle: t => 'a => unit = "" [@@bs.set];
 
+/* in re unused warnings
+  awaiting release of https://github.com/bloomberg/bucklescript/issues/1656
+  to just use [@@bs.set] directly with an ignored (style a) */
 let setStrokeStyle (type a) (ctx: t) (s: style a) (v: a) =>
   setStrokeStyle ctx v;
 
