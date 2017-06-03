@@ -105,26 +105,30 @@ external setStrokeStyle: t => 'a => unit = "" [@@bs.set];
 /* in re unused warnings
   awaiting release of https://github.com/bloomberg/bucklescript/issues/1656
   to just use [@@bs.set] directly with an ignored (style a) */
-let setStrokeStyle (type a) (ctx: t) (s: style a) (v: a) =>
+let setStrokeStyle (type a) (ctx: t) (_: style a) (v: a) =>
   setStrokeStyle ctx v;
 
-let setFillStyle (type a) (ctx: t) (s: style a) (v: a) =>
+let setFillStyle (type a) (ctx: t) (_: style a) (v: a) =>
   setFillStyle ctx v;
 
-external canvasGradient : 'a = "CanvasGradient" [@@bs.val]; /* internal */
-external canvasPattern : 'a = "CanvasPattern" [@@bs.val]; /* internal */
-let instanceOf a cxr => [%bs.raw{|function(x,y) {return x instanceof y}|}] a cxr; /* internal */
+let reifyStyle (type a) (x: 'a): (style a, a) => {
+  module Internal = {
+    type constructor;
+    external canvasGradient : constructor = "CanvasGradient" [@@bs.val]; /* internal */
+    external canvasPattern : constructor = "CanvasPattern" [@@bs.val]; /* internal */
+    let instanceOf : 'a => constructor => bool = [%bs.raw{|function(x,y) {return +(x instanceof y)}|}]; /* internal */
+  };
 
-let reifyStyle (type a) (x: 'a): (style a, a) =>
   (if (Js.typeof x == "string") {
     Obj.magic String
-  } else if (instanceOf x canvasGradient) {
+  } else if (Internal.instanceOf x Internal.canvasGradient) {
     Obj.magic Gradient
-  } else if (instanceOf x canvasPattern) {
+  } else if (Internal.instanceOf x Internal.canvasPattern) {
     Obj.magic Pattern
   } else {
     raise (Invalid_argument "Unknown canvas style kind. Known values are: String, CanvasGradient, CanvasPattern")
   }, Obj.magic x);
+};
 
 external fillStyle : t => 'a = "" [@@bs.get];
 external strokeStyle : t => 'a = "" [@@bs.get];

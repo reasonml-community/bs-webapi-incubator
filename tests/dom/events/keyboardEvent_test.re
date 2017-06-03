@@ -1,5 +1,5 @@
 open ReasonJs.Dom;
-open KeyboardEvent;
+open! KeyboardEvent;
 let event = make "my-event";
 
 /* Event */
