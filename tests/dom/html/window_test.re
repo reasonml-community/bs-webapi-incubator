@@ -1,4 +1,4 @@
-open ReasonJs.Dom;
+open Bs_webapi.Dom;
 
 let el = document |> Document.createElement "strong";
 let event = document |> Document.createEvent "my-event";

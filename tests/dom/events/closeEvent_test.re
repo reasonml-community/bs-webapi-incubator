@@ -1,5 +1,4 @@
-
-open ReasonJs.Dom;
+open Bs_webapi.Dom;
 open CloseEvent;
 
 let event = make "my-event";

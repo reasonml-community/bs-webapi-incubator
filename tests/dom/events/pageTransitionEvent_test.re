@@ -1,4 +1,4 @@
-open ReasonJs.Dom;
+open Bs_webapi.Dom;
 open PageTransitionEvent;
 
 let event = make "my-event";

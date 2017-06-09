@@ -1,4 +1,4 @@
-open ReasonJs.Storage;
+open Bs_webapi.Storage;
 
 let _ = localStorage |> getItem "my-item";
 let _ = localStorage |> setItem "my-item" "foo";

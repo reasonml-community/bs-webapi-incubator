@@ -1,4 +1,4 @@
-open ReasonJs.Dom;
+open Bs_webapi.Dom;
 open AnimationEvent;
 
 let event = make "my-event";
