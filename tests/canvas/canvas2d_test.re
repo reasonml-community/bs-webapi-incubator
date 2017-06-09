@@ -1,5 +1,5 @@
-open Bs_webapi.Canvas2d;
-open Bs_webapi.CanvasElement;
+open Bs_webapi.Canvas.Canvas2d;
+open Bs_webapi.Canvas.CanvasElement;
 open Bs_webapi.Dom;
 
 let canvasEl = Document.createElement "canvas" document;
