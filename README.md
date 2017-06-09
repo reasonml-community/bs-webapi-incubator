@@ -21,11 +21,11 @@ Then add `bs-webapi` to `bs-dependencies` in your `bsconfig.json`. A minimal exa
 
 See the [examples folder](https://github.com/BuckleTypes/bs-webapi-incubator/tree/eb5f71847848a3e896733017fde00eee7fb5edf5/examples)
 
-### Some notes on the DOM API
+## Some notes on the DOM API
 
 The DOM API is mostly organized into interfaces and relies heavily on inheritance. The ergonomics of the API is also heavily dependent on dynamic typing, which makes it somewhat challenging to implement a thin binding layer that is both safe and ergonomic. To achieve this we employ subtyping and implementation inheritance, concepts which aren't very idiomatic to OCaml (or Reason), but all the more beneficial to understand in order to be able to use these bindings effectively.
 
-#### Subtyping
+### Subtyping
 
 The Dom types, and the relationships between them, are actually defined in the `Dom` module that ships with `bs-platform` ([Source code](https://github.com/glennsl/bucklescript/blob/master/jscomp/others/dom.mli)), where you'll find a bunch of types that look like this:
 
@@ -35,14 +35,14 @@ type 'a element_like = 'a _element node_like
 type element = _baseClass element_like
 ```
 
-This is subtyping implemented with abstract types and phantom arguments. The details of how this works isn't very important (but see #23 for a detailed explanation of how exactly this trickery works) in order to just use them, but there are a few things you should know:
+This is subtyping implemented with abstract types and phantom arguments. The details of how this works isn't very important (but see [#23](https://github.com/BuckleTypes/bs-webapi-incubator/pull/23) for a detailed explanation of how exactly this trickery works) in order to just use them, but there are a few things you should know:
 
 * If you expand the alias of a concrete DOM type, you'll discover it's actually a list of abstract types. e.g. `element` expands to `_baseClass _element _node _eventTarget_like` This means `element` is a subtype of `_element`, `_node` and `_eventTarget_like`.
 * The `_like` type are "open" (because they have a type variable). This means that a function accepting an `'a element_like` will accept any "supertype" of `element_like`. A function accepting just an `element` will only accept an `element` (Technically `element` is actually a "supertype" of `element_like` too).
 
 This system works exceptionally well, but has one significant flaw: It makes type errors even more complicated than they normally are. If you know what to look for it's not that bad, but unfortunately the formatting of these errors don't make looking for it any easier. We hope to improve that in other ways (see [BetterErrors](https://github.com/reasonml/BetterErrors))
 
-#### Implementation inheritance
+### Implementation inheritance
 
 If you've looked through the source code a bit, you've likely come across code like this:
 
