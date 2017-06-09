@@ -9,4 +9,4 @@ external setNamedItemNS : Dom.attr => unit = "" [@@bs.send.pipe: t];
 external removeNamedItem : string => Dom.attr = "" [@@bs.send.pipe: t];
 external removeNamedItemNS : string => string => Dom.attr = "" [@@bs.send.pipe: t];
 
-external toArray : t => array Dom.element = "Array.prototype.slice.call" [@@bs.val];
+external toArray : t => array Dom.element = "call" [@@bs.val] [@@bs.scope ("Array", "prototype", "slice")];

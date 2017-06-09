@@ -61,8 +61,8 @@ include DomTypesRe;
 
 external window : Dom.window = "window" [@@bs.val];
 external document : Dom.document = "document" [@@bs.val];
-external history : Dom.history = "document.history" [@@bs.val];
-external location : Dom.location = "document.location" [@@bs.val];
+external history : Dom.history = "history" [@@bs.val] [@@bs.scope "document"];
+external location : Dom.location = "location" [@@bs.val] [@@bs.scope "document"];
 
 
 /* Unimplemented interfaces (aka. "The TODO list")
