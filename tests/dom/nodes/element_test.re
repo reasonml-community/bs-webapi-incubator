@@ -1,4 +1,4 @@
-open ReasonJs.Dom;
+open Bs_webapi.Dom;
 open Element;
 
 let el = document |> Document.createElement "strong";

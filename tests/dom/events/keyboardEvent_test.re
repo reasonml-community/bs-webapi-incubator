@@ -1,5 +1,6 @@
-open ReasonJs.Dom;
+open Bs_webapi.Dom;
 open! KeyboardEvent;
+
 let event = make "my-event";
 
 /* Event */

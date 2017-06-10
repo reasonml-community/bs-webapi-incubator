@@ -1,6 +1,6 @@
-open ReasonJs.Canvas2d;
-open ReasonJs.CanvasElement;
-open ReasonJs.Dom;
+open Bs_webapi.Canvas.Canvas2d;
+open Bs_webapi.Canvas.CanvasElement;
+open Bs_webapi.Dom;
 
 let canvasEl = Document.createElement "canvas" document;
 let ctx = getContext2d canvasEl;
