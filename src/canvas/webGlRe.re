@@ -102,3 +102,7 @@ external enableVertexAttribArray : glT => int => unit = "enableVertexAttribArray
    GLboolean normalized, GLsizei stride, GLintptr offset); */
 external vertexAttribPointer : glT => int => int => int => Js.boolean => int => int => unit =
   "vertexAttribPointer" [@@bs.send];
+  /* GLint gl.getAttribLocation(program, name); */
+external getAttribLocation : glT => programT => string => int = "getAttribLocation" [@@bs.send];
+/* void gl.drawArrays(mode, first, count); */
+external drawArrays : glT => int => int => int => unit = "drawArrays" [@@bs.send];
