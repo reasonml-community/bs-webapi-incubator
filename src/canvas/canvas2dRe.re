@@ -99,8 +99,8 @@ external lineJoin : t => LineJoin.t => unit = "" [@@bs.set];
 external miterLimit : t => float => unit = "" [@@bs.set];
 
 /* Colors, Styles, and Shadows */
-external setFillStyle : t => 'a => unit = "" [@@bs.set];
-external setStrokeStyle: t => 'a => unit = "" [@@bs.set];
+external setFillStyle : t => 'a => unit = "fillStyle" [@@bs.set];
+external setStrokeStyle: t => 'a => unit = "strokeStyle" [@@bs.set];
 
 /* in re unused warnings
   awaiting release of https://github.com/bloomberg/bucklescript/issues/1656
