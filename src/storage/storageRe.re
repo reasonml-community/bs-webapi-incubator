@@ -1,11 +1,27 @@
 type t;
 
-external getItem : string => option string = "" [@@bs.send.pipe: t] [@@bs.return null_to_opt];
-external setItem : string => string => unit = "" [@@bs.send.pipe: t];
-external removeItem : string => unit = "" [@@bs.send.pipe: t];
-external clear : unit = "" [@@bs.send.pipe: t];
-external key : int => option string = "" [@@bs.send.pipe: t] [@@bs.return null_to_opt];
-external length : t => int = "" [@@bs.get];
+external getItem : string => option string = "" [@@bs.send.pipe: t] [@@bs.return null_to_opt]
+[@@ocaml.deprecated "Use Dom.Storage.getItem instead"];
 
-external localStorage : t = "" [@@bs.val];
-external sessionStorage : t = "" [@@bs.val];
+external setItem : string => string => unit = "" [@@bs.send.pipe: t]
+[@@ocaml.deprecated "Use Dom.Storage.getItem instead"];
+
+external removeItem : string => unit = "" [@@bs.send.pipe: t]
+[@@ocaml.deprecated "Use Dom.Storage.removeItem instead"];
+
+external clear : unit = "" [@@bs.send.pipe: t]
+[@@ocaml.deprecated "Use Dom.Storage.clear instead"];
+
+external key : int => option string = "" [@@bs.send.pipe: t] [@@bs.return null_to_opt]
+[@@ocaml.deprecated "Use Dom.Storage.key instead"];
+
+external length : t => int = "" [@@bs.get]
+[@@ocaml.deprecated "Use Dom.Storage.length  instead"];
+
+
+external localStorage : t = "" [@@bs.val]
+[@@ocaml.deprecated "Use Dom.Storage.localStorage instead"];
+
+external sessionStorage : t = "" [@@bs.val]
+[@@ocaml.deprecated "Use Dom.Storage.sessionStorage instead"];
+
