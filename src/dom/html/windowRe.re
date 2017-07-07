@@ -36,7 +36,7 @@ module Impl (T: { type t; }) => {
   external location : t_window => Dom.location = "" [@@bs.get];
   external setLocation : t_window => string => unit = "location" [@@bs.set];
   external locationbar : t_window => locationbar = "" [@@bs.get];
-  /* localStorage: accessed directly via ReasonJs.LocalStorage */
+  /* localStorage: accessed directly via Dom.Storage.localStorage */
   external menubar : t_window => menubar = "" [@@bs.get];
   external name : t_window => string = "" [@@bs.get];
   external setName : t_window => string => unit = "name" [@@bs.set];
@@ -56,7 +56,7 @@ module Impl (T: { type t; }) => {
   external scrollX : t_window => int = "" [@@bs.get];
   external scrollY : t_window => int = "" [@@bs.get];
   external self : t_window => Dom.window = "" [@@bs.get]; /* alias for window, but apparently convenient because self (stand-alone) resolves to WorkerGlobalScope in a web worker. Probably poitnless here though */
-  /* sessionStorage: accessed directly via ReasonJs.SessionStorage */
+  /* sessionStorage: accessed directly via Dom.Storage.sessionStorage */
   external speechSynthesis : t_window => speechSynthesis = "" [@@bs.get]; /* experimental */
   external status : t_window => string = "" [@@bs.get];
   external setStatus : t_window => string => unit = "status" [@@bs.set];
@@ -83,7 +83,7 @@ module Impl (T: { type t; }) => {
   external print : unit = "" [@@bs.send.pipe: t_window];
   external prompt : string => string = "" [@@bs.send.pipe: t_window];
   external promptWithDefault : string => string => string = "prompt" [@@bs.send.pipe: t_window];
-  /* requestAnimationFrame: accessed directly via ReasonJs */
+  /* requestAnimationFrame: accessed directly via Bs_webapi */
   external requestIdleCallback : (idleDeadline => unit) => idleCallbackId = "" [@@bs.send.pipe: t_window]; /* experimental, Cooperative Scheduling of Background Tasks */
   external requestIdleCallbackWithOptions : (idleDeadline => unit) => Js.t {. timeout: int } => idleCallbackId = "requestIdleCallback" [@@bs.send.pipe: t_window]; /* experimental, Cooperative Scheduling of Background Tasks */
   external resizeBy : int => int => unit = "" [@@bs.send.pipe: t_window]; /* experimental, CSSOM View module */
