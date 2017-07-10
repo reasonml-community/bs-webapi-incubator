@@ -147,10 +147,6 @@ external shadowColor : t => string => unit = "" [@@bs.set];
 external createLinearGradient : x0::float => y0::float => x1::float => y1::float => gradient = "" [@@bs.send.pipe: t];
 external createRadialGradient : x0::float => y0::float => x1::float => y1::float => r0::float => r1::float => gradient = "" [@@bs.send.pipe: t];
 external addColorStop: float => string => unit = "" [@@bs.send.pipe: gradient];
-/* until release of https://github.com/facebook/reason/issues/821,
-  [@bs.as] will get stripped by refmt. need to check that, once issue fix is released,
-  resulting JS is no longer mangled.
- */
 external createPattern : t => Dom.element => [ | `repeat | `repeatX [@bs.as "repeat-x"] | `repeatY [@bs.as "repeat-y"] | `noRepeat [@bs.as "no-repeat"]] [@bs.string] => pattern =
   "" [@@bs.val];
 
