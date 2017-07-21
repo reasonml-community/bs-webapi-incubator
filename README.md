@@ -19,7 +19,7 @@ Then add `bs-webapi` to `bs-dependencies` in your `bsconfig.json`. A minimal exa
 
 ## Usage
 
-See the [examples folder](https://github.com/BuckleTypes/bs-webapi-incubator/tree/eb5f71847848a3e896733017fde00eee7fb5edf5/examples)
+See the [examples folder](https://github.com/reasonml-community/bs-webapi-incubator/tree/eb5f71847848a3e896733017fde00eee7fb5edf5/examples)
 
 ## Some notes on the DOM API
 
@@ -35,7 +35,7 @@ type 'a element_like = 'a _element node_like
 type element = _baseClass element_like
 ```
 
-This is subtyping implemented with abstract types and phantom arguments. The details of how this works isn't very important (but see [#23](https://github.com/BuckleTypes/bs-webapi-incubator/pull/23) for a detailed explanation of how exactly this trickery works) in order to just use them, but there are a few things you should know:
+This is subtyping implemented with abstract types and phantom arguments. The details of how this works isn't very important (but see [#23](https://github.com/reasonml-community/bs-webapi-incubator/pull/23) for a detailed explanation of how exactly this trickery works) in order to just use them, but there are a few things you should know:
 
 * If you expand the alias of a concrete DOM type, you'll discover it's actually a list of abstract types. e.g. `element` expands to `_baseClass _element _node _eventTarget_like` This means `element` is a subtype of `_element`, `_node` and `_eventTarget_like`.
 * The `_like` type are "open" (because they have a type variable). This means that a function accepting an `'a element_like` will accept any "supertype" of `element_like`. A function accepting just an `element` will only accept an `element` (Technically `element` is actually a "supertype" of `element_like` too).
