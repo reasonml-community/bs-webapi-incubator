@@ -17,7 +17,7 @@
   "author": "chenglou",
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "^1.7.1"
+    "bs-platform": "^1.8.2"
   },
   "rebel": {}
 }
