@@ -4,9 +4,9 @@
   "description": "Reason + BuckleScript bindings to DOM",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BuckleTypes/bs-webapi-incubator.git"
+    "url": "git+https://github.com/reasonml-community/bs-webapi-incubator.git"
   },
-  "homepage": "https://github.com/BuckleTypes/bs-webapi-incubator#readme",
+  "homepage": "https://github.com/reasonml-community/bs-webapi-incubator#readme",
   "main": "index.js",
   "scripts": {
     "test": "bsb -make-world",
