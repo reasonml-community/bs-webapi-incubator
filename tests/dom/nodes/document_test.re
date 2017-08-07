@@ -34,7 +34,7 @@ let _ = createNodeIterator el document;
 let _ = createNodeIteratorWithWhatToShow el DomRe.WhatToShow._All document;
 let _ = createNodeIteratorWithWhatToShowFilter el DomRe.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
 let _ = createRange document;
-let _ = createText "Very reasonable!" document;
+let _ = createTextNode "Very reasonable!" document;
 let _ = createTreeWalker el document;
 let _ = createTreeWalkerWithWhatToShow el DomRe.WhatToShow._All document;
 let _ = createTreeWalkerWithWhatToShowFilter el DomRe.WhatToShow.(many [_Element, _Attribute]) (NodeFilter.make (fun _ => 0)) document;
