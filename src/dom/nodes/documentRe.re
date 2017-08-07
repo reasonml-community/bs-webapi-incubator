@@ -46,7 +46,7 @@ module Impl (T: { type t; }) => {
   external createNodeIteratorWithWhatToShowFilter : Dom.node_like 'a => DomTypesRe.WhatToShow.t => Dom.nodeFilter => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: T.t];
   /* createProcessingInstruction */
   external createRange : Dom.range = "" [@@bs.send.pipe: T.t];
-  external createText : string => Dom.text = "" [@@bs.send.pipe: T.t];
+  external createTextNode : string => Dom.text = "" [@@bs.send.pipe: T.t];
   external createTreeWalker : Dom.element_like 'a => Dom.treeWalker = "" [@@bs.send.pipe: T.t];
   external createTreeWalkerWithWhatToShow : Dom.element_like 'a => DomTypesRe.WhatToShow.t => Dom.treeWalker = "createTreeWalker" [@@bs.send.pipe: T.t];
   external createTreeWalkerWithWhatToShowFilter : Dom.element_like 'a => DomTypesRe.WhatToShow.t => Dom.nodeFilter => Dom.treeWalker = "createTreeWalker" [@@bs.send.pipe: T.t];
