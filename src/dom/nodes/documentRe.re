@@ -44,6 +44,7 @@ module Impl (T: { type t; }) => {
   external createNodeIterator : Dom.node_like 'a => Dom.nodeIterator = "" [@@bs.send.pipe: T.t];
   external createNodeIteratorWithWhatToShow : Dom.node_like 'a => DomTypesRe.WhatToShow.t => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: T.t];
   external createNodeIteratorWithWhatToShowFilter : Dom.node_like 'a => DomTypesRe.WhatToShow.t => Dom.nodeFilter => Dom.nodeIterator = "createNodeIterator" [@@bs.send.pipe: T.t];
+  external defaultView : T.t => option Dom.window = "" [@@bs.get] [@@bs.return null_to_opt];
   /* createProcessingInstruction */
   external createRange : Dom.range = "" [@@bs.send.pipe: T.t];
   external createTextNode : string => Dom.text = "" [@@bs.send.pipe: T.t];

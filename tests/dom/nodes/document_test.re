@@ -19,6 +19,7 @@ let _ = setSelectedStyleSheetSet document"muh-stylesheet";
 let _ = styleSheets document;
 let _ = styleSheetSets document;
 let _ = visibilityState document;
+let _ = defaultView document;
 
 let _ = adoptNode el document;
 let _ = createAttribute "data-foo" document;
