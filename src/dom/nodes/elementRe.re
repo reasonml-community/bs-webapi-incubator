@@ -75,6 +75,7 @@ module Impl(T: { type t; }) => {
   external setAttribute : string => string => unit = "" [@@bs.send.pipe: T.t];
   external setAttributeNS : string => string => string => unit = "" [@@bs.send.pipe: T.t];
   external setPointerCapture : Dom.eventPointerId => unit = "" [@@bs.send.pipe: T.t];
+  external focus : unit = "" [@@bs.send.pipe: T.t];
 
   /* GlobalEventHandlers interface */
   /* Not sure this should be exposed, since EventTarget seems like a better API */

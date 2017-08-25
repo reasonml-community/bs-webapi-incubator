@@ -71,3 +71,5 @@ let _ = scrollIntoViewWithOptions { "block": "end", "behavior": "smooth" } el;
 let _ = setAttribute "href" "http://..." el;
 let _ = setAttributeNS "http://..." "foo" "bar" el;
 let _ = setPointerCapture (PointerEvent.pointerId event) el;
+let _ = focus el;
+
