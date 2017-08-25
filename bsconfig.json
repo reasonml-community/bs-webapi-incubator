@@ -3,9 +3,10 @@
   comma. If this screws with your editor highlighting, please tell us by filing
   an issue! */
 {
-  "name" : "bs-webapi",
-  "bsc-flags": ["-bs-no-version-header"],
-  "sources": [{
+  "name": "bs-webapi",
+  "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
+  "sources": [
+    {
       "dir": "src",
       "subdirs": [
         "core",
@@ -26,7 +27,8 @@
         "canvas",
         "storage"
       ]
-    }, {
+    },
+    {
       "dir": "tests",
       "type": "dev",
       "subdirs": [
@@ -47,7 +49,8 @@
         "storage",
         "canvas"
       ]
-    }, {
+    },
+    {
       "dir": "examples",
       "type": "dev",
     }
