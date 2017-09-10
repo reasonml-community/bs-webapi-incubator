@@ -1,8 +1,14 @@
 module Impl (T: { type t; }) => {
   type t_htmlElement = T.t;
 
-  let ofElement (element: Dom.element): (option t_htmlElement) =>
-    (ElementRe.tagName element) == "html" ? Some (Obj.magic element) : None;
+  let ofElement : Dom.element => Js.null t_htmlElement = [%bs.raw {|
+    function (element) {
+      // BEWARE: Assumes "contentEditable" uniquely identifies an HTMLELement
+      return element.contentEditable !== undefined ?  element : null;
+    }
+  |}];
+  
+  let ofElement : Dom.element => option t_htmlElement = fun self => Js.Null.to_opt (ofElement self);
 
   external accessKey : t_htmlElement => string = "" [@@bs.get];
   external setAccessKey : t_htmlElement => string => unit = "accessKey" [@@bs.set];

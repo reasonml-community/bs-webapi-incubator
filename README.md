@@ -62,6 +62,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.6.1
+* Fix incorrect heuristic in `HtmlElement.ofElement`
+
 ### 0.6.0
 * Renamed createText to CreateTextNode, according to spec
 * Deprecated Storage API, it's been upstreamed to `bs-platform` as `Dom.Storage`
