@@ -59,3 +59,10 @@ include Impl { type nonrec t = t };
 This is the implementation inheritance. Each "inheritable" module defines an "Impl" module where all its exported functions are defined. `include NodeRe.Impl { type nonrec t = t };` means that all the functions in `NodeRe.Impl` should be included in this module, but with the `t` type of that module replaced by the `t` type of this one. And that's it, it now has all the functions.
 
 Implementation inheritance is used instead of subtyping to make it easier to understand which functions operate on any given "subject". If you have an `element` and you need to use a function defined in `Node`, let's say `removeChild` you cannot just use `Node.removeChild`. Instead you need to use `Element.removeChild`, which you can since `Element` inherits from `Node`. As a general rule, always use the function in the module corresponding to the type you have. You'll find this makes it very easy to see what types you're dealing with just by reading the code.
+
+## Changes
+
+### 0.6.0
+* Renamed createText to CreateTextNode, according to spec
+* Deprecated Storage API, it's been upstreamed to `bs-platform` as `Dom.Storage`
+* Removed `ReasonJs`  namespace. Use ` Bs_webapi`  instead
