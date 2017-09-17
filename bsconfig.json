@@ -8,49 +8,16 @@
   "sources": [
     {
       "dir": "src",
-      "subdirs": [
-        "core",
-        {
-          "dir": "dom",
-          "subdirs": [
-            "css",
-            "events",
-            "geometry",
-            "html",
-            "nodes",
-            "ranges",
-            "selection",
-            "sets",
-            "traversal"
-          ]
-        },
-        "canvas",
-      ]
+      "subdirs": true
     },
     {
       "dir": "tests",
       "type": "dev",
-      "subdirs": [
-        "core",
-        {
-          "dir": "dom",
-          "subdirs": [
-            /*"css",*/
-            "events",
-            "html",
-            "nodes",
-            "ranges",
-            "selection",
-            "sets",
-            /*"traversal"*/
-          ]
-        },
-        "canvas"
-      ]
+      "subdirs": true
     },
     {
       "dir": "examples",
-      "type": "dev",
+      "type": "dev"
     }
   ]
 }
