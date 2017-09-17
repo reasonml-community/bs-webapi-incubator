@@ -25,7 +25,6 @@
           ]
         },
         "canvas",
-        "storage"
       ]
     },
     {
@@ -46,7 +45,6 @@
             /*"traversal"*/
           ]
         },
-        "storage",
         "canvas"
       ]
     },
