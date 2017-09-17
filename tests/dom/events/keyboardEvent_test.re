@@ -1,4 +1,4 @@
-open Bs_webapi.Dom;
+open Webapi.Dom;
 open! KeyboardEvent;
 
 let event = make "my-event";

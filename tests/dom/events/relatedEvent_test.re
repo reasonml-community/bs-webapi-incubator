@@ -1,4 +1,4 @@
-open Bs_webapi.Dom;
+open Webapi.Dom;
 open RelatedEvent;
 
 let event = make "my-event";

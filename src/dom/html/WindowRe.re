@@ -83,7 +83,7 @@ module Impl (T: { type t; }) => {
   external print : unit = "" [@@bs.send.pipe: t_window];
   external prompt : string => string = "" [@@bs.send.pipe: t_window];
   external promptWithDefault : string => string => string = "prompt" [@@bs.send.pipe: t_window];
-  /* requestAnimationFrame: accessed directly via Bs_webapi */
+  /* requestAnimationFrame: accessed directly via Webapi */
   external requestIdleCallback : (idleDeadline => unit) => idleCallbackId = "" [@@bs.send.pipe: t_window]; /* experimental, Cooperative Scheduling of Background Tasks */
   external requestIdleCallbackWithOptions : (idleDeadline => unit) => Js.t {. timeout: int } => idleCallbackId = "requestIdleCallback" [@@bs.send.pipe: t_window]; /* experimental, Cooperative Scheduling of Background Tasks */
   external resizeBy : int => int => unit = "" [@@bs.send.pipe: t_window]; /* experimental, CSSOM View module */

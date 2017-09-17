@@ -1,4 +1,4 @@
-open Bs_webapi.Base64;
+open Webapi.Base64;
 
 let _ = atob "foo";
 let _ = btoa "gibberish";

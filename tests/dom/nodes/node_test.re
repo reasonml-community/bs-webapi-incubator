@@ -1,4 +1,4 @@
-open Bs_webapi.Dom;
+open Webapi.Dom;
 open Node;
 
 let node = document |> Document.createElement "strong" |> Element.rootNode;

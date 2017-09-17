@@ -1,4 +1,4 @@
-open Bs_webapi.Dom;
+open Webapi.Dom;
 
 let el = document |> Document.createElement "strong";
 let event = document |> Document.createEvent "my-event";

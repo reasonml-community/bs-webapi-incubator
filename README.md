@@ -62,6 +62,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### Next
+* Added `Webapi` module, Deprecated `Bs_webapi`
+
 ### 0.6.1
 * Fix incorrect heuristic in `HtmlElement.ofElement`
 
