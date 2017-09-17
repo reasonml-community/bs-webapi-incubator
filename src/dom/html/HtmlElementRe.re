@@ -8,7 +8,8 @@ module Impl (T: { type t; }) => {
     }
   |}];
   
-  let ofElement : Dom.element => option t_htmlElement = fun self => Js.Null.to_opt (ofElement self);
+  let ofElement : Dom.element => option t_htmlElement = fun self => Js.Null.to_opt (ofElement self)
+  [@@deprecated "Consider using Element.asHtmlElement or Element.unsafeAsHtmlElement instead"];
 
   external accessKey : t_htmlElement => string = "" [@@bs.get];
   external setAccessKey : t_htmlElement => string => unit = "accessKey" [@@bs.set];

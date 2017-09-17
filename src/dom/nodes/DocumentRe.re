@@ -6,7 +6,10 @@ module Impl (T: { type t; }) => {
       return document.doctype.name === "html" ?  document : null;
     }
   |}];
-  let asHtmlDocument : T.t => option Dom.htmlDocument = fun self => Js.Null.to_opt (asHtmlDocument self);
+  let asHtmlDocument : T.t => option Dom.htmlDocument = fun self => Js.Null.to_opt (asHtmlDocument self)
+  [@@deprecated "Will fail if no doctype is defined, consider using usnafeAsHtmlDocument instead"];
+
+  external unsafeAsHtmlDocument : T.t => Dom.htmlDocument = "%identity";
 
   let ofNode (node: Dom.node): option (T.t) =>
     (NodeRe.nodeType node) == Document ? Some (Obj.magic node) : None;

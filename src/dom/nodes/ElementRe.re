@@ -9,7 +9,10 @@ module Impl(T: { type t; }) => {
       return element.contentEditable !== undefined ?  element : null;
     }
   |}];
-  let asHtmlElement : T.t => option Dom.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self);
+  let asHtmlElement : T.t => option Dom.htmlElement = fun self => Js.Null.to_opt (asHtmlElement self)
+  [@@deprecated "asHtmlElement uses a weak heuristic, consider using unsafeAsHtmlElement instead"];
+
+  external unsafeAsHtmlElement : T.t => Dom.htmlElement = "%identity";
 
   let ofNode : Dom.node => option T.t = ofNode;
 
