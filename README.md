@@ -62,7 +62,7 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
-### Next
+### 0.7.0
 * Added `Webapi` module, Deprecated `Bs_webapi`
 * Removed deprecated Storage API
 * Add `Document.unsafeAshtmlDocument`, `Element.unsafeAsHtmlElement`. Deprecated `Document.asHtmlDocument`, `Element.asHtmlElement`, `HtmlEleement.ofElement`.
