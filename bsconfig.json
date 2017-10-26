@@ -5,6 +5,7 @@
 {
   "name": "bs-webapi",
   "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
+  "namespace": true,
   "sources": [
     {
       "dir": "src",
