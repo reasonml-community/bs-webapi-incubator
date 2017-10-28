@@ -26,6 +26,7 @@ module History = HistoryRe;
 module HtmlCollection = HtmlCollectionRe;
 module HtmlDocument = HtmlDocumentRe;
 module HtmlElement = HtmlElementRe;
+module HtmlImageElement = HtmlImageElementRe;
 module IdbVersionChangeEvent = IdbVersionChangeEventRe;
 module Image = ImageRe;
 module InputEvent = InputEventRe;
