@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open CompositionEvent;
 
 let event = make "my-event";

@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open Location;
 
 let _ = href location;

@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open DomTokenList;
 
 let tlist = document

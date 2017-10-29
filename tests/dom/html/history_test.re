@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open History;
 
 let _ = length history;

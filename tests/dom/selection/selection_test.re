@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open Selection;
 
 let node = document

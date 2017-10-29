@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open HtmlElement;
 
 let el = document

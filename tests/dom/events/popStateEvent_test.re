@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open PopStateEvent;
 
 let event = make "my-event";

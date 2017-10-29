@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open StorageEvent;
 
 let event = make "my-event";

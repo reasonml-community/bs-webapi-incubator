@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open Document;
 
 let el = document |> createElement "strong";

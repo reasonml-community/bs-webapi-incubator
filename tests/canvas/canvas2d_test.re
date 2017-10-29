@@ -1,6 +1,6 @@
 open Webapi.Canvas.Canvas2d;
 open Webapi.Canvas.CanvasElement;
-open Webapi.Dom;
+open Dom;
 
 let canvasEl = Document.createElement "canvas" document;
 let ctx = getContext2d canvasEl;

@@ -1,4 +1,4 @@
-open Webapi.Dom;
+open Dom;
 open MouseEvent;
 
 let event = make "my-event";
