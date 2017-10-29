@@ -3,7 +3,7 @@
   comma. If this screws with your editor highlighting, please tell us by filing
   an issue! */
 {
-  "name": "bs-webapi",
+  "name": "webapi",
   "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
   "namespace": true,
   "sources": [

@@ -83,6 +83,7 @@ module Impl (T: { type t; }) => {
   external print : unit = "" [@@bs.send.pipe: t_window];
   external prompt : string => string = "" [@@bs.send.pipe: t_window];
   external promptWithDefault : string => string => string = "prompt" [@@bs.send.pipe: t_window];
+  external requestAnimationFrame : (float => unit) => unit = "" [@@bs.val];
   /* requestAnimationFrame: accessed directly via Webapi */
   external requestIdleCallback : (idleDeadline => unit) => idleCallbackId = "" [@@bs.send.pipe: t_window]; /* experimental, Cooperative Scheduling of Background Tasks */
   external requestIdleCallbackWithOptions : (idleDeadline => unit) => Js.t {. timeout: int } => idleCallbackId = "requestIdleCallback" [@@bs.send.pipe: t_window]; /* experimental, Cooperative Scheduling of Background Tasks */
@@ -93,30 +94,7 @@ module Impl (T: { type t; }) => {
   external scrollTo : int => int => unit = "" [@@bs.send.pipe: t_window]; /* experimental, CSSOM View module */
   external stop : unit = "" [@@bs.send.pipe: t_window];
 
-
   external setOnLoad : t_window => (unit => unit) => unit = "onload" [@@bs.set]; /* use addEventListener instead? */
-
-  module Image = {
-    type t;
-    external make : unit => t = "Image" [@@bs.new];
-    external src : t => string => unit = "" [@@bs.set];
-    external getSrc : t => string = "src" [@@bs.get];
-    external onload : t => (unit => unit) => unit = "" [@@bs.set];
-    external naturalHeight : t => string = "" [@@bs.get];
-    external naturalWidth : t => string = "" [@@bs.get];
-  };
-  
-  module File = {
-    type t;
-    external _type : t => string = "type" [@@bs.get];
-    external preview : t => string = "" [@@bs.get];
-  };
-  
-  module URL = {
-    external createObjectURL : File.t => string = "" [@@bs.val] [@@bs.scope "URL"];
-    external revokeObjectURL : string => unit = "" [@@bs.val] [@@bs.scope "URL"];
-  };
-
 };
 
 /* include WindowOrWorkerGlobalScope? not really "dom" though */

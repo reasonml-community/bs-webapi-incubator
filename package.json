@@ -1,5 +1,5 @@
 {
-  "name": "bs-webapi",
+  "name": "@reasonml-community/webapi",
   "version": "0.7.0",
   "description": "Reason + BuckleScript bindings to DOM",
   "repository": {
