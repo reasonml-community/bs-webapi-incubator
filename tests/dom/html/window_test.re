@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 
 let el = document |> Document.createElement "strong";
 let event = document |> Document.createEvent "my-event";

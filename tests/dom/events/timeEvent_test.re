@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open TimeEvent;
 
 let event = make "my-event";

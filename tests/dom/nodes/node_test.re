@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open Node;
 
 let node = document |> Document.createElement "strong" |> Element.rootNode;

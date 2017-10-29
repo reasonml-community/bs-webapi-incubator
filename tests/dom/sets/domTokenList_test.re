@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open DomTokenList;
 
 let tlist = document

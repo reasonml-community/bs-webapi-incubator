@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open ProgressEvent;
 
 let event = make "my-event";

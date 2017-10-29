@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open HtmlElement;
 
 let el = document

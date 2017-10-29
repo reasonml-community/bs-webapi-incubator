@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open FocusEvent;
 
 let event = make "my-event";

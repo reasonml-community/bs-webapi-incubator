@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open CompositionEvent;
 
 let event = make "my-event";

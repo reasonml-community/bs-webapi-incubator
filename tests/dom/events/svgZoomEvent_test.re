@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open SvgZoomEvent;
 
 let event = make "my-event";

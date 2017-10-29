@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open WheelEvent;
 
 let event = make "my-event";

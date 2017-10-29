@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open ErrorEvent;
 
 let event = make "my-event";

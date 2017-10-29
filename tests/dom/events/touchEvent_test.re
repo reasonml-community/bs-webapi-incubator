@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open TouchEvent;
 
 let event = make "my-event";

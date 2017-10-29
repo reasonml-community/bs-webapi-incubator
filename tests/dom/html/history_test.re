@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open History;
 
 let _ = length history;

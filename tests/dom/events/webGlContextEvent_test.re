@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open WebGlContextEvent;
 
 let event = make "my-event";

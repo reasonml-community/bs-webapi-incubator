@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open TransitionEvent;
 
 let event = make "my-event";

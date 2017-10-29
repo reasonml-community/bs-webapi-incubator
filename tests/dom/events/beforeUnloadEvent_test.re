@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open BeforeUnloadEvent;
 
 let event = make "my-event";

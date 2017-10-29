@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open DragEvent;
 
 let event = make "my-event";

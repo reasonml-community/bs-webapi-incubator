@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open MouseEvent;
 
 let event = make "my-event";

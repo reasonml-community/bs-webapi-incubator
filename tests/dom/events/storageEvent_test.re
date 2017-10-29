@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open StorageEvent;
 
 let event = make "my-event";

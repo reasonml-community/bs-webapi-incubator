@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open Location;
 
 let _ = href location;

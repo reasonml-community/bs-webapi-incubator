@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open AnimationEvent;
 
 let event = make "my-event";

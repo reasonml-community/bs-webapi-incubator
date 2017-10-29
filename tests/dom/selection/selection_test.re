@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open Selection;
 
 let node = document

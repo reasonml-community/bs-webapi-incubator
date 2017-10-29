@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open CustomEvent;
 
 let event = make "my-event";

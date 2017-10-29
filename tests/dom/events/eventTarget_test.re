@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open EventTarget;
 
 let target = document |> Document.createElement "strong" |> Element.asEventTarget;

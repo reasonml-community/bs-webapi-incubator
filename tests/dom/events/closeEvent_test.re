@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open CloseEvent;
 
 let event = make "my-event";

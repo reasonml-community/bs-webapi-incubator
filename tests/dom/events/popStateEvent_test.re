@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open PopStateEvent;
 
 let event = make "my-event";

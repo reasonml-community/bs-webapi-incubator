@@ -1,4 +1,4 @@
-open Dom;
+open DomRe;
 open ClipboardEvent;
 
 let event = make "my-event";
