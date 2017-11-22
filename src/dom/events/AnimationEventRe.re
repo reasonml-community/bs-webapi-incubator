@@ -1,10 +1,18 @@
 type t = Dom.animationEvent;
 
-include EventRe.Impl { type nonrec t = t };
+include
+  EventRe.Impl(
+    {
+      type nonrec t = t;
+    }
+  );
 
-external make : string => t = "AnimationEvent" [@@bs.new];
-external makeWithOptions : string => Js.t {..} => t = "AnimationEvent" [@@bs.new];
+[@bs.new] external make : string => t = "AnimationEvent";
 
-external animationName : t => string = "" [@@bs.get];
-external elapsedTime : t => float = "" [@@bs.get];
-external pseudoElement : t => string /* enum-ish */ = "" [@@bs.get];
+[@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "AnimationEvent";
+
+[@bs.get] external animationName : t => string = "";
+
+[@bs.get] external elapsedTime : t => float = "";
+
+[@bs.get] external pseudoElement : t => string /* enum-ish */ = "";

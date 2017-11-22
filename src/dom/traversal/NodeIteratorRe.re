@@ -1,12 +1,17 @@
 type t = Dom.nodeIterator;
 
-external root : t => Dom.node = "" [@@bs.get];
-external referenceNode : t => Dom.node = "" [@@bs.get];
-external pointerBeforeReferenceNode : t => bool = "" [@@bs.get];
-external whatToShow : t => DomTypesRe.WhatToShow.t = "" [@@bs.get];
-external filter : t => option Dom.nodeFilter = "" [@@bs.get] [@@bs.return null_to_opt];
+[@bs.get] external root : t => Dom.node = "";
 
-external nextNode : option Dom.node = "" [@@bs.send.pipe: t];
-external previousNode : option Dom.node = "" [@@bs.send.pipe: t];
+[@bs.get] external referenceNode : t => Dom.node = "";
 
-external detach : unit = "" [@@bs.send.pipe: t];
+[@bs.get] external pointerBeforeReferenceNode : t => bool = "";
+
+[@bs.get] external whatToShow : t => DomTypesRe.WhatToShow.t = "";
+
+[@bs.get] [@bs.return null_to_opt] external filter : t => option(Dom.nodeFilter) = "";
+
+[@bs.send.pipe : t] external nextNode : option(Dom.node) = "";
+
+[@bs.send.pipe : t] external previousNode : option(Dom.node) = "";
+
+[@bs.send.pipe : t] external detach : unit = "";

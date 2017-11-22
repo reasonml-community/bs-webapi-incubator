@@ -1,8 +1,14 @@
 type t = Dom.popStateEvent;
 
-include EventRe.Impl { type nonrec t = t };
+include
+  EventRe.Impl(
+    {
+      type nonrec t = t;
+    }
+  );
 
-external make : string => t = "PopStateEvent" [@@bs.new];
-external makeWithOptions : string => Js.t {..} => t = "PopStateEvent" [@@bs.new];
+[@bs.new] external make : string => t = "PopStateEvent";
 
-external state : t => Js.t {..} = "" [@@bs.get];
+[@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "PopStateEvent";
+
+[@bs.get] external state : t => Js.t({..}) = "";

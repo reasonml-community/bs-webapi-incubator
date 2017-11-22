@@ -1,4 +1,4 @@
-external requestAnimationFrame : (float => unit) => unit = "" [@@bs.val];
+[@bs.val] external requestAnimationFrame : (float => unit) => unit = "";
 
 module Base64 = Base64Re;
 
