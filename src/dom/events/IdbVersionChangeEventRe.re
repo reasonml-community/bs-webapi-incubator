@@ -1,9 +1,16 @@
 type t = Dom.idbVersionChangeEvent;
 
-include EventRe.Impl { type nonrec t = t };
+include
+  EventRe.Impl(
+    {
+      type nonrec t = t;
+    }
+  );
 
-external make : string => t = "IDBVersionChangeEvent" [@@bs.new];
-external makeWithOptions : string => Js.t {..} => t = "IDBVersionChangeEvent" [@@bs.new];
+[@bs.new] external make : string => t = "IDBVersionChangeEvent";
 
-external oldVersion : t => int = "" [@@bs.get];
-external newVersion : t => int = "" [@@bs.get];
+[@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "IDBVersionChangeEvent";
+
+[@bs.get] external oldVersion : t => int = "";
+
+[@bs.get] external newVersion : t => int = "";

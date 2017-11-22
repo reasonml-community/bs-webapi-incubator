@@ -1,20 +1,20 @@
 type t = Dom.domRect;
 
-external make : x::int => y::int => width::int => height::int => t =
-"DOMRect" [@@bs.new]; /* experimental */
+[@bs.new] external make : (~x: int, ~y: int, ~width: int, ~height: int) => t =
+  "DOMRect"; /* experimental */
 
-external top : t => int = "" [@@bs.get];
+[@bs.get] external top : t => int = "";
 
-external bottom : t => int = "" [@@bs.get];
+[@bs.get] external bottom : t => int = "";
 
-external left : t => int = "" [@@bs.get];
+[@bs.get] external left : t => int = "";
 
-external right : t => int = "" [@@bs.get];
+[@bs.get] external right : t => int = "";
 
-external height : t => int = "" [@@bs.get];
+[@bs.get] external height : t => int = "";
 
-external width : t => int = "" [@@bs.get];
+[@bs.get] external width : t => int = "";
 
-external x : t => int = "" [@@bs.get];
+[@bs.get] external x : t => int = "";
 
-external y : t => int = "" [@@bs.get];
+[@bs.get] external y : t => int = "";

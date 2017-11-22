@@ -1,10 +1,18 @@
 type t = Dom.closeEvent;
 
-include EventRe.Impl { type nonrec t = t };
+include
+  EventRe.Impl(
+    {
+      type nonrec t = t;
+    }
+  );
 
-external make : string => t = "CloseEvent" [@@bs.new];
-external makeWithOptions : string => Js.t {..} => t = "CloseEvent" [@@bs.new];
+[@bs.new] external make : string => t = "CloseEvent";
 
-external wasClean : t => bool = "" [@@bs.get];
-external code : t => int = "" [@@bs.get];
-external reason : t => string = "" [@@bs.get];
+[@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "CloseEvent";
+
+[@bs.get] external wasClean : t => bool = "";
+
+[@bs.get] external code : t => int = "";
+
+[@bs.get] external reason : t => string = "";

@@ -1,31 +1,54 @@
 type t = Dom.location;
 
 /* a more ergonomic API would perhaps accept a Window.t directly instead of Location.t */
+[@bs.get] external href : t => string = "";
 
-external href : t => string = "" [@@bs.get];
-external setHref : t => string => unit = "href" [@@bs.set];
-external protocol : t => string = "" [@@bs.get];
-external setProtocol : t => string => unit = "protocol" [@@bs.set];
-external host : t => string = "" [@@bs.get];
-external setHost : t => string => unit = "host" [@@bs.set];
-external hostname : t => string = "" [@@bs.get];
-external setHostname : t => string => unit = "hostname" [@@bs.set];
-external port : t => string = "" [@@bs.get];
-external setPort : t => string => unit  = "port" [@@bs.set];
-external pathname : t => string = "" [@@bs.get];
-external setPathname : t => string => unit = "pathname" [@@bs.set];
-external search : t => string = "" [@@bs.get];
-external setSearch : t => string => unit = "search" [@@bs.set];
-external hash : t => string = "" [@@bs.get];
-external setHash : t => string => unit = "hash" [@@bs.set];
-external username : t => string = "" [@@bs.get];
-external setUsername : t => string => unit = "username" [@@bs.set];
-external password : t => string = "" [@@bs.get];
-external setPassword : t => string => unit = "password" [@@bs.set];
-external origin : t => string = "" [@@bs.get];
+[@bs.set] external setHref : (t, string) => unit = "href";
 
-external assign : string => unit = "" [@@bs.send.pipe: t];
-external reload : unit = "" [@@bs.send.pipe: t];
-external reloadWithForce : _ [@bs.as {json|true|json}] => unit = "reload" [@@bs.send.pipe: t];
-external replace : string => unit = "" [@@bs.send.pipe: t];
-external toString : string = "" [@@bs.send.pipe: t];
+[@bs.get] external protocol : t => string = "";
+
+[@bs.set] external setProtocol : (t, string) => unit = "protocol";
+
+[@bs.get] external host : t => string = "";
+
+[@bs.set] external setHost : (t, string) => unit = "host";
+
+[@bs.get] external hostname : t => string = "";
+
+[@bs.set] external setHostname : (t, string) => unit = "hostname";
+
+[@bs.get] external port : t => string = "";
+
+[@bs.set] external setPort : (t, string) => unit = "port";
+
+[@bs.get] external pathname : t => string = "";
+
+[@bs.set] external setPathname : (t, string) => unit = "pathname";
+
+[@bs.get] external search : t => string = "";
+
+[@bs.set] external setSearch : (t, string) => unit = "search";
+
+[@bs.get] external hash : t => string = "";
+
+[@bs.set] external setHash : (t, string) => unit = "hash";
+
+[@bs.get] external username : t => string = "";
+
+[@bs.set] external setUsername : (t, string) => unit = "username";
+
+[@bs.get] external password : t => string = "";
+
+[@bs.set] external setPassword : (t, string) => unit = "password";
+
+[@bs.get] external origin : t => string = "";
+
+[@bs.send.pipe : t] external assign : string => unit = "";
+
+[@bs.send.pipe : t] external reload : unit = "";
+
+[@bs.send.pipe : t] external reloadWithForce : ([@bs.as {json|true|json}] _) => unit = "reload";
+
+[@bs.send.pipe : t] external replace : string => unit = "";
+
+[@bs.send.pipe : t] external toString : string = "";

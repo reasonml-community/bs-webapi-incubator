@@ -1,8 +1,14 @@
 type t = Dom.beforeUnloadEvent;
 
-include EventRe.Impl { type nonrec t = t };
+include
+  EventRe.Impl(
+    {
+      type nonrec t = t;
+    }
+  );
 
-external make : string => t = "BeforeUnloadEvent" [@@bs.new];
-external makeWithOptions : string => Js.t {..} => t = "BeforeUnloadEvent" [@@bs.new];
+[@bs.new] external make : string => t = "BeforeUnloadEvent";
 
-external returnValue : t => string = "" [@@bs.get];
+[@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "BeforeUnloadEvent";
+
+[@bs.get] external returnValue : t => string = "";
