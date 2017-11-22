@@ -1,46 +1,31 @@
 type console; /* Console API, should maybe be defined in Js stdlib */
-
 type crypto; /* Web Cryptography API */
-
 type frameList; /* array-like, WindowProxy? */
-
 type idleDeadline; /* Cooperative Scheduling of Background Tasks */
-
 type locationbar; /* "bar object" */
-
 type menubar; /* "bar object" */
-
 type navigator;
-
 type performance; /* Web Performance API */
-
 type personalbar; /* "bar object" */
-
 type screen;
-
 type scrollbars; /* "bar object" */
-
 type speechSynthesis;
-
 type statusbar; /* "bar object" */
-
 type toolbar; /* "bar object" */
-
 type mediaQueryList; /* CSSOM View module */
-
 type transferable;
 
 type idleCallbackId; /* used by requestIdleCallback and cancelIdleCallback */
 
 module Impl = (T: {type t;}) => {
   type t_window = T.t;
+
   /* A lot of this isn't really "dom", but rather global exports */
+
   [@bs.get] external console : t_window => console = "";
   [@bs.get] external crypto : t_window => crypto = "";
   [@bs.get] external document : t_window => Dom.document = "";
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external frameElement :
-                                                    t_window => option(Dom.element) =
-  ""; /* experimental? */
+  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external frameElement : t_window => option(Dom.element) = ""; /* experimental? */
   [@bs.get] external frames : t_window => frameList = "";
   [@bs.get] external fullScreen : t_window => bool = "";
   [@bs.get] external history : t_window => Dom.history = "";
@@ -56,9 +41,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external name : t_window => string = "";
   [@bs.set] external setName : (t_window, string) => unit = "name";
   [@bs.get] external navigator : t_window => navigator = "";
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}]
-  external opener : t_window => option(Dom.window) =
-    "";
+  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external opener : t_window => option(Dom.window) = "";
   [@bs.get] external outerWidth : t_window => int = "";
   [@bs.get] external outerHeight : t_window => int = "";
   [@bs.get] external pageXOffset : t_window => int = ""; /* alias for screenX */
@@ -81,63 +64,41 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external toolbar : t_window => toolbar = "";
   [@bs.get] external top : t_window => Dom.window = "";
   [@bs.get] external window : t_window => t_window = ""; /* This is pointless I think, it's just here because window is the implicit global scope, and it's needed to be able to get a reference to it */
+
   [@bs.send.pipe : t_window] external alert : string => unit = "";
   [@bs.send.pipe : t_window] external blur : unit = "";
-  [@bs.send.pipe : t_window] external cancelIdleCallback : idleCallbackId => unit =
-  ""; /* experimental, Cooperative Scheduling of Background Tasks */
+  [@bs.send.pipe : t_window] external cancelIdleCallback : idleCallbackId => unit = ""; /* experimental, Cooperative Scheduling of Background Tasks */
   [@bs.send.pipe : t_window] external close : unit = "";
   [@bs.send.pipe : t_window] external confirm : string => bool = "";
   [@bs.send.pipe : t_window] external focus : unit = "";
-  [@bs.send.pipe : t_window] external getComputedStyle : Dom.element => Dom.cssStyleDeclaration =
-    "";
-  [@bs.send.pipe : t_window]
-  external getComputedStyleWithPseudoElement : (Dom.element, string) => Dom.cssStyleDeclaration =
-    "getComputedStyle";
+  [@bs.send.pipe : t_window] external getComputedStyle : Dom.element => Dom.cssStyleDeclaration = "";
+  [@bs.send.pipe : t_window] external getComputedStyleWithPseudoElement : (Dom.element, string) => Dom.cssStyleDeclaration = "getComputedStyle";
   [@bs.send.pipe : t_window] external getSelection : Dom.selection = "";
-  [@bs.send.pipe : t_window] external matchMedia : string => mediaQueryList =
-  ""; /* experimental, CSSOM View module */
+  [@bs.send.pipe : t_window] external matchMedia : string => mediaQueryList = ""; /* experimental, CSSOM View module */
   [@bs.send.pipe : t_window] external moveBy : (int, int) => unit = ""; /* experimental, CSSOM View module */
   [@bs.send.pipe : t_window] external moveTo : (int, int) => unit = ""; /* experimental, CSSOM View module */
-  [@bs.send.pipe : t_window] [@bs.return {null_to_opt: null_to_opt}] external open_ :
-                                                                    (~url: string, ~name: string, ~features: string) => option(Dom.window) =
-  "open"; /* yes, features is a stringly typed list of key value pairs, sigh */
-  [@bs.send.pipe : t_window] external postMessage : ('a, string) => unit =
-  ""; /* experimental-ish?, Web Messaging */
-  [@bs.send.pipe : t_window] external postMessageWithTransfers : ('a, string, array(transferable)) => unit =
-  "postMessage"; /* experimental-ish?, Web Messaging */
+  [@bs.send.pipe : t_window] [@bs.return {null_to_opt: null_to_opt}] external open_ : (~url: string, ~name: string, ~features: string) => option(Dom.window) = "open"; /* yes, features is a stringly typed list of key value pairs, sigh */
+  [@bs.send.pipe : t_window] external postMessage : ('a, string) => unit = ""; /* experimental-ish?, Web Messaging */
+  [@bs.send.pipe : t_window] external postMessageWithTransfers : ('a, string, array(transferable)) => unit = "postMessage"; /* experimental-ish?, Web Messaging */
   [@bs.send.pipe : t_window] external print : unit = "";
   [@bs.send.pipe : t_window] external prompt : string => string = "";
   [@bs.send.pipe : t_window] external promptWithDefault : (string, string) => string = "prompt";
   /* requestAnimationFrame: accessed directly via Webapi */
-  [@bs.send.pipe : t_window] external requestIdleCallback : (idleDeadline => unit) => idleCallbackId =
-  ""; /* experimental, Cooperative Scheduling of Background Tasks */
-  [@bs.send.pipe : t_window] external requestIdleCallbackWithOptions :
-                             (idleDeadline => unit, {. "timeout": int}) => idleCallbackId =
-  "requestIdleCallback"; /* experimental, Cooperative Scheduling of Background Tasks */
-  [@bs.send.pipe : t_window] external resizeBy : (int, int) => unit =
-  ""; /* experimental, CSSOM View module */
-  [@bs.send.pipe : t_window] external resizeTo : (int, int) => unit =
-  ""; /* experimental, CSSOM View module */
+  [@bs.send.pipe : t_window] external requestIdleCallback : (idleDeadline => unit) => idleCallbackId = ""; /* experimental, Cooperative Scheduling of Background Tasks */
+  [@bs.send.pipe : t_window] external requestIdleCallbackWithOptions : (idleDeadline => unit, {. "timeout": int}) => idleCallbackId = "requestIdleCallback"; /* experimental, Cooperative Scheduling of Background Tasks */
+  [@bs.send.pipe : t_window] external resizeBy : (int, int) => unit = ""; /* experimental, CSSOM View module */
+  [@bs.send.pipe : t_window] external resizeTo : (int, int) => unit = ""; /* experimental, CSSOM View module */
   [@bs.send.pipe : t_window] external scroll : (int, int) => unit = ""; /* experimental, CSSOM View module */
-  [@bs.send.pipe : t_window] external scrollBy : (int, int) => unit =
-  ""; /* experimental, CSSOM View module */
-  [@bs.send.pipe : t_window] external scrollTo : (int, int) => unit =
-  ""; /* experimental, CSSOM View module */
+  [@bs.send.pipe : t_window] external scrollBy : (int, int) => unit = ""; /* experimental, CSSOM View module */
+  [@bs.send.pipe : t_window] external scrollTo : (int, int) => unit = ""; /* experimental, CSSOM View module */
   [@bs.send.pipe : t_window] external stop : unit = "";
+
+
   [@bs.set] external setOnLoad : (t_window, unit => unit) => unit = "onload"; /* use addEventListener instead? */
 };
 
-/* include WindowOrWorkerGlobalScope? not really "dom" though */
-include
-  EventTargetRe.Impl(
-    {
-      type t = Dom.window;
-    }
-  );
+type t = Dom.window;
 
-include
-  Impl(
-    {
-      type t = Dom.window;
-    }
-  );
+/* include WindowOrWorkerGlobalScope? not really "dom" though */
+include EventTargetRe.Impl({ type nonrec t = t; });
+include Impl({ type nonrec t = t; });

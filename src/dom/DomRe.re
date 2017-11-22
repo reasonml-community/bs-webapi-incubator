@@ -1,128 +1,70 @@
 module AnimationEvent = AnimationEventRe;
-
 module Attr = AttrRe;
-
 module BeforeUnloadEvent = BeforeUnloadEventRe;
-
 module CdataSection = CdataSectionRe;
-
 module CharacterData = CharacterDataRe;
-
 module Comment = CommentRe;
-
 module CssStyleDeclaration = CssStyleDeclarationRe;
-
 module ClipboardEvent = ClipboardEventRe;
-
 module CloseEvent = CloseEventRe;
-
 module CompositionEvent = CompositionEventRe;
-
 module CustomEvent = CustomEventRe;
-
 module Document = DocumentRe;
-
 module DocumentFragment = DocumentFragmentRe;
-
 module DocumentType = DocumentTypeRe;
-
 module DomImplementation = DomImplementationRe;
-
 module DomRect = DomRectRe;
-
 module DomTokenList = DomTokenListRe;
-
 module DragEvent = DragEventRe;
-
 module Element = ElementRe;
-
 module ErrorEvent = ErrorEventRe;
-
 module Event = EventRe;
-
 module EventTarget = EventTargetRe;
-
 module FocusEvent = FocusEventRe;
-
 module History = HistoryRe;
-
 module HtmlCollection = HtmlCollectionRe;
-
 module HtmlDocument = HtmlDocumentRe;
-
 module HtmlElement = HtmlElementRe;
-
 module HtmlImageElement = HtmlImageElementRe;
-
 module IdbVersionChangeEvent = IdbVersionChangeEventRe;
-
 module Image = ImageRe;
-
 module InputEvent = InputEventRe;
-
 module KeyboardEvent = KeyboardEventRe;
-
 module Location = LocationRe;
-
 module MouseEvent = MouseEventRe;
-
 module MutationObserver = MutationObserverRe;
-
 module MutationRecord = MutationRecordRe;
-
 module Node = NodeRe;
-
 module NodeFilter = NodeFilterRe;
-
 module NodeList = NodeListRe;
-
 module PageTransitionEvent = PageTransitionEventRe;
-
 module PointerEvent = PointerEventRe;
-
 module PopStateEvent = PopStateEventRe;
-
 module ProgressEvent = ProgressEventRe;
-
 module Range = RangeRe;
-
 module RelatedEvent = RelatedEventRe;
-
 module Selection = SelectionRe;
-
 module ShadowRoot = ShadowRootRe;
-
 module StorageEvent = StorageEventRe;
-
 module SvgZoomEvent = SvgZoomEventRe;
-
 module Text = TextRe;
-
 module TimeEvent = TimeEventRe;
-
 module TouchEvent = TouchEventRe;
-
 module TrackEvent = TrackEventRe;
-
 module TransitionEvent = TransitionEventRe;
-
 module UiEvent = UiEventRe;
-
 module WebGlContextEvent = WebGlContextEventRe;
-
 module WheelEvent = WheelEventRe;
-
 module Window = WindowRe;
 
 include DomTypesRe;
 
 [@bs.val] external window : Dom.window = "window";
-
 [@bs.val] external document : Dom.document = "document";
-
 [@bs.val] [@bs.scope "window"] external history : Dom.history = "history";
-
 [@bs.val] [@bs.scope "window"] external location : Dom.location = "location";
+
+
 /* Unimplemented interfaces (aka. "The TODO list")
 
    Attr

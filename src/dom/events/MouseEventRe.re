@@ -13,9 +13,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external pageX : T.t => int = ""; /* experimental, but widely supported */
   [@bs.get] external pageY : T.t => int = ""; /* experimental, but widely supported */
   [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external region : T.t => option(string) = "";
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}]
-  external relatedTarget : T.t => option(Dom.eventTarget) =
-    "";
+  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external relatedTarget : T.t => option(Dom.eventTarget) = "";
   [@bs.get] external screenX : T.t => int = "";
   [@bs.get] external screenY : T.t => int = "";
   [@bs.get] external shiftKey : T.t => bool = "";
@@ -28,27 +26,9 @@ module Impl = (T: {type t;}) => {
 
 type t = Dom.mouseEvent;
 
-include
-  EventRe.Impl(
-    {
-      type nonrec t = t;
-    }
-  );
-
-include
-  UiEventRe.Impl(
-    {
-      type nonrec t = t;
-    }
-  );
-
-include
-  Impl(
-    {
-      type nonrec t = t;
-    }
-  );
+include EventRe.Impl({ type nonrec t = t; });
+include UiEventRe.Impl({ type nonrec t = t; });
+include Impl({ type nonrec t = t; });
 
 [@bs.new] external make : string => t = "MouseEvent";
-
 [@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "MouseEvent";

@@ -5,20 +5,8 @@ module Impl = (T: {type t;}) => {
 
 type t = Dom.uiEvent;
 
-include
-  EventRe.Impl(
-    {
-      type nonrec t = t;
-    }
-  );
-
-include
-  Impl(
-    {
-      type nonrec t = t;
-    }
-  );
+include EventRe.Impl({ type nonrec t = t; });
+include Impl({ type nonrec t = t; });
 
 [@bs.new] external make : string => t = "UIEvent";
-
 [@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "UIEvent";
