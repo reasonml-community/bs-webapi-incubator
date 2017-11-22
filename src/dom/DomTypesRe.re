@@ -258,6 +258,7 @@ let decodeVisibilityState =
 
 module type WhatToShowT = {
   type t;
+
   let _All: t;
   let _Element: t;
   let _Attribute: t;
@@ -271,11 +272,13 @@ module type WhatToShowT = {
   let _DocumentType: t;
   let _DocumentFragment: t;
   let _Notation: t;
+
   let many: list(t) => t;
 };
 
 module WhatToShow: WhatToShowT = {
   type t = int;
+
   let _All = (-1);
   let _Element = 1;
   let _Attribute = 2;
@@ -289,6 +292,7 @@ module WhatToShow: WhatToShowT = {
   let _DocumentType = 512;
   let _DocumentFragment = 1024;
   let _Notation = 2048;
+
   let rec many =
     fun
     | [] => 0

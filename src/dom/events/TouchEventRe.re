@@ -12,27 +12,9 @@ module Impl = (T: {type t;}) => {
 
 type t = Dom.touchEvent;
 
-include
-  EventRe.Impl(
-    {
-      type nonrec t = t;
-    }
-  );
-
-include
-  UiEventRe.Impl(
-    {
-      type nonrec t = t;
-    }
-  );
-
-include
-  Impl(
-    {
-      type nonrec t = t;
-    }
-  );
+include EventRe.Impl({ type nonrec t = t; });
+include UiEventRe.Impl({ type nonrec t = t; });
+include Impl({ type nonrec t = t; });
 
 [@bs.new] external make : string => t = "TouchEvent";
-
 [@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "TouchEvent";

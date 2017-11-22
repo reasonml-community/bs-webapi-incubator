@@ -11,6 +11,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external timeStamp : T.t => float = "";
   [@bs.get] external type_ : T.t => string = "type";
   [@bs.get] external isTrusted : T.t => bool = "";
+
   [@bs.send.pipe : T.t] external preventDefault : unit = "";
   [@bs.send.pipe : T.t] external stopImmediatePropagation : unit = "";
   [@bs.send.pipe : T.t] external stopPropagation : unit = "";
@@ -18,17 +19,14 @@ module Impl = (T: {type t;}) => {
 
 type t = Dom.event;
 
-include
-  Impl(
-    {
-      type nonrec t = t;
-    }
-  );
+include Impl({ type nonrec t = t; });
 
 [@bs.new] external make : string => t = "Event";
-
 [@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "Event";
-/* Unimplemented Event interfaces
+
+
+/* 
+   Unimplemented Event interfaces
 
    AudioProcessingEvent /* deprecated */
    BeforeInputEvent /* experimental? Looks like it might just be an InputEvent */
@@ -54,4 +52,4 @@ include
    SensorEvent /* deprecated? */
    SVGEvent /* deprecated */
    UserProximityEvent /* experimental, Proximity Events */
-   */
+*/
