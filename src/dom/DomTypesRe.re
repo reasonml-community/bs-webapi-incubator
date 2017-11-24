@@ -138,7 +138,7 @@ let encodeInsertPosition =
   fun /* internal */
   | BeforeBegin => "beforebegin"
   | AfterBegin => "afterbegin"
-  | BeforeEnd => "beforeemd"
+  | BeforeEnd => "beforeend"
   | AfterEnd => "afterend";
 
 type modifierKey =
