@@ -8,6 +8,12 @@
   },
   "homepage": "https://github.com/reasonml-community/bs-webapi-incubator#readme",
   "main": "index.js",
+  "keywords": [
+    "reason",
+    "bucklescript",
+    "web",
+    "dom"
+  ],
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
