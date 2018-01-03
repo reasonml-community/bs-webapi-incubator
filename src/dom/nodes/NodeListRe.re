@@ -4,4 +4,4 @@ type t = Dom.nodeList;
 
 [@bs.get] external length : t => int = "";
 
-[@bs.send.pipe : t] external item : int => option(Dom.node) = "";
+[@bs.send.pipe : t] [@bs.return nullable] external item : int => option(Dom.node) = "";

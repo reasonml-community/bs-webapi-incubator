@@ -8,5 +8,5 @@ include EventTargetRe.Impl({ type nonrec t = t; });
 [@bs.get] external localName : t => string = "";
 [@bs.get] external name : t => string = "";
 [@bs.get] external value : t => string = "";
-[@bs.get] external ownerElement : t => option(Dom.element) = "";
+[@bs.get] [@bs.return nullable] external ownerElement : t => option(Dom.element) = "";
 [@bs.get] external specified : t => bool = ""; /* useless; always returns true (exact wording from spec) */

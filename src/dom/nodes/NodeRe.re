@@ -4,7 +4,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] [@bs.return null_to_opt] external firstChild : T.t => option(Dom.node) = "";
   [@bs.get] external innerText : T.t => string = "";
   [@bs.set] external setInnerText : (T.t, string) => unit = "innerText";
-  [@bs.get] external lastChild : T.t => option(Dom.node) = "";
+  [@bs.get] [@bs.return nullable] external lastChild : T.t => option(Dom.node) = "";
   [@bs.get] [@bs.return null_to_opt] external nextSibling : T.t => option(Dom.node) = "";
   [@bs.get] external nodeName : T.t => string = ""; /* nodePrincipal */
   [@bs.get] external nodeType : T.t => int /* nodeType enum */ = "";

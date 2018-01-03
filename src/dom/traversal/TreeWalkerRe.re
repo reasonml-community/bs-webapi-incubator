@@ -6,10 +6,10 @@ type t = Dom.treeWalker;
 [@bs.get] external currentNode : t => Dom.node = "";
 [@bs.set] external setCurrentNode : (t, Dom.node) => unit = "";
 
-[@bs.send.pipe : t] external parentNode : option(Dom.node) = "";
-[@bs.send.pipe : t] external firstChild : option(Dom.node) = "";
-[@bs.send.pipe : t] external lastChild : option(Dom.node) = "";
-[@bs.send.pipe : t] external previousSibling : option(Dom.node) = "";
-[@bs.send.pipe : t] external nextSibling : option(Dom.node) = "";
-[@bs.send.pipe : t] external previousNode : option(Dom.node) = "";
-[@bs.send.pipe : t] external nextNode : option(Dom.node) = "";
+[@bs.send.pipe : t] [@bs.return nullable] external parentNode : option(Dom.node) = "";
+[@bs.send.pipe : t] [@bs.return nullable] external firstChild : option(Dom.node) = "";
+[@bs.send.pipe : t] [@bs.return nullable] external lastChild : option(Dom.node) = "";
+[@bs.send.pipe : t] [@bs.return nullable] external previousSibling : option(Dom.node) = "";
+[@bs.send.pipe : t] [@bs.return nullable] external nextSibling : option(Dom.node) = "";
+[@bs.send.pipe : t] [@bs.return nullable] external previousNode : option(Dom.node) = "";
+[@bs.send.pipe : t] [@bs.return nullable] external nextNode : option(Dom.node) = "";
