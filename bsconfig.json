@@ -5,6 +5,7 @@
 {
   "name": "bs-webapi",
   "bsc-flags": ["-bs-no-version-header", "-bs-super-errors"],
+  "allowed-build-kinds": "js",
   "sources": [
     {
       "dir": "src",
