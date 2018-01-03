@@ -91,3 +91,8 @@ switch (document |> body) {
   ...
 }
 */
+
+
+/* non-standard event-specific listener API - log screen coordinates of mouse cursor when moved */
+document |> Document.createElement("div")
+         |> Element.addMouseMoveEventListener(e => (MouseEvent.screenX(e), MouseEvent.screenY(e)) |> Js.log);

@@ -18,6 +18,10 @@
     {
       "dir": "examples",
       "type": "dev"
+    },
+    {
+      "dir": "scripts",
+      "type": "dev"
     }
   ],
   "refmt": 3
