@@ -2,7 +2,7 @@ type t = Dom.treeWalker;
 
 [@bs.get] external root : t => Dom.node = "";
 [@bs.get] external whatToShow : t => DomTypesRe.WhatToShow.t = "";
-[@bs.get] [@bs.return null_to_opt] external filter : t => option(Dom.nodeFilter) = "";
+[@bs.get] [@bs.return nullable] external filter : t => option(Dom.nodeFilter) = "";
 [@bs.get] external currentNode : t => Dom.node = "";
 [@bs.set] external setCurrentNode : (t, Dom.node) => unit = "";
 

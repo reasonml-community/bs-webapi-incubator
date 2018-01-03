@@ -1,15 +1,15 @@
 module Impl = (T: {type t;}) => {
   /* baseURI */
   [@bs.get] external childNodes : T.t => Dom.nodeList = "";
-  [@bs.get] [@bs.return null_to_opt] external firstChild : T.t => option(Dom.node) = "";
+  [@bs.get] [@bs.return nullable] external firstChild : T.t => option(Dom.node) = "";
   [@bs.get] external innerText : T.t => string = "";
   [@bs.set] external setInnerText : (T.t, string) => unit = "innerText";
   [@bs.get] [@bs.return nullable] external lastChild : T.t => option(Dom.node) = "";
-  [@bs.get] [@bs.return null_to_opt] external nextSibling : T.t => option(Dom.node) = "";
+  [@bs.get] [@bs.return nullable] external nextSibling : T.t => option(Dom.node) = "";
   [@bs.get] external nodeName : T.t => string = ""; /* nodePrincipal */
   [@bs.get] external nodeType : T.t => int /* nodeType enum */ = "";
   let nodeType: T.t => DomTypesRe.nodeType = (self) => DomTypesRe.decodeNodeType(nodeType(self));
-  [@bs.get] [@bs.return null_to_opt] external nodeValue : T.t => option(string) = "";
+  [@bs.get] [@bs.return nullable] external nodeValue : T.t => option(string) = "";
   [@bs.set] external setNodeValue : (T.t, Js.null(string)) => unit = "nodeValue";
   /* let setNodeValue : T.t => option string => unit = fun self value => setNodeValue self (Js.Null.from_opt value); */ /* temporarily removed to reduce codegen size */
   /* Not supported yet
@@ -18,9 +18,9 @@ module Impl = (T: {type t;}) => {
   */
   /* outerText */
   [@bs.get] external ownerDocument : T.t => Dom.document = "";
-  [@bs.get] [@bs.return null_to_opt] external parentElement : T.t => option(Dom.element) = "";
-  [@bs.get] [@bs.return null_to_opt] external parentNode : T.t => option(Dom.node) = "";
-  [@bs.get] [@bs.return null_to_opt] external previousSibling : T.t => option(Dom.node) = "";
+  [@bs.get] [@bs.return nullable] external parentElement : T.t => option(Dom.element) = "";
+  [@bs.get] [@bs.return nullable] external parentNode : T.t => option(Dom.node) = "";
+  [@bs.get] [@bs.return nullable] external previousSibling : T.t => option(Dom.node) = "";
   [@bs.get] external rootNode : T.t => Dom.node = "";
   [@bs.get] external textContent : T.t => string = "";
   [@bs.set] external setTextContent : (T.t, string) => unit = "textContent";
@@ -41,8 +41,8 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external isDefaultNamespace : string => bool = "";
   [@bs.send.pipe : T.t] external isEqualNode : Dom.node_like('a) => bool = "";
   [@bs.send.pipe : T.t] external isSameNode : Dom.node_like('a) => bool = "";
-  [@bs.send.pipe : T.t] [@bs.return null_to_opt] external lookupNamespaceURI : string => option(string) = "";
-  [@bs.send.pipe : T.t] [@bs.return null_to_opt] external lookupDefaultNamespaceURI : ([@bs.as {json|null|json}] _) => option(string) = "lookupNamespaceURI";
+  [@bs.send.pipe : T.t] [@bs.return nullable] external lookupNamespaceURI : string => option(string) = "";
+  [@bs.send.pipe : T.t] [@bs.return nullable] external lookupDefaultNamespaceURI : ([@bs.as {json|null|json}] _) => option(string) = "lookupNamespaceURI";
   [@bs.send.pipe : T.t] external lookupPrefix : string = "lookupPrefix";
   [@bs.send.pipe : T.t] external normalize : unit = "";
   [@bs.send.pipe : T.t] external removeChild : Dom.node_like('a) => Dom.node_like('a) = "";

@@ -2,7 +2,7 @@ type t = Dom.domTokenList;
 
 [@bs.get] external length : t => int = "";
 
-[@bs.send.pipe : t] [@bs.return {undefined_to_opt: undefined_to_opt}] external item : int => option(string) = "";
+[@bs.send.pipe : t] [@bs.return nullable] external item : int => option(string) = "";
 [@bs.send.pipe : t] external add : string => unit = "";
 [@bs.send.pipe : t] [@bs.splice] external addMany : array(string) => unit = "add";
 [@bs.send.pipe : t] external contains : string => bool = "contains";

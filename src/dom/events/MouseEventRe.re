@@ -12,8 +12,8 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external offsetY : T.t => int = ""; /* experimental, but widely supported */
   [@bs.get] external pageX : T.t => int = ""; /* experimental, but widely supported */
   [@bs.get] external pageY : T.t => int = ""; /* experimental, but widely supported */
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external region : T.t => option(string) = "";
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external relatedTarget : T.t => option(Dom.eventTarget) = "";
+  [@bs.get] [@bs.return nullable] external region : T.t => option(string) = "";
+  [@bs.get] [@bs.return nullable] external relatedTarget : T.t => option(Dom.eventTarget) = "";
   [@bs.get] external screenX : T.t => int = "";
   [@bs.get] external screenY : T.t => int = "";
   [@bs.get] external shiftKey : T.t => bool = "";

@@ -27,10 +27,10 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external hidden : T.t => bool = "";
   [@bs.get] external implementation : T.t => Dom.domImplementation = "";
   [@bs.get] external lastStyleSheetSet : T.t => string = "";
-  [@bs.get] [@bs.return null_to_opt] external pointerLockElement : T.t => option(Dom.element) = ""; /* experimental */
+  [@bs.get] [@bs.return nullable] external pointerLockElement : T.t => option(Dom.element) = ""; /* experimental */
 
   [@bs.get] external preferredStyleSheetSet : T.t => string = "";
-  [@bs.get] [@bs.return null_to_opt] external scrollingElement : T.t => option(Dom.element) = "";
+  [@bs.get] [@bs.return nullable] external scrollingElement : T.t => option(Dom.element) = "";
   [@bs.get] external selectedStyleSheetSet : T.t => string = "";
   [@bs.set] external setSelectedStyleSheetSet : (T.t, string) => unit = "selectedStyleSheetSet";
   [@bs.get] external styleSheets : T.t => array(Dom.cssStyleSheet) = ""; /* return StyleSheetList, not array */

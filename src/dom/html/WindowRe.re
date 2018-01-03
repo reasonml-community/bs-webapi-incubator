@@ -25,7 +25,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external console : t_window => console = "";
   [@bs.get] external crypto : t_window => crypto = "";
   [@bs.get] external document : t_window => Dom.document = "";
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external frameElement : t_window => option(Dom.element) = ""; /* experimental? */
+  [@bs.get] [@bs.return nullable] external frameElement : t_window => option(Dom.element) = ""; /* experimental? */
   [@bs.get] external frames : t_window => frameList = "";
   [@bs.get] external fullScreen : t_window => bool = "";
   [@bs.get] external history : t_window => Dom.history = "";
@@ -41,7 +41,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external name : t_window => string = "";
   [@bs.set] external setName : (t_window, string) => unit = "name";
   [@bs.get] external navigator : t_window => navigator = "";
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external opener : t_window => option(Dom.window) = "";
+  [@bs.get] [@bs.return nullable] external opener : t_window => option(Dom.window) = "";
   [@bs.get] external outerWidth : t_window => int = "";
   [@bs.get] external outerHeight : t_window => int = "";
   [@bs.get] external pageXOffset : t_window => int = ""; /* alias for screenX */
@@ -77,7 +77,7 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : t_window] external matchMedia : string => mediaQueryList = ""; /* experimental, CSSOM View module */
   [@bs.send.pipe : t_window] external moveBy : (int, int) => unit = ""; /* experimental, CSSOM View module */
   [@bs.send.pipe : t_window] external moveTo : (int, int) => unit = ""; /* experimental, CSSOM View module */
-  [@bs.send.pipe : t_window] [@bs.return {null_to_opt: null_to_opt}] external open_ : (~url: string, ~name: string, ~features: string) => option(Dom.window) = "open"; /* yes, features is a stringly typed list of key value pairs, sigh */
+  [@bs.send.pipe : t_window] [@bs.return nullable] external open_ : (~url: string, ~name: string, ~features: string) => option(Dom.window) = "open"; /* yes, features is a stringly typed list of key value pairs, sigh */
   [@bs.send.pipe : t_window] external postMessage : ('a, string) => unit = ""; /* experimental-ish?, Web Messaging */
   [@bs.send.pipe : t_window] external postMessageWithTransfers : ('a, string, array(transferable)) => unit = "postMessage"; /* experimental-ish?, Web Messaging */
   [@bs.send.pipe : t_window] external print : unit = "";

@@ -1,12 +1,12 @@
 module Impl = (T: {type t;}) => {
   type t_htmlDocument = T.t;
 
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external activeElement : t_htmlDocument => option(Dom.element) = "";
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external body : t_htmlDocument => option(Dom.element) = ""; /* returns option HTMLBodyElement */
+  [@bs.get] [@bs.return nullable] external activeElement : t_htmlDocument => option(Dom.element) = "";
+  [@bs.get] [@bs.return nullable] external body : t_htmlDocument => option(Dom.element) = ""; /* returns option HTMLBodyElement */
   [@bs.set] external setBody : (t_htmlDocument, Dom.element) => unit = "body"; /* accepth HTMLBodyElement */
   [@bs.get] external cookie : t_htmlDocument => string = "";
   [@bs.set] external setCookie : (t_htmlDocument, string) => unit = "cookie";
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external defaultView : t_htmlDocument => option(Dom.window) = "";
+  [@bs.get] [@bs.return nullable] external defaultView : t_htmlDocument => option(Dom.window) = "";
   [@bs.get] external designMode : t_htmlDocument => string /* designMode enum */ = "";
   let designMode: t_htmlDocument => DomTypesRe.designMode =
     (self) => DomTypesRe.decodeDesignMode(designMode(self));
@@ -18,7 +18,7 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setDir : (t_htmlDocument, string /* dir enum */) => unit = "dir";
   let setDir: (t_htmlDocument, DomTypesRe.dir) => unit =
     (self, value) => setDir(self, DomTypesRe.encodeDir(value));
-  [@bs.get] [@bs.return {null_to_opt: null_to_opt}] external domain : t_htmlDocument => option(string) = "";
+  [@bs.get] [@bs.return nullable] external domain : t_htmlDocument => option(string) = "";
   [@bs.set] external setDomain : (t_htmlDocument, string) => unit = "domain";
   [@bs.get] external embeds : t_htmlDocument => Dom.nodeList = "";
   [@bs.get] external forms : t_htmlDocument => Dom.htmlCollection = "";

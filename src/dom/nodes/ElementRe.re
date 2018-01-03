@@ -31,10 +31,10 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external innerHTML : T.t => string = "";
   [@bs.set] external setInnerHTML : (T.t, string) => unit = "innerHTML";
   [@bs.get] external localName : T.t => string = "";
-  [@bs.get] [@bs.return null_to_opt] external namespaceURI : T.t => option(string) = "";
+  [@bs.get] [@bs.return nullable] external namespaceURI : T.t => option(string) = "";
   [@bs.get] external outerHTML : T.t => string = ""; /* experimental, but widely supported */
   [@bs.set] external setOuterHTML : (T.t, string) => unit = "outerHTML"; /* experimental, but widely supported */
-  [@bs.get] [@bs.return null_to_opt] external prefix : T.t => option(string) = "";
+  [@bs.get] [@bs.return nullable] external prefix : T.t => option(string) = "";
   [@bs.get] external scrollHeight : T.t => int = ""; /* experimental, but widely supported */
   [@bs.get] external scrollLeft : T.t => int = ""; /* experimental */
   [@bs.set] external setScrollLeft : (T.t, int) => unit = "scrollLeft"; /* experimental */
@@ -52,8 +52,8 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external animate : (Js.t({..}), Js.t({..})) => Dom.animation = ""; /* experimental */
   [@bs.send.pipe : T.t] external closest : string => Dom.element = ""; /* experimental */
   [@bs.send.pipe : T.t] external createShadowRoot : Dom.shadowRoot = ""; /* experimental AND deprecated (?!) */
-  [@bs.send.pipe : T.t] [@bs.return null_to_opt] external getAttribute : string => option(string) = "";
-  [@bs.send.pipe : T.t] [@bs.return null_to_opt] external getAttributeNS : (string, string) => option(string) = "";
+  [@bs.send.pipe : T.t] [@bs.return nullable] external getAttribute : string => option(string) = "";
+  [@bs.send.pipe : T.t] [@bs.return nullable] external getAttributeNS : (string, string) => option(string) = "";
   [@bs.send.pipe : T.t] external getBoundingClientRect : Dom.domRect = "";
   [@bs.send.pipe : T.t] external getClientRects : array(Dom.domRect) = "";
   [@bs.send.pipe : T.t] external getElementsByClassName : string => Dom.htmlCollection = "";
