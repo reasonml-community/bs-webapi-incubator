@@ -67,6 +67,16 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.8.0
+* Added `EventTarget.unsafeAsDocument`, `EventTarget.unsafeAsElement` and `EventTarget.unsafeAsWindow` functions
+* Removed deprecated `Bs_webapi` module`
+* Added event-specific listener APIs to `EventTarget`, e.g. `EventTarget.addMouseMoveListener(mouseEvent => ...)`
+* Added `requestCancellableAnimationFrame` and `cancelAnimationFrame`
+* Fixed msising `@bs.return` annotations causing type unsoundness
+* Fixed typo in encoding of `insertPosition` type
+* Added `Dom.HtmlImageElement`, `File` and `File.Url`
+* Fixed `HtmlElement.offsetParent` returning `int` instead of `Dom.Element`
+
 ### 0.7.0
 * Added `Webapi` module, Deprecated `Bs_webapi`
 * Removed deprecated Storage API
