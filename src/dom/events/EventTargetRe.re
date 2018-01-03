@@ -204,3 +204,7 @@ module Impl = (T: {type t;}) => {
 };
 
 include Impl({ type nonrec t = Dom.eventTarget; });
+
+external unsafeAsDocument : Dom.eventTarget => Dom.document = "%identity";
+external unsafeAsElement : Dom.eventTarget => Dom.element = "%identity";
+external unsafeAsWindow : Dom.eventTarget => Dom.window = "%identity";
