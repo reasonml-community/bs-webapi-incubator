@@ -29,9 +29,6 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external location : t_htmlDocument => Dom.location = "";
   [@bs.set] external setLocation : (t_htmlDocument, string) => unit = "location";
   [@bs.get] external plugins : t_htmlDocument => Dom.htmlCollection = "";
-  [@bs.get] external readyState : t_htmlDocument => string /* enum */ = "";
-  let readyState: t_htmlDocument => DomTypesRe.readyState =
-    (self) => DomTypesRe.decodeReadyState(readyState(self));
   [@bs.get] external referrer : t_htmlDocument => string = "";
   [@bs.get] external scripts : t_htmlDocument => Dom.htmlCollection = "";
   [@bs.get] external title : t_htmlDocument => string = "";
