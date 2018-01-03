@@ -30,6 +30,9 @@ module Impl = (T: {type t;}) => {
   [@bs.get] [@bs.return nullable] external pointerLockElement : T.t => option(Dom.element) = ""; /* experimental */
 
   [@bs.get] external preferredStyleSheetSet : T.t => string = "";
+  [@bs.get] external readyState : T.t => string /* enum */ = "";
+  let readyState: T.t => DomTypesRe.readyState =
+    (self) => DomTypesRe.decodeReadyState(readyState(self));
   [@bs.get] [@bs.return nullable] external scrollingElement : T.t => option(Dom.element) = "";
   [@bs.get] external selectedStyleSheetSet : T.t => string = "";
   [@bs.set] external setSelectedStyleSheetSet : (T.t, string) => unit = "selectedStyleSheetSet";
