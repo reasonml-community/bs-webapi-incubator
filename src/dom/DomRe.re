@@ -34,6 +34,7 @@ module Location = LocationRe;
 module MouseEvent = MouseEventRe;
 module MutationObserver = MutationObserverRe;
 module MutationRecord = MutationRecordRe;
+module NamedNodeMap = NamedNodeMapRe;
 module Node = NodeRe;
 module NodeFilter = NodeFilterRe;
 module NodeList = NodeListRe;
