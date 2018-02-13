@@ -42,7 +42,7 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : t_htmlDocument] external execCommand : (string, Js.boolean, Js.null(string)) => bool = "";
   let execCommand: (string, bool, option(string), t_htmlDocument) => bool =
     (command, show, value, self) =>
-      execCommand(command, Js.Boolean.to_js_boolean(show), Js.Null.from_opt(value), self);
+      execCommand(command, Js.Boolean.to_js_boolean(show), Js.Null.fromOption(value), self);
   [@bs.send.pipe : t_htmlDocument] external getElementsByName : string => Dom.nodeList = "";
   [@bs.send.pipe : t_htmlDocument] external getSelection : Dom.selection = "";
   [@bs.send.pipe : t_htmlDocument] external hasFocus : bool = "";

@@ -10,7 +10,7 @@ module Impl = (T: {type t;}) => {
   |}
   ];
   [@deprecated "Consider using Element.asHtmlElement or Element.unsafeAsHtmlElement instead"]
-  let ofElement: Dom.element => option(t_htmlElement) = (self) => Js.Null.to_opt(ofElement(self));
+  let ofElement: Dom.element => option(t_htmlElement) = (self) => Js.Null.toOption(ofElement(self));
 
   [@bs.get] external accessKey : t_htmlElement => string = "";
   [@bs.set] external setAccessKey : (t_htmlElement, string) => unit = "accessKey";

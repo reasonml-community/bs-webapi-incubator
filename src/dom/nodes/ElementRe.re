@@ -13,7 +13,7 @@ module Impl = (T: {type t;}) => {
   ];
   [@deprecated "asHtmlElement uses a weak heuristic, consider using unsafeAsHtmlElement instead"]
   let asHtmlElement: T.t => option(Dom.htmlElement) =
-    (self) => Js.Null.to_opt(asHtmlElement(self));
+    (self) => Js.Null.toOption(asHtmlElement(self));
 
   external unsafeAsHtmlElement : T.t => Dom.htmlElement = "%identity";
   let ofNode: Dom.node => option(T.t) = ofNode;

@@ -10,7 +10,7 @@ module Impl = (T: {type t;}) => {
   ];
   [@deprecated "Will fail if no doctype is defined, consider using usnafeAsHtmlDocument instead"]
   let asHtmlDocument: T.t => option(Dom.htmlDocument) =
-    (self) => Js.Null.to_opt(asHtmlDocument(self));
+    (self) => Js.Null.toOption(asHtmlDocument(self));
 
   external unsafeAsHtmlDocument : T.t => Dom.htmlDocument = "%identity";
 
