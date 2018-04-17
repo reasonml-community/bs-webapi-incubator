@@ -31,14 +31,14 @@ module Impl = (T: {type t;}) => {
   let setDir: (t_htmlElement, DomTypesRe.dir) => unit =
     (self, value) => setDir(self, DomTypesRe.encodeDir(value));
   [@bs.get] external draggable : t_htmlElement => bool = "";
-  [@bs.set] external setDraggable : (t_htmlElement, Js.boolean) => unit = "draggable";
+  [@bs.set] external setDraggable : (t_htmlElement, bool) => unit = "draggable";
   /*let setDraggable : t_htmlElement => bool => unit = fun self value => setDraggable self (Js.Boolean.to_js_boolean value);*/ /* temproarily removed to reduce codegen size */
   [@bs.get] external dropzone : t_htmlElement => Dom.domSettableTokenList = "";
   [@bs.get] external hidden : t_htmlElement => bool = "";
-  [@bs.set] external setHidden : (t_htmlElement, Js.boolean) => unit = "hidden";
+  [@bs.set] external setHidden : (t_htmlElement, bool) => unit = "hidden";
   /*let setHidden : t_htmlElement => bool => unit = fun self value => setHidden self (Js.Boolean.to_js_boolean value);*/ /* temproarily removed to reduce codegen size */
   [@bs.get] external itemScope : t_htmlElement => bool = ""; /* experimental */
-  [@bs.set] external setItemScope : (t_htmlElement, Js.boolean) => unit = "itemScope";
+  [@bs.set] external setItemScope : (t_htmlElement, bool) => unit = "itemScope";
   /*let setItemScope : t_htmlElement => bool => unit = fun self value => setItemScope self (Js.Boolean.to_js_boolean value);*//* experimental */ /* temproarily removed to reduce codegen size */
   [@bs.get] external itemType : t_htmlElement => Dom.domSettableTokenList = ""; /* experimental */
   [@bs.get] external itemId : t_htmlElement => string = ""; /* experimental */
@@ -56,7 +56,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external offsetWidth : t_htmlElement => int = ""; /* experimental */
   /*external properties : r => HTMLPropertiesCollection.t = "properties" [@@bs.get]; /* experimental */*/
   [@bs.get] external spellcheck : t_htmlElement => bool = "";
-  [@bs.set] external setSpellcheck : (t_htmlElement, Js.boolean) => unit = "spellcheck" ;
+  [@bs.set] external setSpellcheck : (t_htmlElement, bool) => unit = "spellcheck" ;
   /*let setSpellcheck : t_htmlElement => bool => unit = fun self value => setSpellcheck self (Js.Boolean.to_js_boolean value);*/ /* temproarily removed to reduce codegen size */
   [@bs.get] external style : t_htmlElement => Dom.cssStyleDeclaration = "";
   [@bs.set] external setStyle : (t_htmlElement, Dom.cssStyleDeclaration) => unit = "style";
@@ -65,7 +65,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external title : t_htmlElement => string = "";
   [@bs.set] external setTitle : (t_htmlElement, string) => unit = "title";
   [@bs.get] external translate : t_htmlElement => bool = ""; /* experimental */
-  [@bs.set] external setTranslate : (t_htmlElement, Js.boolean) => unit = "translate"; /* experimental */
+  [@bs.set] external setTranslate : (t_htmlElement, bool) => unit = "translate"; /* experimental */
   /*let setTranslate : t_htmlElement => bool => unit = fun self value => setTranslate self (Js.Boolean.to_js_boolean value);*/ /* temproarily removed to reduce codegen size */
 
   [@bs.send.pipe : t_htmlElement] external blur : unit = "";

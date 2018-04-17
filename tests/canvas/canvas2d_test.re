@@ -51,7 +51,7 @@ ctx |> lineTo(~x=1., ~y=2.);
 ctx |> quadraticCurveTo(~cp1x=1., ~cp1y=1., ~x=1., ~y=1.);
 ctx |> bezierCurveTo(~cp1x=1., ~cp1y=1., ~cp2x=2., ~cp2y=2., ~x=4., ~y=4.);
 ctx |> arcTo(~x1=1., ~y1=1., ~x2=2., ~y2=2., ~r=4.);
-ctx |> arc(~x=1., ~y=1., ~r=4., ~startAngle=1., ~endAngle=3., ~anticw=Js.true_);
+ctx |> arc(~x=1., ~y=1., ~r=4., ~startAngle=1., ~endAngle=3., ~anticw=true);
 ctx |> rect(~x=0., ~y=0., ~w=10., ~h=10.);
 let _ = ctx |> isPointInPath(~x=0., ~y=0.);
 

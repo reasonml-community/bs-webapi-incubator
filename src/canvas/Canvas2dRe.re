@@ -174,9 +174,9 @@ let strokeStyle = (ctx: t) =>
 [@bs.send.pipe : t] external quadraticCurveTo : (~cp1x: float, ~cp1y: float, ~x: float, ~y: float) => unit = "";
 [@bs.send.pipe : t] external bezierCurveTo : (~cp1x: float, ~cp1y: float, ~cp2x: float, ~cp2y: float, ~x: float, ~y: float) => unit = "";
 [@bs.send.pipe : t] external arcTo : (~x1: float, ~y1: float, ~x2: float, ~y2: float, ~r: float) => unit = "";
-[@bs.send.pipe : t] external arc : (~x: float, ~y: float, ~r: float, ~startAngle: float, ~endAngle: float, ~anticw: Js.boolean) => unit = "";
+[@bs.send.pipe : t] external arc : (~x: float, ~y: float, ~r: float, ~startAngle: float, ~endAngle: float, ~anticw: bool) => unit = "";
 [@bs.send.pipe : t] external rect : (~x: float, ~y: float, ~w: float, ~h: float) => unit = "";
-[@bs.send.pipe : t] external isPointInPath : (~x: float, ~y: float) => Js.boolean = "";
+[@bs.send.pipe : t] external isPointInPath : (~x: float, ~y: float) => bool = "";
 
 /* Text */
 [@bs.set] external font : (t, string) => unit = "";

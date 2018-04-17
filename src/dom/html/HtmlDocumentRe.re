@@ -37,12 +37,12 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external title : t_htmlDocument => string = "";
   [@bs.set] external setTitle : (t_htmlDocument, string) => unit = "title";
   [@bs.get] external url : t_htmlDocument => string = "URL";
-  
+
   [@bs.send.pipe : t_htmlDocument] external close : unit = "";
-  [@bs.send.pipe : t_htmlDocument] external execCommand : (string, Js.boolean, Js.null(string)) => bool = "";
+  [@bs.send.pipe : t_htmlDocument] external execCommand : (string, bool, Js.null(string)) => bool = "";
   let execCommand: (string, bool, option(string), t_htmlDocument) => bool =
     (command, show, value, self) =>
-      execCommand(command, Js.Boolean.to_js_boolean(show), Js.Null.fromOption(value), self);
+      execCommand(command, show, Js.Null.fromOption(value), self);
   [@bs.send.pipe : t_htmlDocument] external getElementsByName : string => Dom.nodeList = "";
   [@bs.send.pipe : t_htmlDocument] external getSelection : Dom.selection = "";
   [@bs.send.pipe : t_htmlDocument] external hasFocus : bool = "";
