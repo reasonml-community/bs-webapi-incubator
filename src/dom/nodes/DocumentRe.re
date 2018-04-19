@@ -21,7 +21,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external compatMode : T.t => string /* compatMode enum */ = ""; /* experimental */
   let compatMode: T.t => DomTypesRe.compatMode =
     (self) => DomTypesRe.decodeCompatMode(compatMode(self));
-  [@bs.get] external docType : T.t => Dom.documentType = "";
+  [@bs.get] external doctype : T.t => Dom.documentType = "";
   [@bs.get] external documentElement : T.t => Dom.element = "";
   [@bs.get] external documentURI : T.t => string = "";
   [@bs.get] external hidden : T.t => bool = "";
