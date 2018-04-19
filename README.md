@@ -67,6 +67,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.9.1
+* Renamed `Document.docType` to `Document.doctype` to fix #95
+
 ### 0.9.0
 * Support `bs-platform@3.0.0`. If your app isn't using that version, then don't upgrade to `0.9.0`; otherwise, please do!
 
