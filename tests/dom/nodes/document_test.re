@@ -5,7 +5,7 @@ let el = document |> createElement("strong");
 
 let _ = characterSet(document);
 let _ = compatMode(document);
-let _ = docType(document);
+let _ = doctype(document);
 let _ = documentElement(document);
 let _ = documentURI(document);
 let _ = hidden(document);
