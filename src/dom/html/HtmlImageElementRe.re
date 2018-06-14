@@ -7,3 +7,8 @@ type t;
 [@bs.set] external onload : (t, unit => unit) => unit = "";
 [@bs.get] external naturalHeight : t => string = "";
 [@bs.get] external naturalWidth : t => string = "";
+
+include NodeRe.Impl({ type nonrec t = t; });
+include EventTargetRe.Impl({ type nonrec t = t; });
+include ElementRe.Impl({ type nonrec t = t; });
+include HtmlElementRe.Impl({ type nonrec t = t; });
