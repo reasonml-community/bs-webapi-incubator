@@ -1,8 +1,8 @@
 type t = Dom.selection;
 
-[@bs.get] external anchorNode : t => Dom.node = "";
+[@bs.get] [@bs.return nullable] external anchorNode : t => option(Dom.node) = "";
 [@bs.get] external anchorOffset : t => int = "";
-[@bs.get] external focusNode : t => Dom.node = "";
+[@bs.get] [@bs.return nullable] external focusNode : t => option(Dom.node) = "";
 [@bs.get] external focusOffset : t => int = "";
 [@bs.get] external isCollapsed : t => bool = "";
 [@bs.get] external rangeCount : t => int = "";
