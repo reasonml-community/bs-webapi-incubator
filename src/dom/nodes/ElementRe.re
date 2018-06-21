@@ -50,7 +50,7 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external attachShadowOpen : ([@bs.as {json|{ "mode": "open" }|json}] _) => Dom.shadowRoot = "attachShadow"; /* experimental */
   [@bs.send.pipe : T.t] external attachShadowClosed : ([@bs.as {json|{ "mode": "closed" }|json}] _) => Dom.shadowRoot = "attachShadow"; /* experimental */
   [@bs.send.pipe : T.t] external animate : (Js.t({..}), Js.t({..})) => Dom.animation = ""; /* experimental */
-  [@bs.send.pipe : T.t] external closest : string => Dom.element = ""; /* experimental */
+  [@bs.send.pipe : T.t] [@bs.return nullable] external closest : string => option(Dom.element) = ""; /* experimental */
   [@bs.send.pipe : T.t] external createShadowRoot : Dom.shadowRoot = ""; /* experimental AND deprecated (?!) */
   [@bs.send.pipe : T.t] [@bs.return nullable] external getAttribute : string => option(string) = "";
   [@bs.send.pipe : T.t] [@bs.return nullable] external getAttributeNS : (string, string) => option(string) = "";
