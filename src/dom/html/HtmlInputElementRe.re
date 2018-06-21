@@ -1,113 +1,123 @@
-module Impl (T: { type t; }) => {
+module Impl = (T: {type t;}) => {
   type t_htmlInputElement = T.t;
 
-  external form : t_htmlInputElement => Js.null Dom.htmlFormElement = "" [@@bs.get];
-  external formAction : t_htmlInputElement => string = "" [@@bs.get];
-  external setFormAction : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external formEncType : t_htmlInputElement => string = "" [@@bs.get];
-  external setFormEncType : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external formMethod : t_htmlInputElement => string = "" [@@bs.get];
-  external setFormMethod : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external formNoValidate : t_htmlInputElement => Js.boolean = "" [@@bs.get];
-  external setFormNoValidate : t_htmlInputElement => Js.boolean => unit = "" [@@bs.set];
-  external formTarget : t_htmlInputElement => string = "" [@@bs.get];
-  external setFormTarget : t_htmlInputElement => string => unit = "" [@@bs.set];
+  [@bs.get] [@bs.return nullable] external form : t_htmlInputElement => option(Dom.htmlFormElement) = "";
+  [@bs.get] external formAction : t_htmlInputElement => string = "";
+  [@bs.set] external setFormAction : (t_htmlInputElement, string) => unit = "formAction";
+  [@bs.get] external formEncType : t_htmlInputElement => string = "";
+  [@bs.set] external setFormEncType : (t_htmlInputElement, string) => unit = "formEncType";
+  [@bs.get] external formMethod : t_htmlInputElement => string = "";
+  [@bs.set] external setFormMethod : (t_htmlInputElement, string) => unit = "formMethod";
+  [@bs.get] external formNoValidate : t_htmlInputElement => bool = "noValidate";
+  [@bs.set] external setFormNoValidate : (t_htmlInputElement, bool) => unit = "noValidate";
+  [@bs.get] external formTarget : t_htmlInputElement => string = "";
+  [@bs.set] external setFormTarget : (t_htmlInputElement, string) => unit = "formTarget";
 
-  external name : t_htmlInputElement => string = "" [@@bs.get];
-  external setName : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external type_ : t_htmlInputElement => string = "" [@@bs.get];
-  external setType : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external disabled : t_htmlInputElement => Js.boolean = "" [@@bs.get];
-  external setDisabled : t_htmlInputElement => Js.boolean => unit = "" [@@bs.set];
-  external autofocus : t_htmlInputElement => Js.boolean = "" [@@bs.get];
-  external setAutofocus : t_htmlInputElement => Js.boolean => unit = "" [@@bs.set];
-  external required : t_htmlInputElement => Js.boolean = "" [@@bs.get];
-  external setRequired : t_htmlInputElement => Js.boolean => unit = "" [@@bs.set];
-  external value : t_htmlInputElement => string = "" [@@bs.get];
-  external setValue : t_htmlInputElement => string => unit = "" [@@bs.set];
-  /* TODO validity: ValidityState object. Returns the validity state that this element is in. */
-  external validationMessage : t_htmlInputElement => string = "" [@@bs.get];
-  external willValidate : t_htmlInputElement => Js.boolean = "" [@@bs.get];
+  /* Properties that apply to any type of input element that is not hidden */
+  [@bs.get] external name : t_htmlInputElement => string = "";
+  [@bs.set] external setName : (t_htmlInputElement, string) => unit = "name";
+  [@bs.get] external type_ : t_htmlInputElement => string = "type";
+  [@bs.set] external setType : (t_htmlInputElement, string) => unit = "type";
+  [@bs.get] external disabled : t_htmlInputElement => bool = "";
+  [@bs.set] external setDisabled : (t_htmlInputElement, bool) => unit = "disabled";
+  [@bs.get] external autofocus : t_htmlInputElement => bool = "";
+  [@bs.set] external setAutofocus : (t_htmlInputElement, bool) => unit = "autofocus";
+  [@bs.get] external required : t_htmlInputElement => bool = "";
+  [@bs.set] external setRequired : (t_htmlInputElement, bool) => unit = "required";
+  [@bs.get] external value : t_htmlInputElement => string = "";
+  [@bs.set] external setValue : (t_htmlInputElement, string) => unit = "value";
+  /* TODO: validity: ValidityState object. Returns the validity state that this element is in. */
+  [@bs.get] external validationMessage : t_htmlInputElement => string = "";
+  [@bs.get] external willValidate : t_htmlInputElement => bool = "";
 
-  /* Only type "checkbox" or "radio" */
-  external checked : t_htmlInputElement => Js.boolean = "" [@@bs.get];
-  external setChecked : t_htmlInputElement => Js.boolean => unit = "" [@@bs.set];
-  external defaultChecked : t_htmlInputElement => Js.boolean = "" [@@bs.get];
-  external setDefaultChecked : t_htmlInputElement => Js.boolean => unit = "" [@@bs.set];
-  external indeterminate : t_htmlInputElement => Js.boolean = "" [@@bs.get];
-  external setIndeterminate : t_htmlInputElement => Js.boolean => unit = "" [@@bs.set];
+  /* Properties that apply only to elements of type "checkbox" or "radio" */
+  [@bs.get] external checked : t_htmlInputElement => bool = "";
+  [@bs.set] external setChecked : (t_htmlInputElement, bool) => unit = "checked";
+  [@bs.get] external defaultChecked : t_htmlInputElement => bool = "";
+  [@bs.set] external setDefaultChecked : (t_htmlInputElement, bool) => unit = "defaultChecked";
+  [@bs.get] external indeterminate : t_htmlInputElement => bool = "";
+  [@bs.set] external setIndeterminate : (t_htmlInputElement, bool) => unit = "indeterminate";
 
-  /* Only type "image" */
-  external alt : t_htmlInputElement => string = "" [@@bs.get];
-  external setAlt : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external height : t_htmlInputElement => string = "" [@@bs.get];
-  external setHeight : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external src : t_htmlInputElement => string = "" [@@bs.get];
-  external setSrc : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external width : t_htmlInputElement => string = "" [@@bs.get];
-  external setWidth : t_htmlInputElement => string => unit = "" [@@bs.set];
+  /* Properties that apply only to elements of type "image" */
+  [@bs.get] external alt : t_htmlInputElement => string = "";
+  [@bs.set] external setAlt : (t_htmlInputElement, string) => unit = "alt";
+  [@bs.get] external height : t_htmlInputElement => string = "";
+  [@bs.set] external setHeight : (t_htmlInputElement, string) => unit = "height";
+  [@bs.get] external src : t_htmlInputElement => string = "";
+  [@bs.set] external setSrc : (t_htmlInputElement, string) => unit = "src";
+  [@bs.get] external width : t_htmlInputElement => string = "";
+  [@bs.set] external setWidth : (t_htmlInputElement, string) => unit = "width";
 
-  /* Only type "file" */
-  external accept : t_htmlInputElement => string = "" [@@bs.get];
-  external setAccept : t_htmlInputElement => string => unit = "" [@@bs.set];
-  /* TODO files: Returns/accepts a FileList object. */
+  /* Properties that apply only to elements of type "file" */
+  [@bs.get] external accept : t_htmlInputElement => string = "";
+  [@bs.set] external setAccept : (t_htmlInputElement, string) => unit = "accept";
+  /* TODO: files: Returns/accepts a FileList object. */
 
-  /* Only text/number-containing or elements */
-  external autocomplete : t_htmlInputElement => string = "" [@@bs.get];
-  external setAutocomplete : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external maxLength : t_htmlInputElement => int = "" [@@bs.get];
-  external setMaxLength : t_htmlInputElement => int => unit = "" [@@bs.set];
-  external size : t_htmlInputElement => int = "" [@@bs.get];
-  external setSize : t_htmlInputElement => int => unit = "" [@@bs.set];
-  external pattern : t_htmlInputElement => string = "" [@@bs.get];
-  external setPattern : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external placeholder : t_htmlInputElement => string = "" [@@bs.get];
-  external setPlaceholder : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external readOnly : t_htmlInputElement => Js.boolean = "" [@@bs.get];
-  external setReadOnly : t_htmlInputElement => Js.boolean => unit = "" [@@bs.set];
-  external min : t_htmlInputElement => string = "" [@@bs.get];
-  external setMin : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external max : t_htmlInputElement => string = "" [@@bs.get];
-  external setMax : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external selectionStart : t_htmlInputElement => int = "" [@@bs.get];
-  external setSelectionStart : t_htmlInputElement => int => unit = "" [@@bs.set];
-  external selectionEnd : t_htmlInputElement => int = "" [@@bs.get];
-  external setSelectionEnd : t_htmlInputElement => int => unit = "" [@@bs.set];
-  external selectionDirection : t_htmlInputElement => string = "" [@@bs.get];
-  external setSelectionDirection : t_htmlInputElement => string => unit = "" [@@bs.set];
+  /* Properties that apply only to text/number-containing or elements */
+  [@bs.get] external autocomplete : t_htmlInputElement => string = "";
+  [@bs.set] external setAutocomplete : (t_htmlInputElement, string) => unit = "autocomplete";
+  [@bs.get] external maxLength : t_htmlInputElement => int = "";
+  [@bs.set] external setMaxLength : (t_htmlInputElement, int) => unit = "maxLength";
+  [@bs.get] external size : t_htmlInputElement => int = "";
+  [@bs.set] external setSize : (t_htmlInputElement, int) => unit = "size";
+  [@bs.get] external pattern : t_htmlInputElement => string = "";
+  [@bs.set] external setPattern : (t_htmlInputElement, string) => unit = "pattern";
+  [@bs.get] external placeholder : t_htmlInputElement => string = "";
+  [@bs.set] external setPlaceholder : (t_htmlInputElement, string) => unit = "placeholder";
+  [@bs.get] external readOnly : t_htmlInputElement => bool = "";
+  [@bs.set] external setReadOnly : (t_htmlInputElement, bool) => unit = "readOnly";
+  [@bs.get] external min : t_htmlInputElement => string = "";
+  [@bs.set] external setMin : (t_htmlInputElement, string) => unit = "min";
+  [@bs.get] external max : t_htmlInputElement => string = "";
+  [@bs.set] external setMax : (t_htmlInputElement, string) => unit = "max";
+  [@bs.get] external selectionStart : t_htmlInputElement => int = "";
+  [@bs.set] external setSelectionStart : (t_htmlInputElement, int) => unit = "selectionStart";
+  [@bs.get] external selectionEnd : t_htmlInputElement => int = "";
+  [@bs.set] external setSelectionEnd : (t_htmlInputElement, int) => unit = "selectionEnd";
+  [@bs.get] external selectionDirection : t_htmlInputElement => string = "";
+  [@bs.set] external setSelectionDirection : (t_htmlInputElement, string) => unit = "selectionDirection";
 
-  /* Not yet categorized */
-  external defaultValue : t_htmlInputElement => string = "" [@@bs.get];
-  external setDefaultValue : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external dirName : t_htmlInputElement => string = "" [@@bs.get];
-  external setDirName : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external accessKey : t_htmlInputElement => string = "" [@@bs.get];
-  external setAccessKey : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external list : t_htmlInputElement => Js.null Dom.htmlElement = "" [@@bs.get];
-  external multiple : t_htmlInputElement => Js.boolean = "" [@@bs.get];
-  external setMultiple : t_htmlInputElement => Js.boolean => unit = "" [@@bs.set];
-  /* TODO files: FileList array. Returns the list of selected files. */
-  external labels : t_htmlInputElement => array Dom.nodeList = "" [@@bs.get];
-  external step : t_htmlInputElement => string = "" [@@bs.get];
-  external setStep : t_htmlInputElement => string => unit = "" [@@bs.set];
-  external valueAsDate : t_htmlInputElement => Js.null Js.Date.t = "" [@@bs.get];
-  external setValueAsDate : t_htmlInputElement => Js.Date.t => unit = "" [@@bs.set];
-  external valueAsNumber : t_htmlInputElement => float = "" [@@bs.get];
+  /* Properties not yet categorized */
+  [@bs.get] external defaultValue : t_htmlInputElement => string = "";
+  [@bs.set] external setDefaultValue : (t_htmlInputElement, string) => unit = "defaultValue";
+  [@bs.get] external dirName : t_htmlInputElement => string = "";
+  [@bs.set] external setDirName : (t_htmlInputElement, string) => unit = "dirName";
+  [@bs.get] external accessKey : t_htmlInputElement => string = "";
+  [@bs.set] external setAccessKey : (t_htmlInputElement, string) => unit = "accessKey";
+  [@bs.get] [@bs.return nullable] external list : t_htmlInputElement => option(Dom.htmlElement) = "";
+  [@bs.get] external multiple : t_htmlInputElement => bool = "";
+  [@bs.set] external setMultiple : (t_htmlInputElement, bool) => unit = "multiple";
+  /* TODO: files: FileList array. Returns the list of selected files. */
+  [@bs.get] external labels : t_htmlInputElement => array(Dom.nodeList) = "";
+  [@bs.get] external step : t_htmlInputElement => string = "";
+  [@bs.set] external setStep : (t_htmlInputElement, string) => unit = "step";
+  [@bs.get] [@bs.return nullable] external valueAsDate : t_htmlInputElement => option(Js.Date.t) = "";
+  [@bs.set] external setValueAsDate : (t_htmlInputElement, Js.Date.t) => unit = "valueAsDate";
+  [@bs.get] external valueAsNumber : t_htmlInputElement => float = "";
 
-  external focus : unit = "" [@@bs.send.pipe: t_htmlInputElement];
-  external blur : unit = "" [@@bs.send.pipe: t_htmlInputElement];
-  external select : unit = "" [@@bs.send.pipe: t_htmlInputElement];
-  external click : unit = "" [@@bs.send.pipe: t_htmlInputElement];
-  external setSelectionRange : int => int => unit = "" [@@bs.send.pipe: t_htmlInputElement];
-  external setSelectionRangeWithDirection : int => int => string => unit = "" [@@bs.send.pipe: t_htmlInputElement];
-  /* TODO setRangeText */
-  external setCustomValidity : string => unit = "" [@@bs.send.pipe: t_htmlInputElement];
-  external checkValidity : Js.boolean = "" [@@bs.send.pipe: t_htmlInputElement];
-  external stepDown : unit = "" [@@bs.send.pipe: t_htmlInputElement];
-  external stepUp : unit = "" [@@bs.send.pipe: t_htmlInputElement];
+  [@bs.send.pipe: t_htmlInputElement] external focus : unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external blur : unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external select : unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external click : unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external setSelectionRange : (int, int) => unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external setSelectionRangeWithDirection : (int, int, string) => unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external setRangeTextWithinSelection : string => unit = "setRangeText";
+  [@bs.send.pipe: t_htmlInputElement] external setRangeTextWithinInterval : (int, int, string) => unit = "setRangeText";
+  [@bs.send.pipe: t_htmlInputElement] external setCustomValidity : string => unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external checkValidity : bool = "";
+  [@bs.send.pipe: t_htmlInputElement] external stepDown : unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external stepUp : unit = "";
 };
 
-include EventTargetRe.Impl { type t = Dom.htmlInputElement };
-include NodeRe.Impl { type t = Dom.htmlInputElement };
-include ElementRe.Impl { type t = Dom.htmlInputElement };
-include HtmlElementRe.Impl { type t = Dom.htmlInputElement };
+include EventTargetRe.Impl({
+  type t = Dom.htmlInputElement;
+});
+include NodeRe.Impl({
+  type t = Dom.htmlInputElement;
+});
+include ElementRe.Impl({
+  type t = Dom.htmlInputElement;
+});
+include HtmlElementRe.Impl({
+  type t = Dom.htmlInputElement;
+});
