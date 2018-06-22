@@ -31,7 +31,7 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setRequired : (t_htmlInputElement, bool) => unit = "required";
   [@bs.get] external value : t_htmlInputElement => string = "";
   [@bs.set] external setValue : (t_htmlInputElement, string) => unit = "value";
-  /* TODO: validity: ValidityState object. Returns the validity state that this element is in. */
+  [@bs.get] external validity : t_htmlInputElement => ValidityStateRe.t = "";
   [@bs.get] external validationMessage : t_htmlInputElement => string = "";
   [@bs.get] external willValidate : t_htmlInputElement => bool = "";
 
