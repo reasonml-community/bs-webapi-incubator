@@ -1,3 +1,8 @@
+/*
+ * Spec: https://html.spec.whatwg.org/multipage/input.html#the-input-element
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement
+ */
+
 module Impl = (T: {type t;}) => {
   type t_htmlInputElement = T.t;
 
@@ -8,8 +13,8 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setFormEncType : (t_htmlInputElement, string) => unit = "formEncType";
   [@bs.get] external formMethod : t_htmlInputElement => string = "";
   [@bs.set] external setFormMethod : (t_htmlInputElement, string) => unit = "formMethod";
-  [@bs.get] external formNoValidate : t_htmlInputElement => bool = "noValidate";
-  [@bs.set] external setFormNoValidate : (t_htmlInputElement, bool) => unit = "noValidate";
+  [@bs.get] external formNoValidate : t_htmlInputElement => bool = "";
+  [@bs.set] external setFormNoValidate : (t_htmlInputElement, bool) => unit = "formNoValidate";
   [@bs.get] external formTarget : t_htmlInputElement => string = "";
   [@bs.set] external setFormTarget : (t_htmlInputElement, string) => unit = "formTarget";
 
@@ -58,6 +63,8 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setAutocomplete : (t_htmlInputElement, string) => unit = "autocomplete";
   [@bs.get] external maxLength : t_htmlInputElement => int = "";
   [@bs.set] external setMaxLength : (t_htmlInputElement, int) => unit = "maxLength";
+  [@bs.get] external minLength : t_htmlInputElement => int = "";
+  [@bs.set] external setMinLength : (t_htmlInputElement, int) => unit = "minLength";
   [@bs.get] external size : t_htmlInputElement => int = "";
   [@bs.set] external setSize : (t_htmlInputElement, int) => unit = "size";
   [@bs.get] external pattern : t_htmlInputElement => string = "";
@@ -95,29 +102,60 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setValueAsDate : (t_htmlInputElement, Js.Date.t) => unit = "valueAsDate";
   [@bs.get] external valueAsNumber : t_htmlInputElement => float = "";
 
-  [@bs.send.pipe: t_htmlInputElement] external focus : unit = "";
-  [@bs.send.pipe: t_htmlInputElement] external blur : unit = "";
   [@bs.send.pipe: t_htmlInputElement] external select : unit = "";
-  [@bs.send.pipe: t_htmlInputElement] external click : unit = "";
+
+  module SelectionDirection = {
+    type t =
+      | Forward
+      | Backward
+      | None;
+
+    let toString =
+      fun
+      | Forward => "forward"
+      | Backward => "backward"
+      | None => "none";
+  };
+
   [@bs.send.pipe: t_htmlInputElement] external setSelectionRange : (int, int) => unit = "";
-  [@bs.send.pipe: t_htmlInputElement] external setSelectionRangeWithDirection : (int, int, string) => unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external setSelectionRangeWithDirection_ : (int, int, string) => unit = "setSelectionRange";
+  let setSelectionRangeWithDirection = (selectionStart, selectionEnd, selectionDirection, element) =>
+    element |> setSelectionRangeWithDirection_(selectionStart, selectionEnd, selectionDirection |> SelectionDirection.toString);
+
+  module SelectionMode = {
+    type t =
+      | Select
+      | Start
+      | End
+      | Preserve;
+
+    let toString =
+      fun
+      | Select => "select"
+      | Start => "start"
+      | End => "end"
+      | Preserve => "preserve";
+  };
+
   [@bs.send.pipe: t_htmlInputElement] external setRangeTextWithinSelection : string => unit = "setRangeText";
-  [@bs.send.pipe: t_htmlInputElement] external setRangeTextWithinInterval : (int, int, string) => unit = "setRangeText";
+  [@bs.send.pipe: t_htmlInputElement] external setRangeTextWithinInterval : (string, int, int) => unit = "setRangeText";
+  [@bs.send.pipe: t_htmlInputElement] external setRangeTextWithinIntervalWithSelectionMode_ : (string, int, int, string) => unit = "setRangeText";
+  let setRangeTextWithinIntervalWithSelectionMode = (text, selectionStart, selectionEnd, selectionMode, element) =>
+    element |> setRangeTextWithinIntervalWithSelectionMode_(text, selectionStart, selectionEnd, selectionMode |> SelectionMode.toString);
+
   [@bs.send.pipe: t_htmlInputElement] external setCustomValidity : string => unit = "";
   [@bs.send.pipe: t_htmlInputElement] external checkValidity : bool = "";
-  [@bs.send.pipe: t_htmlInputElement] external stepDown : unit = "";
-  [@bs.send.pipe: t_htmlInputElement] external stepUp : unit = "";
+  [@bs.send.pipe: t_htmlInputElement] external reportValidity : bool = "";
+  [@bs.send.pipe: t_htmlInputElement] external stepDownBy : int => unit = "stepDown";
+  [@bs.send.pipe: t_htmlInputElement] external stepDownByOne : unit = "stepDown";
+  [@bs.send.pipe: t_htmlInputElement] external stepUpBy : int => unit = "stepUp";
+  [@bs.send.pipe: t_htmlInputElement] external stepUpByOne : unit = "stepUp";
 };
 
-include EventTargetRe.Impl({
-  type t = Dom.htmlInputElement;
-});
-include NodeRe.Impl({
-  type t = Dom.htmlInputElement;
-});
-include ElementRe.Impl({
-  type t = Dom.htmlInputElement;
-});
-include HtmlElementRe.Impl({
-  type t = Dom.htmlInputElement;
-});
+type t = Dom.htmlInputElement;
+
+include EventTargetRe.Impl({ type nonrec t = t; });
+include NodeRe.Impl({ type nonrec t = t; });
+include ElementRe.Impl({ type nonrec t = t; });
+include HtmlElementRe.Impl({ type nonrec t = t; });
+include Impl({ type nonrec t = t; });

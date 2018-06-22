@@ -1,3 +1,8 @@
+/*
+ * Spec: https://html.spec.whatwg.org/multipage/forms.html#the-form-element
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement
+ */
+
 module Impl = (T: {type t;}) => {
   type t_htmlFormElement = T.t;
 
@@ -28,15 +33,10 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe: t_htmlFormElement] external reportValidity : bool = "";
 };
 
-include EventTargetRe.Impl({
-  type t = Dom.htmlFormElement;
-});
-include NodeRe.Impl({
-  type t = Dom.htmlFormElement;
-});
-include ElementRe.Impl({
-  type t = Dom.htmlFormElement;
-});
-include HtmlElementRe.Impl({
-  type t = Dom.htmlFormElement;
-});
+type t = Dom.htmlFormElement;
+
+include EventTargetRe.Impl({ type nonrec t = t; });
+include NodeRe.Impl({ type nonrec t = t; });
+include ElementRe.Impl({ type nonrec t = t; });
+include HtmlElementRe.Impl({ type nonrec t = t; });
+include Impl({ type nonrec t = t; });
