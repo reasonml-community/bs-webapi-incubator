@@ -66,8 +66,8 @@ let _ = Window.promptWithDefault("type password or use this?", "password", windo
 let _ = Window.requestIdleCallbackWithOptions((_) => (), {"timeout": 1000}, window);
 let _ = Window.resizeBy(10, (-10), window);
 let _ = Window.resizeTo(120, 300, window);
-let _ = Window.scroll(0, 0, window);
-let _ = Window.scrollBy(10, (-10), window);
-let _ = Window.scrollTo(120, 300, window);
+let _ = Window.scroll(0.0, 0.0, window);
+let _ = Window.scrollBy(10.0, (-10.0), window);
+let _ = Window.scrollTo(120.5, 300.3, window);
 Window.stop(window);
 Window.setOnLoad(window, () => print_endline("load"));
