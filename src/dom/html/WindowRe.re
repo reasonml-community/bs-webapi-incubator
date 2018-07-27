@@ -44,8 +44,8 @@ module Impl = (T: {type t;}) => {
   [@bs.get] [@bs.return nullable] external opener : t_window => option(Dom.window) = "";
   [@bs.get] external outerWidth : t_window => int = "";
   [@bs.get] external outerHeight : t_window => int = "";
-  [@bs.get] external pageXOffset : t_window => int = ""; /* alias for screenX */
-  [@bs.get] external pageYOffset : t_window => int = ""; /* alias for screenY */
+  [@bs.get] external pageXOffset : t_window => float = ""; /* alias for scrollX */
+  [@bs.get] external pageYOffset : t_window => float = ""; /* alias for scrollY */
   [@bs.get] external parent : t_window => Dom.window = "";
   [@bs.get] external performance : t_window => performance = "";
   [@bs.get] external personalbar : t_window => personalbar = "";
@@ -53,8 +53,8 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external screenX : t_window => int = "";
   [@bs.get] external screenY : t_window => int = "";
   [@bs.get] external scrollbars : t_window => scrollbars = "";
-  [@bs.get] external scrollX : t_window => int = "";
-  [@bs.get] external scrollY : t_window => int = "";
+  [@bs.get] external scrollX : t_window => float = "";
+  [@bs.get] external scrollY : t_window => float = "";
   [@bs.get] external self : t_window => Dom.window = ""; /* alias for window, but apparently convenient because self (stand-alone) resolves to WorkerGlobalScope in a web worker. Probably poitnless here though */
   /* sessionStorage: accessed directly via Dom.Storage.sessionStorage */
   [@bs.get] external speechSynthesis : t_window => speechSynthesis = ""; /* experimental */
@@ -88,9 +88,9 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : t_window] external requestIdleCallbackWithOptions : (idleDeadline => unit, {. "timeout": int}) => idleCallbackId = "requestIdleCallback"; /* experimental, Cooperative Scheduling of Background Tasks */
   [@bs.send.pipe : t_window] external resizeBy : (int, int) => unit = ""; /* experimental, CSSOM View module */
   [@bs.send.pipe : t_window] external resizeTo : (int, int) => unit = ""; /* experimental, CSSOM View module */
-  [@bs.send.pipe : t_window] external scroll : (int, int) => unit = ""; /* experimental, CSSOM View module */
-  [@bs.send.pipe : t_window] external scrollBy : (int, int) => unit = ""; /* experimental, CSSOM View module */
-  [@bs.send.pipe : t_window] external scrollTo : (int, int) => unit = ""; /* experimental, CSSOM View module */
+  [@bs.send.pipe : t_window] external scroll : (float, float) => unit = ""; /* experimental, CSSOM View module */
+  [@bs.send.pipe : t_window] external scrollBy : (float, float) => unit = ""; /* experimental, CSSOM View module */
+  [@bs.send.pipe : t_window] external scrollTo : (float, float) => unit = ""; /* experimental, CSSOM View module */
   [@bs.send.pipe : t_window] external stop : unit = "";
 
 
