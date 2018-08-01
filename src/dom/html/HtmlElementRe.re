@@ -51,7 +51,7 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setLang : (t_htmlElement, string) => unit = "lang";
   [@bs.get] external offsetHeight : t_htmlElement => int = ""; /* experimental */
   [@bs.get] external offsetLeft : t_htmlElement => int = ""; /* experimental */
-  [@bs.get] external offsetParent : t_htmlElement => Dom.element = ""; /* experimental */
+  [@bs.get] [@bs.return nullable] external offsetParent : t_htmlElement => option(Dom.element) = ""; /* experimental */
   [@bs.get] external offsetTop : t_htmlElement => int = ""; /* experimental, but widely supported */
   [@bs.get] external offsetWidth : t_htmlElement => int = ""; /* experimental */
   /*external properties : r => HTMLPropertiesCollection.t = "properties" [@@bs.get]; /* experimental */*/
