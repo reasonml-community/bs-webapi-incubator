@@ -14,3 +14,7 @@ removeEventListener("click", handleClick, target);
 removeEventListenerWithOptions("click", handleClick, {"passive": true, "capture": false}, target);
 removeEventListenerUseCapture("click", handleClick, target);
 let _ = dispatchEvent(event, target);
+
+/* https://github.com/reasonml-community/bs-webapi-incubator/issues/103 */
+let customEvent = CustomEvent.makeWithOptions("custom-event", {"detail": {"test": "test"}});
+dispatchEvent(customEvent, target);
