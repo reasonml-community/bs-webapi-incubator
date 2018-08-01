@@ -7,7 +7,7 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external removeEventListener : (string, Dom.event => unit) => unit = "";
   [@bs.send.pipe : T.t] external removeEventListenerWithOptions : (string, Dom.event => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
   [@bs.send.pipe : T.t] external removeEventListenerUseCapture : (string, Dom.event => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
-  [@bs.send.pipe : T.t] external dispatchEvent : Dom.event => bool = "";
+  [@bs.send.pipe : T.t] external dispatchEvent : Dom.event_like('a) => bool = "";
 
   /**
    *  non-standard event-specific functions
