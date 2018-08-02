@@ -67,6 +67,13 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.11.0
+* `EventTarget.dispatchEvent` now take a `Dom.event_like(_)` instead of just `Dom.event`, so it will accept any event subtype.
+* `Window.pageXOffset`, `pageYOffset`, `scrollX`, `scrollY`, `scrollLeft` and `scrollTop` now return `float`s instead of `int`s, and `Window.scroll`, `scrollBy`, `scrollTo`, `setScrollLeft` and `setScrollTop` take `float`s instead of `int`s
+* `HtmlElement.offsetParent` now returns an `option`
+* `Selection.anchorNode` and `Selection.focusNode` now return `option`s
+* `Element.closest` now returns an `option`
+
 ### 0.10.0
 * Added inheritance of `HtmlElement` and its ancestors to `HtmlImageElement`
 * Deprecated `HtmlImageElement.onload`
