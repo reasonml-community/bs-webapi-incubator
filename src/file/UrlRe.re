@@ -1,2 +1,30 @@
+type t;
+
+[@bs.new] external make: string => t = "URL";
+[@bs.new] external makeWithBase: (string, string) => t = "URL";
+[@bs.send.pipe : t] external hash: string = "";
+[@bs.set] external setHash: (t, string) => unit = "hash";
+[@bs.send.pipe : t] external host: string = "";
+[@bs.set] external setHost: (t, string) => unit = "host";
+[@bs.send.pipe : t] external hostname: string = "";
+[@bs.set] external setHostname: (t, string) => unit = "hostname";
+[@bs.send.pipe : t] external href: string = "";
+[@bs.set] external setHref: (t, string) => unit = "href";
+[@bs.send.pipe : t] external origin: string = "";
+[@bs.send.pipe : t] external password: string = "";
+[@bs.set] external setPassword: (t, string) => unit = "password";
+[@bs.send.pipe : t] external pathname: string = "";
+[@bs.set] external setPathname: (t, string) => unit = "pathname";
+[@bs.send.pipe : t] external port: string = "";
+[@bs.set] external setPort: (t, string) => unit = "port";
+[@bs.send.pipe : t] external protocol: string = "";
+[@bs.set] external setProtocol: (t, string) => unit = "protocol";
+[@bs.send.pipe : t] external search: string = "";
+[@bs.set] external setSearch: (t, string) => unit = "search";
+[@bs.send.pipe : t] external searchParams: URLSearchParamsRe.t = "";
+[@bs.send.pipe : t] external username: string = "";
+[@bs.set] external setUsername: (t, string) => unit = "username";
+[@bs.send.pipe : t] external toJson: string = "";
+
 [@bs.val] [@bs.scope "URL"] external createObjectURL : FileRe.t => string = "";
 [@bs.val] [@bs.scope "URL"] external revokeObjectURL : string => unit = "";
