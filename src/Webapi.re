@@ -12,3 +12,5 @@ module File = {
   include FileRe;
   module Url = UrlRe;
 };
+
+module Url = UrlRe;
