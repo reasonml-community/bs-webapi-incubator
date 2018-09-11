@@ -6,7 +6,7 @@ type t;
 [@bs.send.pipe : t] external delete: 'a => unit = "delete";
 [@bs.send.pipe : t] external entries: Js.Array.array_like('a) = "entries";
 [@bs.send.pipe : t] external get: 'a => option('b) = "get";
-[@bs.send.pipe : t] external getAll: 'a => Js.Array.array_like('a) = "getAll";
+[@bs.send.pipe : t] external getAll: 'a => array('a) = "getAll";
 [@bs.send.pipe : t] external has: 'a => bool = "has";
 [@bs.send.pipe : t] external keys: array('a) = "keys";
 [@bs.send.pipe : t] external set: ('a, 'b) => unit = "set";
