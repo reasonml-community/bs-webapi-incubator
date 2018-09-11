@@ -2,14 +2,14 @@
 type t;
 
 [@bs.new] external make: string => t = "URLSearchParams";
-[@bs.send] external append: (t, 'a, 'b) => unit = "append";
-[@bs.send] external delete: (t, 'a) => unit = "delete";
-[@bs.send] external entries: t => Js.Array.array_like('a) = "entries";
-[@bs.send] external get: (t, 'a) => option('b) = "get";
-[@bs.send] external getAll: (t, 'a) => Js.Array.array_like('a) = "getAll";
-[@bs.send] external has: (t, 'a) => bool = "has";
-[@bs.send] external keys: t => array('a) = "keys";
-[@bs.send] external set: (t, 'a, 'b) => unit = "set";
-[@bs.send] external sort: t => unit = "sort";
-[@bs.send] external toString: t => string = "toString";
-[@bs.send] external values: t => Js.Array.array_like('a) = "values";
+[@bs.send.pipe : t] external append: ('a, 'b) => unit = "append";
+[@bs.send.pipe : t] external delete: 'a => unit = "delete";
+[@bs.send.pipe : t] external entries: Js.Array.array_like('a) = "entries";
+[@bs.send.pipe : t] external get: 'a => option('b) = "get";
+[@bs.send.pipe : t] external getAll: 'a => Js.Array.array_like('a) = "getAll";
+[@bs.send.pipe : t] external has: 'a => bool = "has";
+[@bs.send.pipe : t] external keys: array('a) = "keys";
+[@bs.send.pipe : t] external set: ('a, 'b) => unit = "set";
+[@bs.send.pipe : t] external sort: unit = "sort";
+[@bs.send.pipe : t] external toString: string = "toString";
+[@bs.send.pipe : t] external values: Js.Array.array_like('a) = "values";
