@@ -14,6 +14,7 @@ type t = {
 
 [@bs.new] external make: string => t = "URL";
 [@bs.new] external makeWithBase: (string, string) => t = "URL";
+[@bs.send.pipe : t] external toJson: string = "";
 
 [@bs.val] [@bs.scope "URL"] external createObjectURL : FileRe.t => string = "";
 [@bs.val] [@bs.scope "URL"] external revokeObjectURL : string => unit = "";

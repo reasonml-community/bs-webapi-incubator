@@ -12,5 +12,4 @@ type t;
 [@bs.send.pipe : t] external set: (string, string) => unit = "";
 [@bs.send.pipe : t] external sort: unit = "";
 [@bs.send.pipe : t] external toString: string = "";
-[@bs.send.pipe : t] external toJson: string = "";
 [@bs.send.pipe : t] external values: Js.Array.array_like(string) = "";
