@@ -1,4 +1,3 @@
-[@bs.deriving abstract]
 type t;
 
 [@bs.new] external make: string => t = "URLSearchParams";
