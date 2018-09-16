@@ -10,5 +10,7 @@ module Dom = DomRe;
 
 module File = {
   include FileRe;
-  module Url = UrlRe;
+  [@deprecated "Use `Webapi.Url` instead"] module Url = UrlRe;
 };
+
+module Url = UrlRe;
