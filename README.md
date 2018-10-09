@@ -67,6 +67,11 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.13.0
+* (Breaking) Requires bs-platform > 4.0.0
+* (Breaking) Changed `FocusEvent.relatedTarget` to return `option`
+* Added `HtmlFormElement` and `HtmlInputElement`
+
 ### 0.12.0
 * (Breaking) Fixed return type if `StorageEvent.oldValue` and `StorageEvent.newValue`. They should be `nullable`, but were not.
 * Added `Url` and `UrlSearchParams`
