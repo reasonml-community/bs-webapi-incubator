@@ -201,6 +201,64 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external removeCompositionEndEventListener : ([@bs.as "compositionend"] _, Dom.compositionEvent => unit) => unit = "removeEventListener";
   [@bs.send.pipe : T.t] external removeCompositionEndEventListenerWithOptions : ([@bs.as "compositionend"] _, Dom.compositionEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
   [@bs.send.pipe : T.t] external removeCompositionEndEventListenerUseCapture : ([@bs.as "compositionend"] _, Dom.compositionEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  /* Drag */
+
+  [@bs.send.pipe : T.t] external addDragEventListener : ([@bs.as "drag"] _, Dom.dragEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addDragEventListenerWithOptions : ([@bs.as "drag"] _, Dom.dragEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addDragEventListenerUseCapture : ([@bs.as "drag"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeDragEventListener : ([@bs.as "drag"] _, Dom.dragEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeDragEventListenerWithOptions : ([@bs.as "drag"] _, Dom.dragEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeDragEventListenerUseCapture : ([@bs.as "drag"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addDragEndEventListener : ([@bs.as "dragend"] _, Dom.dragEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addDragEndEventListenerWithOptions : ([@bs.as "dragend"] _, Dom.dragEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addDragEndEventListenerUseCapture : ([@bs.as "dragend"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeDragEndEventListener : ([@bs.as "dragend"] _, Dom.dragEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeDragEndEventListenerWithOptions : ([@bs.as "dragend"] _, Dom.dragEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeDragEndEventListenerUseCapture : ([@bs.as "dragend"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addDragEnterEventListener : ([@bs.as "dragenter"] _, Dom.dragEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addDragEnterEventListenerWithOptions : ([@bs.as "dragenter"] _, Dom.dragEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addDragEnterEventListenerUseCapture : ([@bs.as "dragenter"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeDragEnterEventListener : ([@bs.as "dragenter"] _, Dom.dragEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeDragEnterEventListenerWithOptions : ([@bs.as "dragenter"] _, Dom.dragEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeDragEnterEventListenerUseCapture : ([@bs.as "dragenter"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addDragExitEventListener : ([@bs.as "dragexit"] _, Dom.dragEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addDragExitEventListenerWithOptions : ([@bs.as "dragexit"] _, Dom.dragEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addDragExitEventListenerUseCapture : ([@bs.as "dragexit"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeDragExitEventListener : ([@bs.as "dragexit"] _, Dom.dragEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeDragExitEventListenerWithOptions : ([@bs.as "dragexit"] _, Dom.dragEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeDragExitEventListenerUseCapture : ([@bs.as "dragexit"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addDragLeaveEventListener : ([@bs.as "dragleave"] _, Dom.dragEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addDragLeaveEventListenerWithOptions : ([@bs.as "dragleave"] _, Dom.dragEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addDragLeaveEventListenerUseCapture : ([@bs.as "dragleave"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeDragLeaveEventListener : ([@bs.as "dragleave"] _, Dom.dragEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeDragLeaveEventListenerWithOptions : ([@bs.as "dragleave"] _, Dom.dragEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeDragLeaveEventListenerUseCapture : ([@bs.as "dragleave"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addDragOverEventListener : ([@bs.as "dragover"] _, Dom.dragEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addDragOverEventListenerWithOptions : ([@bs.as "dragover"] _, Dom.dragEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addDragOverEventListenerUseCapture : ([@bs.as "dragover"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeDragOverEventListener : ([@bs.as "dragover"] _, Dom.dragEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeDragOverEventListenerWithOptions : ([@bs.as "dragover"] _, Dom.dragEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeDragOverEventListenerUseCapture : ([@bs.as "dragover"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addDragStartEventListener : ([@bs.as "dragstart"] _, Dom.dragEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addDragStartEventListenerWithOptions : ([@bs.as "dragstart"] _, Dom.dragEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addDragStartEventListenerUseCapture : ([@bs.as "dragstart"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeDragStartEventListener : ([@bs.as "dragstart"] _, Dom.dragEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeDragStartEventListenerWithOptions : ([@bs.as "dragstart"] _, Dom.dragEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeDragStartEventListenerUseCapture : ([@bs.as "dragstart"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addDropEventListener : ([@bs.as "drop"] _, Dom.dragEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addDropEventListenerWithOptions : ([@bs.as "drop"] _, Dom.dragEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addDropEventListenerUseCapture : ([@bs.as "drop"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeDropEventListener : ([@bs.as "drop"] _, Dom.dragEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeDropEventListenerWithOptions : ([@bs.as "drop"] _, Dom.dragEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeDropEventListenerUseCapture : ([@bs.as "drop"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
 };
 
 include Impl({ type nonrec t = Dom.eventTarget; });
