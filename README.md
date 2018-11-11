@@ -67,6 +67,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.13.1
+* Added `add...` and `remove...` functions for drag event listeenrs to `EventTarget`
+
 ### 0.13.0
 * (Breaking) Requires bs-platform > 4.0.0
 * (Breaking) Changed `FocusEvent.relatedTarget` to return `option`
