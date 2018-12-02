@@ -10,4 +10,4 @@ type t = Dom.namedNodeMap;
 [@bs.send.pipe : t] external removeNamedItem : string => Dom.attr = "";
 [@bs.send.pipe : t] external removeNamedItemNS : (string, string) => Dom.attr = "";
 
-[@bs.val] [@bs.scope ("Array", "prototype", "slice")] external toArray : t => array(Dom.element) = "call";
+[@bs.val] [@bs.scope ("Array", "prototype", "slice")] external toArray : t => array(Dom.attr) = "call";
