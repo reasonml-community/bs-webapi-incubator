@@ -93,6 +93,8 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : t_window] external scrollTo : (float, float) => unit = ""; /* experimental, CSSOM View module */
   [@bs.send.pipe : t_window] external stop : unit = "";
 
+  [@bs.send.pipe : t_window] external addPopStateEventListener : ([@bs.as "popstate"] _, Dom.popStateEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : t_window] external removePopStateEventListener : ([@bs.as "popstate"] _, Dom.popStateEvent => unit) => unit= "removeEventListener";
 
   [@bs.set] external setOnLoad : (t_window, unit => unit) => unit = "onload"; /* use addEventListener instead? */
 };
