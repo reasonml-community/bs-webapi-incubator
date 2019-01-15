@@ -292,6 +292,13 @@ module Impl = (T: {type t;}) => {
 
   /* Animation */
 
+  [@bs.send.pipe : T.t] external addAnimationCancelEventListener : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addAnimationCancelEventListenerWithOptions : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addAnimationCancelEventListenerUseCapture : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationCancelEventListener : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationCancelEventListenerWithOptions : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeAnimationCancelEventListenerUseCapture : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
   [@bs.send.pipe : T.t] external addAnimationEndEventListener : ([@bs.as "animationend"] _, Dom.animationEvent => unit) => unit = "addEventListener";
   [@bs.send.pipe : T.t] external addAnimationEndEventListenerWithOptions : ([@bs.as "animationend"] _, Dom.animationEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
   [@bs.send.pipe : T.t] external addAnimationEndEventListenerUseCapture : ([@bs.as "animationend"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
