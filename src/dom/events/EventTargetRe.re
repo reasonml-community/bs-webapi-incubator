@@ -259,6 +259,66 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external removeDropEventListener : ([@bs.as "drop"] _, Dom.dragEvent => unit) => unit = "removeEventListener";
   [@bs.send.pipe : T.t] external removeDropEventListenerWithOptions : ([@bs.as "drop"] _, Dom.dragEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
   [@bs.send.pipe : T.t] external removeDropEventListenerUseCapture : ([@bs.as "drop"] _, Dom.dragEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  /* Touch */
+
+  [@bs.send.pipe : T.t] external addTouchCancelEventListener : ([@bs.as "touchcancel"] _, Dom.touchEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addTouchCancelEventListenerWithOptions : ([@bs.as "touchcancel"] _, Dom.touchEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addTouchCancelEventListenerUseCapture : ([@bs.as "touchcancel"] _, Dom.touchEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeTouchCancelEventListener : ([@bs.as "touchcancel"] _, Dom.touchEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeTouchCancelEventListenerWithOptions : ([@bs.as "touchcancel"] _, Dom.touchEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeTouchCancelEventListenerUseCapture : ([@bs.as "touchcancel"] _, Dom.touchEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addTouchEndEventListener : ([@bs.as "touchend"] _, Dom.touchEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addTouchEndEventListenerWithOptions : ([@bs.as "touchend"] _, Dom.touchEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addTouchEndEventListenerUseCapture : ([@bs.as "touchend"] _, Dom.touchEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeTouchEndEventListener : ([@bs.as "touchend"] _, Dom.touchEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeTouchEndEventListenerWithOptions : ([@bs.as "touchend"] _, Dom.touchEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeTouchEndEventListenerUseCapture : ([@bs.as "touchend"] _, Dom.touchEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addTouchMoveEventListener : ([@bs.as "touchmove"] _, Dom.touchEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addTouchMoveEventListenerWithOptions : ([@bs.as "touchmove"] _, Dom.touchEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addTouchMoveEventListenerUseCapture : ([@bs.as "touchmove"] _, Dom.touchEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeTouchMoveEventListener : ([@bs.as "touchmove"] _, Dom.touchEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeTouchMoveEventListenerWithOptions : ([@bs.as "touchmove"] _, Dom.touchEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeTouchMoveEventListenerUseCapture : ([@bs.as "touchmove"] _, Dom.touchEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addTouchStartEventListener : ([@bs.as "touchstart"] _, Dom.touchEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addTouchStartEventListenerWithOptions : ([@bs.as "touchstart"] _, Dom.touchEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addTouchStartEventListenerUseCapture : ([@bs.as "touchstart"] _, Dom.touchEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeTouchStartEventListener : ([@bs.as "touchstart"] _, Dom.touchEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeTouchStartEventListenerWithOptions : ([@bs.as "touchstart"] _, Dom.touchEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeTouchStartEventListenerUseCapture : ([@bs.as "touchstart"] _, Dom.touchEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  /* Animation */
+
+  [@bs.send.pipe : T.t] external addAnimationCancelEventListener : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addAnimationCancelEventListenerWithOptions : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addAnimationCancelEventListenerUseCapture : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationCancelEventListener : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationCancelEventListenerWithOptions : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeAnimationCancelEventListenerUseCapture : ([@bs.as "animationcancel"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addAnimationEndEventListener : ([@bs.as "animationend"] _, Dom.animationEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addAnimationEndEventListenerWithOptions : ([@bs.as "animationend"] _, Dom.animationEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addAnimationEndEventListenerUseCapture : ([@bs.as "animationend"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationEndEventListener : ([@bs.as "animationend"] _, Dom.animationEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationEndEventListenerWithOptions : ([@bs.as "animationend"] _, Dom.animationEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeAnimationEndEventListenerUseCapture : ([@bs.as "animationend"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addAnimationIterationEventListener : ([@bs.as "animationiteration"] _, Dom.animationEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addAnimationIterationEventListenerWithOptions : ([@bs.as "animationiteration"] _, Dom.animationEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addAnimationIterationEventListenerUseCapture : ([@bs.as "animationiteration"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationIterationEventListener : ([@bs.as "animationiteration"] _, Dom.animationEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationIterationEventListenerWithOptions : ([@bs.as "animationiteration"] _, Dom.animationEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeAnimationIterationEventListenerUseCapture : ([@bs.as "animationiteration"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+
+  [@bs.send.pipe : T.t] external addAnimationStartEventListener : ([@bs.as "animationstart"] _, Dom.animationEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addAnimationStartEventListenerWithOptions : ([@bs.as "animationstart"] _, Dom.animationEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addAnimationStartEventListenerUseCapture : ([@bs.as "animationstart"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationStartEventListener : ([@bs.as "animationstart"] _, Dom.animationEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeAnimationStartEventListenerWithOptions : ([@bs.as "animationstart"] _, Dom.animationEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeAnimationStartEventListenerUseCapture : ([@bs.as "animationstart"] _, Dom.animationEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
 };
 
 include Impl({ type nonrec t = Dom.eventTarget; });
