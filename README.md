@@ -70,9 +70,10 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 ### 0.13.2
 * Fixed signature of `NamedNodeMap.toArray`, which returned `element` but should return `attr` (considere non-breaking since it was just plain wrong)
 * Added `add...` and `removePopStateEventListener` to `Window`
+* Added `add...` and `remove...` functions for touch and animation event listeners to `EventTarget`
 
 ### 0.13.1
-* Added `add...` and `remove...` functions for drag event listeenrs to `EventTarget`
+* Added `add...` and `remove...` functions for drag event listeners to `EventTarget`
 
 ### 0.13.0
 * (Breaking) Requires bs-platform > 4.0.0
