@@ -4,7 +4,7 @@ type t;
 [@bs.send.pipe : t] external append: (string, string) => unit = "";
 [@bs.send.pipe : t] external delete: string => unit = "";
 [@bs.send.pipe : t] external entries: Js.Array.array_like(string) = "";
-[@bs.send.pipe : t] external get: string => option(string) = "";
+[@bs.return nullable][@bs.send.pipe : t] external get: string => option(string) = "";
 [@bs.send.pipe : t] external getAll: string => array(string) = "";
 [@bs.send.pipe : t] external has: string => bool = "";
 [@bs.send.pipe : t] external keys: Js.Array.array_like(string) = "";
