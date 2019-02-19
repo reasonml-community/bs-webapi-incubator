@@ -67,6 +67,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.13.3
+* Added `bs.return nullable` to `URLSearchParams.get` since it returns `null`, not `undefined` and therefore does not autmatically conform to the runtime representation of `option` as previosuly assumed.
+
 ### 0.13.2
 * Fixed signature of `NamedNodeMap.toArray`, which returned `element` but should return `attr` (considere non-breaking since it was just plain wrong)
 * Added `add...` and `removePopStateEventListener` to `Window`
