@@ -67,6 +67,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.13.4
+* Added `URLSearchParams.makeWithDict` and `URLSearchParams.makeWithArray`
+
 ### 0.13.3
 * Added `bs.return nullable` to `URLSearchParams.get` since it returns `null`, not `undefined` and therefore does not autmatically conform to the runtime representation of `option` as previosuly assumed.
 
