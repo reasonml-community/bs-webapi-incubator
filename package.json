@@ -1,6 +1,6 @@
 {
   "name": "bs-webapi",
-  "version": "0.13.3",
+  "version": "0.13.4",
   "description": "Reason + BuckleScript bindings to DOM",
   "repository": {
     "type": "git",
