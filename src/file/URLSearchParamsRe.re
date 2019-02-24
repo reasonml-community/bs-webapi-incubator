@@ -1,6 +1,8 @@
 type t;
 
 [@bs.new] external make: string => t = "URLSearchParams";
+[@bs.new] external makeWithDict: Js.Dict.t(string) => t = "URLSearchParams";
+[@bs.new] external makeWithArray: array((string, string)) => t = "URLSearchParams";
 [@bs.send.pipe : t] external append: (string, string) => unit = "";
 [@bs.send.pipe : t] external delete: string => unit = "";
 [@bs.send.pipe : t] external entries: Js.Array.array_like(string) = "";
