@@ -8,7 +8,7 @@ module Impl = (T: {type t;}) => {
     }
   |}
   ];
-  [@deprecated "Will fail if no doctype is defined, consider using usnafeAsHtmlDocument instead"]
+  [@deprecated "Will fail if no doctype is defined, consider using unsafeAsHtmlDocument instead"]
   let asHtmlDocument: T.t => option(Dom.htmlDocument) =
     (self) => Js.Null.toOption(asHtmlDocument(self));
 
@@ -47,7 +47,7 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external createElement : string => Dom.element = "";
   [@bs.send.pipe : T.t] external createElementWithOptions : (string, Js.t({..})) => Dom.element = "createElement"; /* not widely supported */
   [@bs.send.pipe : T.t] external createElementNS : (string, string) => Dom.element = "";
-  [@bs.send.pipe : T.t] external createElementNSWithOptions : (string, string, Js.t({..})) => Dom.element = "createEementNS"; /* not widely supported */
+  [@bs.send.pipe : T.t] external createElementNSWithOptions : (string, string, Js.t({..})) => Dom.element = "createElementNS"; /* not widely supported */
   [@bs.send.pipe : T.t] external createEvent : string /* large enum */ => Dom.event = ""; /* discouraged (but not deprecated) in favor of Event constructors */
   [@bs.send.pipe : T.t] external createNodeIterator : Dom.node_like('a) => Dom.nodeIterator = "";
   [@bs.send.pipe : T.t] external createNodeIteratorWithWhatToShow : (Dom.node_like('a), DomTypesRe.WhatToShow.t) => Dom.nodeIterator = "createNodeIterator";
