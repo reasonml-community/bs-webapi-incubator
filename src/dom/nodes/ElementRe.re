@@ -80,6 +80,7 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external removeAttributeNS : (string, string) => unit = "";
   [@bs.send.pipe : T.t] external requestFullscreen : unit = ""; /* experimental */
   [@bs.send.pipe : T.t] external requestPointerLock : unit = ""; /* experimental */
+  [@bs.send.pipe : T.t] external scrollTo : (float, float) => unit = "";
   [@bs.send.pipe : T.t] external scrollIntoView : unit = ""; /* experimental, but widely supported */
   [@bs.send.pipe : T.t] external scrollIntoViewNoAlignToTop : ([@bs.as {json|true|json}] _) => unit = "scrollIntoView"; /* experimental, but widely supported */
   [@bs.send.pipe : T.t] external scrollIntoViewWithOptions : {. "behavior": string, "block": string} => unit = "scrollIntoView"; /* experimental */
