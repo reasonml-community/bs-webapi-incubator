@@ -83,6 +83,8 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external scrollIntoView : unit = ""; /* experimental, but widely supported */
   [@bs.send.pipe : T.t] external scrollIntoViewNoAlignToTop : ([@bs.as {json|true|json}] _) => unit = "scrollIntoView"; /* experimental, but widely supported */
   [@bs.send.pipe : T.t] external scrollIntoViewWithOptions : {. "behavior": string, "block": string} => unit = "scrollIntoView"; /* experimental */
+  [@bs.send.pipe : T.t] external scrollTo : (float, float) => unit = "";
+  [@bs.send.pipe : T.t] external scrollToWithOptions : {. "top": float, "left": float, "behavior": string} => unit = "scrollTo";
   [@bs.send.pipe : T.t] external setAttribute : (string, string) => unit = "";
   [@bs.send.pipe : T.t] external setAttributeNS : (string, string, string) => unit = "";
   [@bs.send.pipe : T.t] external setPointerCapture : Dom.eventPointerId => unit = "";
@@ -93,7 +95,7 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setOnClick : (T.t, Dom.mouseEvent => unit) => unit = "onclick";
 };
 
-/* TODO: This doesnæt work. Why?
+/* TODO: This doesn't work. Why?
 module Tree (T: { type t; }) => {
   include NodeRe.Impl { type t = Type };
   include EventTargetRe.Impl { type t = Type };
