@@ -67,6 +67,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.13.5
+* Added `Element.scrollTo`, `Element.scrollToWithOptions`
+
 ### 0.13.4
 * Added `URLSearchParams.makeWithDict` and `URLSearchParams.makeWithArray`
 
