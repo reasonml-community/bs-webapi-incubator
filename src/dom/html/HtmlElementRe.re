@@ -71,6 +71,7 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : t_htmlElement] external blur : unit = "";
   [@bs.send.pipe : t_htmlElement] external click : unit = "";
   [@bs.send.pipe : t_htmlElement] external focus : unit = "";
+  [@bs.send.pipe : t_htmlElement] external focusPreventScroll : ([@bs.as {json|{ "preventScroll": true }|json}] _) => unit = "focus";
   [@bs.send.pipe : t_htmlElement] external forceSpellCheck : unit = ""; /* experimental */
 
 
