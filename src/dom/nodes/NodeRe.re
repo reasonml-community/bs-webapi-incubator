@@ -26,8 +26,8 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setTextContent : (T.t, string) => unit = "textContent";
 
   [@bs.send.pipe : T.t] external appendChild : Dom.node_like('a) => unit = "";
-  [@bs.send.pipe : T.t] external cloneNode : Dom.node = "";
-  [@bs.send.pipe : T.t] external cloneNodeDeep : ([@bs.as {json|true|json}] _) => Dom.node = "cloneNode";
+  [@bs.send.pipe : T.t] external cloneNode : T.t = "";
+  [@bs.send.pipe : T.t] external cloneNodeDeep : ([@bs.as {json|true|json}] _) => T.t = "cloneNode";
   [@bs.send.pipe : T.t] external compareDocumentPosition : Dom.node_like('a) => int = ""; /* returns a bitmask which could also be represeneted as an enum, see https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition */
   [@bs.send.pipe : T.t] external contains : Dom.node_like('a) => bool = "";
   [@bs.send.pipe : T.t] external getRootNode : Dom.node = "";
