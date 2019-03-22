@@ -67,6 +67,10 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.13.6
+* Added `HtmlElement.focusPreventScroll`
+* Refined return type of `Node.cloneNode` and `Node.cloneDeepNode` so it now returns the specific type of the cloned node.
+
 ### 0.13.5
 * Added `Element.scrollTo`, `Element.scrollToWithOptions`
 
