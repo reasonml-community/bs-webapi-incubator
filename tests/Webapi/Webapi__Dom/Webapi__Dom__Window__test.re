@@ -43,7 +43,6 @@ let _ = Window.setStatus(window, "new status");
 let _ = Window.statusbar(window);
 let _ = Window.toolbar(window);
 let _ = Window.top(window);
-let _ = Window.window(window);
 
 Window.alert("hello!", window);
 Window.blur(window);

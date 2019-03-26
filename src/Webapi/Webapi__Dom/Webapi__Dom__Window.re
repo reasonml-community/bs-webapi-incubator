@@ -63,8 +63,6 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external statusbar : t_window => statusbar = "";
   [@bs.get] external toolbar : t_window => toolbar = "";
   [@bs.get] external top : t_window => Dom.window = "";
-  [@bs.get] external window : t_window => t_window = ""; /* This is pointless I think, it's just here because window is the implicit global scope, and it's needed to be able to get a reference to it */
-
   [@bs.send.pipe : t_window] external alert : string => unit = "";
   [@bs.send.pipe : t_window] external blur : unit = "";
   [@bs.send.pipe : t_window] external cancelIdleCallback : idleCallbackId => unit = ""; /* experimental, Cooperative Scheduling of Background Tasks */
