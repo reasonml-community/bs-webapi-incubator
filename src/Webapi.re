@@ -4,13 +4,13 @@ type rafId;
 [@bs.val] external requestCancellableAnimationFrame : (float => unit) => rafId = "requestAnimationFrame";
 [@bs.val] external cancelAnimationFrame : rafId => unit = "";
 
-module Base64 = Base64Re;
-module Canvas = CanvasRe;
-module Dom = DomRe;
+module Base64 = Webapi__Base64;
+module Canvas = Webapi__Canvas;
+module Dom = Webapi__Dom;
 
 module File = {
-  include FileRe;
-  [@deprecated "Use `Webapi.Url` instead"] module Url = UrlRe;
+  include Webapi__File;
+  [@deprecated "Use `Webapi.Url` instead"] module Url = Webapi__Url;
 };
 
-module Url = UrlRe;
+module Url = Webapi__Url;
