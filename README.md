@@ -68,7 +68,8 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 ## Changes
 
 ### 0.14.0
-* 
+* Removed deprecated `Webapi.Dom.onload` function
+* Removed deprecated `Webapi.File.Url` module alias
 * Restructured internal module layout (non-breaking for modules accessed through the `Webapi` top-level module, but breaking if internal `*Re` modules have been accessed directly)
 * Enforce private modules (effectively a formality and non-breaking)
 
