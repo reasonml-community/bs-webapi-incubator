@@ -67,6 +67,11 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.14.0
+* 
+* Restructured internal module layout (non-breaking for modules accessed through the `Webapi` top-level module, but breaking if internal `*Re` modules have been accessed directly)
+* Enforce private modules (effectively a formality and non-breaking)
+
 ### 0.13.6
 * Added `HtmlElement.focusPreventScroll`
 * Refined return type of `Node.cloneNode` and `Node.cloneDeepNode` so it now returns the specific type of the cloned node.

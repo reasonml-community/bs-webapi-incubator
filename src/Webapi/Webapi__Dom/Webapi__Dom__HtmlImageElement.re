@@ -34,8 +34,6 @@ let setCrossOrigin = (self, value) =>
 
 [@bs.send.pipe: t] external decode : Js.Promise.t(unit) = "";
 
-[@deprecated "use `addEventListener` instead"][@bs.set] external onload : (t, unit => unit) => unit = "";
-
 include Webapi__Dom__Node.Impl({ type nonrec t = t; });
 include Webapi__Dom__EventTarget.Impl({ type nonrec t = t; });
 include Webapi__Dom__Element.Impl({ type nonrec t = t; });
