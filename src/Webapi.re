@@ -7,10 +7,5 @@ type rafId;
 module Base64 = Webapi__Base64;
 module Canvas = Webapi__Canvas;
 module Dom = Webapi__Dom;
-
-module File = {
-  include Webapi__File;
-  [@deprecated "Use `Webapi.Url` instead"] module Url = Webapi__Url;
-};
-
+module File = Webapi__File;
 module Url = Webapi__Url;
