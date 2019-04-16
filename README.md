@@ -26,6 +26,8 @@ Then add `bs-webapi` to `bs-dependencies` in your `bsconfig.json`. A minimal exa
 
 See the [examples folder](https://github.com/reasonml-community/bs-webapi-incubator/blob/master/examples/)
 
+Please only use the modules exposed through the toplevel module `Webapi`, for example `Webapi.Dom.Element`. In particular, don't use the 'flat' modules like `Webapi__Dom__Element` as these are considered private and are not guaranteed to be backwards-compatible.
+
 ## Some notes on the DOM API
 
 The DOM API is mostly organized into interfaces and relies heavily on inheritance. The ergonomics of the API is also heavily dependent on dynamic typing, which makes it somewhat challenging to implement a thin binding layer that is both safe and ergonomic. To achieve this we employ subtyping and implementation inheritance, concepts which aren't very idiomatic to OCaml (or Reason), but all the more beneficial to understand in order to be able to use these bindings effectively.
@@ -52,16 +54,16 @@ This system works exceptionally well, but has one significant flaw: It makes typ
 If you've looked through the source code a bit, you've likely come across code like this:
 
 ```reason
-include EventTargetRe.Impl({ type nonrec t = t });
-include NodeRe.Impl({ type nonrec t = t });
-include ParentNodeRe.Impl({ type nonrec t = t });
-include NonDocumentTypeChildNodeRe.Impl({ type nonrec t = t });
-include ChildNodeRe.Impl({ type nonrec t = t });
-include SlotableRe.Impl({ type nonrec t = t });
+include Webapi__Dom__EventTarget.Impl({ type nonrec t = t });
+include Webapi__Dom__Node.Impl({ type nonrec t = t });
+include Webapi__Dom__ParentNode.Impl({ type nonrec t = t });
+include Webapi__Dom__NonDocumentTypeChildNode.Impl({ type nonrec t = t });
+include Webapi__Dom__ChildNode.Impl({ type nonrec t = t });
+include Webapi__Dom__Slotable.Impl({ type nonrec t = t });
 include Impl({ type nonrec t = t });
 ```
 
-This is the implementation inheritance. Each "inheritable" module defines an "Impl" module where all its exported functions are defined. `include NodeRe.Impl { type nonrec t = t };` means that all the functions in `NodeRe.Impl` should be included in this module, but with the `t` type of that module replaced by the `t` type of this one. And that's it, it now has all the functions.
+This is the implementation inheritance. Each "inheritable" module defines an "Impl" module where all its exported functions are defined. `include Webapi__Dom__Node.Impl { type nonrec t = t };` means that all the functions in `Webapi__Dom__Node.Impl` should be included in this module, but with the `t` type of that module replaced by the `t` type of this one. And that's it, it now has all the functions.
 
 Implementation inheritance is used instead of subtyping to make it easier to understand which functions operate on any given "subject". If you have an `element` and you need to use a function defined in `Node`, let's say `removeChild` you cannot just use `Node.removeChild`. Instead you need to use `Element.removeChild`, which you can since `Element` inherits from `Node`. As a general rule, always use the function in the module corresponding to the type you have. You'll find this makes it very easy to see what types you're dealing with just by reading the code.
 
