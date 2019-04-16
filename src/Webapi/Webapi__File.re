@@ -1,9 +1,11 @@
 type t;
 
-[@bs.get] external _type : t => string = "type";
+include Webapi__Blob.Impl({type nonrec t = t});
 
-[@bs.get] external name : t => string = "name";
+[@bs.get] external lastModified : t => float = "";
 
-[@bs.get] external size : t => float = "size";
+// [@bs.new] external make: ... = "File";
+
+[@bs.get] external name : t => string = "";
 
 [@bs.get] external preview : t => string = "";

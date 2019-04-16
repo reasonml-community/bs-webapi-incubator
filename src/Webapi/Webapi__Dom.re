@@ -117,7 +117,6 @@ include Webapi__Dom__Types;
    HTMLEmbedElement
    HTMLFieldSetElement
    HTMLFontElement
-   HTMLFormElement
    HTMLFrameElement
    HTMLFrameSetElement
    HTMLHeadElement
@@ -125,8 +124,6 @@ include Webapi__Dom__Types;
    HTMLHtmlElement
    HTMLHRElement
    HTMLIFrameElement
-   HTMLImageElement
-   HTMLInputElement
    HTMLKeygenElement
    HTMLLabelElement
    HTMLLegendElement
