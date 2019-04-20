@@ -78,7 +78,7 @@ module Impl = (T: {type t;}) => {
   /* TODO: element-spcific, should be pulled out */
   [@bs.get] external value : t_htmlElement => string = ""; /* HTMLInputElement */
   [@bs.get] external checked : t_htmlElement => bool = ""; /* HTMLInputElement */
-  [@bs.get] external type_ : t_htmlElement => string = ""; /* HTMLStyleElement */
+  [@bs.get] external type_ : t_htmlElement => string = "type"; /* HTMLStyleElement */
   [@bs.set] external setType : (t_htmlElement, string) => unit = "type"; /* HTMLStyleElement */
   [@bs.get] external rel : t_htmlElement => string = ""; /* HTMLLinkElement */
   [@bs.set] external setRel : (t_htmlElement, string) => unit = "rel"; /* HTMLLinkElement */
