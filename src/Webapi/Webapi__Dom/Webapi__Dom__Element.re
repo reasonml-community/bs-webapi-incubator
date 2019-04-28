@@ -28,6 +28,8 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external clientWidth : T.t => int = ""; /* experimental */
   [@bs.get] external id : T.t => string = "";
   [@bs.set] external setId : (T.t, string) => unit = "id";
+  [@bs.set] external setHeight : (T.t, int) => unit = "height";
+  [@bs.set] external setWidth : (T.t, int) => unit = "width";
   [@bs.get] external innerHTML : T.t => string = "";
   [@bs.set] external setInnerHTML : (T.t, string) => unit = "innerHTML";
   [@bs.get] external localName : T.t => string = "";
