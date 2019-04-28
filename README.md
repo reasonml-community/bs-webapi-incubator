@@ -69,6 +69,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.14.3
+* Added `width`, `height`, `setWidth` and `setHeight` to `CanvasElement`
+
 ### 0.14.0
 * Removed deprecated `Webapi.Dom.onload` function
 * Removed deprecated `Webapi.File.Url` module alias
