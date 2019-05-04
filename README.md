@@ -69,6 +69,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.14.4
+* Added `File.name`
+
 ### 0.14.3
 * Added `width`, `height`, `setWidth` and `setHeight` to `CanvasElement`
 
