@@ -69,6 +69,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.15.0
+* (Breaking) Changed `DomRect` coordinates to use `float` instead of `int`
+
 ### 0.14.4
 * Added `File.name`
 
