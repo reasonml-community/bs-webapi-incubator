@@ -69,6 +69,10 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.15.1
+* Added `URLSearchParams.forEach`
+* Added `Element.scrollBy` and `Element.srollByWithOptions`
+
 ### 0.15.0
 * (Breaking) Changed `DomRect` coordinates to use `float` instead of `int`
 
