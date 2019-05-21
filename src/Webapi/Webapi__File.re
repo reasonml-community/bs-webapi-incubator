@@ -4,4 +4,6 @@ type t;
 
 [@bs.get] external name : t => string = "name";
 
+[@bs.get] external size : t => int = "size";
+
 [@bs.get] external preview : t => string = "";
