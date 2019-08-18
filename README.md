@@ -66,3 +66,17 @@ include Impl({ type nonrec t = t });
 This is the implementation inheritance. Each "inheritable" module defines an "Impl" module where all its exported functions are defined. `include Webapi__Dom__Node.Impl { type nonrec t = t };` means that all the functions in `Webapi__Dom__Node.Impl` should be included in this module, but with the `t` type of that module replaced by the `t` type of this one. And that's it, it now has all the functions.
 
 Implementation inheritance is used instead of subtyping to make it easier to understand which functions operate on any given "subject". If you have an `element` and you need to use a function defined in `Node`, let's say `removeChild` you cannot just use `Node.removeChild`. Instead you need to use `Element.removeChild`, which you can since `Element` inherits from `Node`. As a general rule, always use the function in the module corresponding to the type you have. You'll find this makes it very easy to see what types you're dealing with just by reading the code.
+
+## Changes
+
+### 0.15.2 - (2019-05-25)
+* Added `File.size`
+
+### 0.15.1 - (2019-05-17)
+* Added `URLSearchParams.forEach`
+* Added `Element.scrollBy` and `Element.srollByWithOptions`
+
+### 0.15.0 - (2019-05-11)
+* (Breaking) Changed `DomRect` coordinates to use `float` instead of `int`
+
+*See [CHANGELOG.md](CHANGELOG.md) for earlier releases.*
