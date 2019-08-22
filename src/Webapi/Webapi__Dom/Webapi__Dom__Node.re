@@ -1,4 +1,6 @@
 module Impl = (T: {type t;}) => {
+  external asNode : T.t => Dom.node = "%identity";
+
   /* baseURI */
   [@bs.get] external childNodes : T.t => Dom.nodeList = "";
   [@bs.get] [@bs.return nullable] external firstChild : T.t => option(Dom.node) = "";
