@@ -1,3 +1,8 @@
+
+### 0.15.3 - (2019-08-22)
+* Added `NodeList.forEach`
+* Added `Node.asNode`
+
 ### 0.15.2 - (2019-05-25)
 * Added `File.size`
 
