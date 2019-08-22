@@ -2,7 +2,7 @@ type t = Dom.nodeList;
 
 [@bs.val] external toArray : t => array(Dom.node) = "Array.prototype.slice.call";
 
-[@bs.send.pipe : t] external forEach : ((Dom.element, int) => unit) => unit = "";
+[@bs.send.pipe : t] external forEach : ((Dom.node, int) => unit) => unit = "";
 
 [@bs.get] external length : t => int = "";
 
