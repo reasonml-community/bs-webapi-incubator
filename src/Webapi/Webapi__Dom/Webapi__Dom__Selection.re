@@ -13,6 +13,7 @@ type t = Dom.selection;
 [@bs.send.pipe : t] external collapseToStart : unit = "";
 [@bs.send.pipe : t] external collapseToEnd : unit = "";
 [@bs.send.pipe : t] external selectAllChildren : Dom.node_like(_) => unit = "";
+[@bs.send.pipe : t] external setBaseAndExtent : (Dom.node_like(_), int,  Dom.node_like(_), int) => unit = "";
 [@bs.send.pipe : t] external addRange : Dom.range => unit = "";
 [@bs.send.pipe : t] external removeRange : Dom.range => unit = "";
 [@bs.send.pipe : t] external removeAllRanges : unit = "";
