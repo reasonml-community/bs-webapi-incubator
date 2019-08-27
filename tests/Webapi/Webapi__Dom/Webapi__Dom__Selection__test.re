@@ -26,6 +26,7 @@ addRange(range, sel);
 removeRange(range, sel);
 removeAllRanges(sel);
 deleteFromDocument(sel);
+setBaseAndExtent(node, 0, node, 0, sel);
 let _ = toString(sel);
 let _ = containsNode(node, sel);
 let _ = containsNodePartly(node, sel);
