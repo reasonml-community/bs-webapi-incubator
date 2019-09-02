@@ -69,6 +69,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.15.4 - (2019-09-02)
+* Added `Selection.setBaseAndExtent`
+
 ### 0.15.3 - (2019-08-22)
 * Added `NodeList.forEach`
 * Added `Node.asNode`
