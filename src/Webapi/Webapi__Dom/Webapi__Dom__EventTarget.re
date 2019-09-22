@@ -178,6 +178,13 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external removeKeyUpEventListener : ([@bs.as "keyup"] _, Dom.keyboardEvent => unit) => unit = "removeEventListener";
   [@bs.send.pipe : T.t] external removeKeyUpEventListenerWithOptions : ([@bs.as "keyup"] _, Dom.keyboardEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
   [@bs.send.pipe : T.t] external removeKeyUpEventListenerUseCapture : ([@bs.as "keyup"] _, Dom.keyboardEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
+  
+  [@bs.send.pipe : T.t] external addKeyPressEventListener : ([@bs.as "keypress"] _, Dom.keyboardEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external addKeyPressEventListenerWithOptions : ([@bs.as "keypress"] _, Dom.keyboardEvent => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external addKeyPressEventListenerUseCapture : ([@bs.as "keypress"] _, Dom.keyboardEvent => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
+  [@bs.send.pipe : T.t] external removeKeyPressEventListener : ([@bs.as "keypress"] _, Dom.keyboardEvent => unit) => unit = "removeEventListener";
+  [@bs.send.pipe : T.t] external removeKeyPressEventListenerWithOptions : ([@bs.as "keypress"] _, Dom.keyboardEvent => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
+  [@bs.send.pipe : T.t] external removeKeyPressEventListenerUseCapture : ([@bs.as "keypress"] _, Dom.keyboardEvent => unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
 
   /* Composition */
 
