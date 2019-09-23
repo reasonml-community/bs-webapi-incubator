@@ -31,13 +31,13 @@ let _ = createElementNS("http://...", "foo", document);
 let _ = createElementNSWithOptions("http://...", "div", [%bs.raw "{}"], document); /* I've no idea what this options object is supposed to be, even the spec doesn't seem to bother explaining it */
 let _ = createEvent("MyCustomEvent", document);
 let _ = createNodeIterator(el, document);
-let _ = createNodeIteratorWithWhatToShow(el, WhatToShow._All, document);
-let _ = createNodeIteratorWithWhatToShowFilter(el, WhatToShow.(many([_Element, _Attribute])), NodeFilter.make((_) => 0), document);
+let _ = createNodeIteratorWithWhatToShow(el, Types.WhatToShow._All, document);
+let _ = createNodeIteratorWithWhatToShowFilter(el, Types.WhatToShow.(many([_Element, _Attribute])), NodeFilter.make((_) => 0), document);
 let _ = createRange(document);
 let _ = createTextNode("Very reasonable!", document);
 let _ = createTreeWalker(el, document);
-let _ = createTreeWalkerWithWhatToShow(el, WhatToShow._All, document);
-let _ = createTreeWalkerWithWhatToShowFilter(el, WhatToShow.(many([_Element, _Attribute])), NodeFilter.make((_) => 0), document);
+let _ = createTreeWalkerWithWhatToShow(el, Types.WhatToShow._All, document);
+let _ = createTreeWalkerWithWhatToShowFilter(el, Types.WhatToShow.(many([_Element, _Attribute])), NodeFilter.make((_) => 0), document);
 let _ = elementFromPoint(0, 0, document);
 let _ = elementsFromPoint(0, 0, document);
 let _ = enableStyleSheetsForSet("my-stylesheet-set", document);
