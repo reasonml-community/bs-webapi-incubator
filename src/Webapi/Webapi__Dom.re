@@ -63,8 +63,7 @@ module ValidityState = Webapi__Dom__ValidityState;
 module WebGlContextEvent = Webapi__Dom__WebGlContextEvent;
 module WheelEvent = Webapi__Dom__WheelEvent;
 module Window = Webapi__Dom__Window;
-
-include Webapi__Dom__Types;
+module Types = Webapi__Dom__Types;
 
 [@bs.val] external window : Dom.window = "window";
 [@bs.val] external document : Dom.document = "document";
