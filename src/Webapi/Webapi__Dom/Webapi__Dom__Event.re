@@ -5,8 +5,8 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external currentTarget : T.t => Dom.eventTarget = "";
   [@bs.get] external defaultPrevented : T.t => bool = "";
   [@bs.get] external eventPhase : T.t => int /* eventPhase enum */ = "";
-  let eventPhase: T.t => Webapi__Dom__Types.eventPhase =
-    (self) => Webapi__Dom__Types.decodeEventPhase(eventPhase(self));
+  let eventPhase: T.t => Webapi__Dom__Types.EventPhase.t =
+    (self) => Webapi__Dom__Types.EventPhase.decodeEventPhase(eventPhase(self));
   [@bs.get] external target : T.t => Dom.eventTarget = "";
   [@bs.get] external timeStamp : T.t => float = "";
   [@bs.get] external type_ : T.t => string = "type";
