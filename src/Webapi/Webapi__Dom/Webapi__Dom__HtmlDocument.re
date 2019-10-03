@@ -53,18 +53,12 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : t_htmlDocument] external queryCommandValue : string => string = "";
   [@bs.send.pipe : t_htmlDocument] external write : string => unit = "";
   [@bs.send.pipe : t_htmlDocument] external writeln : string => unit = "";
-
-  [@bs.send.pipe : T.t] external addSelectionChangeEventListener : ([@bs.as "selectionchange"] _, Dom.event => unit) => unit = "addEventListener";
-  [@bs.send.pipe : T.t] external addSelectionChangeEventListenerWithOptions : ([@bs.as "selectionchange"] _, Dom.event => unit, {. "capture": bool, "once": bool, "passive": bool}) => unit = "addEventListener"; /* not widely supported */
-  [@bs.send.pipe : T.t] external addSelectionChangeEventListenerUseCapture : ([@bs.as "selectionchange"] _, Dom.event => unit, [@bs.as {json|true|json}] _) => unit = "addEventListener";
-  [@bs.send.pipe : T.t] external removeSelectionChangeEventListener : ([@bs.as "selectionchange"] _, Dom.event => unit) => unit = "removeEventListener";
-  [@bs.send.pipe : T.t] external removeSelectionChangeEventListenerWithOptions : ([@bs.as "selectionchange"] _, Dom.event => unit, {. "capture": bool, "passive": bool}) => unit = "removeEventListener"; /* not widely supported */
-  [@bs.send.pipe : T.t] external removeSelectionChangeEventListenerUseCapture : ([@bs.as "selectionchange"] _, Dom.event =>unit, [@bs.as {json|true|json}] _) => unit = "removeEventListener";
 };
 
 type t = Dom.htmlDocument;
 
 include Webapi__Dom__Node.Impl({ type nonrec t = t; });
 include Webapi__Dom__EventTarget.Impl({ type nonrec t = t; });
+include Webapi__Dom__GlobalEventHandlers.Impl({ type nonrec t = t; });
 include Webapi__Dom__Document.Impl({ type nonrec t = t; });
 include Impl({ type nonrec t = t; });
