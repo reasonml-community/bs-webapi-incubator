@@ -1,4 +1,9 @@
+let ofNode = (node: Dom.node) : option('a) =>
+  Webapi__Dom__Node.nodeType(node) == Text ? Some(Obj.magic(node)) : None;
+
 module Impl = (T: {type t;}) => {
+  let ofNode: Dom.node => option(T.t) = ofNode;
+
   [@bs.send.pipe : T.t] external splitText : (~offset: int, unit) => Dom.text = "";
   [@bs.get] external wholeText : T.t => string = "";
 };
