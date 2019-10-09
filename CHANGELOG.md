@@ -1,4 +1,9 @@
 
+### 0.15.5 - (2019-10-09)
+* Added `keypress` event handler API
+* Added `selectionchange` event handler API
+* Added `Text.ofNode`
+
 ### 0.15.4 - (2019-09-02)
 * Added `Selection.setBaseAndExtent`
 
