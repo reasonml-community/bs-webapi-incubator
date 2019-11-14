@@ -14,6 +14,7 @@ module DocumentFragment = Webapi__Dom__DocumentFragment;
 module DocumentType = Webapi__Dom__DocumentType;
 module DomImplementation = Webapi__Dom__DomImplementation;
 module DomRect = Webapi__Dom__DomRect;
+module DomStringMap = Webapi__Dom__DomStringMap;
 module DomTokenList = Webapi__Dom__DomTokenList;
 module DragEvent = Webapi__Dom__DragEvent;
 module Element = Webapi__Dom__Element;
