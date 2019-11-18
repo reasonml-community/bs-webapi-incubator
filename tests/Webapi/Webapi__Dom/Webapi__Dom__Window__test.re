@@ -59,6 +59,7 @@ let _ = Window.matchMedia("max-height: 400", window);
 let _ = Window.moveBy(10, (-10), window);
 let _ = Window.moveTo(120, 300, window);
 let _ = Window.open_(~url="http://...", ~name="my window", ~features="menubar=yes", window);
+let _ = Window.open_(~url="http://...", ~name="my window", window);
 Window.postMessage("my message", "*", window) /* Currently no way to make transferables */; /*Window.postMessageWithTransfers "my message" "*" transfers window;*/
 Window.print(window);
 let _ = Window.prompt("type you password, please?", window);

@@ -1,3 +1,4 @@
+* Changed `Window.open_` to have optional `features` argument
 
 ### 0.15.5 - (2019-10-09)
 * Added `keypress` event handler API
