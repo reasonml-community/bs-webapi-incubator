@@ -1,3 +1,6 @@
+
+### 0.15.6 (2019-11-20)
+* Added `DomStringMap`
 * Changed `Window.open_` to have optional `features` argument
 
 ### 0.15.5 - (2019-10-09)
