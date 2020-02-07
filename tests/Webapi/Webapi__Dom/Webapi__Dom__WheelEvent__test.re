@@ -24,7 +24,7 @@ let _ = detail(event);
 let _ = view(event);
 
 /* MouseEvent */
-let _ clientX(event);
+let _ = clientX(event);
 
 /* WheelEvent */
 let _ = deltaX(event);
