@@ -1,4 +1,7 @@
 
+### 0.15.6 (2020-02-08)
+* `WheelEvent` now inherits the implementation of `MouseEvent`
+
 ### 0.15.6 (2019-11-20)
 * Added `DomStringMap`
 * Changed `Window.open_` to have optional `features` argument
