@@ -1,9 +1,11 @@
 open Webapi.Dom.Image;
 
-let imageData = make(~width=0.0, ~height=0.0);
+let image = make(~width=0.0, ~height=0.0);
 
-let arr = Js.Typed_array.Uint8ClampedArray.make([||]);
-let _ = makeWithData(~array=arr, ~width=0.0, ~height=0.0);
+let url = "http://test.jpg";
 
-let _ = height(imageData);
-let _ = width(imageData);
+let _ = setSrc(image, url);
+
+let _ = src(image);
+let _ = height(image);
+let _ = width(image);

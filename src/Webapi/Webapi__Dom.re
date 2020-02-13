@@ -31,6 +31,7 @@ module HtmlImageElement = Webapi__Dom__HtmlImageElement;
 module HtmlInputElement = Webapi__Dom__HtmlInputElement;
 module IdbVersionChangeEvent = Webapi__Dom__IdbVersionChangeEvent;
 module Image = Webapi__Dom__Image;
+module ImageData = Webapi__Dom__ImageData;
 module InputEvent = Webapi__Dom__InputEvent;
 module KeyboardEvent = Webapi__Dom__KeyboardEvent;
 module Location = Webapi__Dom__Location;
@@ -67,11 +68,10 @@ module Window = Webapi__Dom__Window;
 
 include Webapi__Dom__Types;
 
-[@bs.val] external window : Dom.window = "window";
-[@bs.val] external document : Dom.document = "document";
-[@bs.val] [@bs.scope "window"] external history : Dom.history = "history";
-[@bs.val] [@bs.scope "window"] external location : Dom.location = "location";
-
+[@bs.val] external window: Dom.window = "window";
+[@bs.val] external document: Dom.document = "document";
+[@bs.val] [@bs.scope "window"] external history: Dom.history = "history";
+[@bs.val] [@bs.scope "window"] external location: Dom.location = "location";
 
 /* Unimplemented interfaces (aka. "The TODO list")
 
