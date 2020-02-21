@@ -5,7 +5,6 @@ type idleDeadline; /* Cooperative Scheduling of Background Tasks */
 type locationbar; /* "bar object" */
 type menubar; /* "bar object" */
 type navigator;
-type performance; /* Web Performance API */
 type personalbar; /* "bar object" */
 type screen;
 type scrollbars; /* "bar object" */
@@ -47,7 +46,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external pageXOffset : t_window => float = ""; /* alias for scrollX */
   [@bs.get] external pageYOffset : t_window => float = ""; /* alias for scrollY */
   [@bs.get] external parent : t_window => Dom.window = "";
-  [@bs.get] external performance : t_window => performance = "";
+  [@bs.get] external performance : t_window => Webapi__Performance.t = "";
   [@bs.get] external personalbar : t_window => personalbar = "";
   [@bs.get] external screen : t_window => screen = "";
   [@bs.get] external screenX : t_window => int = "";
