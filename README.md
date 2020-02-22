@@ -69,6 +69,9 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
+### 0.15.8 (2020-02-22)
+* Added `Window.performance` and `Performance.now`
+
 ### 0.15.6 (2020-02-08)
 * `WheelEvent` now inherits the implementation of `MouseEvent`
 
