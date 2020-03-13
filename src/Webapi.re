@@ -10,3 +10,4 @@ module Dom = Webapi__Dom;
 module File = Webapi__File;
 module Performance = Webapi__Performance;
 module Url = Webapi__Url;
+module ResizeObserver = Webapi__ResizeObserver;
