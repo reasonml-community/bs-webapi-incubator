@@ -1,4 +1,7 @@
 
+### 0.15.9 (2020-03-14)
+* Added `ResizeObserver`
+
 ### 0.15.8 (2020-02-22)
 * Added `Window.performance` and `Performance.now`
 
