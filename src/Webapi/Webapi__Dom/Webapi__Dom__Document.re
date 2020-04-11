@@ -19,6 +19,7 @@ module Impl = (T: {type t;}) => {
 
   [@bs.get] external characterSet : T.t => string = "";
   [@bs.get] external contentType: T.t => string = "";
+  [@bs.get] external dir: T.t => string = "";
   [@bs.get] external compatMode : T.t => string /* compatMode enum */ = ""; /* experimental */
   let compatMode: T.t => Webapi__Dom__Types.compatMode =
     (self) => Webapi__Dom__Types.decodeCompatMode(compatMode(self));
