@@ -46,6 +46,10 @@ module Impl = (T: {type t;}) => {
   let visibilityState: T.t => Webapi__Dom__Types.visibilityState =
     (self) => Webapi__Dom__Types.decodeVisibilityState(visibilityState(self));
 
+  [@bs.get] external readyState : T.t => string /* enum */ = "";
+  let readyState: T.t => Webapi__Dom__Types.readyState =
+    (self) => Webapi__Dom__Types.decodeReadyState(readyState(self));
+
   [@bs.send.pipe : T.t] external adoptNode : Dom.element_like('a) => Dom.element_like('a) = "";
   [@bs.send.pipe : T.t] external createAttribute : string => Dom.attr = "";
   [@bs.send.pipe : T.t] external createAttributeNS : (string, string) => Dom.attr = "";
