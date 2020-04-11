@@ -5,6 +5,8 @@ let el = document |> createElement("strong");
 
 let _ = characterSet(document);
 let _ = contentType(document);
+let _ = title(document);
+let _ = dir(document);
 let _ = compatMode(document);
 let _ = doctype(document);
 let _ = documentElement(document);

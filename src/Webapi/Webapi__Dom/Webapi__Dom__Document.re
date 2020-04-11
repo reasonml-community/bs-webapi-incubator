@@ -18,12 +18,13 @@ module Impl = (T: {type t;}) => {
   Webapi__Dom__Node.nodeType(node) == Document ? Some(Obj.magic(node)) : None;
 
   [@bs.get] external characterSet : T.t => string = "";
-  [@bs.get] external contentType: T.t => string = "";
+  [@bs.get] external contentType : T.t => string = "";
   [@bs.get] external dir : T.t => string /* dir enum */ = "";
   let dir: T.t => Webapi__Dom__Types.dir = (self) => Webapi__Dom__Types.decodeDir(dir(self));
   [@bs.set] external setDir : (T.t, string /* dir enum */) => unit = "dir";
   let setDir: (T.t, Webapi__Dom__Types.dir) => unit =
     (self, value) => setDir(self, Webapi__Dom__Types.encodeDir(value));
+  [@bs.get] external title : T.t => string = "";
   [@bs.get] external compatMode : T.t => string /* compatMode enum */ = ""; /* experimental */
   let compatMode: T.t => Webapi__Dom__Types.compatMode =
     (self) => Webapi__Dom__Types.decodeCompatMode(compatMode(self));
