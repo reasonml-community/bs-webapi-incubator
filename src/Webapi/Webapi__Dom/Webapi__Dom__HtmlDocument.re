@@ -3,6 +3,7 @@ module Impl = (T: {type t;}) => {
 
   [@bs.get] [@bs.return nullable] external activeElement : t_htmlDocument => option(Dom.element) = "";
   [@bs.get] [@bs.return nullable] external body : t_htmlDocument => option(Dom.element) = ""; /* returns option HTMLBodyElement */
+  [@bs.get] external characterSet : t_htmlDocument => string = "";
   [@bs.set] external setBody : (t_htmlDocument, Dom.element) => unit = "body"; /* accepth HTMLBodyElement */
   [@bs.get] external cookie : t_htmlDocument => string = "";
   [@bs.set] external setCookie : (t_htmlDocument, string) => unit = "cookie";
