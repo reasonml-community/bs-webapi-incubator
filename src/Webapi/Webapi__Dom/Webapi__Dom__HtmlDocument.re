@@ -13,11 +13,6 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setDesignMode : (t_htmlDocument, string /* designMode enum */) => unit = "designMode";
   let setDesignMode: (t_htmlDocument, Webapi__Dom__Types.designMode) => unit =
     (self, value) => setDesignMode(self, Webapi__Dom__Types.encodeDesignMode(value));
-  [@bs.get] external dir : t_htmlDocument => string /* dir enum */ = "";
-  let dir: t_htmlDocument => Webapi__Dom__Types.dir = (self) => Webapi__Dom__Types.decodeDir(dir(self));
-  [@bs.set] external setDir : (t_htmlDocument, string /* dir enum */) => unit = "dir";
-  let setDir: (t_htmlDocument, Webapi__Dom__Types.dir) => unit =
-    (self, value) => setDir(self, Webapi__Dom__Types.encodeDir(value));
   [@bs.get] [@bs.return nullable] external domain : t_htmlDocument => option(string) = "";
   [@bs.set] external setDomain : (t_htmlDocument, string) => unit = "domain";
   [@bs.get] external embeds : t_htmlDocument => Dom.nodeList = "";
