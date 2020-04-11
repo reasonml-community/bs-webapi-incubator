@@ -8,11 +8,17 @@ module Impl = (T: {type t;}) => {
   [@bs.set] external setCookie : (t_htmlDocument, string) => unit = "cookie";
   [@bs.get] [@bs.return nullable] external defaultView : t_htmlDocument => option(Dom.window) = "";
   [@bs.get] external designMode : t_htmlDocument => string /* designMode enum */ = "";
+  [@bs.get] external contentType: T.t => string = "";
   let designMode: t_htmlDocument => Webapi__Dom__Types.designMode =
     (self) => Webapi__Dom__Types.decodeDesignMode(designMode(self));
   [@bs.set] external setDesignMode : (t_htmlDocument, string /* designMode enum */) => unit = "designMode";
   let setDesignMode: (t_htmlDocument, Webapi__Dom__Types.designMode) => unit =
     (self, value) => setDesignMode(self, Webapi__Dom__Types.encodeDesignMode(value));
+  [@bs.get] external dir : t_htmlDocument => string /* dir enum */ = "";
+  let dir: t_htmlDocument => Webapi__Dom__Types.dir = (self) => Webapi__Dom__Types.decodeDir(dir(self));
+  [@bs.set] external setDir : (t_htmlDocument, string /* dir enum */) => unit = "dir";
+  let setDir: (t_htmlDocument, Webapi__Dom__Types.dir) => unit =
+    (self, value) => setDir(self, Webapi__Dom__Types.encodeDir(value));
   [@bs.get] [@bs.return nullable] external domain : t_htmlDocument => option(string) = "";
   [@bs.set] external setDomain : (t_htmlDocument, string) => unit = "domain";
   [@bs.get] external embeds : t_htmlDocument => Dom.nodeList = "";
@@ -24,6 +30,9 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external location : t_htmlDocument => Dom.location = "";
   [@bs.set] external setLocation : (t_htmlDocument, string) => unit = "location";
   [@bs.get] external plugins : t_htmlDocument => Dom.htmlCollection = "";
+  [@bs.get] external readyState : t_htmlDocument => string /* enum */ = "";
+  let readyState: t_htmlDocument => Webapi__Dom__Types.readyState =
+    (self) => Webapi__Dom__Types.decodeReadyState(readyState(self));
   [@bs.get] external referrer : t_htmlDocument => string = "";
   [@bs.get] external scripts : t_htmlDocument => Dom.htmlCollection = "";
   [@bs.get] external title : t_htmlDocument => string = "";

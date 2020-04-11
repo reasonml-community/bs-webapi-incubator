@@ -18,13 +18,6 @@ module Impl = (T: {type t;}) => {
   Webapi__Dom__Node.nodeType(node) == Document ? Some(Obj.magic(node)) : None;
 
   [@bs.get] external characterSet : T.t => string = "";
-  [@bs.get] external contentType : T.t => string = "";
-  [@bs.get] external dir : T.t => string /* dir enum */ = "";
-  let dir: T.t => Webapi__Dom__Types.dir = (self) => Webapi__Dom__Types.decodeDir(dir(self));
-  [@bs.set] external setDir : (T.t, string /* dir enum */) => unit = "dir";
-  let setDir: (T.t, Webapi__Dom__Types.dir) => unit =
-    (self, value) => setDir(self, Webapi__Dom__Types.encodeDir(value));
-  [@bs.get] external title : T.t => string = "";
   [@bs.get] external compatMode : T.t => string /* compatMode enum */ = ""; /* experimental */
   let compatMode: T.t => Webapi__Dom__Types.compatMode =
     (self) => Webapi__Dom__Types.decodeCompatMode(compatMode(self));
@@ -45,10 +38,6 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external visibilityState : T.t => string /* visibilityState enum */ = "";
   let visibilityState: T.t => Webapi__Dom__Types.visibilityState =
     (self) => Webapi__Dom__Types.decodeVisibilityState(visibilityState(self));
-
-  [@bs.get] external readyState : T.t => string /* enum */ = "";
-  let readyState: T.t => Webapi__Dom__Types.readyState =
-    (self) => Webapi__Dom__Types.decodeReadyState(readyState(self));
 
   [@bs.send.pipe : T.t] external adoptNode : Dom.element_like('a) => Dom.element_like('a) = "";
   [@bs.send.pipe : T.t] external createAttribute : string => Dom.attr = "";
