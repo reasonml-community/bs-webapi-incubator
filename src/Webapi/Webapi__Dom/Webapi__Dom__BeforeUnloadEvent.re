@@ -9,4 +9,5 @@ include Webapi__Dom__Event.Impl({
 external makeWithOptions: (string, Js.t({..})) => t = "BeforeUnloadEvent";
 
 [@bs.get] external returnValue: t => string = "";
-[@bs.set] external setReturnValue: (t, string) => unit = "returnValue";
+[@bs.set]
+external setReturnValue: (t, option(string)) => unit = "returnValue";
