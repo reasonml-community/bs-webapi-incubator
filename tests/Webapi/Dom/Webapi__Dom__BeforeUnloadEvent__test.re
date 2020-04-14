@@ -21,3 +21,4 @@ stopPropagation(event);
 
 /* BeforeUnloadEvent */
 let _ = returnValue(event);
+setReturnValue(event, "Test");

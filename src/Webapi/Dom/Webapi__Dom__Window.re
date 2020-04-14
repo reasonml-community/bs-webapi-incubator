@@ -94,6 +94,8 @@ module Impl = (T: {type t;}) => {
 
   [@bs.send.pipe : t_window] external addPopStateEventListener : ([@bs.as "popstate"] _, Dom.popStateEvent => unit) => unit = "addEventListener";
   [@bs.send.pipe : t_window] external removePopStateEventListener : ([@bs.as "popstate"] _, Dom.popStateEvent => unit) => unit= "removeEventListener";
+  [@bs.send.pipe : t_window] external addBeforeUnloadEventListener : ([@bs.as "beforeunload"] _, Dom.beforeUnloadEvent => unit) => unit = "addEventListener";
+  [@bs.send.pipe : t_window] external removeBeforeUnloadEventListener : ([@bs.as "beforeunload"] _, Dom.beforeUnloadEvent => unit) => unit= "removeEventListener";
 
   [@bs.set] external setOnLoad : (t_window, unit => unit) => unit = "onload"; /* use addEventListener instead? */
 };
