@@ -70,7 +70,7 @@ module LineJoin: LineJoinType = {
 
 type image('a) =
   | Number: image(float)
-  | ImageData: image(Webapi__Dom__ImageData.t);
+  | ImageData: image(Webapi__Canvas__ImageData.t);
 
 type style(_) =
   | String: style(string)
@@ -266,23 +266,23 @@ external clearRect: (~x: float, ~y: float, ~w: float, ~h: float) => unit = "";
 
 [@bs.send]
 external createImageDataCoords:
-  (t, ~width: float, ~height: float) => Webapi__Dom__ImageData.t =
+  (t, ~width: float, ~height: float) => Webapi__Canvas__ImageData.t =
   "createImageData";
 [@bs.send]
 external createImageDataFromImage:
-  (t, Webapi__Dom__ImageData.t) => Webapi__Dom__ImageData.t =
+  (t, Webapi__Canvas__ImageData.t) => Webapi__Canvas__ImageData.t =
   "createImageData";
 
 [@bs.send]
 external getImageData:
   (t, ~sx: float, ~sy: float, ~sw: float, ~sh: float) =>
-  Webapi__Dom__ImageData.t =
+  Webapi__Canvas__ImageData.t =
   "";
 [@bs.send]
 external putImageData:
   (
     t,
-    ~imageData: Webapi__Dom__ImageData.t,
+    ~imageData: Webapi__Canvas__ImageData.t,
     ~dx: float,
     ~dy: float,
     ~dirtyX: float=?,

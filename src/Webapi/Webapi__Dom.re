@@ -30,7 +30,6 @@ module HtmlFormElement = Webapi__Dom__HtmlFormElement;
 module HtmlImageElement = Webapi__Dom__HtmlImageElement;
 module HtmlInputElement = Webapi__Dom__HtmlInputElement;
 module IdbVersionChangeEvent = Webapi__Dom__IdbVersionChangeEvent;
-module ImageData = Webapi__Dom__ImageData;
 module InputEvent = Webapi__Dom__InputEvent;
 module KeyboardEvent = Webapi__Dom__KeyboardEvent;
 module Location = Webapi__Dom__Location;
