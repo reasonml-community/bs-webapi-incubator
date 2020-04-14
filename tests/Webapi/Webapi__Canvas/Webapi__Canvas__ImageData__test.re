@@ -1,4 +1,4 @@
-open Webapi.Dom.ImageData;
+open Webapi.Canvas.ImageData;
 
 let imageData = make(~width=0.0, ~height=0.0);
 
