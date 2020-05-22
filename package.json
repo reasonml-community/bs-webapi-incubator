@@ -7,7 +7,6 @@
     "url": "git+https://github.com/reasonml-community/bs-webapi-incubator.git"
   },
   "homepage": "https://github.com/reasonml-community/bs-webapi-incubator#readme",
-  "main": "index.js",
   "keywords": [
     "reason",
     "bucklescript",
