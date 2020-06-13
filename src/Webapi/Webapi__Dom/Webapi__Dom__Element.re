@@ -1,6 +1,8 @@
 /* internal, moved out of Impl to reduce unnecessary code duplication */
 let ofNode = (node: Dom.node) : option('a) =>
-  Webapi__Dom__Node.nodeType(node) == Element ? Some(Obj.magic(node)) : None;
+  Webapi__Dom__Node.nodeType(node) == Webapi__Dom__Types.Element ?
+    Some(Obj.magic(node)) :
+    None;
 
 module Impl = (T: {type t;}) => {
   let asHtmlElement: T.t => Js.null(Dom.htmlElement) = [%bs.raw

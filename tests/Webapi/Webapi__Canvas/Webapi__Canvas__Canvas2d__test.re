@@ -27,13 +27,13 @@ setFillStyle(ctx, String, "red");
 switch (fillStyle(ctx)) {
 | (Gradient, g) => g |> addColorStop(0.0, "red")
 | (String, s) => Js.log(s)
-| _ => ()
+| (Pattern, _) => ()
 };
 
 switch (strokeStyle(ctx)) {
 | (Gradient, g) => g |> addColorStop(1.2, "blue")
 | (String, s) => Js.log(s)
-| _ => ()
+| (Pattern, _) => ()
 };
 
 shadowOffsetX(ctx, 1.);

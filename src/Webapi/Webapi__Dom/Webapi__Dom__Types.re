@@ -111,10 +111,10 @@ type eventPhase =
 
 let decodeEventPhase =
   fun /* internal */
-  | 0 => None
   | 1 => CapturingPhase
   | 2 => AtTarget
   | 3 => BubblingPhase
+  | 0 => None
   | _ => Unknown;
 
 type filterAction =

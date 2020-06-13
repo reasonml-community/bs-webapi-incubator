@@ -1,3 +1,3 @@
 type t = Dom.nodeFilter;
 
-let make = (f) : t => {acceptNode: f};
+let make = f => {Dom.acceptNode: f};

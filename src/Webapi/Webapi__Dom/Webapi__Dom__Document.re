@@ -15,7 +15,9 @@ module Impl = (T: {type t;}) => {
   external unsafeAsHtmlDocument : T.t => Dom.htmlDocument = "%identity";
 
   let ofNode = (node: Dom.node) : option(T.t) =>
-  Webapi__Dom__Node.nodeType(node) == Document ? Some(Obj.magic(node)) : None;
+    Webapi__Dom__Node.nodeType(node) == Webapi__Dom__Types.Document ?
+      Some(Obj.magic(node)) :
+      None;
 
   [@bs.get] external characterSet : T.t => string = "";
   [@bs.get] external compatMode : T.t => string /* compatMode enum */ = ""; /* experimental */
