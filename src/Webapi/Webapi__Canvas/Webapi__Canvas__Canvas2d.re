@@ -112,25 +112,22 @@ let setFillStyle = (type a, ctx: t, _: style(a), v: a) =>
   setFillStyle(ctx, v);
 
 let reifyStyle = (type a, x: 'a) : (style(a), a) => {
-  module Internal = {
-    type constructor;
-    [@bs.val] external canvasGradient : constructor = "CanvasGradient"; /* internal */
-    [@bs.val] external canvasPattern : constructor = "CanvasPattern"; /* internal */
-    let instanceOf: ('a, constructor) => bool = [%bs.raw {|function(x,y) {return +(x instanceof y)}|}]; /* internal */
-  };
+  let isCanvasGradient: 'a => bool = [%raw {|
+    function(x) { return x instanceof CanvasGradient; }
+  |}];
+
+  let isCanvasPattern: 'a => bool = [%raw {|
+    function(x) { return x instanceof CanvasPattern; }
+  |}];
 
   (
-    if (Js.typeof(x) == "string") {
-      Obj.magic(String)
-    } else if (Internal.instanceOf(x, Internal.canvasGradient)) {
-      Obj.magic(Gradient)
-    } else if (Internal.instanceOf(x, Internal.canvasPattern)) {
-      Obj.magic(Pattern)
-    } else {
-      raise(Invalid_argument("Unknown canvas style kind. Known values are: String, CanvasGradient, CanvasPattern"))
-    },
+    if (Js.typeof(x) == "string") Obj.magic(String)
+    else if (isCanvasGradient(x)) Obj.magic(Gradient)
+    else if (isCanvasPattern(x)) Obj.magic(Pattern)
+    else invalid_arg(
+      "Unknown canvas style kind. Known values are: String, CanvasGradient, CanvasPattern"),
     Obj.magic(x)
-  )
+  );
 };
 
 [@bs.get] external fillStyle : t => 'a = "";

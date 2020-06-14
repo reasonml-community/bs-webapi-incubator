@@ -1,16 +1,7 @@
 module Impl = (T: {type t;}) => {
   type t_htmlElement = T.t;
 
-  let ofElement: Dom.element => Js.null(t_htmlElement) = [%bs.raw
-    {|
-    function (element) {
-      // BEWARE: Assumes "contentEditable" uniquely identifies an HTMLELement
-      return element.contentEditable !== undefined ?  element : null;
-    }
-  |}
-  ];
-  [@deprecated "Consider using Element.asHtmlElement or Element.unsafeAsHtmlElement instead"]
-  let ofElement: Dom.element => option(t_htmlElement) = (self) => Js.Null.toOption(ofElement(self));
+  let ofElement = Webapi__Dom__Element.asHtmlElement;
 
   [@bs.get] external accessKey : t_htmlElement => string = "";
   [@bs.set] external setAccessKey : (t_htmlElement, string) => unit = "accessKey";

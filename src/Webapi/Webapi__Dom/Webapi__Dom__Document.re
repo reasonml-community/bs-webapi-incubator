@@ -1,17 +1,13 @@
 module Impl = (T: {type t;}) => {
   external asDocument : T.t => Dom.document = "%identity";
 
-  let asHtmlDocument: T.t => Js.null(Dom.htmlDocument) = [%bs.raw
-    {|
-    function (document) {
-      return document.doctype.name === "html" ?  document : null;
+  let asHtmlDocument: T.t => option(Dom.htmlDocument) = [%raw {|
+    function(document) {
+      if (document instanceof HTMLDocument) return document;
     }
-  |}
-  ];
-  [@deprecated "Will fail if no doctype is defined, consider using unsafeAsHtmlDocument instead"]
-  let asHtmlDocument: T.t => option(Dom.htmlDocument) =
-    (self) => Js.Null.toOption(asHtmlDocument(self));
+  |}];
 
+  [@deprecated "Unsafe cast, use [ashtmlDocument] instead"]
   external unsafeAsHtmlDocument : T.t => Dom.htmlDocument = "%identity";
 
   let ofNode = (node: Dom.node) : option(T.t) =>

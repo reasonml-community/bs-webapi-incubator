@@ -4,9 +4,13 @@ open Webapi.Dom.DomStringMap;
 let dataset =
   document
   |> Document.createElement("div")
-  |> Element.unsafeAsHtmlElement
-  |> HtmlElement.dataset;
+  |> Element.asHtmlElement
+  |> Belt.Option.map(_, HtmlElement.dataset);
 
-let () = set("fooKey", "barValue", dataset);
-let _ = get("fooKey", dataset);
-let () = unsafeDeleteKey("fooKey", dataset);
+let () = switch (dataset) {
+  | Some(dataset) =>
+    set("fooKey", "barValue", dataset);
+    dataset |> get("fooKey") |> ignore;
+    unsafeDeleteKey("fooKey", dataset);
+  | None => ()
+};
