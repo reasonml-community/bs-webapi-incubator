@@ -5,18 +5,13 @@ let ofNode = (node: Dom.node) : option('a) =>
     None;
 
 module Impl = (T: {type t;}) => {
-  let asHtmlElement: T.t => Js.null(Dom.htmlElement) = [%bs.raw
-    {|
-    function (element) {
-      // BEWARE: Assumes "contentEditable" uniquely identifies an HTMLELement
-      return element.contentEditable !== undefined ?  element : null;
+  let asHtmlElement: T.t => option(Dom.htmlElement) = [%raw {|
+    function(element) {
+      if (element instanceof HTMLElement) return element;
     }
-  |}
-  ];
-  [@deprecated "asHtmlElement uses a weak heuristic, consider using unsafeAsHtmlElement instead"]
-  let asHtmlElement: T.t => option(Dom.htmlElement) =
-    (self) => Js.Null.toOption(asHtmlElement(self));
+  |}];
 
+  [@deprecated "Unsafe cast, use [asHtmlElement] instead"]
   external unsafeAsHtmlElement : T.t => Dom.htmlElement = "%identity";
   let ofNode: Dom.node => option(T.t) = ofNode;
 
