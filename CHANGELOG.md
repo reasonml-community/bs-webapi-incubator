@@ -1,4 +1,12 @@
 
+### 0.16.0 (2020-06-16)
+* Fixed `DomStringMap.unsafeDeleteKey` for BuckleScript 8
+* Removed `main` file from `package.json`
+* Removed JS outputs except for tests
+* Enabled more warnings and errors
+* Used `instanceof` to implement downcasts and deprecated the unsafe
+  downcasts
+
 ### 0.15.9 (2020-03-14)
 * Added `ResizeObserver`
 
