@@ -7,7 +7,21 @@ let ofNode = (node: Dom.node) : option('a) =>
 module Impl = (T: {type t;}) => {
   let asHtmlElement: T.t => option(Dom.htmlElement) = [%raw {|
     function(element) {
-      if (element instanceof HTMLElement) return element;
+      if (node.ownerDocument != null) {
+        var ownerDocument = node.ownerDocument;
+
+        if (ownerDocument.defaultView != null) {
+          var defaultView = ownerDocument.defaultView;
+
+          if (defaultView.Element != null) {
+            var HTMLElement = defaultView.HTMLElement;
+
+            if (element instanceof HTMLElement) {
+              return element;
+            }
+          }
+        }
+      }
     }
   |}];
 
