@@ -2,6 +2,7 @@
 ### 0.16.1 (2020-06-24)
 * Fixed `element instanceof HTMLElement` check to ensure it works for
   elements from different windows
+* Un-deprecated the unsafe downcast functions
 
 ### 0.16.0 (2020-06-16)
 * Fixed `DomStringMap.unsafeDeleteKey` for BuckleScript 8

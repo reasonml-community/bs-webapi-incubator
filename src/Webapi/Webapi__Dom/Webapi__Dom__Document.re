@@ -7,7 +7,7 @@ module Impl = (T: {type t;}) => {
     }
   |}];
 
-  [@deprecated "Unsafe cast, use [ashtmlDocument] instead"]
+  /** Unsafe cast, use [ashtmlDocument] instead */
   external unsafeAsHtmlDocument : T.t => Dom.htmlDocument = "%identity";
 
   let ofNode = (node: Dom.node) : option(T.t) =>

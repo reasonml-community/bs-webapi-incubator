@@ -13,7 +13,7 @@ module Impl = (T: {type t;}) => {
         if (ownerDocument.defaultView != null) {
           var defaultView = ownerDocument.defaultView;
 
-          if (defaultView.Element != null) {
+          if (defaultView.HTMLElement != null) {
             var HTMLElement = defaultView.HTMLElement;
 
             if (element instanceof HTMLElement) {
@@ -25,8 +25,9 @@ module Impl = (T: {type t;}) => {
     }
   |}];
 
-  [@deprecated "Unsafe cast, use [asHtmlElement] instead"]
+  /** Unsafe cast, use [asHtmlElement] instead */
   external unsafeAsHtmlElement : T.t => Dom.htmlElement = "%identity";
+
   let ofNode: Dom.node => option(T.t) = ofNode;
 
   [@bs.get] external attributes : T.t => Dom.namedNodeMap = "";
