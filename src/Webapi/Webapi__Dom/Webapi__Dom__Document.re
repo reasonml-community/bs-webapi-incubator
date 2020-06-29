@@ -3,7 +3,15 @@ module Impl = (T: {type t;}) => {
 
   let asHtmlDocument: T.t => option(Dom.htmlDocument) = [%raw {|
     function(document) {
-      if (document instanceof HTMLDocument) return document;
+      var defaultView = document.defaultView;
+
+      if (defaultView != null) {
+        var HTMLDocument = defaultView.HTMLDocument;
+
+        if (HTMLDocument != null && document instanceof HTMLDocument) {
+          return document;
+        }
+      }
     }
   |}];
 

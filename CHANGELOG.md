@@ -1,4 +1,8 @@
 
+### 0.16.2 (2020-06-29)
+* Fixed `document instanceof HTMLDocument` check to ensure it works
+  across windows
+
 ### 0.16.1 (2020-06-24)
 * Fixed `element instanceof HTMLElement` check to ensure it works for
   elements from different windows
