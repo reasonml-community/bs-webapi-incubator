@@ -75,8 +75,8 @@ Image.width(imageData);
 Image.height(imageData);
 
 getImageData(ctx, ~sx=0.0, ~sy=0.0, ~sw=0.0, ~sh=0.0);
-let _: unit = putImageData(ctx, ~imageData, ~dx=0.0, ~dy=0.0, ());
-let _: unit = putImageData(ctx, ~imageData, ~dx=0.0, ~dy=0.0, ~dirtyX=0.0, ~dirtyY=0.0, ~dirtyWidth=0.0, ~dirtyHeight=0.0, ());
+let _: unit = putImageData(ctx, ~imageData, ~dx=0.0, ~dy=0.0);
+let _: unit = putImageDataWithDirtyRect(ctx, ~imageData, ~dx=0.0, ~dy=0.0, ~dirtyX=0.0, ~dirtyY=0.0, ~dirtyWidth=0.0, ~dirtyHeight=0.0);
 
 font(ctx, "10px Courier");
 textAlign(ctx, "left");

@@ -193,15 +193,23 @@ let strokeStyle = (ctx: t) =>
 [@bs.send] external createImageDataFromImage : (t, Webapi__Dom__Image.t) => Webapi__Dom__Image.t = "createImageData";
 
 [@bs.send] external getImageData : (t, ~sx: float, ~sy: float, ~sw: float, ~sh: float) => Webapi__Dom__Image.t = "";
+
 [@bs.send] external putImageData : (
     t,
     ~imageData: Webapi__Dom__Image.t,
     ~dx: float,
+    ~dy: float
+  )
+  => unit = "";
+
+[@bs.send] external putImageDataWithDirtyRect : (
+    t,
+    ~imageData: Webapi__Dom__Image.t,
+    ~dx: float,
     ~dy: float,
-    ~dirtyX: float=?,
-    ~dirtyY: float=?,
-    ~dirtyWidth: float=?,
-    ~dirtyHeight: float=?,
-    unit
+    ~dirtyX: float,
+    ~dirtyY: float,
+    ~dirtyWidth: float,
+    ~dirtyHeight: float
   )
   => unit = "";
