@@ -212,4 +212,4 @@ let strokeStyle = (ctx: t) =>
     ~dirtyWidth: float,
     ~dirtyHeight: float
   )
-  => unit = "";
+  => unit = "putImageData";
