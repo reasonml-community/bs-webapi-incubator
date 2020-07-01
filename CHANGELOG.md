@@ -1,4 +1,8 @@
 
+### 0.17.1 (2020-07-01)
+* Deprecated `Webapi.Dom.eventPhase` in favour of
+  `Webapi.Dom.EventPhase.t`
+
 ### 0.17.0 (2020-06-29)
 * (Breaking) fixed `Canvas2d.putImageData`, unfortunately this needs to
   be a breaking change because the JavaScript method itself doesn't

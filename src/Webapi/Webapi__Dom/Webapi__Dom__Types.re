@@ -102,6 +102,7 @@ let decodeDir =
   | "rtl" => Rtl
   | _ => Unknown;
 
+[@deprecated "Use EventPhase.t"]
 type eventPhase =
   | None
   | CapturingPhase
@@ -109,13 +110,22 @@ type eventPhase =
   | BubblingPhase
   | Unknown;
 
-let decodeEventPhase =
-  fun /* internal */
-  | 1 => CapturingPhase
-  | 2 => AtTarget
-  | 3 => BubblingPhase
-  | 0 => None
-  | _ => Unknown;
+module EventPhase = {
+  type t =
+    | None
+    | CapturingPhase
+    | AtTarget
+    | BubblingPhase
+    | Unknown;
+
+  let decode : int => t =
+    fun /* internal */
+    | 1 => CapturingPhase
+    | 2 => AtTarget
+    | 3 => BubblingPhase
+    | 0 => None
+    | _ => Unknown;
+};
 
 type filterAction =
   | Accept
