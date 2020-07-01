@@ -69,39 +69,4 @@ Implementation inheritance is used instead of subtyping to make it easier to und
 
 ## Changes
 
-### 0.15.9 (2020-03-14)
-* Added `ResizeObserver`
-
-### 0.15.8 (2020-02-22)
-* Added `Window.performance` and `Performance.now`
-
-### 0.15.6 (2020-02-08)
-* `WheelEvent` now inherits the implementation of `MouseEvent`
-
-### 0.15.6 (2019-11-20)
-* Added `DomStringMap`
-* Changed `Window.open_` to have optional `features` argument
-
-### 0.15.5 - (2019-10-09)
-* Added `keypress` event handler API
-* Added `selectionchange` event handler API
-* Added `Text.ofNode`
-
-### 0.15.4 - (2019-09-02)
-* Added `Selection.setBaseAndExtent`
-
-### 0.15.3 - (2019-08-22)
-* Added `NodeList.forEach`
-* Added `Node.asNode`
-
-### 0.15.2 - (2019-05-25)
-* Added `File.size`
-
-### 0.15.1 - (2019-05-17)
-* Added `URLSearchParams.forEach`
-* Added `Element.scrollBy` and `Element.srollByWithOptions`
-
-### 0.15.0 - (2019-05-11)
-* (Breaking) Changed `DomRect` coordinates to use `float` instead of `int`
-
-*See [CHANGELOG.md](CHANGELOG.md) for earlier releases.*
+See [CHANGELOG.md](CHANGELOG.md).

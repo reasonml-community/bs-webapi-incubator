@@ -1,8 +1,8 @@
 
 ### 0.17.0 (2020-06-29)
-* Fixed `Canvas2d.putImageData`, unfortunately this needs to be a
-  breaking change because the JavaScript method itself doesn't accept
-  optional arguments
+* (Breaking) fixed `Canvas2d.putImageData`, unfortunately this needs to
+  be a breaking change because the JavaScript method itself doesn't
+  accept optional arguments
 
 ### 0.16.2 (2020-06-29)
 * Fixed `document instanceof HTMLDocument` check to ensure it works
