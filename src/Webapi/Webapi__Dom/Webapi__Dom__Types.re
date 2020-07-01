@@ -120,7 +120,7 @@ module EventPhase = {
 };
 
 [@deprecated "Use EventPhase.t"]
-type eventPhase =
+type eventPhase = EventPhase.t =
   | None
   | CapturingPhase
   | AtTarget
