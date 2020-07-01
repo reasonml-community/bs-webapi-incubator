@@ -1,4 +1,11 @@
-
 language: node_js
 node_js:
-  - 6
+- 6
+
+deploy:
+  provider: npm
+  email: yawar.amin+npmjs@gmail.com
+  api_key:
+    secure: WDWra40VGlkI5boWIO0kJLHVSBomLPzmF9ZNq7/9I+Gygg0Liw6N/ickp6Z+0wKm36qbaTIYO1/GC3EYYS/98gNxmW6EqhSMaDPevw1Pbl223r8L/uR2iz5AQ6wsIIHlsqlgRe+BhqQAg4LWsLRgMwRcpp22NgrjdJNWmqcawlB2xRD83opfNQpupKLUEEIvLZpyNpTZ+NIqme46wkJ9/srmeyjkooYNj5jIjJFrTbkG8PTzo0MYiDLHxx9FNwzVZbkOzcbjjLnJ/mTtzaGLvo4cn4vqyd8pvW+bcuFMrqYNx1oSKfMqGAAH7dpaa6lThxrhyEEHPB4QHuqOd03fZPZrtIyu59mxWMEElwp/amD82fsqqGjzxs7jsOmByAHcuQtPD+4KEGQDTSTIA2PMKEb5OB/s3tomNiSBVeUbBVsmdPwHUKCAXvPsc4cZZWRUHenz6Ru4Z+r19c5AmjJTAPzG+IQcgICxxTebfu3lMIGB5c/R8PW3ZCAiGlEmR4pHsuDFn8cHWKks2b76RPJ3MM3a1s98FDLZql779GwFc3GK38utsq3x8Da1qcwr0IxgvuGBnIj5zktlJMMu7M7DHULjYZ89me+3lA4cT855HRL69yz4Nskv9mHny6VcFo4t6jI6sfnl4IXIzA8RAXbrkpewFiI2eNgF+uCNWLNVtKM=
+  on:
+    tags: true
