@@ -4,6 +4,7 @@ node_js:
 on:
   branch: master
 os: osx
+osx_image: xcode12
 
 deploy:
   - provider: npm
