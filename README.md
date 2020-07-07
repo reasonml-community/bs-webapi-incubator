@@ -7,9 +7,15 @@ Experimental bindings to the DOM and other Web APIs.
 [![Issues](https://img.shields.io/github/issues/reasonml-community/bs-webapi-incubator.svg)](https://github.com/reasonml-community/bs-webapi-incubator/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/reasonml-community/bs-webapi-incubator.svg)](https://github.com/reasonml-community/bs-webapi-incubator/commits/master)
 
-The bindings are currently undocumented, but as the code mostly just consists of external declarations with type signatures, the code itself is fairly self-documenting. The bindings generally also correspond very well to the Web APIs they bind to, so using MDN along with GitHub should go a long way.
+API docs are available at
+https://reasonml-community.github.io/bs-webapi/api/Webapi/ , but
+documentation comments are sparse as the code mostly just consists of
+external declarations with type signatures. The bindings generally also
+correspond very well to the Web APIs they bind to, so using MDN along
+with GitHub should go a long way.
 
 ## Installation
+
 ```
 npm install bs-webapi
 ```

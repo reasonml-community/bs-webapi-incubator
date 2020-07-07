@@ -1,11 +1,21 @@
 language: node_js
 node_js:
 - 6
+on:
+  branch: master
+os: osx
 
 deploy:
-  provider: npm
-  email: yawar.amin+npmjs@gmail.com
-  api_key:
-    secure: WDWra40VGlkI5boWIO0kJLHVSBomLPzmF9ZNq7/9I+Gygg0Liw6N/ickp6Z+0wKm36qbaTIYO1/GC3EYYS/98gNxmW6EqhSMaDPevw1Pbl223r8L/uR2iz5AQ6wsIIHlsqlgRe+BhqQAg4LWsLRgMwRcpp22NgrjdJNWmqcawlB2xRD83opfNQpupKLUEEIvLZpyNpTZ+NIqme46wkJ9/srmeyjkooYNj5jIjJFrTbkG8PTzo0MYiDLHxx9FNwzVZbkOzcbjjLnJ/mTtzaGLvo4cn4vqyd8pvW+bcuFMrqYNx1oSKfMqGAAH7dpaa6lThxrhyEEHPB4QHuqOd03fZPZrtIyu59mxWMEElwp/amD82fsqqGjzxs7jsOmByAHcuQtPD+4KEGQDTSTIA2PMKEb5OB/s3tomNiSBVeUbBVsmdPwHUKCAXvPsc4cZZWRUHenz6Ru4Z+r19c5AmjJTAPzG+IQcgICxxTebfu3lMIGB5c/R8PW3ZCAiGlEmR4pHsuDFn8cHWKks2b76RPJ3MM3a1s98FDLZql779GwFc3GK38utsq3x8Da1qcwr0IxgvuGBnIj5zktlJMMu7M7DHULjYZ89me+3lA4cT855HRL69yz4Nskv9mHny6VcFo4t6jI6sfnl4IXIzA8RAXbrkpewFiI2eNgF+uCNWLNVtKM=
-  on:
-    tags: true
+  - provider: npm
+    email: yawar.amin+npmjs@gmail.com
+    api_key:
+      secure: WDWra40VGlkI5boWIO0kJLHVSBomLPzmF9ZNq7/9I+Gygg0Liw6N/ickp6Z+0wKm36qbaTIYO1/GC3EYYS/98gNxmW6EqhSMaDPevw1Pbl223r8L/uR2iz5AQ6wsIIHlsqlgRe+BhqQAg4LWsLRgMwRcpp22NgrjdJNWmqcawlB2xRD83opfNQpupKLUEEIvLZpyNpTZ+NIqme46wkJ9/srmeyjkooYNj5jIjJFrTbkG8PTzo0MYiDLHxx9FNwzVZbkOzcbjjLnJ/mTtzaGLvo4cn4vqyd8pvW+bcuFMrqYNx1oSKfMqGAAH7dpaa6lThxrhyEEHPB4QHuqOd03fZPZrtIyu59mxWMEElwp/amD82fsqqGjzxs7jsOmByAHcuQtPD+4KEGQDTSTIA2PMKEb5OB/s3tomNiSBVeUbBVsmdPwHUKCAXvPsc4cZZWRUHenz6Ru4Z+r19c5AmjJTAPzG+IQcgICxxTebfu3lMIGB5c/R8PW3ZCAiGlEmR4pHsuDFn8cHWKks2b76RPJ3MM3a1s98FDLZql779GwFc3GK38utsq3x8Da1qcwr0IxgvuGBnIj5zktlJMMu7M7DHULjYZ89me+3lA4cT855HRL69yz4Nskv9mHny6VcFo4t6jI6sfnl4IXIzA8RAXbrkpewFiI2eNgF+uCNWLNVtKM=
+    on:
+      tags: true
+  - provider: pages
+    skip_cleanup: true
+    github_token:
+      secure: h5KWhYdnwBcIFLuHbsRnwfbCVbnVgF+EcdLX48xDxfdS83hcfRpit7WDdM0Oyy5Ue3Bjwk3ea2+7RrHYlNbgLB/Ot2KZ5VaxhYoB+1hPhPDeXZnCt7GnDCfge3jb+oNBLzdYa/sC6xiuyIm6xlJ6WzW4b306OYChLIkPuwwhHQokbMLaGkFXH12Zug1/y3YfQ+tZSOZWlpBfgAjjvGCZukB8IKGhydUuB5rza74/KJb2eimqtfRAQY5KssBDK23RBTgVxXieJnAt+Lsi+9mkXQ4y1wGbVpiWlNC29EvHSc+E6/YKuWeaM1ZaVmCzlmVCWX1FJDpYnkpSj4iOwJdTvfKDTgNC98dcoKKgWxPKYuWFpaq01mXOoCveQgbxDEsdu9xEUhHlJYxmFTYoQOHmJAFVezYqP1tAEwN1sKRLRZYEy36kggJu1iL4YOEp2IfVcVHcAtN+/nYOA1hLscvwzpPlKFY1Oo7+4dqpdL60xU3n70H3wHatz/yC1RO5Iu30t6tRDqE8c2PbWBk8EZfpNhDKQUDUXaBKV7W2A+htyy1YG3xEGUJxiWuaMLEDdtFKh6yI7ivfBrRskJxqcz87mtpHbLgL7yBqVnf3H48jKYD5oje+Dq7O6zCPyK7aZpy+3bOkelkmwgOLmvHLhU7+OAmSX6hrOdrIhdVRpz4wqQ0=
+    on:
+      branch: master
+    local_dir: docs

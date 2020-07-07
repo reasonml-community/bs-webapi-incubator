@@ -1,6 +1,6 @@
 {
   "name": "bs-webapi",
-  "version": "0.17.1",
+  "version": "0.18.0",
   "description": "Reason + BuckleScript bindings to DOM",
   "repository": {
     "type": "git",
@@ -15,9 +15,9 @@
   ],
   "scripts": {
     "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
+    "start": "bsb -w",
     "clean": "bsb -clean-world",
-    "test": "bsb -make-world"
+    "test": "bsb -make-world && bsdoc build api && bsdoc support-files"
   },
   "files": [
     "src/",
@@ -26,6 +26,7 @@
   "author": "chenglou",
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "^5.0.2"
+    "bs-platform": "^7.1.0",
+    "bsdoc": "6.0.4-alpha"
   }
 }

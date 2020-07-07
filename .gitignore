@@ -1,6 +1,7 @@
 .DS_Store
 .merlin
 .bsb.lock
+docs/
 node_modules/
 lib/*
 !lib/js/tests
