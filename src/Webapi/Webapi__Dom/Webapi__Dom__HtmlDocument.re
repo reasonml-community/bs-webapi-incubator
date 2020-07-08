@@ -3,11 +3,13 @@ module Impl = (T: {type t;}) => {
 
   [@bs.get] [@bs.return nullable] external activeElement : t_htmlDocument => option(Dom.element) = "";
   [@bs.get] [@bs.return nullable] external body : t_htmlDocument => option(Dom.element) = ""; /* returns option HTMLBodyElement */
+  [@bs.get] external characterSet : t_htmlDocument => string = "";
   [@bs.set] external setBody : (t_htmlDocument, Dom.element) => unit = "body"; /* accepth HTMLBodyElement */
   [@bs.get] external cookie : t_htmlDocument => string = "";
   [@bs.set] external setCookie : (t_htmlDocument, string) => unit = "cookie";
   [@bs.get] [@bs.return nullable] external defaultView : t_htmlDocument => option(Dom.window) = "";
   [@bs.get] external designMode : t_htmlDocument => string /* designMode enum */ = "";
+  [@bs.get] external contentType: T.t => string = "";
   let designMode: t_htmlDocument => Webapi__Dom__Types.designMode =
     (self) => Webapi__Dom__Types.decodeDesignMode(designMode(self));
   [@bs.set] external setDesignMode : (t_htmlDocument, string /* designMode enum */) => unit = "designMode";

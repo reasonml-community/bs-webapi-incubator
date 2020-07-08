@@ -23,7 +23,6 @@ module Impl = (T: {type t;}) => {
       Some(Obj.magic(node)) :
       None;
 
-  [@bs.get] external characterSet : T.t => string = "";
   [@bs.get] external compatMode : T.t => string /* compatMode enum */ = ""; /* experimental */
   let compatMode: T.t => Webapi__Dom__Types.compatMode =
     (self) => Webapi__Dom__Types.decodeCompatMode(compatMode(self));
