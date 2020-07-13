@@ -19,10 +19,10 @@ type t;
 [@bs.send.pipe: t] external append: (~name: string, ~value: string) => unit =
   "";
 
-[@bs.send.pipe: t] external appendBlob: (~name: string, ~value: Webapi__Blob.t) => unit =
+[@bs.send.pipe: t] external appendBlob: (~name: string, ~value: Webapi__Blob.t, ~filename: string=?) => unit =
   "append";
 
-[@bs.send.pipe: t] external appendFile: (~name: string, ~value: Webapi__File.t) => unit =
+[@bs.send.pipe: t] external appendFile: (~name: string, ~value: Webapi__File.t, ~filename: string=?) => unit =
   "append";
 
 [@bs.send.pipe: t] external delete: string => unit = "";
