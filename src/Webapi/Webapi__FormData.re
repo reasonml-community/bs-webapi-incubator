@@ -16,11 +16,18 @@ type t;
 [@bs.new] external make: (~form:Webapi__Dom__HtmlFormElement.t=?, unit) => t =
   "FormData";
 
-[@bs.send.pipe: t] external append: (~name: string, string) => unit = "";
+[@bs.send.pipe: t] external append: (~name: string, ~value: string) => unit =
+  "";
+
+[@bs.send.pipe: t] external appendBlob: (~name: string, ~value: Webapi__Blob.t) => unit =
+  "append";
+
+[@bs.send.pipe: t] external appendFile: (~name: string, ~value: Webapi__File.t) => unit =
+  "append";
 
 [@bs.send.pipe: t] external delete: string => unit = "";
 
-[@bs.send] external entries: t => Webapi__Iterator.t((string, string)) =
+[@bs.send] external entries: t => Webapi__Iterator.t((string, EntryValue.t)) =
   "";
 
 [@bs.send.pipe: t] [@bs.return nullable] external get: string => option(EntryValue.t) =

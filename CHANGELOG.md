@@ -1,7 +1,7 @@
-
 ### 0.18.0
 
 * Upgraded to bs-platform@7.1.0 and added API doc generation
+* Add bindings for `FormData`
 
 ### 0.17.1 (2020-07-01)
 * Deprecated `Webapi.Dom.eventPhase` in favour of
