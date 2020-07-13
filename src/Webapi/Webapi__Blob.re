@@ -1,3 +1,4 @@
+/** Internal, do not use */
 module Impl = (T: {type t}) => {
   [@bs.send] external arrayBuffer: T.t => Js.Promise.t(Js.Typed_array.ArrayBuffer.t) =
     "";
@@ -12,6 +13,10 @@ module Impl = (T: {type t}) => {
   [@bs.send] external text: T.t => Js.Promise.t(string) = "";
 
   [@bs.get] external type_: T.t => string = "type";
+
+  /** Deprecated, use [type_] instead. */
+  [@deprecated "Use [type_] instead"]
+  [@bs.get] external _type: T.t => string = "type";
 };
 
 type t;
