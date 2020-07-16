@@ -1,7 +1,8 @@
 ### 0.18.0
 
 * Upgraded to bs-platform@7.1.0 and added API doc generation
-* Added bindings for `FormData`
+* Added `bs-fetch` dependency for `FormData` bindings
+* Added bindings for `Blob` and `File`
 * Deprecated `File._type` for `File.type_`
 
 ### 0.17.1 (2020-07-01)

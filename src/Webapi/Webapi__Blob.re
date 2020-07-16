@@ -19,7 +19,7 @@ module Impl = (T: {type t}) => {
   [@bs.get] external _type: T.t => string = "type";
 };
 
-type t;
+type t = Fetch.blob;
 
 include Impl({type nonrec t = t});
 

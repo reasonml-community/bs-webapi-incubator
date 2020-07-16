@@ -1,4 +1,4 @@
-type t;
+type t = Fetch.file;
 
 include Webapi__Blob.Impl({type nonrec t = t});
 

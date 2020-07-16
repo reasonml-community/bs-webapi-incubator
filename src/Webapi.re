@@ -3,8 +3,13 @@ module Blob = Webapi__Blob;
 module Canvas = Webapi__Canvas;
 module Dom = Webapi__Dom;
 module File = Webapi__File;
-module FormData = Webapi__FormData;
-module Iterator = Webapi__Iterator;
+
+/** Re-export from [bs-fetch] for convenience. */
+module FormData = Fetch.FormData;
+
+/** Re-export from [bs-fetch] for convenience. */
+module Iterator = FormData.Iterator;
+
 module Performance = Webapi__Performance;
 module Url = Webapi__Url;
 module ResizeObserver = Webapi__ResizeObserver;
