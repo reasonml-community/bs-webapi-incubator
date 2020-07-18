@@ -6,6 +6,9 @@ module File = Webapi__File;
 
 /** Re-export from [bs-fetch] for convenience.
 
+    To get the [FormData] of an HTML form, use
+    [Webapi.Dom.HtmlFormElement.data].
+
     @since 0.18.0 */
 module FormData = Fetch.FormData;
 

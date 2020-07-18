@@ -31,6 +31,9 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe: t_htmlFormElement] external reset : unit = "";
   [@bs.send.pipe: t_htmlFormElement] external checkValidity : bool = "";
   [@bs.send.pipe: t_htmlFormElement] external reportValidity : bool = "";
+
+  /** @since 0.18.0 */
+  [@bs.new] external data: T.t => Fetch.FormData.t = "FormData";
 };
 
 type t = Dom.htmlFormElement;
