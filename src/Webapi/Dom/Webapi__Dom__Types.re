@@ -102,6 +102,7 @@ let decodeDir =
   | "rtl" => Rtl
   | _ => Unknown;
 
+/** @since 0.17.1 */
 module EventPhase = {
   type t =
     | None

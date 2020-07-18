@@ -4,10 +4,14 @@ module Canvas = Webapi__Canvas;
 module Dom = Webapi__Dom;
 module File = Webapi__File;
 
-/** Re-export from [bs-fetch] for convenience. */
+/** Re-export from [bs-fetch] for convenience.
+
+    @since 0.18.0 */
 module FormData = Fetch.FormData;
 
-/** Re-export from [bs-fetch] for convenience. */
+/** Re-export from [bs-fetch] for convenience.
+
+    @since 0.18.0 */
 module Iterator = FormData.Iterator;
 
 module Performance = Webapi__Performance;
