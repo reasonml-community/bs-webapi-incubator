@@ -33,4 +33,4 @@ I will squash the branch when merging anyway.
 ## After PR merged or closed
 
 Thank you for your contribution. I usually publish a new version on
-Sunday night (Easter Time).
+Sunday night (Eastern Time).
