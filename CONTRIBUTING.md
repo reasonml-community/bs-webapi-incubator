@@ -7,6 +7,12 @@ Please ensure you are working on an open issue. If necessary, you can
 open the issue and then start working. This will give people a chance to
 verify the issue and potentially save work.
 
+Please ensure you turn off auto-formatting while working on this project.
+For historical reasons, it does not use auto-formatting. If you auto-
+format files in this project, it will lead to noisy diffs that will be
+hard to review. I have included a project-specific setting that instructs
+VSCode to turn off auto-formatting.
+
 ## When creating a PR
 
 Please ensure the PR has the following:
