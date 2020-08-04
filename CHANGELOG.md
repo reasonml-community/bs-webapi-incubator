@@ -1,3 +1,7 @@
+### 0.18.1
+
+* Added `Webapi.Dom.Node.replaceChild`
+
 ### 0.18.0
 
 * Upgraded to bs-platform@7.1.0 and added API doc generation
