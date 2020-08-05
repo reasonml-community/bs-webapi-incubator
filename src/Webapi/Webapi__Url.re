@@ -6,7 +6,7 @@ module URLSearchParams = {
   [@bs.new] external makeWithArray: array((string, string)) => t = "URLSearchParams";
   [@bs.send.pipe : t] external append: (string, string) => unit = "";
   [@bs.send.pipe : t] external delete: string => unit = "";
-  [@bs.send.pipe : t] external entries: Js.Array.array_like(string) = "";
+  [@bs.send.pipe : t] external entries: Js.Array.array_like((string, string)) = "";
   [@bs.send.pipe : t] external forEach: ([@bs.uncurry] (string, string) => unit) => unit = "";
   [@bs.return nullable][@bs.send.pipe : t] external get: string => option(string) = "";
   [@bs.send.pipe : t] external getAll: string => array(string) = "";

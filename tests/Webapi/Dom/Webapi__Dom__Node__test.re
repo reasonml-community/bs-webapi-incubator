@@ -43,3 +43,4 @@ let _ = lookupNamespaceURI("https://...", node);
 let _ = lookupDefaultNamespaceURI(node);
 let _ = normalize(node);
 let _ = removeChild(node2, node);
+let _ = replaceChild(node3, node2, node);
