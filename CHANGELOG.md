@@ -1,7 +1,6 @@
 ### 0.18.1
 
-* Fixed the binding for `Webapi.Url.URLSearchParams.entries` to return
-  `(string, string)`
+* Fixed the binding for `Webapi.Url.URLSearchParams.entries` to return `(string, string)`
 * Added `Webapi.Dom.Node.replaceChild`
 
 ### 0.18.0
