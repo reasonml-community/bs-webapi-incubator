@@ -21,7 +21,10 @@ module URLSearchParams = {
 type t;
 
 [@bs.new] external make: string => t = "URL";
+[@deprecated "Use [makeWith] instead."]
 [@bs.new] external makeWithBase: (string, string) => t = "URL";
+/** @since 0.19.0 */
+[@bs.new] external makeWith: (string, ~base: string) => t = "URL";
 [@bs.get] external hash: t => string = "";
 [@bs.set] external setHash: (t, string) => unit = "hash";
 [@bs.get] external host: t => string = "";
