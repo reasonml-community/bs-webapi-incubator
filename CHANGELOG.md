@@ -1,7 +1,9 @@
 ### 0.19.0
+
 * Added `Webapi.Url.makeWith`
 * Deprecated `Webapi.Url.makeWithBase` in favor of `Webapi.Url.makeWith`
-* Fixed the binding for `Webapi.Url.URLSearchParams.entries` to return `(string, string)`
+* (Breaking) Fixed the binding for `Webapi.Url.URLSearchParams.entries`
+  to return `(string, string)`
 * Added `Webapi.Dom.Node.replaceChild`
 
 ### 0.18.0

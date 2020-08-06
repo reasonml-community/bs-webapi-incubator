@@ -48,6 +48,8 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external lookupPrefix : string = "lookupPrefix";
   [@bs.send.pipe : T.t] external normalize : unit = "";
   [@bs.send.pipe : T.t] external removeChild : Dom.node_like('a) => Dom.node_like('a) = "";
+
+  /** @since 0.19.0 */
   [@bs.send.pipe : T.t] external replaceChild : (Dom.node_like('a), Dom.node_like('b)) => Dom.node_like('b) = "";
 };
 
