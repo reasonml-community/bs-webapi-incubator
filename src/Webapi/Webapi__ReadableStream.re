@@ -23,7 +23,7 @@ module rec BYOBReader: {
 type t = Fetch.readableStream;
 
 [@bs.get] external locked: t => bool = "";
-[@bs.send] external cancel: t => Js.Promise.t(string) = "";
+[@bs.send] external cancel: t => Js.Promise.t(unit) = "";
 [@bs.send.pipe: t] external cancelWith: string => Js.Promise.t(string) = "cancel";
 [@bs.send] external getReader: t => DefaultReader.t = "";
 [@bs.send] external getReaderBYOB: (t, [@bs.as {json|{"mode": "byob"}|json}] _) => BYOBReader.t = "getReader";
