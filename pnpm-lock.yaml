@@ -1,0 +1,21 @@
+dependencies:
+  bs-fetch: 0.6.2
+devDependencies:
+  bs-platform: 7.3.2
+  bsdoc: 'link:../bsdoc/_release'
+lockfileVersion: 5.1
+packages:
+  /bs-fetch/0.6.2:
+    dev: false
+    resolution:
+      integrity: sha512-VXEjp8kY3vHPckaoy3d96Bx0KYjJAPLNISBwfpwMN26K6DtuZYwI2HKhx7zeHBajz1bRArfx7O8OOLcdtujMvg==
+  /bs-platform/7.3.2:
+    dev: true
+    hasBin: true
+    requiresBuild: true
+    resolution:
+      integrity: sha512-seJL5g4anK9la4erv+B2o2sMHQCxDF6OCRl9en3hbaUos/S3JsusQ0sPp4ORsbx5eXfHLYBwPljwKXlgpXtsgQ==
+specifiers:
+  bs-fetch: ^0.6.2
+  bs-platform: ^7.1.0
+  bsdoc: 'file:../bsdoc/_release'

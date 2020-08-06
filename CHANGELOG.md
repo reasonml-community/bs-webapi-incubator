@@ -1,5 +1,6 @@
 ### 0.19.0
 
+* Added bindings to `ReadableStream`
 * Added `Webapi.Url.makeWith`
 * Deprecated `Webapi.Url.makeWithBase` in favor of `Webapi.Url.makeWith`
 * (Breaking) Fixed the binding for `Webapi.Url.URLSearchParams.entries`

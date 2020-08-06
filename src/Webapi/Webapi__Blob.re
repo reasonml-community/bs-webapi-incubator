@@ -9,7 +9,8 @@ module Impl = (T: {type t}) => {
   [@bs.send.pipe: T.t] external slice: (~start: int=?, ~end_: int=?, ~contentType: string=?) => T.t =
     "";
 
-  // [@bs.send] external stream: T.t => ... = "";
+  /** @since 0.19.0 */
+  [@bs.send] external stream: T.t => Webapi__ReadableStream.t = "";
 
   [@bs.send] external text: T.t => Js.Promise.t(string) = "";
 
