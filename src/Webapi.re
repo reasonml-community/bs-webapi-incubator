@@ -18,8 +18,9 @@ module FormData = Fetch.FormData;
 module Iterator = FormData.Iterator;
 
 module Performance = Webapi__Performance;
-module Url = Webapi__Url;
+module ReadableStream = Webapi__ReadableStream;
 module ResizeObserver = Webapi__ResizeObserver;
+module Url = Webapi__Url;
 
 type rafId;
 
