@@ -1,5 +1,3 @@
-[@text "@since 0.19.0"];
-
 module type Reader = {
   type t;
   type closed;

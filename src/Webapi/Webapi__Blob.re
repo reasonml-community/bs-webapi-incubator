@@ -1,5 +1,3 @@
-[@text "@since 0.18.0"];
-
 module Impl = (T: {type t}) => {
   [@bs.send] external arrayBuffer: T.t => Js.Promise.t(Js.Typed_array.ArrayBuffer.t) =
     "";

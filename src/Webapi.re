@@ -1,4 +1,6 @@
 module Base64 = Webapi__Base64;
+
+/** @since 0.18.0 */
 module Blob = Webapi__Blob;
 module Canvas = Webapi__Canvas;
 module Dom = Webapi__Dom;
@@ -18,6 +20,8 @@ module FormData = Fetch.FormData;
 module Iterator = FormData.Iterator;
 
 module Performance = Webapi__Performance;
+
+/** @since 0.19.0 */
 module ReadableStream = Webapi__ReadableStream;
 module ResizeObserver = Webapi__ResizeObserver;
 module Url = Webapi__Url;
