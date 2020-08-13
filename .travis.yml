@@ -5,6 +5,8 @@ on:
   branch: master
 os: osx
 osx_image: xcode12
+before_install:
+  - npm install bsdoc@6.0.4-alpha
 
 deploy:
   - provider: npm
