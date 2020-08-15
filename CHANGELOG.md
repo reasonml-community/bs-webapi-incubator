@@ -1,3 +1,8 @@
+### 0.19.1
+
+* Removed dev dependency on `bsdoc` to allow smooth installs on non-Mac
+  OS
+
 ### 0.19.0
 
 * Added bindings to `ReadableStream`
