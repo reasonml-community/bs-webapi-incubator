@@ -4,7 +4,6 @@ type frameList; /* array-like, WindowProxy? */
 type idleDeadline; /* Cooperative Scheduling of Background Tasks */
 type locationbar; /* "bar object" */
 type menubar; /* "bar object" */
-type navigator;
 type personalbar; /* "bar object" */
 type screen;
 type scrollbars; /* "bar object" */
@@ -39,7 +38,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external menubar : t_window => menubar = "";
   [@bs.get] external name : t_window => string = "";
   [@bs.set] external setName : (t_window, string) => unit = "name";
-  [@bs.get] external navigator : t_window => navigator = "";
+  [@bs.get] external navigator : t_window => Webapi__Dom__Navigator.t = "";
   [@bs.get] [@bs.return nullable] external opener : t_window => option(Dom.window) = "";
   [@bs.get] external outerWidth : t_window => int = "";
   [@bs.get] external outerHeight : t_window => int = "";
