@@ -38,7 +38,10 @@ module MouseEvent = Webapi__Dom__MouseEvent;
 module MutationObserver = Webapi__Dom__MutationObserver;
 module MutationRecord = Webapi__Dom__MutationRecord;
 module NamedNodeMap = Webapi__Dom__NamedNodeMap;
+
+/** @since 0.20.0 */
 module Navigator = Webapi__Dom__Navigator;
+
 module Node = Webapi__Dom__Node;
 module NodeFilter = Webapi__Dom__NodeFilter;
 module NodeIterator = Webapi__Dom__NodeIterator;
@@ -72,7 +75,6 @@ include Webapi__Dom__Types;
 [@bs.val] external document : Dom.document = "document";
 [@bs.val] [@bs.scope "window"] external history : Dom.history = "history";
 [@bs.val] [@bs.scope "window"] external location : Dom.location = "location";
-[@bs.val] [@bs.scope "window"] external navigator : Webapi__Dom__Navigator.t = "navigator";
 
 
 /* Unimplemented interfaces (aka. "The TODO list")
