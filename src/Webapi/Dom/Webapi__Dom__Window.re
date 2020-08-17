@@ -4,7 +4,7 @@ type frameList; /* array-like, WindowProxy? */
 type idleDeadline; /* Cooperative Scheduling of Background Tasks */
 type locationbar; /* "bar object" */
 type menubar; /* "bar object" */
-type navigator;
+type navigator = Webapi__Dom__Navigator.t;
 type personalbar; /* "bar object" */
 type screen;
 type scrollbars; /* "bar object" */
