@@ -178,11 +178,7 @@ include Webapi__Dom__Types;
    CanvasPixelArray
    NotifyAudioAvailableEvent
    HTMLAllCollection
-   HTMLFormControlsCollection
-   HTMLOptionsCollection
    HTMLPropertiesCollection
-   DOMStringMap
-   RadioNodeList
    MediaError
 
    /* SVG Element interfaces */
