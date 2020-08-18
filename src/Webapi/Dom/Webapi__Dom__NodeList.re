@@ -1,9 +1,15 @@
+module Impl = (T: {type t;}) => {
+  type t_nodeList = T.t;
+
+  [@bs.val] external toArray : t_nodeList => array(Dom.node) = "Array.prototype.slice.call";
+
+  [@bs.send.pipe : t_nodeList] external forEach : ((Dom.node, int) => unit) => unit = "";
+
+  [@bs.get] external length : t_nodeList => int = "";
+
+  [@bs.send.pipe : t_nodeList] [@bs.return nullable] external item : int => option(Dom.node) = "";
+};
+
 type t = Dom.nodeList;
 
-[@bs.val] external toArray : t => array(Dom.node) = "Array.prototype.slice.call";
-
-[@bs.send.pipe : t] external forEach : ((Dom.node, int) => unit) => unit = "";
-
-[@bs.get] external length : t => int = "";
-
-[@bs.send.pipe : t] [@bs.return nullable] external item : int => option(Dom.node) = "";
+include Impl({ type nonrec t = t; });

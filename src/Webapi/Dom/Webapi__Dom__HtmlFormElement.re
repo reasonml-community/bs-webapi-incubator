@@ -6,7 +6,8 @@
 module Impl = (T: {type t;}) => {
   type t_htmlFormElement = T.t;
 
-  /* TODO: elements: HTMLFormControlsCollection */
+  /** @since 0.20.0 */
+  [@bs.get] external elements : t_htmlFormElement => Webapi__Dom__HtmlFormControlsCollection.t = "elements";
   [@bs.get] external length : t_htmlFormElement => int = "";
   [@bs.get] external name : t_htmlFormElement => string = "";
   [@bs.set] external setName : (t_htmlFormElement, string) => unit = "name";
