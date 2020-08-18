@@ -1,12 +1,10 @@
 ### 0.20.0
 
-* Upgraded to bs-platform@8.2.0
 * Added bindings for `HTMLFormControlsCollection`
 * Added binding for `HTMLOptionsCollection`
 * Added bindings for `RadioNodeList`
 * Added binding for `Document.forms`
 * Added binding for `HTMLFormElement.elements`
-* ResizeObserver and ResizeObserverEntry now use the rescript Dom phantom type
 
 ### 0.19.1
 
