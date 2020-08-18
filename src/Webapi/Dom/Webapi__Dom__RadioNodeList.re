@@ -5,7 +5,7 @@ module Impl = (T: {type t;}) => {
   external unsafeAsRadioNodeList: 'a => t_radioNodeList = "%identity";
 };
 
-type t = Dom.radioNodeList;
+type t; // TODO: Dom.radioNodeList
 
 include Webapi__Dom__NodeList.Impl({type nonrec t = t;});
 include Impl({type nonrec t = t;});

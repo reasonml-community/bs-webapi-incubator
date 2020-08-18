@@ -1,14 +1,14 @@
-type t = Dom.htmlFormControlsCollection;
+type t; // TODO: Dom.htmlFormControlsCollection
 
 type t_namedItem = [
-  | `RadioNodeList(Dom.radioNodeList)
-  | `Button(Dom.htmlButtonElement)
-  | `Fieldset(Dom.htmlFieldSetElement)
-  | `Input(Dom.htmlInputElement)
-  | `Object(Dom.htmlObjectElement)
-  | `Output(Dom.htmlOutputElement)
-  | `Select(Dom.htmlSelectElement)
-  | `Textarea(Dom.htmlTextAreaElement)
+  | `RadioNodeList(Webapi__Dom__RadioNodeList.t)
+  | `Button(Dom.element)
+  | `Fieldset(Dom.element)
+  | `Input(Webapi__Dom__HtmlInputElement.t)
+  | `Object(Dom.element)
+  | `Output(Dom.element)
+  | `Select(Dom.element)
+  | `Textarea(Dom.element)
 ];
 
 include Webapi__Dom__HtmlCollection.Impl({ type nonrec t = t; });

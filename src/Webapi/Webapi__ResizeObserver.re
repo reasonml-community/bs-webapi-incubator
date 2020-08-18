@@ -1,6 +1,6 @@
 module ResizeObserverEntry = Webapi__ResizeObserver__ResizeObserverEntry;
 
-type t = Dom.resizeObserver;
+type t; // TODO: Dom.resizeObserver;
 
 [@bs.new]
 external make: (array(ResizeObserverEntry.t) => unit) => t = "ResizeObserver";
