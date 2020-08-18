@@ -29,11 +29,14 @@ module HtmlElement = Webapi__Dom__HtmlElement;
 module HtmlFormElement = Webapi__Dom__HtmlFormElement;
 module HtmlImageElement = Webapi__Dom__HtmlImageElement;
 module HtmlInputElement = Webapi__Dom__HtmlInputElement;
+module HtmlMediaElement = Webapi__Dom__HtmlMediaElement;
+module HtmlVideoElement = Webapi__Dom__HtmlVideoElement;
 module IdbVersionChangeEvent = Webapi__Dom__IdbVersionChangeEvent;
 module Image = Webapi__Dom__Image;
 module InputEvent = Webapi__Dom__InputEvent;
 module KeyboardEvent = Webapi__Dom__KeyboardEvent;
 module Location = Webapi__Dom__Location;
+module MediaError = Webapi__Dom__MediaError;
 module MouseEvent = Webapi__Dom__MouseEvent;
 module MutationObserver = Webapi__Dom__MutationObserver;
 module MutationRecord = Webapi__Dom__MutationRecord;
@@ -130,7 +133,6 @@ include Webapi__Dom__Types;
    HTMLLIElement
    HTMLLinkElement
    HTMLMapElement
-   HTMLMediaElement
    HTMLMenuElement
    HTMLMetaElement
    HTMLMeterElement
@@ -164,7 +166,6 @@ include Webapi__Dom__Types;
    HTMLTrackElement
    HTMLUListElement
    HTMLUnknownElement
-   HTMLVideoElement
 
    /* Other interfaces */
    CanvasRenderingContext2D
