@@ -5,13 +5,13 @@ type t; // TODO: Dom.htmlFormControlsCollection
 
 type t_namedItem = [
   | `RadioNodeList(Webapi__Dom__RadioNodeList.t)
-  | `Button(Dom.element)
-  | `FieldSet(Dom.element)
+  | `Button(Webapi__Dom__HtmlButtonElement.t)
+  | `FieldSet(Webapi__Dom__HtmlFieldSetElement.t)
   | `Input(Webapi__Dom__HtmlInputElement.t)
-  | `Object(Dom.element)
-  | `Output(Dom.element)
-  | `Select(Dom.element)
-  | `TextArea(Dom.element)
+  | `Object(Webapi__Dom__HtmlObjectElement.t)
+  | `Output(Webapi__Dom__HtmlOutputElement.t)
+  | `Select(Webapi__Dom__HtmlSelectElement.t)
+  | `TextArea(Webapi__Dom__HtmlTextAreaElement.t)
 ];
 
 include Webapi__Dom__HtmlCollection.Impl({ type nonrec t = t; });
