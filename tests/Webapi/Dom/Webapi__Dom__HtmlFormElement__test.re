@@ -2,64 +2,76 @@ open Webapi.Dom;
 open Webapi.FormData;
 open Webapi.Dom.HtmlFormElement;
 
-let form = Document.createElement("form", document) |> asFormElement |> TestHelpers.unsafelyUnwrapOption;
+let createElement = Document.createElement(_, document);
+let createTextNode = Document.createTextNode(_, document);
+let createInput = () => createElement("input");
+let createLabelWithText = (text) => {
+  let el = createElement("label");
+  let textNode = createTextNode(text);
+  Element.appendChild(textNode, el);
+  el;
+};
 
-let usernameInput = Document.createElement("input", document);
+let form = createElement("form") |> asFormElement |> TestHelpers.unsafelyUnwrapOption;
+
+let usernameInput = createInput();
 Element.setAttribute("type", "text", usernameInput);
 Element.setAttribute("name", "username", usernameInput);
 
-let usernameLabel = Document.createElement("label", document);
-let usernameText = Document.createTextNode("Username:", document);
-Element.appendChild(usernameText, usernameLabel);
+let usernameLabel = createLabelWithText("Username:");
 Element.appendChild(usernameInput, usernameLabel);
 
-let passwordInput = Document.createElement("input", document);
+let passwordInput = createInput();
 Element.setAttribute("type", "password", passwordInput);
 Element.setAttribute("name", "password", passwordInput);
 
-let passwordLabel = Document.createElement("label", document);
-let passwordText = Document.createTextNode("Password:", document);
-Element.appendChild(passwordText, passwordLabel);
+let passwordLabel = createLabelWithText("Password:");
 Element.appendChild(passwordInput, passwordLabel);
 
-let radioInput1 = Document.createElement("input", document);
+let radioInput1 = createInput();
 Element.setAttribute("type", "radio", radioInput1);
 Element.setAttribute("name", "radiogroup", radioInput1);
 Element.setAttribute("value", "one", radioInput1);
 Element.setAttribute("checked", "true", radioInput1);
 
-let radioLabel1 = Document.createElement("label", document);
-let radioText1 = Document.createTextNode("Choice 1:", document);
-Element.appendChild(radioText1, radioLabel1);
+let radioLabel1 = createLabelWithText("Choice 1:");
 Element.appendChild(radioInput1, radioLabel1);
 
-let radioInput2 = Document.createElement("input", document);
+let radioInput2 = createInput();
 Element.setAttribute("type", "radio", radioInput2);
 Element.setAttribute("name", "radiogroup", radioInput2);
 Element.setAttribute("value", "two", radioInput2);
 // Element.setAttribute("checked", "true", radioInput2);
 
-let radioLabel2 = Document.createElement("label", document);
-let radioText2 = Document.createTextNode("Choice 2:", document);
-Element.appendChild(radioText2, radioLabel2);
+let radioLabel2 = createLabelWithText("Choice 2:");
 Element.appendChild(radioInput2, radioLabel2);
 
-let usernameContainer = Document.createElement("div", document);
-let passwordContainer = Document.createElement("div", document);
-let radioContainer = Document.createElement("div", document);
+let select = createElement("select");
+Element.setAttribute("name", "select", select);
+let selectLabel = createLabelWithText("Select:");
+Element.appendChild(select, selectLabel);
+
+let usernameContainer = createElement("div");
+let passwordContainer = createElement("div");
+let radioContainer = createElement("div");
+let selectContainer = createElement("div");
+
+let formEl = form->asElement;
 
 Element.appendChild(usernameLabel, usernameContainer);
 Element.appendChild(passwordLabel, passwordContainer);
 Element.appendChild(radioLabel1, radioContainer);
 Element.appendChild(radioLabel2, radioContainer);
-Element.appendChild(usernameContainer, form->asElement);
-Element.appendChild(passwordContainer, form->asElement);
-Element.appendChild(radioContainer, form->asElement);
+Element.appendChild(selectLabel, selectContainer);
+Element.appendChild(usernameContainer, formEl);
+Element.appendChild(passwordContainer, formEl);
+Element.appendChild(radioContainer, formEl);
+Element.appendChild(selectContainer, formEl);
 
 let body =
   Document.asHtmlDocument(document)->Belt.Option.flatMap(HtmlDocument.body)->TestHelpers.unsafelyUnwrapOption;
 
-Element.appendChild(form->asElement, body);
+Element.appendChild(formEl, body);
 
 let collection = elements(form);
 
@@ -97,5 +109,64 @@ switch (TestHelpers.unsafelyUnwrapOption(radioNodeList)) {
 | `RadioNodeList(radioNodeList) => Js.log2("RadioNodeList.value", RadioNodeList.value(radioNodeList))
 | _ => ()
 };
+
+let select = HtmlSelectElement.asSelectElement(select)
+  ->TestHelpers.unsafelyUnwrapOption;
+
+let opts = HtmlSelectElement.options(select);
+Js.log2("HtmlSelectElement.options:", opts);
+
+HtmlOptionsCollection.setLength(opts, 3);
+Js.log2("collection length:", HtmlOptionsCollection.length(opts));
+HtmlOptionsCollection.clearItem(opts, 0, Js.Null.empty);
+Js.log2("collection length:", HtmlOptionsCollection.length(opts));
+HtmlOptionsCollection.setItem(opts, 2, createElement("option"));
+Js.log2("collection length:", HtmlOptionsCollection.length(opts));
+
+HtmlOptionsCollection.setLength(opts, 0);
+
+let opt1 = createElement("option");
+Element.setAttribute("value", "1", opt1);
+Element.appendChild(createTextNode("opt1"), opt1);
+
+HtmlOptionsCollection.add(opt1, opts);
+let selectedIndex = HtmlOptionsCollection.setSelectedIndex(opts, 0);
+Js.log2("collection length:", HtmlOptionsCollection.length(opts));
+Js.log2("HtmlOptionsCollection.setSelectedIndex", selectedIndex);
+
+let opt2 = createElement("option");
+Element.setAttribute("value", "2", opt2);
+Element.appendChild(createTextNode("opt2"), opt2);
+
+let item = HtmlOptionsCollection.item(0, opts);
+Js.log2("HtmlOptionsCollection.item:", item);
+Js.log2("collection length:", HtmlOptionsCollection.length(opts));
+
+HtmlOptionsCollection.addBefore(opt2, 0, opts);
+HtmlOptionsCollection.setSelectedElement(opts, opt2);
+let item = HtmlOptionsCollection.item(0, opts);
+Js.log2("HtmlOptionsCollection.addBefore:", item);
+Js.log2("collection length:", HtmlOptionsCollection.length(opts));
+Js.log2("selected index", HtmlOptionsCollection.selectedIndex(opts));
+
+let opt3 = createElement("option");
+Element.setAttribute("value", "3", opt3);
+Element.appendChild(createTextNode("opt3"), opt3);
+
+HtmlOptionsCollection.addBeforeElement(opt3, opt2, opts);
+let item = HtmlOptionsCollection.item(0, opts);
+Js.log2("HtmlOptionsCollection.addBeforeElement:", item);
+Js.log2("collection length:", HtmlOptionsCollection.length(opts));
+
+let item = HtmlOptionsCollection.selectedIndex(opts);
+Js.log2("HtmlOptionsCollection.selectedIndex:", item);
+
+let item = HtmlOptionsCollection.setSelectedElement(opts, opt3);
+Js.log2("HtmlOptionsCollection.setSelectedElement:", item);
+let item = HtmlOptionsCollection.selectedIndex(opts);
+Js.log2("HtmlOptionsCollection.selectedIndex:", item);
+
+HtmlOptionsCollection.remove(0, opts);
+Js.log2("collection length:", HtmlOptionsCollection.length(opts));
 
 let test_data = formElement => formElement |> data |> get("foo");

@@ -4,7 +4,19 @@
 module Impl = (T: {type t;}) => {
   type t_htmlSelectElement = T.t;
 
+  external unsafeAsSelectElement: Dom.element => t_htmlSelectElement = "%identity";
+  external asElement: t_htmlSelectElement => Dom.element = "%identity";
+
+  let asSelectElement = (el): option(t_htmlSelectElement) => switch(Webapi__Dom__Element.tagName(el)) {
+    | "SELECT" => el->unsafeAsSelectElement->Some
+    | _ => None
+  };
+
   // TODO
+
+  /** Properties */
+
+  [@bs.get] external options: t_htmlSelectElement => Webapi__Dom__HtmlOptionsCollection.t = "options";
 };
 
 type t; // TODO: Dom.htmlSelectElement
