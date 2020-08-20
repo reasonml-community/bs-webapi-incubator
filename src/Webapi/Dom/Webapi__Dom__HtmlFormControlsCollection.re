@@ -6,12 +6,12 @@ type t; // TODO: Dom.htmlFormControlsCollection
 type t_namedItem = [
   | `RadioNodeList(Webapi__Dom__RadioNodeList.t)
   | `Button(Dom.element)
-  | `Fieldset(Dom.element)
+  | `FieldSet(Dom.element)
   | `Input(Webapi__Dom__HtmlInputElement.t)
   | `Object(Dom.element)
   | `Output(Dom.element)
   | `Select(Dom.element)
-  | `Textarea(Dom.element)
+  | `TextArea(Dom.element)
 ];
 
 include Webapi__Dom__HtmlCollection.Impl({ type nonrec t = t; });
@@ -30,12 +30,12 @@ let namedItem = (name, t) =>
       switch (Webapi__Dom__Element.tagName(el)) {
       // fixme: this should be a classify function in Webapi__Dom__HtmlElement
       | "BUTTON" => el->Obj.magic->`Button->Some
-      | "FIELDSET" => el->Obj.magic->`Fieldset->Some
+      | "FIELDSET" => el->Obj.magic->`FieldSet->Some
       | "INPUT" => el->Obj.magic->`Input->Some
       | "OBJECT" => el->Obj.magic->`Object->Some
       | "OUTPUT" => el->Obj.magic->`Output->Some
       | "SELECT" => el->Obj.magic->`Select->Some
-      | "TEXTAREA" => el->Obj.magic->`Textarea->Some
+      | "TEXTAREA" => el->Obj.magic->`TextArea->Some
       | _ => None
       };
     }

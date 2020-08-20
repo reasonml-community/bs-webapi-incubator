@@ -88,12 +88,12 @@ Js.log2("HtmlFormControlsCollection.namedItem:", radioNodeList);
 
 switch (TestHelpers.unsafelyUnwrapOption(radioNodeList)) {
 | `Button(_)
-| `Fieldset(_)
+| `FieldSet(_)
 | `Input(_)
 | `Object(_)
 | `Output(_)
 | `Select(_)
-| `Textarea(_) => Js.Exn.raiseError("incorrect namedItem return value")
+| `TextArea(_) => Js.Exn.raiseError("incorrect namedItem return value")
 | `RadioNodeList(radioNodeList) => Js.log2("RadioNodeList.value", RadioNodeList.value(radioNodeList))
 | _ => ()
 };
