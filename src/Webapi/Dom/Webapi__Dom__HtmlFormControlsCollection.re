@@ -26,13 +26,13 @@ let namedItem = (name, t) =>
     } else {
       switch (Webapi__Dom__Element.tagName(el)) {
       // fixme: this should be a classify function in Webapi__Dom__HtmlElement
-      | "button" => el->Obj.magic->`Button->Some
-      | "fieldset" => el->Obj.magic->`Fieldset->Some
-      | "input" => el->Obj.magic->`Input->Some
-      | "object" => el->Obj.magic->`Object->Some
-      | "output" => el->Obj.magic->`Output->Some
-      | "select" => el->Obj.magic->`Select->Some
-      | "textarea" => el->Obj.magic->`Textarea->Some
+      | "BUTTON" => el->Obj.magic->`Button->Some
+      | "FIELDSET" => el->Obj.magic->`Fieldset->Some
+      | "INPUT" => el->Obj.magic->`Input->Some
+      | "OBJECT" => el->Obj.magic->`Object->Some
+      | "OUTPUT" => el->Obj.magic->`Output->Some
+      | "SELECT" => el->Obj.magic->`Select->Some
+      | "TEXTAREA" => el->Obj.magic->`Textarea->Some
       | _ => None
       };
     }
