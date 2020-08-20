@@ -17,9 +17,9 @@ let isRadioNodeList: 'a => bool = [%raw {|
   function(x) { return x instanceof RadioNodeList; }
 |}];
 
-[@bs.send] [@bs.return nullable] external _namedItem: (t, string) => option('a) = "namedItem";
-let namedItem = (t, string) =>
-  switch (_namedItem(t, string)) {
+[@bs.send.pipe : t] [@bs.return nullable] external _namedItem: string => option('a) = "namedItem";
+let namedItem = (name, t) =>
+  switch (_namedItem(name, t)) {
   | Some(el) =>
     if (Webapi__Dom__RadioNodeList.unsafeAsRadioNodeList(el)->isRadioNodeList) {
       el->Obj.magic->`RadioNodeList->Some;
