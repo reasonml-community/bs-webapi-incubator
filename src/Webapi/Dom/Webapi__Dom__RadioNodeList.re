@@ -1,3 +1,6 @@
+/**
+ * Spec: https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#radionodelist
+ */
 module Impl = (T: {type t;}) => {
   type t_radioNodeList = T.t;
   [@bs.get] external value: t_radioNodeList => string = "value";

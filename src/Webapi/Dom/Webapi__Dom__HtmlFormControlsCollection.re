@@ -1,3 +1,6 @@
+/**
+ * Spec: https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#htmlformcontrolscollection
+ */
 type t; // TODO: Dom.htmlFormControlsCollection
 
 type t_namedItem = [
