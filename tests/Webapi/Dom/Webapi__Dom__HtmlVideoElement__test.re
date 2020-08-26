@@ -2,7 +2,7 @@ open Webapi__Dom;
 open Webapi__Dom__HtmlVideoElement;
 
 let el = Document.createElement("video", document)
-  |> asVideoElement
+  |> ofElement
   |> Belt.Option.getUnsafe;
 
 let body = Document.asHtmlDocument(document)

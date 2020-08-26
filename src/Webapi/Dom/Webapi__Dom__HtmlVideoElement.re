@@ -4,10 +4,10 @@
 module Impl = (T: {type t;}) => {
   type t_htmlVideoElement = T.t;
 
-  external unsafeAsVideoElement: Dom.element => t_htmlVideoElement = "%identity";
+  external unsafeOfElement: Dom.element => t_htmlVideoElement = "%identity";
 
-  let asVideoElement = (el): option(t_htmlVideoElement) => switch(Webapi__Dom__Element.tagName(el)) {
-    | "VIDEO" => el->unsafeAsVideoElement->Some
+  let ofElement = (el): option(t_htmlVideoElement) => switch(Webapi__Dom__Element.tagName(el)) {
+    | "VIDEO" => el->unsafeOfElement->Some
     | _ => None
   };
 
