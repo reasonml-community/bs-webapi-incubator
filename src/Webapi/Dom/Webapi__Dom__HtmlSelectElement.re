@@ -7,7 +7,7 @@ module Impl = (T: {type t;}) => {
   external unsafeAsSelectElement: Dom.element => t_htmlSelectElement = "%identity";
   external asElement: t_htmlSelectElement => Dom.element = "%identity";
 
-  let asSelectElement = (el): option(t_htmlSelectElement) => switch(Webapi__Dom__Element.tagName(el)) {
+  let ofElement = (el): option(t_htmlSelectElement) => switch(Webapi__Dom__Element.tagName(el)) {
     | "SELECT" => el->unsafeAsSelectElement->Some
     | _ => None
   };

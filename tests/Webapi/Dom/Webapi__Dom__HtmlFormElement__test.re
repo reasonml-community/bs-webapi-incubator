@@ -110,7 +110,7 @@ switch (TestHelpers.unsafelyUnwrapOption(radioNodeList)) {
 | _ => ()
 };
 
-let select = HtmlSelectElement.asSelectElement(select)
+let select = HtmlSelectElement.ofElement(select)
   ->TestHelpers.unsafelyUnwrapOption;
 
 let opts = HtmlSelectElement.options(select);
