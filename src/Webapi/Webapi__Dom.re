@@ -29,6 +29,7 @@ module HtmlElement = Webapi__Dom__HtmlElement;
 module HtmlFormElement = Webapi__Dom__HtmlFormElement;
 module HtmlImageElement = Webapi__Dom__HtmlImageElement;
 module HtmlInputElement = Webapi__Dom__HtmlInputElement;
+module HtmlTemplateElement = Webapi__Dom__HtmlTemplateElement;
 module IdbVersionChangeEvent = Webapi__Dom__IdbVersionChangeEvent;
 module Image = Webapi__Dom__Image;
 module InputEvent = Webapi__Dom__InputEvent;

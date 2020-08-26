@@ -1,3 +1,7 @@
+### 0.19.2
+
+* Added `Webapi.Dom.HtmlTemplateElement`
+
 ### 0.19.1
 
 * Removed dev dependency on `bsdoc` to allow smooth installs on non-Mac
