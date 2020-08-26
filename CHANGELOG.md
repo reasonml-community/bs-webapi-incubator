@@ -1,3 +1,7 @@
+### 0.20.0
+
+* Added binding for `IntersectionObserver` and `IntersectionObserverEntry`
+
 ### 0.19.1
 
 * Removed dev dependency on `bsdoc` to allow smooth installs on non-Mac
