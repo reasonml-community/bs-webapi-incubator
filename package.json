@@ -17,6 +17,7 @@
     "build": "bsb -make-world",
     "start": "bsb -w",
     "clean": "bsb -clean-world",
+    "doc-install": "npm install --no-save bsdoc",
     "test": "bsb -make-world && bsdoc build api && bsdoc support-files"
   },
   "files": [
@@ -30,8 +31,5 @@
   },
   "dependencies": {
     "bs-fetch": "^0.6.2"
-  },
-  "peerDependencies": {
-    "bsdoc": "^6.0.4-alpha"
   }
 }
