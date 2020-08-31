@@ -6,6 +6,10 @@
 * Added binding for `Document.forms`
 * Added binding for `HTMLFormElement.elements`
 
+### 0.19.2
+
+* Removed peer dependency on `bsdoc`
+
 ### 0.19.1
 
 * Removed dev dependency on `bsdoc` to allow smooth installs on non-Mac
