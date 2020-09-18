@@ -125,7 +125,7 @@ module Impl = (T: {type t;}) => {
   // [@bs.send] external fastSeek: (t_htmlMediaElement, float) => unit = "fastSeek"; // experimental
   [@bs.send] external load: t_htmlMediaElement => unit = "load";
   [@bs.send] external pause: t_htmlMediaElement => unit = "pause";
-  [@bs.send] external play: t_htmlMediaElement => Js.promise(unit, string /* [`NotAllowedError | `NotSupportedError] */) = "play";
+  [@bs.send] external play: t_htmlMediaElement => Js.Promise.t(unit, string /* [`NotAllowedError | `NotSupportedError] */) = "play";
 
   // [@bs.send] external getStartDate: t_htmlMediaElement => Js.Date.t = "getStartDate"; // not supported?
 };
