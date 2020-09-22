@@ -5,6 +5,7 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external currentTarget : T.t => Dom.eventTarget = "";
   [@bs.get] external defaultPrevented : T.t => bool = "";
   [@bs.get] external eventPhase : T.t => int /* eventPhase enum */ = "";
+  [@bs.get] external returnValue : T.t => string = "";
 
   let eventPhase: T.t => Webapi__Dom__Types.EventPhase.t =
     (self) => Webapi__Dom__Types.EventPhase.decode(eventPhase(self));
@@ -17,6 +18,9 @@ module Impl = (T: {type t;}) => {
   [@bs.send.pipe : T.t] external preventDefault : unit = "";
   [@bs.send.pipe : T.t] external stopImmediatePropagation : unit = "";
   [@bs.send.pipe : T.t] external stopPropagation : unit = "";
+
+  [@bs.set] external setReturnValue: (T.t, string) => unit = "returnValue";
+  let deleteReturnValue: T.t => unit = [%raw {| event => delete event['returnValue'] |}];
 };
 
 type t = Dom.event;

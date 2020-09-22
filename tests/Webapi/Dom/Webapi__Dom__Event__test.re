@@ -14,7 +14,10 @@ let _ = target(event);
 let _ = timeStamp(event);
 let _ = type_(event);
 let _ = isTrusted(event);
+let _ = returnValue(event);
 
 preventDefault(event);
 stopImmediatePropagation(event);
 stopPropagation(event);
+setReturnValue(event, "Test");
+deleteReturnValue(event);
