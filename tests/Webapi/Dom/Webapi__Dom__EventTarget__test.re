@@ -31,6 +31,6 @@ let t: Detail.t = {
   test: "test"
 };
 
-module EventWithDetail = CustomEvent.MakeEmittedCustomEvent(Detail);
+module EventWithDetail = CustomEvent.MakeCustomEvent(Detail);
 let typedCustomEvent = EventWithDetail.makeWithOptions("event-with-detail", t);
 typedCustomEvent->Webapi.Dom.EventTarget.dispatchEvent;

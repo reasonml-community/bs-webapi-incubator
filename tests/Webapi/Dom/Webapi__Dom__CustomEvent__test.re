@@ -30,7 +30,7 @@ let t: Detail.t = {
     component: "test-component"
 };
 
-module EventWithDetail = MakeEmittedCustomEvent(Detail);
+module EventWithDetail = MakeCustomEvent(Detail);
 let eventWithDetail = EventWithDetail.make("event-with-detail");
 let eventWithOptions = EventWithDetail.makeWithOptions("event-with-detail", t);
 eventWithOptions->Webapi.Dom.EventTarget.dispatchEvent;
