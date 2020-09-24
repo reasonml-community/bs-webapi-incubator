@@ -32,6 +32,8 @@ let t: Detail.t = {
 
 module EventWithDetail = MakeEmittedCustomEvent(Detail);
 let eventWithDetail = EventWithDetail.make("event-with-detail");
+let eventWithOptions = EventWithDetail.makeWithOptions("event-with-detail", t);
+eventWithOptions->Webapi.Dom.EventTarget.dispatchEvent;
 
 /* Event */
 let _ = bubbles(eventWithDetail);
@@ -49,4 +51,4 @@ preventDefault(eventWithDetail);
 stopImmediatePropagation(eventWithDetail);
 stopPropagation(eventWithDetail);
 
-let _ = eventWithDetail->EventWithDetail.detail.component; 
+let _ = eventWithDetail->EventWithDetail.detail.component;

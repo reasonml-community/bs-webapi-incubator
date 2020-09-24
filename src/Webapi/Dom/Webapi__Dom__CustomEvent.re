@@ -13,6 +13,6 @@ module MakeEmittedCustomEvent = (T: {type t;}) => {
   });
 
   [@bs.new] external make: string => t = "CustomEvent";
-  [@bs.new] external makeWithOptions: (string, t) => t = "CustomEvent";
+  [@bs.new] external makeWithOptions: (string, T.t) => t = "CustomEvent";
   [@bs.get] external detail: t => T.t = "detail";
 };
