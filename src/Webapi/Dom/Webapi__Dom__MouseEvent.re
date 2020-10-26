@@ -1,25 +1,25 @@
 module Impl = (T: {type t;}) => {
-  [@bs.get] external altKey : T.t => bool = "";
-  [@bs.get] external button : T.t => int = "";
-  [@bs.get] external buttons : T.t => int /* bitmask */ = "";
-  [@bs.get] external clientX : T.t => int = "";
-  [@bs.get] external clientY : T.t => int = "";
-  [@bs.get] external ctrlKey : T.t => bool = "";
-  [@bs.get] external metaKey : T.t => bool = "";
-  [@bs.get] external movementX : T.t => int = "";
-  [@bs.get] external movementY : T.t => int = "";
-  [@bs.get] external offsetX : T.t => int = ""; /* experimental, but widely supported */
-  [@bs.get] external offsetY : T.t => int = ""; /* experimental, but widely supported */
-  [@bs.get] external pageX : T.t => int = ""; /* experimental, but widely supported */
-  [@bs.get] external pageY : T.t => int = ""; /* experimental, but widely supported */
-  [@bs.get] [@bs.return nullable] external region : T.t => option(string) = "";
-  [@bs.get] [@bs.return nullable] external relatedTarget : T.t => option(Dom.eventTarget) = "";
-  [@bs.get] external screenX : T.t => int = "";
-  [@bs.get] external screenY : T.t => int = "";
-  [@bs.get] external shiftKey : T.t => bool = "";
-  [@bs.get] external x : T.t => int = ""; /* experimental */
-  [@bs.get] external y : T.t => int = ""; /* experimental */
-  [@bs.send.pipe : T.t] external getModifierState : string /* modifierKey enum */ => bool = "";
+  [@bs.get] external altKey : T.t => bool = "altKey";
+  [@bs.get] external button : T.t => int = "button";
+  [@bs.get] external buttons : T.t => int /* bitmask */ = "buttons";
+  [@bs.get] external clientX : T.t => int = "clientX";
+  [@bs.get] external clientY : T.t => int = "clientY";
+  [@bs.get] external ctrlKey : T.t => bool = "ctrlKey";
+  [@bs.get] external metaKey : T.t => bool = "metaKey";
+  [@bs.get] external movementX : T.t => int = "movementX";
+  [@bs.get] external movementY : T.t => int = "movementY";
+  [@bs.get] external offsetX : T.t => float = "offsetX"; /* experimental, but widely supported */
+  [@bs.get] external offsetY : T.t => float = "offsetY"; /* experimental, but widely supported */
+  [@bs.get] external pageX : T.t => int = "pageX"; /* experimental, but widely supported */
+  [@bs.get] external pageY : T.t => int = "pageY"; /* experimental, but widely supported */
+  [@bs.get] [@bs.return nullable] external region : T.t => option(string) = "region";
+  [@bs.get] [@bs.return nullable] external relatedTarget : T.t => option(Dom.eventTarget) = "relatedTarget";
+  [@bs.get] external screenX : T.t => int = "screenX";
+  [@bs.get] external screenY : T.t => int = "screenY";
+  [@bs.get] external shiftKey : T.t => bool = "shiftKey";
+  [@bs.get] external x : T.t => int = "x"; /* experimental */
+  [@bs.get] external y : T.t => int = "y"; /* experimental */
+  [@bs.send.pipe : T.t] external getModifierState : string /* modifierKey enum */ => bool = "getModifierState";
   let getModifierState: (Webapi__Dom__Types.modifierKey, T.t) => bool =
     (key, self) => getModifierState(Webapi__Dom__Types.encodeModifierKey(key), self);
 };

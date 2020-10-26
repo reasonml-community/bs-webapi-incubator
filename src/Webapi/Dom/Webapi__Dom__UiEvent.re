@@ -1,6 +1,6 @@
 module Impl = (T: {type t;}) => {
-  [@bs.get] external detail : T.t => int = "";
-  [@bs.get] external view : T.t => Dom.window = ""; /* technically returns a `WindowProxy` */
+  [@bs.get] external detail : T.t => int = "detail";
+  [@bs.get] external view : T.t => Dom.window = "view"; /* technically returns a `WindowProxy` */
 };
 
 type t = Dom.uiEvent;
