@@ -9,6 +9,7 @@ module ClipboardEvent = Webapi__Dom__ClipboardEvent;
 module CloseEvent = Webapi__Dom__CloseEvent;
 module CompositionEvent = Webapi__Dom__CompositionEvent;
 module CustomEvent = Webapi__Dom__CustomEvent;
+module DataTransfer = Webapi__Dom__DataTransfer;
 module Document = Webapi__Dom__Document;
 module DocumentFragment = Webapi__Dom__DocumentFragment;
 module DocumentType = Webapi__Dom__DocumentType;
