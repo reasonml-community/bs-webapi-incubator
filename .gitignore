@@ -7,3 +7,12 @@ lib/*
 !lib/js/tests
 lib/js/tests/testHelpers.js
 npm-debug.log
+
+# direnv
+.envrc
+
+# Nix
+shell.nix
+
+# npm
+package-lock.json
