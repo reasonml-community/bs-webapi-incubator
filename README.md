@@ -1,5 +1,9 @@
 # bs-webapi
 
+**IMPORTANT: this repository is deprecated in favour of** https://github.com/tinymce/rescript-webapi/
+
+Please use ReScript-WebAPI going forward.
+
 Experimental bindings to the DOM and other Web APIs.
 
 [![npm](https://img.shields.io/npm/v/bs-webapi.svg)](https://npmjs.org/bs-webapi)
