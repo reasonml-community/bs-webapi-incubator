@@ -1,3 +1,7 @@
+### 0.20.0
+
+* Added binding for `IntersectionObserver` and `IntersectionObserverEntry`
+
 ### 0.19.2
 
 * Removed peer dependency on `bsdoc`
