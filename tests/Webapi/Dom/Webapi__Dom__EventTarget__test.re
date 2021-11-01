@@ -18,3 +18,19 @@ let _ = dispatchEvent(event, target);
 /* https://github.com/reasonml-community/bs-webapi-incubator/issues/103 */
 let customEvent = CustomEvent.makeWithOptions("custom-event", {"detail": {"test": "test"}});
 dispatchEvent(customEvent, target);
+
+
+/* another way */
+module Detail = {
+  type t = {
+      test: string
+  }
+};
+
+let t: Detail.t = {
+  test: "test"
+};
+
+module EventWithDetail = CustomEvent.MakeCustomEvent(Detail);
+let typedCustomEvent = EventWithDetail.makeWithOptions("event-with-detail", t);
+typedCustomEvent->Webapi.Dom.EventTarget.dispatchEvent;

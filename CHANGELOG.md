@@ -1,3 +1,7 @@
+### 0.19.3
+
+* Add a functor `MakeEmittedCustomEvent` to emit a detail of `CustomEvent`
+
 ### 0.19.2
 
 * Removed peer dependency on `bsdoc`
