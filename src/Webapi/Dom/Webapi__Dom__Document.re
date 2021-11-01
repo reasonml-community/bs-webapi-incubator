@@ -34,6 +34,8 @@ module Impl = (T: {type t;}) => {
   [@bs.get] external implementation : T.t => Dom.domImplementation = "";
   [@bs.get] external lastStyleSheetSet : T.t => string = "";
   [@bs.get] [@bs.return nullable] external pointerLockElement : T.t => option(Dom.element) = ""; /* experimental */
+  /** @since 0.20.0 */
+  [@bs.get] external forms : T.t => Dom.htmlCollection = "";
 
   [@bs.get] external preferredStyleSheetSet : T.t => string = "";
   [@bs.get] [@bs.return nullable] external scrollingElement : T.t => option(Dom.element) = "";

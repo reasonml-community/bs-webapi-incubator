@@ -6,7 +6,16 @@
 module Impl = (T: {type t;}) => {
   type t_htmlFormElement = T.t;
 
-  /* TODO: elements: HTMLFormControlsCollection */
+  external unsafeAsFormElement: Dom.element => t_htmlFormElement = "%identity";
+  external asElement: t_htmlFormElement => Dom.element = "%identity";
+
+  let asFormElement = (el): option(t_htmlFormElement) => switch(Webapi__Dom__Element.tagName(el)) {
+    | "FORM" => el->unsafeAsFormElement->Some
+    | _ => None
+  };
+
+  /** @since 0.20.0 */
+  [@bs.get] external elements : t_htmlFormElement => Webapi__Dom__HtmlFormControlsCollection.t = "elements";
   [@bs.get] external length : t_htmlFormElement => int = "";
   [@bs.get] external name : t_htmlFormElement => string = "";
   [@bs.set] external setName : (t_htmlFormElement, string) => unit = "name";

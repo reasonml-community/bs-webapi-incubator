@@ -24,11 +24,19 @@ module EventTarget = Webapi__Dom__EventTarget;
 module FocusEvent = Webapi__Dom__FocusEvent;
 module History = Webapi__Dom__History;
 module HtmlCollection = Webapi__Dom__HtmlCollection;
+module HtmlFormControlsCollection = Webapi__Dom__HtmlFormControlsCollection;
+module HtmlOptionsCollection = Webapi__Dom__HtmlOptionsCollection;
 module HtmlDocument = Webapi__Dom__HtmlDocument;
 module HtmlElement = Webapi__Dom__HtmlElement;
+module HtmlButtonElement = Webapi__Dom__HtmlButtonElement;
+module HtmlFieldSetElement = Webapi__Dom__HtmlFieldSetElement;
 module HtmlFormElement = Webapi__Dom__HtmlFormElement;
 module HtmlImageElement = Webapi__Dom__HtmlImageElement;
 module HtmlInputElement = Webapi__Dom__HtmlInputElement;
+module HtmlObjectElement = Webapi__Dom__HtmlObjectElement;
+module HtmlOutputElement = Webapi__Dom__HtmlOutputElement;
+module HtmlSelectElement = Webapi__Dom__HtmlSelectElement;
+module HtmlTextAreaElement = Webapi__Dom__HtmlTextAreaElement;
 module IdbVersionChangeEvent = Webapi__Dom__IdbVersionChangeEvent;
 module Image = Webapi__Dom__Image;
 module InputEvent = Webapi__Dom__InputEvent;
@@ -42,6 +50,7 @@ module Node = Webapi__Dom__Node;
 module NodeFilter = Webapi__Dom__NodeFilter;
 module NodeIterator = Webapi__Dom__NodeIterator;
 module NodeList = Webapi__Dom__NodeList;
+module RadioNodeList = Webapi__Dom__RadioNodeList;
 module PageTransitionEvent = Webapi__Dom__PageTransitionEvent;
 module PointerEvent = Webapi__Dom__PointerEvent;
 module PopStateEvent = Webapi__Dom__PopStateEvent;
@@ -175,11 +184,7 @@ include Webapi__Dom__Types;
    CanvasPixelArray
    NotifyAudioAvailableEvent
    HTMLAllCollection
-   HTMLFormControlsCollection
-   HTMLOptionsCollection
    HTMLPropertiesCollection
-   DOMStringMap
-   RadioNodeList
    MediaError
 
    /* SVG Element interfaces */

@@ -1,3 +1,11 @@
+### 0.20.0
+
+* Added bindings for `HTMLFormControlsCollection`
+* Added binding for `HTMLOptionsCollection`
+* Added bindings for `RadioNodeList`
+* Added binding for `Document.forms`
+* Added binding for `HTMLFormElement.elements`
+
 ### 0.19.2
 
 * Removed peer dependency on `bsdoc`
