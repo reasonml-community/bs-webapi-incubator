@@ -70,5 +70,7 @@ let _ = Window.resizeTo(120, 300, window);
 let _ = Window.scroll(0.0, 0.0, window);
 let _ = Window.scrollBy(10.0, (-10.0), window);
 let _ = Window.scrollTo(120.5, 300.3, window);
+Window.addBeforeUnloadEventListener((_: BeforeUnloadEvent.t) => (), window);
+Window.removeBeforeUnloadEventListener((_: BeforeUnloadEvent.t) => (), window);
 Window.stop(window);
 Window.setOnLoad(window, () => print_endline("load"));
