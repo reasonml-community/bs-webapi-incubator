@@ -6,4 +6,4 @@ include Webapi__Dom__UiEvent.Impl({ type nonrec t = t; });
 [@bs.new] external make : string => t = "FocusEvent";
 [@bs.new] external makeWithOptions : (string, Js.t({..})) => t = "FocusEvent";
 
-[@bs.get] [@bs.return nullable] external relatedTarget : t => option(Dom.eventTarget) = "";
+[@bs.get] [@bs.return nullable] external relatedTarget : t => option(Dom.eventTarget) = "relatedTarget";

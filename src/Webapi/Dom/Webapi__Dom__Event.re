@@ -1,22 +1,22 @@
 module Impl = (T: {type t;}) => {
-  [@bs.get] external bubbles : T.t => bool = "";
-  [@bs.get] external cancelable : T.t => bool = "";
-  [@bs.get] external composed : T.t => bool = "";
-  [@bs.get] external currentTarget : T.t => Dom.eventTarget = "";
-  [@bs.get] external defaultPrevented : T.t => bool = "";
-  [@bs.get] external eventPhase : T.t => int /* eventPhase enum */ = "";
+  [@bs.get] external bubbles : T.t => bool = "bubbles";
+  [@bs.get] external cancelable : T.t => bool = "cancelable";
+  [@bs.get] external composed : T.t => bool = "composed";
+  [@bs.get] external currentTarget : T.t => Dom.eventTarget = "currentTarget";
+  [@bs.get] external defaultPrevented : T.t => bool = "defaultPrevented";
+  [@bs.get] external eventPhase : T.t => int /* eventPhase enum */ = "eventPhase";
 
   let eventPhase: T.t => Webapi__Dom__Types.EventPhase.t =
     (self) => Webapi__Dom__Types.EventPhase.decode(eventPhase(self));
 
-  [@bs.get] external target : T.t => Dom.eventTarget = "";
-  [@bs.get] external timeStamp : T.t => float = "";
+  [@bs.get] external target : T.t => Dom.eventTarget = "target";
+  [@bs.get] external timeStamp : T.t => float = "timeStamp";
   [@bs.get] external type_ : T.t => string = "type";
-  [@bs.get] external isTrusted : T.t => bool = "";
+  [@bs.get] external isTrusted : T.t => bool = "isTrusted";
 
-  [@bs.send.pipe : T.t] external preventDefault : unit = "";
-  [@bs.send.pipe : T.t] external stopImmediatePropagation : unit = "";
-  [@bs.send.pipe : T.t] external stopPropagation : unit = "";
+  [@bs.send.pipe : T.t] external preventDefault : unit = "preventDefault";
+  [@bs.send.pipe : T.t] external stopImmediatePropagation : unit = "stopImmediatePropagation";
+  [@bs.send.pipe : T.t] external stopPropagation : unit = "stopPropagation";
 };
 
 type t = Dom.event;
