@@ -23,6 +23,24 @@ module Iterator = FormData.Iterator;
 
 module Performance = Webapi__Performance;
 
+/** @since 0.20.0 */
+module AudioTrack = Webapi__AudioTrack;
+/** @since 0.20.0 */
+module AudioTrackList = Webapi__AudioTrackList;
+
+/** @since 0.20.0 */
+module TextTrack = Webapi__TextTrack;
+/** @since 0.20.0 */
+module TextTrackList = Webapi__TextTrackList;
+
+/** @since 0.20.0 */
+module VideoTrack = Webapi__VideoTrack;
+/** @since 0.20.0 */
+module VideoTrackList = Webapi__VideoTrackList;
+
+/** @since 0.20.0 */
+module TimeRanges = Webapi__TimeRanges;
+
 /** @since 0.19.0 */
 module ReadableStream = Webapi__ReadableStream;
 

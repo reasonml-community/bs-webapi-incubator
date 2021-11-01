@@ -1,3 +1,18 @@
+### 0.20.0
+
+* Added binding for `HTMLVideoElement`
+* Added binding for `HTMLMediaElement`
+* Added binding for `MediaError`
+* Added binding for `AudioTrack`
+* Added binding for `AudioTrackList`
+* Added binding for `TextTrack`
+* Added binding for `TextTrackList`
+* Added binding for `TextTrackCue`
+* Added binding for `TextTrackCueList`
+* Added binding for `VideoTrack`
+* Added binding for `VideoTrackList`
+* Added binding for `TimeRanges`
+
 ### 0.19.2
 
 * Removed peer dependency on `bsdoc`
